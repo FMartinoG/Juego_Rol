@@ -11,6 +11,7 @@ public class GestorPrincipal {
 	private int alto;
 
 	private SuperficieDeDibujo sd;
+	@SuppressWarnings("unused")
 	private Ventana ventana;
 	private GestorEstados ge;
 
@@ -80,7 +81,6 @@ public class GestorPrincipal {
 	}
 
 	private void actualizar() {
-		GestorControles.TECLADO.actualizar();
 		ge.actualizar();
 	}
 }

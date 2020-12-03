@@ -1,10 +1,13 @@
 package principal.entes;
 
+import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import principal.Constantes;
 import principal.control.GestorControles;
+import principal.mapas.Mapa;
 import principal.sprites.HojaSprites;
 
 public class Jugador {
@@ -12,7 +15,10 @@ public class Jugador {
 	private double posicionX;
 	private double posicionY;
 
-	private int estado;
+	private double velocidad = 1;
+
+	private final int ANCHO_JUGADOR = 32;
+	private final int ALTO_JUGADOR = 32;
 
 	private int direccion;
 
@@ -20,99 +26,192 @@ public class Jugador {
 
 	private BufferedImage imagenActual;
 
-	public Jugador(double posX, double posY) {
+	private boolean enMovimiento;
+
+	private int animacion;
+	private int estado;
+
+	private Mapa mapa;
+
+	private final Rectangle LIMITE_ARRIBA = new Rectangle((Constantes.ANCHO_VENTANA / 2) - (ANCHO_JUGADOR / 2),
+			(Constantes.ALTO_VENTANA / 2) - (ALTO_JUGADOR / 4), ANCHO_JUGADOR, 1);
+	private final Rectangle LIMITE_ABAJO = new Rectangle((Constantes.ANCHO_VENTANA / 2) - (ANCHO_JUGADOR / 2),
+			(Constantes.ALTO_VENTANA / 2) + (ALTO_JUGADOR / 2), ANCHO_JUGADOR, 1);
+	private final Rectangle LIMITE_IZ = new Rectangle((Constantes.ANCHO_VENTANA / 2) - (ANCHO_JUGADOR / 2),
+			(Constantes.ALTO_VENTANA / 2) - (ALTO_JUGADOR / 4), 1, (ALTO_JUGADOR / 4) + (ALTO_JUGADOR / 2));
+	private final Rectangle LIMITE_DER = new Rectangle((Constantes.ANCHO_VENTANA / 2) + (ANCHO_JUGADOR / 2),
+			(Constantes.ALTO_VENTANA / 2) - (ALTO_JUGADOR / 4), 1, (ALTO_JUGADOR / 4) + (ALTO_JUGADOR / 2));
+
+	public Jugador(double posX, double posY, Mapa mapa) {
 		posicionX = posX;
 		posicionY = posY;
 		direccion = 0;
 		hs = new HojaSprites(Constantes.HOJA_PERSONAJE_1, Constantes.LADO_SPRITE, false);
 		imagenActual = hs.getSprite(0, 0).getImagen();
+		enMovimiento = false;
+		animacion = 0;
 		estado = 0;
+		this.mapa = mapa;
 	}
 
 	public void actualizar() {
-		boolean enMovimiento = false;
-		if (GestorControles.TECLADO.isArriba()) {
-			direccion = 1;
-			enMovimiento = true;
-			ponerImagenMovimiento();
-			posicionY -= Constantes.VELOCIDAD_MOVIMIENTO;
-		}
-		if (GestorControles.TECLADO.isAbajo()) {
-			direccion = 0;
-			enMovimiento = true;
-			ponerImagenMovimiento();
-			posicionY += Constantes.VELOCIDAD_MOVIMIENTO;
-		}
-		if (GestorControles.TECLADO.isIzquierda()) {
-			direccion = 2;
-			enMovimiento = true;
-			ponerImagenMovimiento();
-			posicionX -= Constantes.VELOCIDAD_MOVIMIENTO;
-		}
-		if (GestorControles.TECLADO.isDerecha()) {
-			direccion = 3;
-			enMovimiento = true;
-			ponerImagenMovimiento();
-			posicionX += Constantes.VELOCIDAD_MOVIMIENTO;
-		}
-		if (!enMovimiento)
-			ponerImagenesParado();
+		cambiarAnimacionEstado();
+		enMovimiento = false;
+		determinarDireccion();
+		animar();
 	}
 
-	private void ponerImagenesParado() {
-		switch (direccion) {
-		case 0:
-			imagenActual = hs.getSprite(0, 0).getImagen();
-			break;
-		case 1:
-			imagenActual = hs.getSprite(1, 0).getImagen();
-			break;
-		case 2:
-			imagenActual = hs.getSprite(2, 0).getImagen();
-			break;
-		case 3:
-			imagenActual = hs.getSprite(3, 0).getImagen();
-			break;
-		default:
-			break;
-		}
-	}
-
-	private void ponerImagenMovimiento() {
-		++estado;
-		if (estado >= 1000) {
+	private void animar() {
+		if (!enMovimiento) {
 			estado = 0;
+			animacion = 0;
+			switch (direccion) {
+			case 0:
+				imagenActual = hs.getSprite(0, 0).getImagen();
+				break;
+			case 1:
+				imagenActual = hs.getSprite(1, 0).getImagen();
+				break;
+			case 2:
+				imagenActual = hs.getSprite(2, 0).getImagen();
+				break;
+			case 3:
+				imagenActual = hs.getSprite(3, 0).getImagen();
+				break;
+			default:
+				break;
+			}
+		} else {
+			switch (direccion) {
+			case 0:
+				imagenActual = hs.getSprite(estado, 1).getImagen();
+				break;
+			case 1:
+				imagenActual = hs.getSprite((estado + 2), 1).getImagen();
+				break;
+			case 2:
+				imagenActual = hs.getSprite((estado + 4), 1).getImagen();
+				break;
+			case 3:
+				imagenActual = hs.getSprite((estado + 6), 1).getImagen();
+				break;
+			default:
+				break;
+			}
 		}
 
-		switch (direccion)
-		{
-		case 0:
-			if (estado % 50 < 25)
-				imagenActual = hs.getSprite(0, 1).getImagen();
-			else
-				imagenActual = hs.getSprite(1, 1).getImagen();
-			break;
-		case 1:
-			if (estado % 50 < 25)
-				imagenActual = hs.getSprite(2, 1).getImagen();
-			else
-				imagenActual = hs.getSprite(3, 1).getImagen();
-			break;
-		case 2:
-			if (estado % 50 < 25)
-				imagenActual = hs.getSprite(4, 1).getImagen();
-			else
-				imagenActual = hs.getSprite(5, 1).getImagen();
-			break;
-		case 3:
-			if (estado % 50 < 25)
-				imagenActual = hs.getSprite(6, 1).getImagen();
-			else
-				imagenActual = hs.getSprite(7, 1).getImagen();
-			break;
-		default:
-			break;
+	}
+
+	private void determinarDireccion() {
+		final int velocidadX = evaluarVelocidadX();
+		final int velocidadY = evaluarVelocidadY();
+
+		if (velocidadX == 0 && velocidadY == 0) {
+			return;
+		} else if ((velocidadX != 0 && velocidadY == 0) || (velocidadX == 0 && velocidadY != 0)) {
+			mover(velocidadX, velocidadY);
+		} else {
+			compararTeclas(velocidadX, velocidadY);
 		}
+	}
+
+	private void compararTeclas(int velocidadX, int velocidadY) {
+		if (velocidadX == -1 && velocidadY == -1) {
+			if (GestorControles.TECLADO.izquierda.getUltimaPulsacion() > GestorControles.TECLADO.arriba
+					.getUltimaPulsacion()) {
+				mover(velocidadX, 0);
+			} else {
+				mover(0, velocidadY);
+			}
+		}
+		if (velocidadX == -1 && velocidadY == 1) {
+			if (GestorControles.TECLADO.izquierda.getUltimaPulsacion() > GestorControles.TECLADO.abajo
+					.getUltimaPulsacion()) {
+				mover(velocidadX, 0);
+			} else {
+				mover(0, velocidadY);
+			}
+		}
+		if (velocidadX == 1 && velocidadY == -1) {
+			if (GestorControles.TECLADO.derecha.getUltimaPulsacion() > GestorControles.TECLADO.arriba
+					.getUltimaPulsacion()) {
+				mover(velocidadX, 0);
+			} else {
+				mover(0, velocidadY);
+			}
+		}
+		if (velocidadX == 1 && velocidadY == 1) {
+			if (GestorControles.TECLADO.derecha.getUltimaPulsacion() > GestorControles.TECLADO.abajo
+					.getUltimaPulsacion()) {
+				mover(velocidadX, 0);
+			} else {
+				mover(0, velocidadY);
+			}
+		}
+	}
+
+	private void mover(int velocidadX, int velocidadY) {
+		enMovimiento = true;
+
+		cambiarDireccion(velocidadX, velocidadY);
+
+		if (!fueraMapa(velocidadX, velocidadY)) {
+			if (velocidadX == -1 && !colisionIzquierda(velocidadX))
+				posicionX += velocidadX * velocidad;
+			if (velocidadX == 1 && !colisionDerecha(velocidadX))
+				posicionX += velocidadX * velocidad;
+			if (velocidadY == -1 && !colisionArriba(velocidadY))
+				posicionY += velocidadY * velocidad;
+			if (velocidadY == 1 && !colisionAbajo(velocidadY))
+				posicionY += velocidadY * velocidad;
+		}
+	}
+
+	private void cambiarDireccion(int velocidadX, int velocidadY) {
+		if (velocidadX == -1) {
+			direccion = 2;
+		} else if (velocidadX == 1) {
+			direccion = 3;
+		}
+
+		if (velocidadY == -1) {
+			direccion = 1;
+		} else if (velocidadY == 1) {
+			direccion = 0;
+		}
+	}
+
+	private int evaluarVelocidadX() {
+		int velocidadX = 0;
+		if (GestorControles.TECLADO.izquierda.isPulsada() && !GestorControles.TECLADO.derecha.isPulsada()) {
+			velocidadX = -1;
+		} else if (!GestorControles.TECLADO.izquierda.isPulsada() && GestorControles.TECLADO.derecha.isPulsada()) {
+			velocidadX = 1;
+		}
+		return velocidadX;
+	}
+
+	private int evaluarVelocidadY() {
+		int velocidadY = 0;
+		if (GestorControles.TECLADO.arriba.isPulsada() && !GestorControles.TECLADO.abajo.isPulsada()) {
+			velocidadY = -1;
+		} else if (!GestorControles.TECLADO.arriba.isPulsada() && GestorControles.TECLADO.abajo.isPulsada()) {
+			velocidadY = 1;
+		}
+		return velocidadY;
+	}
+
+	private void cambiarAnimacionEstado() {
+		if (animacion < 60) {
+			++animacion;
+		} else {
+			animacion = 0;
+		}
+
+		if (animacion < 30) {
+			estado = 0;
+		} else
+			estado = 1;
 	}
 
 	public void dibujar(Graphics g) {
@@ -120,6 +219,92 @@ public class Jugador {
 		final int CENTRO_Y = (Constantes.ALTO_VENTANA / 2) - (Constantes.LADO_SPRITE / 2);
 		g.drawImage(imagenActual, CENTRO_X, CENTRO_Y, null);
 
+		g.setColor(Color.GREEN);
+		g.drawRect(LIMITE_ARRIBA.x, LIMITE_ARRIBA.y, LIMITE_ARRIBA.width, LIMITE_ARRIBA.height);
+		g.drawRect(LIMITE_ABAJO.x, LIMITE_ABAJO.y, LIMITE_ABAJO.width, LIMITE_ABAJO.height);
+		g.drawRect(LIMITE_IZ.x, LIMITE_IZ.y, LIMITE_IZ.width, LIMITE_IZ.height);
+		g.drawRect(LIMITE_DER.x, LIMITE_DER.y, LIMITE_DER.width, LIMITE_DER.height);
+
+	}
+
+	private boolean fueraMapa(final int velocidadX, final int velocidadY) {
+		int posFuturaX = (int) posicionX + velocidadX * (int) velocidad;
+		int posFuturaY = (int) posicionY + velocidadY * (int) velocidad;
+		Rectangle bordesMapa = mapa.getBordes(posFuturaX, posFuturaY, ANCHO_JUGADOR, ALTO_JUGADOR);
+
+		final boolean fuera;
+
+		if (LIMITE_ARRIBA.intersects(bordesMapa) || LIMITE_ABAJO.intersects(bordesMapa)
+				|| LIMITE_IZ.intersects(bordesMapa) || LIMITE_DER.intersects(bordesMapa))
+			fuera = false;
+		else
+			fuera = true;
+
+		return fuera;
+	}
+
+	private boolean colisionArriba(final int velocidadY) {
+		boolean colision = false;
+		for (int i = 0; i < mapa.areasColision.size() && !colision; ++i) {
+			final Rectangle area = mapa.areasColision.get(i);
+
+			int origenX = area.x;
+			int origenY = area.y + velocidadY * (int) velocidad + 3 * (int) velocidad;
+
+			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE,
+					Constantes.LADO_SPRITE);
+			if (LIMITE_ARRIBA.intersects(posicionFutura))
+				colision = true;
+		}
+		return colision;
+	}
+
+	private boolean colisionAbajo(final int velocidadY) {
+		boolean colision = false;
+		for (int i = 0; i < mapa.areasColision.size() && !colision; ++i) {
+			final Rectangle area = mapa.areasColision.get(i);
+
+			int origenX = area.x;
+			int origenY = area.y + velocidadY * (int) velocidad - 3 * (int) velocidad;
+
+			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE,
+					Constantes.LADO_SPRITE);
+			if (LIMITE_ABAJO.intersects(posicionFutura))
+				colision = true;
+		}
+		return colision;
+	}
+
+	private boolean colisionIzquierda(final int velocidadX) {
+		boolean colision = false;
+		for (int i = 0; i < mapa.areasColision.size() && !colision; ++i) {
+			final Rectangle area = mapa.areasColision.get(i);
+
+			int origenX = area.x + velocidadX * (int) velocidad + 3 * (int) velocidad;
+			int origenY = area.y;
+
+			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE,
+					Constantes.LADO_SPRITE);
+			if (LIMITE_IZ.intersects(posicionFutura))
+				colision = true;
+		}
+		return colision;
+	}
+
+	private boolean colisionDerecha(final int velocidadX) {
+		boolean colision = false;
+		for (int i = 0; i < mapa.areasColision.size() && !colision; ++i) {
+			final Rectangle area = mapa.areasColision.get(i);
+
+			int origenX = area.x + velocidadX * (int) velocidad - 3 * (int) velocidad;
+			int origenY = area.y;
+
+			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE,
+					Constantes.LADO_SPRITE);
+			if (LIMITE_DER.intersects(posicionFutura))
+				colision = true;
+		}
+		return colision;
 	}
 
 	public double getPosicionX() {

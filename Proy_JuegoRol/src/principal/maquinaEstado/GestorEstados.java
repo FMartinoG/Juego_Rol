@@ -31,10 +31,10 @@ public class GestorEstados {
 		estadoActual.dibujar(g);
 	}
 	
-	private void cambiarEstado(final int nuevoEstado) {
+/*	private void cambiarEstado(final int nuevoEstado) {
 		estadoActual = estados[nuevoEstado];
 	}
-	
+	*/
 	public EstadoJuego getEstadoActual() {
 		return estadoActual;
 	}

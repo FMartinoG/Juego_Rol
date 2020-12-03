@@ -17,6 +17,4 @@ public class Constantes {
 	
 	public static final String CURSOR = "/cursor/cursor.png";
 	
-	
-	public static final double VELOCIDAD_MOVIMIENTO = 2;
 }

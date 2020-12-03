@@ -1,6 +1,7 @@
 package principal.mapas;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import principal.Constantes;
@@ -12,10 +13,10 @@ public class Mapa {
 
 	private int ancho;
 	private int alto;
-	
+
 	private final int MARGEN_X = Constantes.ANCHO_VENTANA / 2 - Constantes.LADO_SPRITE / 2;
 	private final int MARGEN_Y = Constantes.ALTO_VENTANA / 2 - Constantes.LADO_SPRITE / 2;
-	
+
 	private int[] numeroHojasSprites;
 	private HojaSprites[] hojas;
 	private int[] numeroSprite;
@@ -23,27 +24,50 @@ public class Mapa {
 	private boolean[] mapaColisiones;
 	private int[] mapaSprites;
 
+	public ArrayList<Rectangle> areasColision = new ArrayList<>();
+
 	public Mapa(final String ruta) {
 		String textoMapa = CargadorRecursos.leerFicheroTexto(ruta);
 		leerMapa(textoMapa);
+	}
+
+	public void actualizar(final int posX, final int posY) {
+		actualizarAreasColision(posX, posY);
+	}
+
+	private void actualizarAreasColision(final int posX, final int posY) {
+		if (!areasColision.isEmpty())
+			areasColision.clear();
+
+		for(int i = 0; i < alto; ++i) {
+			for(int j = 0; j < ancho; ++j) {
+				int puntoX = MARGEN_X + j * Constantes.LADO_SPRITE - posX;
+				int puntoY = MARGEN_Y + i * Constantes.LADO_SPRITE - posY;
+				
+				if(mapaColisiones[j + i * ancho]) {
+					final Rectangle r = new Rectangle(puntoX, puntoY, Constantes.LADO_SPRITE, Constantes.LADO_SPRITE);
+					areasColision.add(r);
+				}
+			}
+		}
+		
 	}
 
 	public void dibujar(Graphics g, int posX, int posY) {
 		int ladoSprite = Constantes.LADO_SPRITE;
 		for (int i = 0; i < alto; ++i) {
 			for (int j = 0; j < ancho; ++j) {
-				
-				int posxInicial = 192 + j * ladoSprite - posX;
-				int posYInicial = i * ladoSprite - posY;
+
+				// int posxInicial = 192 + j * ladoSprite - posX;
+				// int posYInicial = i * ladoSprite - posY;
 				// Para que empiece en 0,0
-				/*
+
 				int posxInicial = MARGEN_X + j * ladoSprite - posX;
 				int posYInicial = MARGEN_Y + i * ladoSprite - posY;
-				*/
-				
+
 				int puntero = mapaSprites[j + i * ancho];
 				g.drawImage(sprites[puntero].getImagen(), posxInicial, posYInicial, null);
-				
+
 			}
 		}
 	}
@@ -124,5 +148,13 @@ public class Mapa {
 		for (int i = 0; i < mapaAux.size(); ++i) {
 			mapaSprites[i] = mapaAux.get(i);
 		}
+	}
+
+	public Rectangle getBordes(final int posX, final int posY, final int anchoJugador, final int altoJugador) {
+		int x = MARGEN_X - posX + anchoJugador;
+		int y = MARGEN_Y - posY + altoJugador;
+		int ancho = this.ancho * Constantes.LADO_SPRITE - anchoJugador * 2;
+		int alto = this.alto * Constantes.LADO_SPRITE - altoJugador * 2;
+		return new Rectangle(x, y, ancho, alto);
 	}
 }
