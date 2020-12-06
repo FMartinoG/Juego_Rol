@@ -9,6 +9,8 @@ public final class Teclado implements KeyListener {
 	public Tecla abajo = new Tecla();
 	public Tecla derecha = new Tecla();
 	public Tecla izquierda = new Tecla();
+	
+	public boolean corriendo = false;
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
@@ -24,6 +26,9 @@ public final class Teclado implements KeyListener {
 			break;
 		case KeyEvent.VK_D:
 			derecha.pulsarTecla();
+			break;
+		case KeyEvent.VK_SHIFT:
+			corriendo = true;
 			break;
 		default:
 			break;
@@ -44,6 +49,9 @@ public final class Teclado implements KeyListener {
 			break;
 		case KeyEvent.VK_D:
 			derecha.soltarTecla();
+			break;
+		case KeyEvent.VK_SHIFT:
+			corriendo = false;
 			break;
 		default:
 			break;

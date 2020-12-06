@@ -15,7 +15,8 @@ public class Jugador {
 	private double posicionX;
 	private double posicionY;
 
-	private double velocidad = 1;
+	private double velocidadAndando = 1;
+	private double velocidadActual = 1;
 
 	private final int ANCHO_JUGADOR = 32;
 	private final int ALTO_JUGADOR = 32;
@@ -42,6 +43,8 @@ public class Jugador {
 	private final Rectangle LIMITE_DER = new Rectangle((Constantes.ANCHO_VENTANA / 2) + (ANCHO_JUGADOR / 2),
 			(Constantes.ALTO_VENTANA / 2) - (ALTO_JUGADOR / 4), 1, (ALTO_JUGADOR / 4) + (ALTO_JUGADOR / 2));
 
+	private double resistencia = 600;
+
 	public Jugador(double posX, double posY, Mapa mapa) {
 		posicionX = posX;
 		posicionY = posY;
@@ -55,6 +58,7 @@ public class Jugador {
 	}
 
 	public void actualizar() {
+		comprobarCorriendo();
 		cambiarAnimacionEstado();
 		enMovimiento = false;
 		determinarDireccion();
@@ -157,13 +161,13 @@ public class Jugador {
 
 		if (!fueraMapa(velocidadX, velocidadY)) {
 			if (velocidadX == -1 && !colisionIzquierda(velocidadX))
-				posicionX += velocidadX * velocidad;
+				posicionX += velocidadX * velocidadActual;
 			if (velocidadX == 1 && !colisionDerecha(velocidadX))
-				posicionX += velocidadX * velocidad;
+				posicionX += velocidadX * velocidadActual;
 			if (velocidadY == -1 && !colisionArriba(velocidadY))
-				posicionY += velocidadY * velocidad;
+				posicionY += velocidadY * velocidadActual;
 			if (velocidadY == 1 && !colisionAbajo(velocidadY))
-				posicionY += velocidadY * velocidad;
+				posicionY += velocidadY * velocidadActual;
 		}
 	}
 
@@ -202,34 +206,40 @@ public class Jugador {
 	}
 
 	private void cambiarAnimacionEstado() {
-		if (animacion < 60) {
-			++animacion;
-		} else {
-			animacion = 0;
-		}
+		if (GestorControles.TECLADO.corriendo) {
+			if (animacion < 30) {
+				++animacion;
+			} else {
+				animacion = 0;
+			}
 
-		if (animacion < 30) {
-			estado = 0;
-		} else
-			estado = 1;
+			if (animacion < 15) {
+				estado = 0;
+			} else
+				estado = 1;
+		} else {
+			if (animacion < 60) {
+				++animacion;
+			} else {
+				animacion = 0;
+			}
+
+			if (animacion < 30) {
+				estado = 0;
+			} else
+				estado = 1;
+		}
 	}
 
 	public void dibujar(Graphics g) {
 		final int CENTRO_X = (Constantes.ANCHO_VENTANA / 2) - (Constantes.LADO_SPRITE / 2);
 		final int CENTRO_Y = (Constantes.ALTO_VENTANA / 2) - (Constantes.LADO_SPRITE / 2);
 		g.drawImage(imagenActual, CENTRO_X, CENTRO_Y, null);
-
-		g.setColor(Color.GREEN);
-		g.drawRect(LIMITE_ARRIBA.x, LIMITE_ARRIBA.y, LIMITE_ARRIBA.width, LIMITE_ARRIBA.height);
-		g.drawRect(LIMITE_ABAJO.x, LIMITE_ABAJO.y, LIMITE_ABAJO.width, LIMITE_ABAJO.height);
-		g.drawRect(LIMITE_IZ.x, LIMITE_IZ.y, LIMITE_IZ.width, LIMITE_IZ.height);
-		g.drawRect(LIMITE_DER.x, LIMITE_DER.y, LIMITE_DER.width, LIMITE_DER.height);
-
 	}
 
 	private boolean fueraMapa(final int velocidadX, final int velocidadY) {
-		int posFuturaX = (int) posicionX + velocidadX * (int) velocidad;
-		int posFuturaY = (int) posicionY + velocidadY * (int) velocidad;
+		int posFuturaX = (int) posicionX + velocidadX * (int) velocidadActual;
+		int posFuturaY = (int) posicionY + velocidadY * (int) velocidadActual;
 		Rectangle bordesMapa = mapa.getBordes(posFuturaX, posFuturaY, ANCHO_JUGADOR, ALTO_JUGADOR);
 
 		final boolean fuera;
@@ -249,7 +259,7 @@ public class Jugador {
 			final Rectangle area = mapa.areasColision.get(i);
 
 			int origenX = area.x;
-			int origenY = area.y + velocidadY * (int) velocidad + 3 * (int) velocidad;
+			int origenY = area.y + velocidadY * (int) velocidadActual + 3 * (int) velocidadActual;
 
 			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE,
 					Constantes.LADO_SPRITE);
@@ -265,7 +275,7 @@ public class Jugador {
 			final Rectangle area = mapa.areasColision.get(i);
 
 			int origenX = area.x;
-			int origenY = area.y + velocidadY * (int) velocidad - 3 * (int) velocidad;
+			int origenY = area.y + velocidadY * (int) velocidadActual - 3 * (int) velocidadActual;
 
 			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE,
 					Constantes.LADO_SPRITE);
@@ -280,7 +290,7 @@ public class Jugador {
 		for (int i = 0; i < mapa.areasColision.size() && !colision; ++i) {
 			final Rectangle area = mapa.areasColision.get(i);
 
-			int origenX = area.x + velocidadX * (int) velocidad + 3 * (int) velocidad;
+			int origenX = area.x + velocidadX * (int) velocidadActual + 3 * (int) velocidadActual;
 			int origenY = area.y;
 
 			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE,
@@ -296,7 +306,7 @@ public class Jugador {
 		for (int i = 0; i < mapa.areasColision.size() && !colision; ++i) {
 			final Rectangle area = mapa.areasColision.get(i);
 
-			int origenX = area.x + velocidadX * (int) velocidad - 3 * (int) velocidad;
+			int origenX = area.x + velocidadX * (int) velocidadActual - 3 * (int) velocidadActual;
 			int origenY = area.y;
 
 			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE,
@@ -307,11 +317,27 @@ public class Jugador {
 		return colision;
 	}
 
+	private void comprobarCorriendo() {
+		if (GestorControles.TECLADO.corriendo && resistencia > 0) {
+			velocidadActual = 2 * velocidadAndando;
+			--resistencia;
+
+		} else {
+			velocidadActual = velocidadAndando;
+			if (resistencia < 600)
+				resistencia += 0.5;
+		}
+	}
+
 	public double getPosicionX() {
 		return posicionX;
 	}
 
 	public double getPosicionY() {
 		return posicionY;
+	}
+
+	public double getResistencia() {
+		return resistencia;
 	}
 }

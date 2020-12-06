@@ -3,6 +3,7 @@ package principal.maquinaEstado.estados.juego;
 import java.awt.Graphics;
 
 import principal.Constantes;
+import principal.HUD.InterfazUsuario;
 import principal.entes.Jugador;
 import principal.mapas.Mapa;
 import principal.maquinaEstado.EstadoJuego;
@@ -23,6 +24,7 @@ public class GestorJuego implements EstadoJuego {
 	public void dibujar(Graphics g) {
 		mapa.dibujar(g, (int) jugador.getPosicionX(), (int) jugador.getPosicionY());
 		jugador.dibujar(g);
+		InterfazUsuario.dibujarResistencia(g, jugador.getResistencia());
 	}
 
 }

@@ -1,6 +1,7 @@
 package principal.graficos;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
@@ -45,7 +46,8 @@ public class SuperficieDeDibujo extends Canvas {
 		// Solo pintará entre actualizaciones de la pantalla
 		Toolkit.getDefaultToolkit().sync();
 
-		// Dibuja todo el fondo
+		// Dibuja todo el fondo de negro
+		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, ancho, alto);
 
 		// Dibuja el mapa
