@@ -9,6 +9,9 @@ public class GestorPrincipal {
 	private String titulo;
 	private int ancho;
 	private int alto;
+	private static int fps = 0;
+	private static int aps = 0;
+	
 
 	private SuperficieDeDibujo sd;
 	@SuppressWarnings("unused")
@@ -33,9 +36,8 @@ public class GestorPrincipal {
 	}
 
 	public void iniciarBuclePrincipal() {
-		int aps = 0;
-		int fps = 0;
-
+		int actualizacionesAcumuladas = 0;
+		int framesAcumulados = 0;
 		final int NS_POR_SEG = 1000000000;
 		final int APS_OBJETIVO = 60;
 		final double NS_POR_ACTUALIZACION = NS_POR_SEG / APS_OBJETIVO;
@@ -57,19 +59,20 @@ public class GestorPrincipal {
 
 			while (delta >= 1) {
 				actualizar();
-				++aps;
+				++actualizacionesAcumuladas;
 				--delta;
 			}
 
 			// Muestra lo que tenga que mostrar en la ventana
 			dibujar();
-			++fps;
+			++framesAcumulados;
 
-			if ((System.nanoTime() - referenciaContador) > NS_POR_SEG) {
-				System.out.println("FPS: " + fps + " || APS: " + aps);
+			if ((System.nanoTime() - referenciaContador) > NS_POR_SEG) {		
+				aps = actualizacionesAcumuladas;
+				fps = framesAcumulados;
 				
-				aps = 0;
-				fps = 0;
+				actualizacionesAcumuladas = 0;
+				framesAcumulados = 0;
 				referenciaContador = System.nanoTime();
 			}
 			// Fin método para calcular los aps y los fps.
@@ -82,5 +85,13 @@ public class GestorPrincipal {
 
 	private void actualizar() {
 		ge.actualizar();
+	}
+	
+	public static int getFps() {
+		return fps;
+	}
+	
+	public static int getAps() {
+		return aps;
 	}
 }

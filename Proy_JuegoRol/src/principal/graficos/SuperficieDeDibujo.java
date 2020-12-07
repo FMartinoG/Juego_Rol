@@ -4,9 +4,12 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 
+import principal.Constantes;
+import principal.GestorPrincipal;
 import principal.control.GestorControles;
 import principal.maquinaEstado.GestorEstados;
 
@@ -42,17 +45,24 @@ public class SuperficieDeDibujo extends Canvas {
 			return;
 		}
 
-		Graphics g = buffer.getDrawGraphics();
+		Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
 		// Solo pintará entre actualizaciones de la pantalla
 		Toolkit.getDefaultToolkit().sync();
 
 		// Dibuja todo el fondo de negro
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, ancho, alto);
+		g.fillRect(0, 0, Constantes.ANCHO_PANTALLA_COMPLETA, Constantes.ALTO_PANTALLA_COMPLETA);
+		
+		if (Constantes.factorEscaladoX != 1 || Constantes.factorEscaladoY != 1)
+		g.scale(Constantes.factorEscaladoX, Constantes.factorEscaladoY);
 
 		// Dibuja el mapa
 		ge.dibujar(g);
-
+		
+		g.setColor(Color.WHITE);
+		g.drawString("APS: " + GestorPrincipal.getAps(), 10, 15);
+		g.drawString("FPS: " + GestorPrincipal.getFps(), 10, 30);
+		
 		// Borra todo lo almacenado en g para guardar la siguiente imagen y no se llene
 		// la memoria
 		g.dispose();

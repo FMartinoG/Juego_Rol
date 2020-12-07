@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import principal.Constantes;
+import principal.GestorPrincipal;
 import principal.herramientas.CargadorRecursos;
 
 public class Ventana extends JFrame {
@@ -34,7 +35,7 @@ public class Ventana extends JFrame {
 		setLayout(new BorderLayout());
 		add(sd, BorderLayout.CENTER);
 		// Para quitar el borde
-		setUndecorated(false);
+		setUndecorated(true);
 		// Le da el formato y tamaño adecuado a la ventana
 		pack();
 		// Muestra la ventana en el centro

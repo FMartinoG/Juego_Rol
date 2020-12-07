@@ -30,6 +30,9 @@ public final class Teclado implements KeyListener {
 		case KeyEvent.VK_SHIFT:
 			corriendo = true;
 			break;
+		case KeyEvent.VK_ESCAPE:
+			System.exit(0);
+			break;
 		default:
 			break;
 		}
