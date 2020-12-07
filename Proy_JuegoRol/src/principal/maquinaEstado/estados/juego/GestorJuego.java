@@ -10,12 +10,14 @@ import principal.maquinaEstado.EstadoJuego;
 
 public class GestorJuego implements EstadoJuego {
 
-	Mapa mapa;
-	Jugador jugador;
+	private Mapa mapa;
+	private Jugador jugador;
+	private InterfazUsuario iu;
 
 	public GestorJuego() {
 		iniciarMapa(Constantes.MAPA_1);
 		iniciarJugador();
+		iu = new InterfazUsuario(jugador);
 	}
 
 	private void iniciarMapa(String ruta) {
@@ -48,7 +50,7 @@ public class GestorJuego implements EstadoJuego {
 	public void dibujar(Graphics g) {
 		mapa.dibujar(g, (int) jugador.getPosicionX(), (int) jugador.getPosicionY());
 		jugador.dibujar(g);
-		InterfazUsuario.dibujarResistencia(g, jugador.getResistencia());
+		iu.dibujar(g);
 	}
 
 	private String comprobarSiguienteMapa(String siguienteMapa) {

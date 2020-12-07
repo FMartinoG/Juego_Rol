@@ -4,14 +4,14 @@ public class Constantes {
 
 	public static final int LADO_SPRITE = 32;
 	
-	public static final int ANCHO_VENTANA = 1366;
-	public static final int ALTO_VENTANA = 768;
+	public static final int ANCHO_VENTANA = 640;
+	public static final int ALTO_VENTANA = 360;
 	
-	public static int ANCHO_PANTALLA_COMPLETA = 1366;
-	public static int ALTO_PANTALLA_COMPLETA = 768;
+	public static int ANCHO_PANTALLA_AMPLIADA = 640 * 2;
+	public static int ALTO_PANTALLA_AMPLIADA = 360 * 2;
 	
-	public static double factorEscaladoX = ANCHO_PANTALLA_COMPLETA / ANCHO_VENTANA;
-	public static double factorEscaladoY = ALTO_PANTALLA_COMPLETA / ALTO_VENTANA;
+	public static double factorEscaladoX = ANCHO_PANTALLA_AMPLIADA / ANCHO_VENTANA;
+	public static double factorEscaladoY = ALTO_PANTALLA_AMPLIADA / ALTO_VENTANA;
 	
 	public static final String HOJA_TEXTURAS_1 = "/texturas/001.png";
 	

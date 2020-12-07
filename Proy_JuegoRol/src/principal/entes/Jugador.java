@@ -10,6 +10,16 @@ import principal.mapas.Mapa;
 import principal.sprites.HojaSprites;
 
 public class Jugador {
+	
+	private int nivel;
+	
+	private int saludMaxima;
+	private int manaMaximo;
+	private int expMaxima;
+	
+	private int salud;
+	private int mana;
+	private int exp;
 
 	private double posicionX;
 	private double posicionY;
@@ -42,9 +52,14 @@ public class Jugador {
 	private final Rectangle LIMITE_DER = new Rectangle((Constantes.ANCHO_VENTANA / 2) + (ANCHO_JUGADOR / 2),
 			(Constantes.ALTO_VENTANA / 2) - (ALTO_JUGADOR / 4), 1, (ALTO_JUGADOR / 4) + (ALTO_JUGADOR / 2));
 
-	private double resistencia = 600;
-
 	public Jugador(Mapa mapa) {
+		nivel = 1;
+		saludMaxima = 1000;
+		manaMaximo = 300;
+		expMaxima = 1000;
+		salud = 1000;
+		mana = 300;
+		exp = 0;
 		posicionX = mapa.getPosicionInicial().x;
 		posicionY = mapa.getPosicionInicial().y;
 		direccion = 0;
@@ -317,14 +332,11 @@ public class Jugador {
 	}
 
 	private void comprobarCorriendo() {
-		if (GestorControles.TECLADO.corriendo && resistencia > 0) {
+		if (GestorControles.TECLADO.corriendo) {
 			velocidadActual = 2 * velocidadAndando;
-			--resistencia;
-
+			++exp;
 		} else {
 			velocidadActual = velocidadAndando;
-			if (resistencia < 600)
-				resistencia += 0.5;
 		}
 	}
 
@@ -342,10 +354,6 @@ public class Jugador {
 	
 	public void setPosicionY(double posicionY) {
 		this.posicionY = posicionY;
-	}
-
-	public double getResistencia() {
-		return resistencia;
 	}
 	
 	public Rectangle getLIMITE_ABAJO() {
@@ -366,5 +374,61 @@ public class Jugador {
 	
 	public void setMapa(Mapa mapa) {
 		this.mapa = mapa;
+	}
+
+	public int getSalud() {
+		return salud;
+	}
+
+	public void setSalud(int salud) {
+		this.salud = salud;
+	}
+
+	public int getMana() {
+		return mana;
+	}
+
+	public void setMana(int mana) {
+		this.mana = mana;
+	}
+
+	public int getSaludMaxima() {
+		return saludMaxima;
+	}
+
+	public void setSaludMaxima(int saludMaxima) {
+		this.saludMaxima = saludMaxima;
+	}
+
+	public int getManaMaximo() {
+		return manaMaximo;
+	}
+
+	public void setManaMaximo(int manaMaximo) {
+		this.manaMaximo = manaMaximo;
+	}
+
+	public int getExpMaxima() {
+		return expMaxima;
+	}
+
+	public void setExpMaxima(int expMaxima) {
+		this.expMaxima = expMaxima;
+	}
+
+	public int getExp() {
+		return exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+
+	public int getNivel() {
+		return nivel;
+	}
+
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
 	}
 }

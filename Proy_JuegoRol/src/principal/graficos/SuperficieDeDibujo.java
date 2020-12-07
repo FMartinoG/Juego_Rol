@@ -50,7 +50,7 @@ public class SuperficieDeDibujo extends Canvas {
 
 		// Dibuja todo el fondo de negro
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, Constantes.ANCHO_PANTALLA_COMPLETA, Constantes.ALTO_PANTALLA_COMPLETA);
+		g.fillRect(0, 0, Constantes.ANCHO_PANTALLA_AMPLIADA, Constantes.ALTO_PANTALLA_AMPLIADA);
 		
 		if (Constantes.factorEscaladoX != 1 || Constantes.factorEscaladoY != 1)
 		g.scale(Constantes.factorEscaladoX, Constantes.factorEscaladoY);
