@@ -1,6 +1,5 @@
 package principal;
 
-import principal.control.GestorControles;
 import principal.graficos.*;
 import principal.maquinaEstado.GestorEstados;
 

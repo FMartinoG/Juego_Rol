@@ -1,6 +1,7 @@
 package principal.mapas;
 
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
@@ -24,6 +25,11 @@ public class Mapa {
 	private boolean[] mapaColisiones;
 	private int[] mapaSprites;
 
+	private Point posicionInicial;
+	private Point posicionSalida;
+	private String siguienteMapa;
+	private Rectangle zonaSalida = new Rectangle();
+
 	public ArrayList<Rectangle> areasColision = new ArrayList<>();
 
 	public Mapa(final String ruta) {
@@ -33,24 +39,7 @@ public class Mapa {
 
 	public void actualizar(final int posX, final int posY) {
 		actualizarAreasColision(posX, posY);
-	}
-
-	private void actualizarAreasColision(final int posX, final int posY) {
-		if (!areasColision.isEmpty())
-			areasColision.clear();
-
-		for(int i = 0; i < alto; ++i) {
-			for(int j = 0; j < ancho; ++j) {
-				int puntoX = MARGEN_X + j * Constantes.LADO_SPRITE - posX;
-				int puntoY = MARGEN_Y + i * Constantes.LADO_SPRITE - posY;
-				
-				if(mapaColisiones[j + i * ancho]) {
-					final Rectangle r = new Rectangle(puntoX, puntoY, Constantes.LADO_SPRITE, Constantes.LADO_SPRITE);
-					areasColision.add(r);
-				}
-			}
-		}
-		
+		actualizarZonaSalida(posX, posY);
 	}
 
 	public void dibujar(Graphics g, int posX, int posY) {
@@ -88,6 +77,13 @@ public class Mapa {
 
 		String mapaCuadros = partes[5];
 		guardarMapaSprites(mapaCuadros);
+
+		String posJugador = partes[6];
+		guardarPosicionInicial(posJugador);
+
+		String salidaMapa = partes[7];
+		guardarSalida(salidaMapa);
+
 	}
 
 	private void guardarHojas(String[] textoHojas) {
@@ -150,11 +146,67 @@ public class Mapa {
 		}
 	}
 
+	private void guardarPosicionInicial(String posInicial) {
+		String[] coordenadas = posInicial.split("-");
+		posicionInicial = new Point();
+		posicionInicial.x = Integer.parseInt(coordenadas[0]) * Constantes.LADO_SPRITE;
+		posicionInicial.y = Integer.parseInt(coordenadas[1]) * Constantes.LADO_SPRITE;
+	}
+
+	private void guardarSalida(String posSalida) {
+		String[] coordenadas = posSalida.split("-");
+		posicionSalida = new Point();
+		posicionSalida.x = Integer.parseInt(coordenadas[0]);
+		posicionSalida.y = Integer.parseInt(coordenadas[1]);
+		siguienteMapa = coordenadas[2];
+	}
+	
+	private void actualizarAreasColision(final int posX, final int posY) {
+		if (!areasColision.isEmpty())
+			areasColision.clear();
+
+		for (int i = 0; i < alto; ++i) {
+			for (int j = 0; j < ancho; ++j) {
+				int puntoX = MARGEN_X + j * Constantes.LADO_SPRITE - posX;
+				int puntoY = MARGEN_Y + i * Constantes.LADO_SPRITE - posY;
+
+				if (mapaColisiones[j + i * ancho]) {
+					final Rectangle r = new Rectangle(puntoX, puntoY, Constantes.LADO_SPRITE, Constantes.LADO_SPRITE);
+					areasColision.add(r);
+				}
+			}
+		}
+
+	}
+	
+	private void actualizarZonaSalida(final int posX, final int posY) {
+		int puntoX = posicionSalida.x * Constantes.LADO_SPRITE - posX + MARGEN_X;
+		int puntoY = posicionSalida.y * Constantes.LADO_SPRITE - posY + MARGEN_Y;
+		
+		zonaSalida = new Rectangle(puntoX, puntoY, Constantes.LADO_SPRITE, Constantes.LADO_SPRITE);
+	}
+
 	public Rectangle getBordes(final int posX, final int posY, final int anchoJugador, final int altoJugador) {
 		int x = MARGEN_X - posX + anchoJugador;
 		int y = MARGEN_Y - posY + altoJugador;
 		int ancho = this.ancho * Constantes.LADO_SPRITE - anchoJugador * 2;
 		int alto = this.alto * Constantes.LADO_SPRITE - altoJugador * 2;
 		return new Rectangle(x, y, ancho, alto);
+	}
+
+	public Point getPosicionInicial() {
+		return posicionInicial;
+	}
+
+	public Point getPosicionSalida() {
+		return posicionSalida;
+	}
+
+	public String getSiguienteMapa() {
+		return siguienteMapa;
+	}
+	
+	public Rectangle getZonaSalida() {
+		return zonaSalida;
 	}
 }

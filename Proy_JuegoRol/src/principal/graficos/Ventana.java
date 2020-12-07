@@ -7,7 +7,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import principal.Constantes;
-import principal.GestorPrincipal;
 import principal.herramientas.CargadorRecursos;
 
 public class Ventana extends JFrame {

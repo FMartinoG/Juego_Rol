@@ -1,6 +1,5 @@
 package principal.entes;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -45,9 +44,9 @@ public class Jugador {
 
 	private double resistencia = 600;
 
-	public Jugador(double posX, double posY, Mapa mapa) {
-		posicionX = posX;
-		posicionY = posY;
+	public Jugador(Mapa mapa) {
+		posicionX = mapa.getPosicionInicial().x;
+		posicionY = mapa.getPosicionInicial().y;
 		direccion = 0;
 		hs = new HojaSprites(Constantes.HOJA_PERSONAJE_1, Constantes.LADO_SPRITE, false);
 		imagenActual = hs.getSprite(0, 0).getImagen();
@@ -332,12 +331,40 @@ public class Jugador {
 	public double getPosicionX() {
 		return posicionX;
 	}
+	
+	public void setPosicionX(double posicionX) {
+		this.posicionX = posicionX;
+	}
 
 	public double getPosicionY() {
 		return posicionY;
 	}
+	
+	public void setPosicionY(double posicionY) {
+		this.posicionY = posicionY;
+	}
 
 	public double getResistencia() {
 		return resistencia;
+	}
+	
+	public Rectangle getLIMITE_ABAJO() {
+		return LIMITE_ABAJO;
+	}
+	
+	public Rectangle getLIMITE_ARRIBA() {
+		return LIMITE_ARRIBA;
+	}
+	
+	public Rectangle getLIMITE_DER() {
+		return LIMITE_DER;
+	}
+	
+	public Rectangle getLIMITE_IZ() {
+		return LIMITE_IZ;
+	}
+	
+	public void setMapa(Mapa mapa) {
+		this.mapa = mapa;
 	}
 }

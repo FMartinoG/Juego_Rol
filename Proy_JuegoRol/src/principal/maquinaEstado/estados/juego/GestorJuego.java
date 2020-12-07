@@ -10,12 +10,36 @@ import principal.maquinaEstado.EstadoJuego;
 
 public class GestorJuego implements EstadoJuego {
 
-	// private GestorMapa gm;
-	Mapa mapa = new Mapa(Constantes.MAPA_1);
-	Jugador jugador = new Jugador(0, 0, mapa);
+	Mapa mapa;
+	Jugador jugador;
+
+	public GestorJuego() {
+		iniciarMapa(Constantes.MAPA_1);
+		iniciarJugador();
+	}
+
+	private void iniciarMapa(String ruta) {
+		mapa = new Mapa(ruta);
+	}
+
+	private void iniciarJugador() {
+		jugador = new Jugador(mapa);
+	}
+
+	private void recargarJuego() {
+		final String siguienteMapa = comprobarSiguienteMapa(mapa.getSiguienteMapa());
+		iniciarMapa(siguienteMapa);
+		
+		jugador.setMapa(mapa);
+		jugador.setPosicionX(mapa.getPosicionInicial().x);
+		jugador.setPosicionY(mapa.getPosicionInicial().y);
+	}
 
 	@Override
 	public void actualizar() {
+		if(jugador.getLIMITE_ARRIBA().intersects(mapa.getZonaSalida())) {
+			recargarJuego();
+		}
 		jugador.actualizar();
 		mapa.actualizar((int) jugador.getPosicionX(), (int) jugador.getPosicionY());
 	}
@@ -25,6 +49,21 @@ public class GestorJuego implements EstadoJuego {
 		mapa.dibujar(g, (int) jugador.getPosicionX(), (int) jugador.getPosicionY());
 		jugador.dibujar(g);
 		InterfazUsuario.dibujarResistencia(g, jugador.getResistencia());
+	}
+
+	private String comprobarSiguienteMapa(String siguienteMapa) {
+		String nuevoMapa = "";
+		switch (siguienteMapa) {
+		case "m1":
+			nuevoMapa = Constantes.MAPA_1;
+			break;
+		case "m2":
+			nuevoMapa = Constantes.MAPA_2;
+			break;
+		default:
+			break;
+		}
+		return nuevoMapa;
 	}
 
 }
