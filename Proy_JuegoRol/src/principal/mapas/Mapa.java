@@ -10,6 +10,12 @@ import principal.herramientas.CargadorRecursos;
 import principal.sprites.HojaSprites;
 import principal.sprites.Sprite;
 
+/**
+ * Clase encargada de leer y dibujar el mapa.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class Mapa {
 
 	private int ancho;
@@ -160,7 +166,7 @@ public class Mapa {
 		posicionSalida.y = Integer.parseInt(coordenadas[1]);
 		siguienteMapa = coordenadas[2];
 	}
-	
+
 	private void actualizarAreasColision(final int posX, final int posY) {
 		if (!areasColision.isEmpty())
 			areasColision.clear();
@@ -178,11 +184,11 @@ public class Mapa {
 		}
 
 	}
-	
+
 	private void actualizarZonaSalida(final int posX, final int posY) {
 		int puntoX = posicionSalida.x * Constantes.LADO_SPRITE - posX + MARGEN_X;
 		int puntoY = posicionSalida.y * Constantes.LADO_SPRITE - posY + MARGEN_Y;
-		
+
 		zonaSalida = new Rectangle(puntoX, puntoY, Constantes.LADO_SPRITE, Constantes.LADO_SPRITE);
 	}
 
@@ -205,7 +211,7 @@ public class Mapa {
 	public String getSiguienteMapa() {
 		return siguienteMapa;
 	}
-	
+
 	public Rectangle getZonaSalida() {
 		return zonaSalida;
 	}

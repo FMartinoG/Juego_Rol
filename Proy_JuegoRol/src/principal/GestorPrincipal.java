@@ -1,8 +1,15 @@
 package principal;
 
+import principal.control.GestorControles;
 import principal.graficos.*;
 import principal.maquinaEstado.GestorEstados;
 
+/**
+ * Clase encargada de reunir todos los objetos para que el juego funcione.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class GestorPrincipal {
 	private boolean enFuncionamiento = false;
 	private String titulo;
@@ -10,7 +17,6 @@ public class GestorPrincipal {
 	private int alto;
 	private static int fps = 0;
 	private static int aps = 0;
-	
 
 	private SuperficieDeDibujo sd;
 	@SuppressWarnings("unused")
@@ -66,10 +72,10 @@ public class GestorPrincipal {
 			dibujar();
 			++framesAcumulados;
 
-			if ((System.nanoTime() - referenciaContador) > NS_POR_SEG) {		
+			if ((System.nanoTime() - referenciaContador) > NS_POR_SEG) {
 				aps = actualizacionesAcumuladas;
 				fps = framesAcumulados;
-				
+
 				actualizacionesAcumuladas = 0;
 				framesAcumulados = 0;
 				referenciaContador = System.nanoTime();
@@ -83,13 +89,21 @@ public class GestorPrincipal {
 	}
 
 	private void actualizar() {
+		if (GestorControles.TECLADO.menuPrincipal) {
+			ge.cambiarEstado(1);
+		}
+		if (GestorControles.TECLADO.menuAbierto) {
+			ge.cambiarEstado(2);
+		} else {
+			ge.cambiarEstado(1);
+		}
 		ge.actualizar();
 	}
-	
+
 	public static int getFps() {
 		return fps;
 	}
-	
+
 	public static int getAps() {
 		return aps;
 	}

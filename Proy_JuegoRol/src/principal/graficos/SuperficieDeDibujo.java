@@ -12,6 +12,13 @@ import principal.GestorPrincipal;
 import principal.control.GestorControles;
 import principal.maquinaEstado.GestorEstados;
 
+/**
+ * Clase encargada de recibir los diferentes dibujos de todos los elementos y
+ * dibujarlos juntos.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class SuperficieDeDibujo extends Canvas {
 	private static final long serialVersionUID = -2303469561959410099L;
 
@@ -51,17 +58,17 @@ public class SuperficieDeDibujo extends Canvas {
 		// Dibuja todo el fondo de negro
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, Constantes.ANCHO_PANTALLA_AMPLIADA, Constantes.ALTO_PANTALLA_AMPLIADA);
-		
+
 		if (Constantes.factorEscaladoX != 1 || Constantes.factorEscaladoY != 1)
-		g.scale(Constantes.factorEscaladoX, Constantes.factorEscaladoY);
+			g.scale(Constantes.factorEscaladoX, Constantes.factorEscaladoY);
 
 		// Dibuja el mapa
 		ge.dibujar(g);
-		
+
 		g.setColor(Color.WHITE);
 		g.drawString("APS: " + GestorPrincipal.getAps(), 10, 15);
 		g.drawString("FPS: " + GestorPrincipal.getFps(), 10, 30);
-		
+
 		// Borra todo lo almacenado en g para guardar la siguiente imagen y no se llene
 		// la memoria
 		g.dispose();

@@ -13,6 +13,13 @@ import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 
+/**
+ * Clase encargada de leer ficheros externos guardados en la carpeta de
+ * recursos.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class CargadorRecursos {
 
 	public static BufferedImage cargarImagenOpaca(final String ruta) {
@@ -56,15 +63,15 @@ public class CargadorRecursos {
 
 		return imagen;
 	}
-	
+
 	public static String leerFicheroTexto(final String ruta) {
 		String texto = "";
-		
+
 		InputStream is = CargadorRecursos.class.getResourceAsStream(ruta);
 		BufferedReader br = new BufferedReader(new InputStreamReader(is));
 		String linea;
 		try {
-			while((linea = br.readLine()) != null) {
+			while ((linea = br.readLine()) != null) {
 				texto += linea;
 			}
 			br.close();
@@ -72,7 +79,7 @@ public class CargadorRecursos {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return texto;
 	}
 }

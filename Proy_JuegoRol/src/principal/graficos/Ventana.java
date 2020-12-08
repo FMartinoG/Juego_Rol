@@ -9,12 +9,18 @@ import javax.swing.JFrame;
 import principal.Constantes;
 import principal.herramientas.CargadorRecursos;
 
+/**
+ * Clase encargada de crear la ventana en la que se van a dibujar las cosas.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class Ventana extends JFrame {
 	private static final long serialVersionUID = 5979421777239930009L;
-	
+
 	private String titulo;
 	private final ImageIcon icono;
-	
+
 	public Ventana(final String titulo, final SuperficieDeDibujo sd) {
 		this.titulo = titulo;
 		BufferedImage imagen = CargadorRecursos.cargarImagenTranslucida(Constantes.ICONO);

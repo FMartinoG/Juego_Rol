@@ -8,6 +8,12 @@ import principal.entes.Jugador;
 import principal.mapas.Mapa;
 import principal.maquinaEstado.EstadoJuego;
 
+/**
+ * Clase Estado de Juego encargada de crear el juego.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class GestorJuego implements EstadoJuego {
 
 	private Mapa mapa;
@@ -31,7 +37,7 @@ public class GestorJuego implements EstadoJuego {
 	private void recargarJuego() {
 		final String siguienteMapa = comprobarSiguienteMapa(mapa.getSiguienteMapa());
 		iniciarMapa(siguienteMapa);
-		
+
 		jugador.setMapa(mapa);
 		jugador.setPosicionX(mapa.getPosicionInicial().x);
 		jugador.setPosicionY(mapa.getPosicionInicial().y);
@@ -39,7 +45,7 @@ public class GestorJuego implements EstadoJuego {
 
 	@Override
 	public void actualizar() {
-		if(jugador.getLIMITE_ARRIBA().intersects(mapa.getZonaSalida())) {
+		if (jugador.getLIMITE_ARRIBA().intersects(mapa.getZonaSalida())) {
 			recargarJuego();
 		}
 		jugador.actualizar();

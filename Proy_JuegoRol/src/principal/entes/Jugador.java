@@ -9,14 +9,20 @@ import principal.control.GestorControles;
 import principal.mapas.Mapa;
 import principal.sprites.HojaSprites;
 
+/**
+ * Clase encargada de dibujar y controlar al jugador.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class Jugador {
-	
+
 	private int nivel;
-	
+
 	private int saludMaxima;
 	private int manaMaximo;
 	private int expMaxima;
-	
+
 	private int salud;
 	private int mana;
 	private int exp;
@@ -334,7 +340,6 @@ public class Jugador {
 	private void comprobarCorriendo() {
 		if (GestorControles.TECLADO.corriendo) {
 			velocidadActual = 2 * velocidadAndando;
-			++exp;
 		} else {
 			velocidadActual = velocidadAndando;
 		}
@@ -343,7 +348,7 @@ public class Jugador {
 	public double getPosicionX() {
 		return posicionX;
 	}
-	
+
 	public void setPosicionX(double posicionX) {
 		this.posicionX = posicionX;
 	}
@@ -351,27 +356,27 @@ public class Jugador {
 	public double getPosicionY() {
 		return posicionY;
 	}
-	
+
 	public void setPosicionY(double posicionY) {
 		this.posicionY = posicionY;
 	}
-	
+
 	public Rectangle getLIMITE_ABAJO() {
 		return LIMITE_ABAJO;
 	}
-	
+
 	public Rectangle getLIMITE_ARRIBA() {
 		return LIMITE_ARRIBA;
 	}
-	
+
 	public Rectangle getLIMITE_DER() {
 		return LIMITE_DER;
 	}
-	
+
 	public Rectangle getLIMITE_IZ() {
 		return LIMITE_IZ;
 	}
-	
+
 	public void setMapa(Mapa mapa) {
 		this.mapa = mapa;
 	}

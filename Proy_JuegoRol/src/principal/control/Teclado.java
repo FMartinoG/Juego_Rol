@@ -3,14 +3,22 @@ package principal.control;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Clase encargada de identificar los eventos de teclado.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public final class Teclado implements KeyListener {
-	
+
 	public Tecla arriba = new Tecla();
 	public Tecla abajo = new Tecla();
 	public Tecla derecha = new Tecla();
 	public Tecla izquierda = new Tecla();
-	
+
 	public boolean corriendo = false;
+	public boolean menuPrincipal = true;
+	public boolean menuAbierto = false;
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
@@ -32,6 +40,12 @@ public final class Teclado implements KeyListener {
 			break;
 		case KeyEvent.VK_ESCAPE:
 			System.exit(0);
+			break;
+		case KeyEvent.VK_I:
+			menuAbierto = !menuAbierto;
+			break;
+		case KeyEvent.VK_P:
+			menuPrincipal = false;
 			break;
 		default:
 			break;
@@ -63,8 +77,7 @@ public final class Teclado implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
-		
+
 	}
 
-	
 }

@@ -4,6 +4,12 @@ import java.awt.image.BufferedImage;
 
 import principal.herramientas.CargadorRecursos;
 
+/**
+ * Clase encargada de leer las hojas de sprites.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class HojaSprites {
 
 	final private int ANCHO_HOJA_PX;
@@ -74,11 +80,11 @@ public class HojaSprites {
 			}
 		}
 	}
-	
+
 	public Sprite getSprite(final int indice) {
 		return SPRITES[indice];
 	}
-	
+
 	public Sprite getSprite(final int x, final int y) {
 		return SPRITES[x + y * ANCHO_HOJA_SPRITES];
 	}
