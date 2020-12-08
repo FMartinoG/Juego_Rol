@@ -1,6 +1,6 @@
 package principal;
 
-import principal.control.GestorControles;
+import principal.control.Controles;
 import principal.graficos.*;
 import principal.maquinaEstado.GestorEstados;
 
@@ -90,7 +90,7 @@ public class GestorPrincipal {
 
 	private void actualizar() {
 		if (ge.getPosicionActual() != 0) {
-			if (GestorControles.TECLADO.menuAbierto) {
+			if (Controles.TECLADO.menuAbierto) {
 				ge.cambiarEstado(2);
 			} else {
 				ge.cambiarEstado(1);

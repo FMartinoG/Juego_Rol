@@ -6,6 +6,12 @@ import java.awt.Rectangle;
 
 import principal.Constantes;
 
+/**
+ * Clase encargada de dibujar el menú principal.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class EstructuraMenuPrincipal {
 
 	private final Color COLOR_SUPERIOR;
@@ -19,8 +25,7 @@ public class EstructuraMenuPrincipal {
 		COLOR_FONDO = Color.white;
 
 		SUPERIOR = new Rectangle(0, 0, Constantes.ANCHO_VENTANA, 30);
-		FONDO = new Rectangle(0, SUPERIOR.height, Constantes.ANCHO_VENTANA,
-				Constantes.ALTO_VENTANA - SUPERIOR.height);
+		FONDO = new Rectangle(0, SUPERIOR.height, Constantes.ANCHO_VENTANA, Constantes.ALTO_VENTANA - SUPERIOR.height);
 
 	}
 
@@ -33,7 +38,7 @@ public class EstructuraMenuPrincipal {
 		g.fillRect(SUPERIOR.x, SUPERIOR.y, SUPERIOR.width, SUPERIOR.height);
 		g.setColor(COLOR_FONDO);
 		g.fillRect(FONDO.x, FONDO.y, FONDO.width, FONDO.height);
-		
+
 		g.setColor(Color.black);
 		g.drawString("'W' Arriba", 5, 70);
 		g.drawString("'S' Abajo", 5, 90);

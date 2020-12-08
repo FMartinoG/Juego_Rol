@@ -9,7 +9,7 @@ import java.awt.image.BufferStrategy;
 
 import principal.Constantes;
 import principal.GestorPrincipal;
-import principal.control.GestorControles;
+import principal.control.Controles;
 import principal.maquinaEstado.GestorEstados;
 
 /**
@@ -30,13 +30,13 @@ public class SuperficieDeDibujo extends Canvas {
 		this.alto = alto;
 
 		// Cuando el cursor este dentro será invisible porque se ha creado así el cursor.
-		setCursor(GestorControles.RATON.getCursor());
+		setCursor(Controles.RATON.getCursor());
 		// No forzará el repintado
 		setIgnoreRepaint(true);
 		// Da las medidas para el canvas
 		setPreferredSize(new Dimension(ancho, alto));
 		// Se le proporciona el teclado
-		addKeyListener(GestorControles.TECLADO);
+		addKeyListener(Controles.TECLADO);
 		// Permite que se pueda hacer focus dentro.
 		setFocusable(true);
 		// Cuando se inicia el canvas se le da foco.
@@ -67,7 +67,7 @@ public class SuperficieDeDibujo extends Canvas {
 		ge.dibujar(g);
 
 		g.setColor(Color.WHITE);
-		if (GestorControles.TECLADO.FPSMostrado) {
+		if (Controles.TECLADO.FPSMostrado) {
 			g.drawString("APS: " + GestorPrincipal.getAps(), 10, 15);
 			g.drawString("FPS: " + GestorPrincipal.getFps(), 10, 30);
 		}

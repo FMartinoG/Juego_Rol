@@ -5,9 +5,6 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 
-import principal.Constantes;
-import principal.herramientas.CargadorRecursos;
-
 /**
  * Crea un cursor invisible.
  * 

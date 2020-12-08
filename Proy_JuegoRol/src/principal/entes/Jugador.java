@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import principal.Constantes;
-import principal.control.GestorControles;
+import principal.control.Controles;
 import principal.mapas.Mapa;
 import principal.sprites.HojaSprites;
 
@@ -141,7 +141,7 @@ public class Jugador {
 
 	private void compararTeclas(int velocidadX, int velocidadY) {
 		if (velocidadX == -1 && velocidadY == -1) {
-			if (GestorControles.TECLADO.izquierda.getUltimaPulsacion() > GestorControles.TECLADO.arriba
+			if (Controles.TECLADO.izquierda.getUltimaPulsacion() > Controles.TECLADO.arriba
 					.getUltimaPulsacion()) {
 				mover(velocidadX, 0);
 			} else {
@@ -149,7 +149,7 @@ public class Jugador {
 			}
 		}
 		if (velocidadX == -1 && velocidadY == 1) {
-			if (GestorControles.TECLADO.izquierda.getUltimaPulsacion() > GestorControles.TECLADO.abajo
+			if (Controles.TECLADO.izquierda.getUltimaPulsacion() > Controles.TECLADO.abajo
 					.getUltimaPulsacion()) {
 				mover(velocidadX, 0);
 			} else {
@@ -157,7 +157,7 @@ public class Jugador {
 			}
 		}
 		if (velocidadX == 1 && velocidadY == -1) {
-			if (GestorControles.TECLADO.derecha.getUltimaPulsacion() > GestorControles.TECLADO.arriba
+			if (Controles.TECLADO.derecha.getUltimaPulsacion() > Controles.TECLADO.arriba
 					.getUltimaPulsacion()) {
 				mover(velocidadX, 0);
 			} else {
@@ -165,7 +165,7 @@ public class Jugador {
 			}
 		}
 		if (velocidadX == 1 && velocidadY == 1) {
-			if (GestorControles.TECLADO.derecha.getUltimaPulsacion() > GestorControles.TECLADO.abajo
+			if (Controles.TECLADO.derecha.getUltimaPulsacion() > Controles.TECLADO.abajo
 					.getUltimaPulsacion()) {
 				mover(velocidadX, 0);
 			} else {
@@ -207,9 +207,9 @@ public class Jugador {
 
 	private int evaluarVelocidadX() {
 		int velocidadX = 0;
-		if (GestorControles.TECLADO.izquierda.isPulsada() && !GestorControles.TECLADO.derecha.isPulsada()) {
+		if (Controles.TECLADO.izquierda.isPulsada() && !Controles.TECLADO.derecha.isPulsada()) {
 			velocidadX = -1;
-		} else if (!GestorControles.TECLADO.izquierda.isPulsada() && GestorControles.TECLADO.derecha.isPulsada()) {
+		} else if (!Controles.TECLADO.izquierda.isPulsada() && Controles.TECLADO.derecha.isPulsada()) {
 			velocidadX = 1;
 		}
 		return velocidadX;
@@ -217,16 +217,16 @@ public class Jugador {
 
 	private int evaluarVelocidadY() {
 		int velocidadY = 0;
-		if (GestorControles.TECLADO.arriba.isPulsada() && !GestorControles.TECLADO.abajo.isPulsada()) {
+		if (Controles.TECLADO.arriba.isPulsada() && !Controles.TECLADO.abajo.isPulsada()) {
 			velocidadY = -1;
-		} else if (!GestorControles.TECLADO.arriba.isPulsada() && GestorControles.TECLADO.abajo.isPulsada()) {
+		} else if (!Controles.TECLADO.arriba.isPulsada() && Controles.TECLADO.abajo.isPulsada()) {
 			velocidadY = 1;
 		}
 		return velocidadY;
 	}
 
 	private void cambiarAnimacionEstado() {
-		if (GestorControles.TECLADO.corriendo) {
+		if (Controles.TECLADO.corriendo) {
 			if (animacion < 30) {
 				++animacion;
 			} else {
@@ -338,7 +338,7 @@ public class Jugador {
 	}
 
 	private void comprobarCorriendo() {
-		if (GestorControles.TECLADO.corriendo) {
+		if (Controles.TECLADO.corriendo) {
 			velocidadActual = 2 * velocidadAndando;
 		} else {
 			velocidadActual = velocidadAndando;

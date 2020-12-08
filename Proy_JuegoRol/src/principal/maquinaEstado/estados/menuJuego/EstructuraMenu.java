@@ -6,6 +6,12 @@ import java.awt.Rectangle;
 
 import principal.Constantes;
 
+/**
+ * Clase encargada de dibujar el menú de juego.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class EstructuraMenu {
 
 	private final Color COLOR_SUPERIOR;
