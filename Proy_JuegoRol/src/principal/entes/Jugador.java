@@ -31,7 +31,7 @@ public class Jugador {
 	private double posicionY;
 
 	private double velocidadAndando = 1;
-	private double velocidadActual = 1;
+	private double velocidadActual = velocidadAndando;
 
 	private final int ANCHO_JUGADOR = 32;
 	private final int ALTO_JUGADOR = 32;

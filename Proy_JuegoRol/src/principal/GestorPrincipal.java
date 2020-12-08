@@ -89,19 +89,16 @@ public class GestorPrincipal {
 	}
 
 	private void actualizar() {
-		if (GestorControles.TECLADO.menuPrincipal) {
-			ge.cambiarEstado(0);
-			GestorControles.TECLADO.menuAbierto = false;
-		} else {
-			ge.cambiarEstado(1);
+		if (ge.getPosicionActual() != 0) {
 			if (GestorControles.TECLADO.menuAbierto) {
 				ge.cambiarEstado(2);
 			} else {
 				ge.cambiarEstado(1);
 			}
 		}
-		
+
 		ge.actualizar();
+
 	}
 
 	public static int getFps() {

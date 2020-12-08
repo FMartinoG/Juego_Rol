@@ -15,7 +15,12 @@ public final class Teclado implements KeyListener {
 	public Tecla abajo = new Tecla();
 	public Tecla derecha = new Tecla();
 	public Tecla izquierda = new Tecla();
+	
+	public boolean arribaMenu = false;
+	public boolean abajoMenu = false;
+	public boolean seleccion = false;
 
+	public boolean FPSMostrado = false;
 	public boolean corriendo = false;
 	public boolean menuPrincipal = true;
 	public boolean menuAbierto = false;
@@ -39,13 +44,22 @@ public final class Teclado implements KeyListener {
 			corriendo = true;
 			break;
 		case KeyEvent.VK_ESCAPE:
-			System.exit(0);
-			break;
-		case KeyEvent.VK_I:
 			menuAbierto = !menuAbierto;
 			break;
 		case KeyEvent.VK_P:
 			menuPrincipal = !menuPrincipal;
+			break;
+		case KeyEvent.VK_F1:
+			FPSMostrado = !FPSMostrado;
+			break;
+		case KeyEvent.VK_UP:
+			arribaMenu = true;
+			break;
+		case KeyEvent.VK_DOWN:
+			abajoMenu = true;
+			break;
+		case KeyEvent.VK_ENTER:
+			seleccion = true;
 			break;
 		default:
 			break;
@@ -69,6 +83,15 @@ public final class Teclado implements KeyListener {
 			break;
 		case KeyEvent.VK_SHIFT:
 			corriendo = false;
+			break;
+		case KeyEvent.VK_UP:
+			arribaMenu = false;
+			break;
+		case KeyEvent.VK_DOWN:
+			abajoMenu = false;
+			break;
+		case KeyEvent.VK_ENTER:
+			seleccion = false;
 			break;
 		default:
 			break;

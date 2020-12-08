@@ -29,6 +29,7 @@ public class SuperficieDeDibujo extends Canvas {
 		this.ancho = ancho;
 		this.alto = alto;
 
+		// Cuando el cursor este dentro será invisible porque se ha creado así el cursor.
 		setCursor(GestorControles.RATON.getCursor());
 		// No forzará el repintado
 		setIgnoreRepaint(true);
@@ -66,8 +67,10 @@ public class SuperficieDeDibujo extends Canvas {
 		ge.dibujar(g);
 
 		g.setColor(Color.WHITE);
-		g.drawString("APS: " + GestorPrincipal.getAps(), 10, 15);
-		g.drawString("FPS: " + GestorPrincipal.getFps(), 10, 30);
+		if (GestorControles.TECLADO.FPSMostrado) {
+			g.drawString("APS: " + GestorPrincipal.getAps(), 10, 15);
+			g.drawString("FPS: " + GestorPrincipal.getFps(), 10, 30);
+		}
 
 		// Borra todo lo almacenado en g para guardar la siguiente imagen y no se llene
 		// la memoria

@@ -17,12 +17,14 @@ public class GestorEstados {
 
 	private EstadoJuego[] estados;
 	private EstadoJuego estadoActual;
+	private int posicionActual;
 
 	/**
 	 * Constructor de la clase GestoEstados. Llama al método para crear la lista de
 	 * estados y al método para inicializar el primer estado.
 	 */
 	public GestorEstados() {
+		posicionActual = 0;
 		iniciarEstados();
 		iniciarEstadoActual();
 	}
@@ -41,7 +43,7 @@ public class GestorEstados {
 	 * Inicializa el juego con el primer estado de la lista.
 	 */
 	private void iniciarEstadoActual() {
-		estadoActual = estados[0];
+		estadoActual = estados[posicionActual];
 	}
 
 	/**
@@ -49,6 +51,11 @@ public class GestorEstados {
 	 */
 	public void actualizar() {
 		estadoActual.actualizar();
+		if(estadoActual == estados[0]) {
+			if(((GestorMenuPrincipal) estadoActual).nuevaPartida()) {
+				cambiarEstado(1);
+			}
+		}
 	}
 
 	/**
@@ -67,6 +74,7 @@ public class GestorEstados {
 	 */
 	public void cambiarEstado(final int nuevoEstado) {
 		estadoActual = estados[nuevoEstado];
+		posicionActual = nuevoEstado;
 	}
 
 	/**
@@ -76,5 +84,9 @@ public class GestorEstados {
 	 */
 	public EstadoJuego getEstadoActual() {
 		return estadoActual;
+	}
+	
+	public int getPosicionActual() {
+		return posicionActual;
 	}
 }
