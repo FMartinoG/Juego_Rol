@@ -45,7 +45,7 @@ public final class Teclado implements KeyListener {
 			menuAbierto = !menuAbierto;
 			break;
 		case KeyEvent.VK_P:
-			menuPrincipal = false;
+			menuPrincipal = !menuPrincipal;
 			break;
 		default:
 			break;

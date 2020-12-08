@@ -54,6 +54,7 @@ public class GestorJuego implements EstadoJuego {
 
 	@Override
 	public void dibujar(Graphics g) {
+
 		mapa.dibujar(g, (int) jugador.getPosicionX(), (int) jugador.getPosicionY());
 		jugador.dibujar(g);
 		iu.dibujar(g);
