@@ -25,6 +25,12 @@ public class GestorJuego implements EstadoJuego {
 		iniciarJugador();
 		iu = new InterfazUsuario(jugador);
 	}
+	
+	public GestorJuego(Jugador jugador) {
+		iniciarMapa(Constantes.MAPA_1);
+		this.jugador = jugador;
+		iu = new InterfazUsuario(jugador);
+	}
 
 	private void iniciarMapa(String ruta) {
 		mapa = new Mapa(ruta);
@@ -73,6 +79,10 @@ public class GestorJuego implements EstadoJuego {
 			break;
 		}
 		return nuevoMapa;
+	}
+	
+	public Jugador getJugador() {
+		return jugador;
 	}
 
 }

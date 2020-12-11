@@ -2,6 +2,9 @@ package principal.maquinaEstado;
 
 import java.awt.Graphics;
 
+import principal.CargarPartida;
+import principal.control.Controles;
+import principal.maquinaEstado.estados.combate.GestorCombate;
 import principal.maquinaEstado.estados.juego.GestorJuego;
 import principal.maquinaEstado.estados.menuJuego.GestorMenu;
 import principal.maquinaEstado.estados.menuPrincipal.GestorMenuPrincipal;
@@ -33,10 +36,11 @@ public class GestorEstados {
 	 * Inicializa la lista de los estados y se le añaden los estados.
 	 */
 	private void iniciarEstados() {
-		estados = new EstadoJuego[3];
+		estados = new EstadoJuego[4];
 		estados[0] = new GestorMenuPrincipal();
 		estados[1] = new GestorJuego();
-		estados[2] = new GestorMenu();
+		estados[2] = new GestorMenu(((GestorJuego) estados[1]).getJugador());
+
 	}
 
 	/**
@@ -51,8 +55,33 @@ public class GestorEstados {
 	 */
 	public void actualizar() {
 		estadoActual.actualizar();
-		if(estadoActual == estados[0]) {
-			if(((GestorMenuPrincipal) estadoActual).nuevaPartida()) {
+		if (estadoActual == estados[0]) {
+			if (((GestorMenuPrincipal) estadoActual).nuevaPartida()) {
+				cambiarEstado(1);
+			} else if (((GestorMenuPrincipal) estadoActual).cargarPartida()) {
+				System.out.println("Todavia no");
+				// estados[1] = new GestorJuego(CargarPartida.cargar());
+				// estados[2] = new GestorMenu(((GestorJuego) estados[1]).getJugador());
+				// cambiarEstado(1);
+			}
+		}
+
+		if (estadoActual == estados[1]) {
+			if (Controles.TECLADO.menuAbierto)
+				cambiarEstado(2);
+			if (Controles.TECLADO.combate) {
+				estados[3] = new GestorCombate();
+				cambiarEstado(3);
+			}
+		}
+
+		if (estadoActual == estados[2]) {
+			if (!Controles.TECLADO.menuAbierto)
+				cambiarEstado(1);
+		}
+
+		if (estadoActual == estados[3]) {
+			if (!((GestorCombate) estadoActual).isEnCombate()) {
 				cambiarEstado(1);
 			}
 		}
@@ -85,7 +114,7 @@ public class GestorEstados {
 	public EstadoJuego getEstadoActual() {
 		return estadoActual;
 	}
-	
+
 	public int getPosicionActual() {
 		return posicionActual;
 	}

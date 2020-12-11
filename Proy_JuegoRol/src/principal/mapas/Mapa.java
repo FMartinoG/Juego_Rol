@@ -3,6 +3,7 @@ package principal.mapas;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import principal.Constantes;
@@ -16,8 +17,9 @@ import principal.sprites.Sprite;
  * @author Fernando Martino
  *
  */
-public class Mapa {
-
+public class Mapa implements Serializable{
+	private static final long serialVersionUID = -8137367791512799406L;
+	
 	private int ancho;
 	private int alto;
 

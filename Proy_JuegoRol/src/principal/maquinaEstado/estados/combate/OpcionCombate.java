@@ -1,4 +1,4 @@
-package principal.maquinaEstado.estados.menus;
+package principal.maquinaEstado.estados.combate;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -10,12 +10,12 @@ import java.awt.Rectangle;
  * @author Fernando Martino
  *
  */
-public class Seccion {
+public class OpcionCombate {
 
-	final String nombre;
-	final Rectangle etiqueta;
+	private final String nombre;
+	private final Rectangle etiqueta;
 
-	public Seccion(String nombre, Rectangle etiqueta) {
+	public OpcionCombate(String nombre, Rectangle etiqueta) {
 		this.nombre = nombre;
 		this.etiqueta = etiqueta;
 	}
@@ -36,21 +36,18 @@ public class Seccion {
 		g.fillRect(etiqueta.x, etiqueta.y, etiqueta.width, etiqueta.height);
 
 		g.setColor(Color.black);
-		g.drawString(nombre, etiqueta.x + 8, etiqueta.y + 15);
+		g.drawString(nombre, etiqueta.x + 15, etiqueta.y + 20);
 	}
 
 	public void dibujarEtiquetaActiva(Graphics g) {
-		g.setColor(Color.black);
-		g.fillRect(etiqueta.x - 1, etiqueta.y - 1, etiqueta.width + 2, etiqueta.height + 2);
-
 		g.setColor(Color.white);
 		g.fillRect(etiqueta.x, etiqueta.y, etiqueta.width, etiqueta.height);
 
 		g.setColor(Color.black);
-		g.drawString(nombre, etiqueta.x + 8, etiqueta.y + 15);
+		g.drawString(nombre, etiqueta.x + 15, etiqueta.y + 20);
 
 		g.setColor(Color.red);
-		g.fillRect(etiqueta.x, etiqueta.y, 3, etiqueta.height);
+		g.drawRect(etiqueta.x, etiqueta.y, etiqueta.width, etiqueta.height);
 	}
 
 	public String getNombre() {

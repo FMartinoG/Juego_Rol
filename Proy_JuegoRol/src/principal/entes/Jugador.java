@@ -3,6 +3,7 @@ package principal.entes;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.io.Serializable;
 
 import principal.Constantes;
 import principal.control.Controles;
@@ -15,17 +16,10 @@ import principal.sprites.HojaSprites;
  * @author Fernando Martino
  *
  */
-public class Jugador {
+public class Jugador implements Serializable{
+	private static final long serialVersionUID = 6013422311113473360L;
 
-	private int nivel;
-
-	private int saludMaxima;
-	private int manaMaximo;
-	private int expMaxima;
-
-	private int salud;
-	private int mana;
-	private int exp;
+	private Estadisticas estadisticas;
 
 	private double posicionX;
 	private double posicionY;
@@ -59,13 +53,8 @@ public class Jugador {
 			(Constantes.ALTO_VENTANA / 2) - (ALTO_JUGADOR / 4), 1, (ALTO_JUGADOR / 4) + (ALTO_JUGADOR / 2));
 
 	public Jugador(Mapa mapa) {
-		nivel = 1;
-		saludMaxima = 1000;
-		manaMaximo = 300;
-		expMaxima = 1000;
-		salud = 1000;
-		mana = 300;
-		exp = 0;
+		estadisticas = new Estadisticas(1000, 400, 50, 40, 30, 30, true);
+
 		posicionX = mapa.getPosicionInicial().x;
 		posicionY = mapa.getPosicionInicial().y;
 		direccion = 0;
@@ -381,59 +370,12 @@ public class Jugador {
 		this.mapa = mapa;
 	}
 
-	public int getSalud() {
-		return salud;
+	public Estadisticas getEstadisticas() {
+		return estadisticas;
 	}
 
-	public void setSalud(int salud) {
-		this.salud = salud;
+	public BufferedImage getImagenActual() {
+		return imagenActual;
 	}
 
-	public int getMana() {
-		return mana;
-	}
-
-	public void setMana(int mana) {
-		this.mana = mana;
-	}
-
-	public int getSaludMaxima() {
-		return saludMaxima;
-	}
-
-	public void setSaludMaxima(int saludMaxima) {
-		this.saludMaxima = saludMaxima;
-	}
-
-	public int getManaMaximo() {
-		return manaMaximo;
-	}
-
-	public void setManaMaximo(int manaMaximo) {
-		this.manaMaximo = manaMaximo;
-	}
-
-	public int getExpMaxima() {
-		return expMaxima;
-	}
-
-	public void setExpMaxima(int expMaxima) {
-		this.expMaxima = expMaxima;
-	}
-
-	public int getExp() {
-		return exp;
-	}
-
-	public void setExp(int exp) {
-		this.exp = exp;
-	}
-
-	public int getNivel() {
-		return nivel;
-	}
-
-	public void setNivel(int nivel) {
-		this.nivel = nivel;
-	}
 }

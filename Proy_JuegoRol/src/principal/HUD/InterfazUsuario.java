@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import principal.Constantes;
+import principal.entes.Estadisticas;
 import principal.entes.Jugador;
 
 /**
@@ -19,7 +20,8 @@ public class InterfazUsuario {
 	private int verticalBarra = 4;
 	private int HorizontalBarra = 100;
 
-	private Jugador jugador;
+	private Estadisticas estadisticasJugador;
+
 	private Rectangle areaDetalles;
 	private Rectangle bordeAreaDetalles;
 	private Color colorBlanco = Color.white;
@@ -31,7 +33,7 @@ public class InterfazUsuario {
 	private Color colorMoradoOscuro = new Color(99, 29, 214);
 
 	public InterfazUsuario(final Jugador jugador) {
-		this.jugador = jugador;
+		this.estadisticasJugador = jugador.getEstadisticas();
 		int alto = 64;
 		areaDetalles = new Rectangle(0, Constantes.ALTO_VENTANA - alto, Constantes.ANCHO_VENTANA, alto);
 		bordeAreaDetalles = new Rectangle(areaDetalles.x, areaDetalles.y - 1, areaDetalles.width, 1);
@@ -48,7 +50,7 @@ public class InterfazUsuario {
 		g.fillRect(bordeAreaDetalles.x, bordeAreaDetalles.y, bordeAreaDetalles.width, bordeAreaDetalles.height);
 
 		g.setColor(colorBlanco);
-		g.drawString("NIVEL: " + jugador.getNivel(), 10, areaDetalles.y + 13);
+		g.drawString("NIVEL: " + estadisticasJugador.getNivel(), 10, areaDetalles.y + 13);
 
 		dibujarBarraVida(g);
 		dibujarBarraMana(g);
@@ -56,7 +58,7 @@ public class InterfazUsuario {
 	}
 
 	private void dibujarBarraVida(Graphics g) {
-		double salud = ((double) jugador.getSalud() / (double) jugador.getSaludMaxima()) * 100;
+		double salud = ((double) estadisticasJugador.getSalud() / (double) estadisticasJugador.getSaludMaxima()) * 100;
 
 		g.setColor(colorBlanco);
 		g.drawString("PS", 10, areaDetalles.y + 38);
@@ -67,11 +69,11 @@ public class InterfazUsuario {
 		g.setColor(colorRojoOscuro);
 		g.fillRect(35, areaDetalles.y + 32, (int) salud, verticalBarra * 2);
 		g.setColor(colorBlanco);
-		g.drawString("" + jugador.getSalud(), HorizontalBarra + 45, areaDetalles.y + 38);
+		g.drawString("" + estadisticasJugador.getSalud(), HorizontalBarra + 45, areaDetalles.y + 38);
 	}
 
 	private void dibujarBarraMana(Graphics g) {
-		double mana = ((double) jugador.getMana() / (double) jugador.getManaMaximo()) * 100;
+		double mana = ((double) estadisticasJugador.getMana() / (double) estadisticasJugador.getManaMaximo()) * 100;
 
 		g.setColor(colorBlanco);
 		g.drawString("PM", 210, areaDetalles.y + 38);
@@ -82,11 +84,11 @@ public class InterfazUsuario {
 		g.setColor(colorAzulOscuro);
 		g.fillRect(235, areaDetalles.y + 32, (int) mana, verticalBarra * 2);
 		g.setColor(colorBlanco);
-		g.drawString("" + jugador.getMana(), HorizontalBarra + 245, areaDetalles.y + 38);
+		g.drawString("" + estadisticasJugador.getMana(), HorizontalBarra + 245, areaDetalles.y + 38);
 	}
 
 	private void dibujarBarraExp(Graphics g) {
-		double exp = ((double) jugador.getExp() / (double) jugador.getExpMaxima()) * 100;
+		double exp = ((double) estadisticasJugador.getExp() / (double) estadisticasJugador.getExpMaxima()) * 100;
 
 		g.setColor(colorBlanco);
 		g.drawString("EXP", 410, areaDetalles.y + 38);
@@ -97,7 +99,7 @@ public class InterfazUsuario {
 		g.setColor(colorMoradoOscuro);
 		g.fillRect(435, areaDetalles.y + 32, (int) exp, verticalBarra * 2);
 		g.setColor(colorBlanco);
-		g.drawString("" + jugador.getExp() + " / " + jugador.getExpMaxima(), HorizontalBarra + 445,
+		g.drawString("" + estadisticasJugador.getExp() + " / " + estadisticasJugador.getExpMaxima(), HorizontalBarra + 445,
 				areaDetalles.y + 38);
 	}
 }

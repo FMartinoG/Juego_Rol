@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import principal.Constantes;
+import principal.entes.Jugador;
 
 /**
  * Clase encargada de dibujar el menú de juego.

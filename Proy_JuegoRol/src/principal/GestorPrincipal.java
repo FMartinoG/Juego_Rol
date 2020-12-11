@@ -89,14 +89,6 @@ public class GestorPrincipal {
 	}
 
 	private void actualizar() {
-		if (ge.getPosicionActual() != 0) {
-			if (Controles.TECLADO.menuAbierto) {
-				ge.cambiarEstado(2);
-			} else {
-				ge.cambiarEstado(1);
-			}
-		}
-
 		ge.actualizar();
 
 	}
