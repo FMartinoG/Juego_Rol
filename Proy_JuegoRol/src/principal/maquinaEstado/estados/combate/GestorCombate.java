@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import principal.Constantes;
 import principal.HUD.InterfazUsuario;
 import principal.entes.Jugador;
+import principal.herramientas.CargadorRecursos;
 import principal.mapas.Mapa;
 import principal.maquinaEstado.EstadoJuego;
 
@@ -21,7 +22,7 @@ public class GestorCombate implements EstadoJuego {
 
 	public GestorCombate() {
 		enCombate = true;
-		ec = new EstructuraCombate();
+		ec = new EstructuraCombate(CargadorRecursos.cargarImagenTranslucida(Constantes.PERSONAJE), CargadorRecursos.cargarImagenTranslucida(Constantes.BATMAN));
 	}
 
 	public GestorCombate(Jugador jugador) {

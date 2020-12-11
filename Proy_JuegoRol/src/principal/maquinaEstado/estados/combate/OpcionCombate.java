@@ -36,7 +36,7 @@ public class OpcionCombate {
 		g.fillRect(etiqueta.x, etiqueta.y, etiqueta.width, etiqueta.height);
 
 		g.setColor(Color.black);
-		g.drawString(nombre, etiqueta.x + 15, etiqueta.y + 20);
+		g.drawString(nombre, etiqueta.x + 5, etiqueta.y + 20);
 	}
 
 	public void dibujarEtiquetaActiva(Graphics g) {
@@ -44,7 +44,7 @@ public class OpcionCombate {
 		g.fillRect(etiqueta.x, etiqueta.y, etiqueta.width, etiqueta.height);
 
 		g.setColor(Color.black);
-		g.drawString(nombre, etiqueta.x + 15, etiqueta.y + 20);
+		g.drawString(nombre, etiqueta.x + 5, etiqueta.y + 20);
 
 		g.setColor(Color.red);
 		g.drawRect(etiqueta.x, etiqueta.y, etiqueta.width, etiqueta.height);

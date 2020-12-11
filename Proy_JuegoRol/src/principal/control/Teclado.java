@@ -25,6 +25,7 @@ public final class Teclado implements KeyListener {
 	public boolean FPSMostrado = false;
 	public boolean corriendo = false;
 	public boolean menuAbierto = false;
+	public boolean bt_Escape = false;
 	public boolean combate = false;
 
 	@Override
@@ -45,7 +46,7 @@ public final class Teclado implements KeyListener {
 		case KeyEvent.VK_SHIFT:
 			corriendo = true;
 			break;
-		case KeyEvent.VK_ESCAPE:
+		case KeyEvent.VK_I:
 			menuAbierto = !menuAbierto;
 			break;
 		case KeyEvent.VK_F1:
@@ -68,6 +69,9 @@ public final class Teclado implements KeyListener {
 			break;
 		case KeyEvent.VK_P:
 			combate = true;
+			break;
+		case KeyEvent.VK_ESCAPE:
+			bt_Escape = true;
 			break;
 		default:
 			break;
@@ -109,6 +113,9 @@ public final class Teclado implements KeyListener {
 			break;
 		case KeyEvent.VK_P:
 			combate = false;
+			break;
+		case KeyEvent.VK_ESCAPE:
+			bt_Escape = false;
 			break;
 		default:
 			break;
