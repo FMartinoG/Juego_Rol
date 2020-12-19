@@ -1,10 +1,12 @@
 package principal.maquinaEstado;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 import principal.CargarPartida;
 import principal.control.Controles;
 import principal.maquinaEstado.estados.combate.GestorCombate;
+import principal.maquinaEstado.estados.introduccion.Introduccion;
 import principal.maquinaEstado.estados.juego.GestorJuego;
 import principal.maquinaEstado.estados.menuJuego.GestorMenu;
 import principal.maquinaEstado.estados.menuPrincipal.GestorMenuPrincipal;
@@ -22,6 +24,8 @@ public class GestorEstados {
 	private EstadoJuego estadoActual;
 	private int posicionActual;
 
+	private boolean mostrarInformacion = false;
+
 	/**
 	 * Constructor de la clase GestoEstados. Llama al método para crear la lista de
 	 * estados y al método para inicializar el primer estado.
@@ -36,10 +40,11 @@ public class GestorEstados {
 	 * Inicializa la lista de los estados y se le añaden los estados.
 	 */
 	private void iniciarEstados() {
-		estados = new EstadoJuego[4];
+		estados = new EstadoJuego[5];
 		estados[0] = new GestorMenuPrincipal();
 		estados[1] = new GestorJuego();
 		estados[2] = new GestorMenu(((GestorJuego) estados[1]).getJugador());
+		estados[4] = new Introduccion();
 
 	}
 
@@ -57,9 +62,11 @@ public class GestorEstados {
 		estadoActual.actualizar();
 		if (estadoActual == estados[0]) {
 			if (((GestorMenuPrincipal) estadoActual).nuevaPartida()) {
-				cambiarEstado(1);
+				cambiarEstado(4);
+				mostrarInformacion = false;
 			} else if (((GestorMenuPrincipal) estadoActual).cargarPartida()) {
-				System.out.println("Todavia no");
+				mostrarInformacion = true;
+				
 				// estados[1] = new GestorJuego(CargarPartida.cargar());
 				// estados[2] = new GestorMenu(((GestorJuego) estados[1]).getJugador());
 				// cambiarEstado(1);
@@ -85,6 +92,11 @@ public class GestorEstados {
 				cambiarEstado(1);
 			}
 		}
+		
+		if (estadoActual == estados[4]) {
+			if (((Introduccion) estadoActual).isFinalizado())
+				cambiarEstado(1);
+		}
 	}
 
 	/**
@@ -94,6 +106,13 @@ public class GestorEstados {
 	 */
 	public void dibujar(final Graphics g) {
 		estadoActual.dibujar(g);
+
+		if (mostrarInformacion) {
+			g.setColor(Color.darkGray);
+			g.fillRoundRect(280, 180, 80, 30, 10, 10);
+			g.setColor(Color.white);
+			g.drawString("Todavia no", 290, 200);	
+		}
 	}
 
 	/**

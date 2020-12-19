@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import principal.Constantes;
+import principal.control.Controles;
+import principal.maquinaEstado.estados.menus.Seccion;
 
 /**
  * Clase encargada de dibujar el menú principal.
@@ -20,6 +22,15 @@ public class EstructuraMenuPrincipal {
 	private final Rectangle SUPERIOR;
 	private final Rectangle FONDO;
 
+	private Seccion[] secciones;
+	private Seccion seccionActual;
+
+	private double puntero = 0;
+	
+	private boolean nuevaPartidaSeleccionada = false;
+	private boolean cargarPartidaSeleccionada = false;
+	private boolean ventanaInformacion = false;
+
 	public EstructuraMenuPrincipal() {
 		COLOR_SUPERIOR = new Color(124, 3, 3);
 		COLOR_FONDO = Color.white;
@@ -27,10 +38,37 @@ public class EstructuraMenuPrincipal {
 		SUPERIOR = new Rectangle(0, 0, Constantes.ANCHO_VENTANA, 30);
 		FONDO = new Rectangle(0, SUPERIOR.height, Constantes.ANCHO_VENTANA, Constantes.ALTO_VENTANA - SUPERIOR.height);
 
+		secciones = new Seccion[4];
+		secciones[0] = new Seccion("NUEVA PARTIDA", new Rectangle(200, 100, 150, 20));
+		secciones[1] = new Seccion("CARGAR PARTIDA", new Rectangle(200, 150, 150, 20));
+		secciones[2] = new Seccion("ACERCA DE...", new Rectangle(200, 200, 150, 20));
+		secciones[3] = new Seccion("SALIR", new Rectangle(200, 250, 150, 20));
+
+		seccionActual = secciones[(int) puntero];
+
 	}
 
 	public void actualizar() {
+		if (Controles.TECLADO.arribaMenu && puntero > 0) {
+			puntero -= 0.3;
+			seccionActual = secciones[(int) puntero];
+		}
+		if (Controles.TECLADO.abajoMenu && puntero < secciones.length - 1) {
+			puntero += 0.3;
+			seccionActual = secciones[(int) puntero];
+		}
 
+		if (seccionActual == secciones[0] && Controles.TECLADO.seleccion)
+			nuevaPartidaSeleccionada = true;
+
+		if (seccionActual == secciones[1] && Controles.TECLADO.seleccion)
+			cargarPartidaSeleccionada = true;
+		
+		if (seccionActual == secciones[2] && Controles.TECLADO.seleccion)
+			ventanaInformacion = true;
+
+		if (seccionActual == secciones[3] && Controles.TECLADO.seleccion)
+			System.exit(0);
 	}
 
 	public void dibujar(Graphics g) {
@@ -38,15 +76,35 @@ public class EstructuraMenuPrincipal {
 		g.fillRect(SUPERIOR.x, SUPERIOR.y, SUPERIOR.width, SUPERIOR.height);
 		g.setColor(COLOR_FONDO);
 		g.fillRect(FONDO.x, FONDO.y, FONDO.width, FONDO.height);
-
+		
 		g.setColor(Color.black);
-		g.drawString("'W' Arriba", 5, 70);
-		g.drawString("'S' Abajo", 5, 90);
-		g.drawString("'A' Izquierda", 5, 110);
-		g.drawString("'D' Derecha", 5, 130);
-		g.drawString("'Shift' Correr", 5, 150);
-		g.drawString("'Esc' Para abrir el menú del juego", 5, 170);
-		g.drawString("'F1' Para mostrar/cerrar FPS", 5, 190);
+		g.drawRect(0, 300, Constantes.ANCHO_VENTANA, Constantes.ALTO_VENTANA - 300);
+		
+		g.drawString("'W A S D' Mover al personaje", 5, 320);
+		g.drawString("'Shift' Correr", 5, 350);
+		g.drawString("'I' Para abrir el menú del juego", 190, 320);
+		g.drawString("'F1' Para mostrar/cerrar FPS", 190, 350);
+		g.drawString("Flechas para moverse en los menús", 370, 320);
+		g.drawString("'Enter' para seleccionar una opcion de menú", 370, 350);
+
+		for (Seccion s : secciones) {
+			if (seccionActual == s)
+				s.dibujarEtiquetaActiva(g);
+			else
+				s.dibujarEtiquetaInactiva(g);
+		}
+	}
+	
+	public boolean isNuevaPartidaSeleccionada() {
+		return nuevaPartidaSeleccionada;
+	}
+	
+	public boolean isCargarPartidaSeleccionada() {
+		return cargarPartidaSeleccionada;
+	}
+	
+	public boolean isVentanaInformacion() {
+		return ventanaInformacion;
 	}
 
 }
