@@ -30,9 +30,16 @@ public class EstructuraMenu {
 	private Seccion[] secciones;
 	private Seccion seccionActual;
 	private double puntero;
+	
+	private int pulsacion;
+
+	private boolean guardado;
 
 	public EstructuraMenu(Jugador jugador) {
 		this.jugador = jugador;
+
+		pulsacion = 0;
+		guardado = false;
 
 		COLOR_SUPERIOR = new Color(124, 3, 3);
 		COLOR_LATERAL = Color.black;
@@ -64,11 +71,20 @@ public class EstructuraMenu {
 			seccionActual = secciones[(int) puntero];
 		}
 
-		if (seccionActual == secciones[2] && Controles.TECLADO.seleccion)
-			GuardarPartida.guardar(jugador);
+		if (seccionActual == secciones[2] && Controles.TECLADO.seleccion && pulsacion == 0) {
+			++pulsacion;
+			int resultado = GuardarPartida.guardar(jugador);
+			if (resultado == 1) {
+				guardado = true;
+			}
+		}
 
 		if (seccionActual == secciones[3] && Controles.TECLADO.seleccion)
 			System.exit(0);
+		
+		if(pulsacion > 0 && !Controles.TECLADO.seleccion) {
+			pulsacion = 0;
+		}
 	}
 
 	public void dibujar(Graphics g) {
@@ -85,6 +101,17 @@ public class EstructuraMenu {
 			else
 				s.dibujarEtiquetaInactiva(g);
 		}
+		if (guardado) {
+			long tiempoActual = System.currentTimeMillis();
+			while ((System.currentTimeMillis() - tiempoActual) < 2000) {
+				g.setColor(Color.darkGray);
+				g.fillRoundRect(280, 180, 110, 30, 10, 10);
+				g.setColor(Color.white);
+				g.drawString("Partida guardada", 290, 200);
+			}
+			guardado = false;
+		}
+
 	}
 
 }

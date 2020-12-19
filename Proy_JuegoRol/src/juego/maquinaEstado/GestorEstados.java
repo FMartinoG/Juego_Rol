@@ -28,7 +28,7 @@ public class GestorEstados {
 	private EstadoJuego estadoActual;
 	private int posicionActual;
 
-	private boolean mostrarInformacion = false;
+	private boolean mostrarMensajeNoCarga = false;
 
 	/**
 	 * Constructor de la clase GestoEstados. Llama al método para crear la lista de
@@ -91,8 +91,8 @@ public class GestorEstados {
 	
 	private void actualizarMenuPrincipal() {
 		if (((GestorMenuPrincipal) estadoActual).nuevaPartida()) {
-			cambiarEstado(4);
-			mostrarInformacion = false;
+			cambiarEstado(1);
+			mostrarMensajeNoCarga = false;
 		} else if (((GestorMenuPrincipal) estadoActual).cargarPartida()) {
 			pulsarCargarPartida();
 		}
@@ -101,7 +101,7 @@ public class GestorEstados {
 	private void pulsarCargarPartida() {
 		Estadisticas s = CargarPartida.cargar();
 		if (s == null)
-			mostrarInformacion = true;
+			mostrarMensajeNoCarga = true;
 		else {
 			String textoMapa = "";
 			switch (s.getMapa()) {
@@ -140,11 +140,11 @@ public class GestorEstados {
 	public void dibujar(final Graphics g) {
 		estadoActual.dibujar(g);
 
-		if (mostrarInformacion) {
+		if (mostrarMensajeNoCarga) {
 			g.setColor(Color.darkGray);
-			g.fillRoundRect(280, 180, 80, 30, 10, 10);
+			g.fillRoundRect(280, 180, 160, 30, 10, 10);
 			g.setColor(Color.white);
-			g.drawString("Todavia no", 290, 200);
+			g.drawString("Ninguna partida guardada", 290, 200);
 		}
 	}
 

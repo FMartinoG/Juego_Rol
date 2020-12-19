@@ -8,15 +8,18 @@ import juego.entes.Jugador;
 
 public class GuardarPartida {
 
-	public static void guardar(Jugador jugador) {
+	public static int guardar(Jugador jugador) {
 		File f = new File("recursos/guardados/save.s");
+		int resultado = 0;
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f));
 			oos.writeObject(jugador.getEstadisticas());
 			oos.close();
+			
+			resultado = 1;
 		} catch (IOException e) {
 		}
 		
-		
+		return resultado;
 	}
 }
