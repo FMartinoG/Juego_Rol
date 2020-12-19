@@ -12,10 +12,15 @@ public class Estadisticas implements Serializable{
 	private int ataque, defensa;
 	private int poderMagico, defensaMagica;
 	
+	private int mapa;
+	private int estado;
+	
 	public Estadisticas(int saludMaxima, int manaMaximo, int ataque, int defensa, int poderMagico, int defensaMagica, boolean jugador) {
 		if(jugador) {
 			nivel = 1;
 			expMaxima = 100;
+			estado = 0;
+			mapa = 1;
 		}
 		this.saludMaxima = this.salud = saludMaxima;
 		this.manaMaximo = this.mana = manaMaximo;
@@ -113,6 +118,20 @@ public class Estadisticas implements Serializable{
 		this.exp = exp;
 	}
 	
+	public int getEstado() {
+		return estado;
+	}
 	
+	public int getMapa() {
+		return mapa;
+	}
+	
+	public void cambiarMapa(int n) {
+		this.mapa = n;
+	}
+	
+	public void cambiarEstado(int n) {
+		this.estado = n;
+	}
 
 }

@@ -3,7 +3,6 @@ package juego.entes;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.Serializable;
 
 import juego.Constantes;
 import juego.control.Controles;
@@ -16,8 +15,7 @@ import juego.sprites.HojaSprites;
  * @author Fernando Martino
  *
  */
-public class Jugador implements Serializable{
-	private static final long serialVersionUID = 6013422311113473360L;
+public class Jugador {
 
 	private Estadisticas estadisticas;
 
@@ -372,6 +370,10 @@ public class Jugador implements Serializable{
 
 	public Estadisticas getEstadisticas() {
 		return estadisticas;
+	}
+	
+	public void setEstadisticas(Estadisticas estadisticas) {
+		this.estadisticas = estadisticas;
 	}
 
 	public BufferedImage getImagenActual() {

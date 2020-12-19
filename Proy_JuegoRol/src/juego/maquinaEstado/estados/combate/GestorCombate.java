@@ -3,10 +3,8 @@ package juego.maquinaEstado.estados.combate;
 import java.awt.Graphics;
 
 import juego.Constantes;
-import juego.HUD.InterfazUsuario;
 import juego.entes.Jugador;
 import juego.herramientas.CargadorRecursos;
-import juego.mapas.Mapa;
 import juego.maquinaEstado.EstadoJuego;
 
 /**

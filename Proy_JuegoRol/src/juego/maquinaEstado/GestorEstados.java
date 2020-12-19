@@ -3,8 +3,12 @@ package juego.maquinaEstado;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import juego.Constantes;
 import juego.control.Controles;
+import juego.entes.Estadisticas;
+import juego.entes.Jugador;
 import juego.guardado_cargado.CargarPartida;
+import juego.mapas.Mapa;
 import juego.maquinaEstado.estados.combate.GestorCombate;
 import juego.maquinaEstado.estados.introduccion.Introduccion;
 import juego.maquinaEstado.estados.juego.GestorJuego;
@@ -61,25 +65,11 @@ public class GestorEstados {
 	public void actualizar() {
 		estadoActual.actualizar();
 		if (estadoActual == estados[0]) {
-			if (((GestorMenuPrincipal) estadoActual).nuevaPartida()) {
-				cambiarEstado(4);
-				mostrarInformacion = false;
-			} else if (((GestorMenuPrincipal) estadoActual).cargarPartida()) {
-				mostrarInformacion = true;
-				
-				// estados[1] = new GestorJuego(CargarPartida.cargar());
-				// estados[2] = new GestorMenu(((GestorJuego) estados[1]).getJugador());
-				// cambiarEstado(1);
-			}
+			actualizarMenuPrincipal();
 		}
 
 		if (estadoActual == estados[1]) {
-			if (Controles.TECLADO.menuAbierto)
-				cambiarEstado(2);
-			if (Controles.TECLADO.combate) {
-				estados[3] = new GestorCombate();
-				cambiarEstado(3);
-			}
+			actualizarJuego();
 		}
 
 		if (estadoActual == estados[2]) {
@@ -92,10 +82,53 @@ public class GestorEstados {
 				cambiarEstado(1);
 			}
 		}
-		
+
 		if (estadoActual == estados[4]) {
 			if (((Introduccion) estadoActual).isFinalizado())
 				cambiarEstado(1);
+		}
+	}
+	
+	private void actualizarMenuPrincipal() {
+		if (((GestorMenuPrincipal) estadoActual).nuevaPartida()) {
+			cambiarEstado(4);
+			mostrarInformacion = false;
+		} else if (((GestorMenuPrincipal) estadoActual).cargarPartida()) {
+			pulsarCargarPartida();
+		}
+	}
+	
+	private void pulsarCargarPartida() {
+		Estadisticas s = CargarPartida.cargar();
+		if (s == null)
+			mostrarInformacion = true;
+		else {
+			String textoMapa = "";
+			switch (s.getMapa()) {
+			case 1:
+				textoMapa = Constantes.MAPA_1;
+				break;
+			case 2:
+				textoMapa = Constantes.MAPA_2;
+				break;
+			default:
+				break;
+			}
+			Mapa mapa = new Mapa(textoMapa);
+			Jugador j = new Jugador(mapa);
+			j.setEstadisticas(s);
+			estados[1] = new GestorJuego(j);
+			estados[2] = new GestorMenu(j);
+			cambiarEstado(1);
+		}
+	}
+	
+	private void actualizarJuego() {
+		if (Controles.TECLADO.menuAbierto)
+			cambiarEstado(2);
+		if (Controles.TECLADO.combate) {
+			estados[3] = new GestorCombate();
+			cambiarEstado(3);
 		}
 	}
 
@@ -111,7 +144,7 @@ public class GestorEstados {
 			g.setColor(Color.darkGray);
 			g.fillRoundRect(280, 180, 80, 30, 10, 10);
 			g.setColor(Color.white);
-			g.drawString("Todavia no", 290, 200);	
+			g.drawString("Todavia no", 290, 200);
 		}
 	}
 

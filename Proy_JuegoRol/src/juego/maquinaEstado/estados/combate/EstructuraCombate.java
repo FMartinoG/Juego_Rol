@@ -7,7 +7,6 @@ import java.awt.Rectangle;
 
 import juego.Constantes;
 import juego.control.Controles;
-import juego.herramientas.CargadorRecursos;
 
 public class EstructuraCombate {
 	

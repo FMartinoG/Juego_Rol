@@ -29,6 +29,7 @@ public class GestorJuego implements EstadoJuego {
 	public GestorJuego(Jugador jugador) {
 		iniciarMapa(Constantes.MAPA_1);
 		this.jugador = jugador;
+		jugador.getEstadisticas().cambiarMapa(1);
 		iu = new InterfazUsuario(jugador);
 	}
 
@@ -71,9 +72,11 @@ public class GestorJuego implements EstadoJuego {
 		switch (siguienteMapa) {
 		case "m1":
 			nuevoMapa = Constantes.MAPA_1;
+			jugador.getEstadisticas().cambiarMapa(1);
 			break;
 		case "m2":
 			nuevoMapa = Constantes.MAPA_2;
+			jugador.getEstadisticas().cambiarMapa(2);
 			break;
 		default:
 			break;

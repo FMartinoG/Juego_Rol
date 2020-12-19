@@ -1,7 +1,6 @@
 package juego.sprites;
 
 import java.awt.image.BufferedImage;
-import java.io.Serializable;
 
 /**
  * Clase encargada de leer los sprites.
@@ -9,7 +8,7 @@ import java.io.Serializable;
  * @author Fernando Martino
  *
  */
-public class Sprite implements Serializable{
+public class Sprite {
 
 	private final BufferedImage imagen;
 	private final int ancho;

@@ -5,17 +5,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import juego.entes.Jugador;
+import juego.entes.Estadisticas;
 
 public class CargarPartida {
 
-	public static Jugador cargar() {
-		Jugador j = null;
+	public static Estadisticas cargar() {
+		Estadisticas s = null;
 		File f = new File("recursos/guardados/save.s");
 		try {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
-			System.out.println("AQUI");
-			j = (Jugador) ois.readObject();
+			s = (Estadisticas) ois.readObject();
 
 			ois.close();
 
@@ -23,6 +22,6 @@ public class CargarPartida {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		return j;
+		return s;
 	}
 }
