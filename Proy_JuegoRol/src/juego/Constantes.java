@@ -24,6 +24,7 @@ public class Constantes {
 	public static final String HOJA_PERSONAJE_1 = "/personaje/001.png";
 	public static final String PERSONAJE = "/personaje/psj.png";
 	public static final String BATMAN = "/personaje/batman.png";
+	public static final String BOTMAN = "/personaje/botman.png";
 	
 
 	public static final String MAPA_1 = "/mapas/mapa001.txt";

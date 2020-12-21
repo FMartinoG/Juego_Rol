@@ -91,7 +91,7 @@ public class GestorEstados {
 	
 	private void actualizarMenuPrincipal() {
 		if (((GestorMenuPrincipal) estadoActual).nuevaPartida()) {
-			cambiarEstado(1);
+			cambiarEstado(4);
 			mostrarMensajeNoCarga = false;
 		} else if (((GestorMenuPrincipal) estadoActual).cargarPartida()) {
 			pulsarCargarPartida();
@@ -125,6 +125,7 @@ public class GestorEstados {
 	
 	private void actualizarJuego() {
 		if (Controles.TECLADO.menuAbierto)
+			estados[2] = new GestorMenu(((GestorJuego) estados[1]).getJugador());
 			cambiarEstado(2);
 		if (Controles.TECLADO.combate) {
 			estados[3] = new GestorCombate();

@@ -3,7 +3,6 @@ package juego.maquinaEstado.estados.juego;
 import java.awt.Graphics;
 
 import juego.Constantes;
-import juego.HUD.InterfazUsuario;
 import juego.entes.Jugador;
 import juego.mapas.Mapa;
 import juego.maquinaEstado.EstadoJuego;
@@ -18,19 +17,16 @@ public class GestorJuego implements EstadoJuego {
 
 	private Mapa mapa;
 	private Jugador jugador;
-	private InterfazUsuario iu;
 
 	public GestorJuego() {
 		iniciarMapa(Constantes.MAPA_1);
 		iniciarJugador();
-		iu = new InterfazUsuario(jugador);
 	}
 	
 	public GestorJuego(Jugador jugador) {
 		iniciarMapa(Constantes.MAPA_1);
 		this.jugador = jugador;
 		jugador.getEstadisticas().cambiarMapa(1);
-		iu = new InterfazUsuario(jugador);
 	}
 
 	private void iniciarMapa(String ruta) {
@@ -39,6 +35,7 @@ public class GestorJuego implements EstadoJuego {
 
 	private void iniciarJugador() {
 		jugador = new Jugador(mapa);
+		jugador.getEstadisticas().cambiarMapa(1);
 	}
 
 	private void recargarJuego() {
@@ -48,6 +45,17 @@ public class GestorJuego implements EstadoJuego {
 		jugador.setMapa(mapa);
 		jugador.setPosicionX(mapa.getPosicionInicial().x);
 		jugador.setPosicionY(mapa.getPosicionInicial().y);
+		switch (mapa.getRuta()) {
+		case Constantes.MAPA_1:
+			jugador.getEstadisticas().cambiarMapa(1);
+			break;
+		case Constantes.MAPA_2:
+			jugador.getEstadisticas().cambiarMapa(2);
+			System.out.println(jugador.getEstadisticas().getMapa());
+			break;
+		default:
+			break;
+		}
 	}
 
 	@Override
@@ -64,7 +72,6 @@ public class GestorJuego implements EstadoJuego {
 
 		mapa.dibujar(g, (int) jugador.getPosicionX(), (int) jugador.getPosicionY());
 		jugador.dibujar(g);
-		iu.dibujar(g);
 	}
 
 	private String comprobarSiguienteMapa(String siguienteMapa) {
@@ -72,11 +79,9 @@ public class GestorJuego implements EstadoJuego {
 		switch (siguienteMapa) {
 		case "m1":
 			nuevoMapa = Constantes.MAPA_1;
-			jugador.getEstadisticas().cambiarMapa(1);
 			break;
 		case "m2":
 			nuevoMapa = Constantes.MAPA_2;
-			jugador.getEstadisticas().cambiarMapa(2);
 			break;
 		default:
 			break;

@@ -38,7 +38,7 @@ public class Mensaje {
 			avance = fm.stringWidth(mensaje.charAt(i) + "");
 			puntero += avance;
 			try {
-				Thread.sleep(100);
+				Thread.sleep(50);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

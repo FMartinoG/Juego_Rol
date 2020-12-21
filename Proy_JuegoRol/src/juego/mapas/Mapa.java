@@ -18,6 +18,8 @@ import juego.sprites.Sprite;
  */
 public class Mapa{
 	
+	private String ruta;
+	
 	private int ancho;
 	private int alto;
 
@@ -39,8 +41,9 @@ public class Mapa{
 	public ArrayList<Rectangle> areasColision = new ArrayList<>();
 
 	public Mapa(final String ruta) {
-		String textoMapa = CargadorRecursos.leerFicheroTexto(ruta);
-		leerMapa(textoMapa);
+		this.ruta = ruta;
+		String mapa = CargadorRecursos.leerFicheroTexto(ruta);
+		leerMapa(mapa);
 	}
 
 	public void actualizar(final int posX, final int posY) {
@@ -52,10 +55,6 @@ public class Mapa{
 		int ladoSprite = Constantes.LADO_SPRITE;
 		for (int i = 0; i < alto; ++i) {
 			for (int j = 0; j < ancho; ++j) {
-
-				// int posxInicial = 192 + j * ladoSprite - posX;
-				// int posYInicial = i * ladoSprite - posY;
-				// Para que empiece en 0,0
 
 				int posxInicial = MARGEN_X + j * ladoSprite - posX;
 				int posYInicial = MARGEN_Y + i * ladoSprite - posY;
@@ -214,5 +213,9 @@ public class Mapa{
 
 	public Rectangle getZonaSalida() {
 		return zonaSalida;
+	}
+	
+	public String getRuta() {
+		return ruta;
 	}
 }

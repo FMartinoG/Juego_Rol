@@ -6,6 +6,7 @@ import java.awt.Rectangle;
 
 import juego.Constantes;
 import juego.control.Controles;
+import juego.entes.Estadisticas;
 import juego.entes.Jugador;
 import juego.guardado_cargado.GuardarPartida;
 import juego.maquinaEstado.estados.menus.Seccion;
@@ -17,6 +18,11 @@ import juego.maquinaEstado.estados.menus.Seccion;
  *
  */
 public class EstructuraMenu {
+
+	private boolean estadisticasSeleccionado;
+	private boolean inventarioSeleccionado;
+
+	private Estadisticas estadisticasJugador;
 
 	private final Color COLOR_SUPERIOR;
 	private final Color COLOR_LATERAL;
@@ -30,14 +36,17 @@ public class EstructuraMenu {
 	private Seccion[] secciones;
 	private Seccion seccionActual;
 	private double puntero;
-	
+
 	private int pulsacion;
 
 	private boolean guardado;
 
 	public EstructuraMenu(Jugador jugador) {
 		this.jugador = jugador;
+		estadisticasJugador = jugador.getEstadisticas();
 
+		estadisticasSeleccionado = false;
+		inventarioSeleccionado = false;
 		pulsacion = 0;
 		guardado = false;
 
@@ -71,6 +80,16 @@ public class EstructuraMenu {
 			seccionActual = secciones[(int) puntero];
 		}
 
+		if (seccionActual == secciones[0]) {
+			estadisticasSeleccionado = true;
+		} else
+			estadisticasSeleccionado = false;
+
+		if (seccionActual == secciones[1]) {
+			inventarioSeleccionado = true;
+		} else
+			inventarioSeleccionado = false;
+
 		if (seccionActual == secciones[2] && Controles.TECLADO.seleccion && pulsacion == 0) {
 			++pulsacion;
 			int resultado = GuardarPartida.guardar(jugador);
@@ -81,8 +100,8 @@ public class EstructuraMenu {
 
 		if (seccionActual == secciones[3] && Controles.TECLADO.seleccion)
 			System.exit(0);
-		
-		if(pulsacion > 0 && !Controles.TECLADO.seleccion) {
+
+		if (pulsacion > 0 && !Controles.TECLADO.seleccion) {
 			pulsacion = 0;
 		}
 	}
@@ -101,6 +120,14 @@ public class EstructuraMenu {
 			else
 				s.dibujarEtiquetaInactiva(g);
 		}
+
+		if (estadisticasSeleccionado)
+			dibujarEstadisticas(g);
+		
+		if(inventarioSeleccionado) {
+			dibujarInventario(g);
+		}
+
 		if (guardado) {
 			long tiempoActual = System.currentTimeMillis();
 			while ((System.currentTimeMillis() - tiempoActual) < 2000) {
@@ -112,6 +139,81 @@ public class EstructuraMenu {
 			guardado = false;
 		}
 
+	}
+
+	private void dibujarInventario(Graphics g) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void dibujarEstadisticas(Graphics g) {
+		g.setColor(Color.black);
+		g.drawString("Nivel: " + jugador.getEstadisticas().getNivel(), 150, 60);
+
+		dibujarBarraVida(g);
+		dibujarBarraMana(g);
+		dibujarBarraExp(g);
+		dibujarInformacion(g);
+	}
+
+	private void dibujarBarraVida(Graphics g) {
+		double salud = ((double) estadisticasJugador.getSalud() / (double) estadisticasJugador.getSaludMaxima()) * 100;
+
+		g.setColor(Color.black);
+		g.drawString("PS", 150, 90);
+		g.fillRect(175, 80, 100, 12);
+		g.setColor(Color.red);
+		g.fillRect(175, 80, (int) salud, 4);
+		g.setColor(new Color(150, 0, 0));
+		g.fillRect(175, 84, (int) salud, 8);
+		g.setColor(Color.black);
+		g.drawString(estadisticasJugador.getSalud() + " / " + estadisticasJugador.getSaludMaxima(), 300, 90);
+	}
+
+	private void dibujarBarraMana(Graphics g) {
+		double mana = ((double) estadisticasJugador.getMana() / (double) estadisticasJugador.getManaMaximo()) * 100;
+
+		g.setColor(Color.black);
+		g.drawString("PM", 150, 130);
+		g.fillRect(175, 120, 100, 12);
+		g.setColor(Color.blue);
+		g.fillRect(175, 120, (int) mana, 4);
+		g.setColor(new Color(0, 0, 150));
+		g.fillRect(175, 124, (int) mana, 8);
+		g.setColor(Color.black);
+		g.drawString(estadisticasJugador.getMana() + " / " + estadisticasJugador.getManaMaximo(), 300, 130);
+	}
+
+	private void dibujarBarraExp(Graphics g) {
+		double exp = ((double) estadisticasJugador.getExp() / (double) estadisticasJugador.getExpMaxima()) * 100;
+
+		g.setColor(Color.black);
+		g.drawString("EXP", 150, 170);
+		g.fillRect(175, 160, 100, 12);
+		g.setColor(new Color(127, 49, 255));
+		g.fillRect(175, 160, (int) exp, 4);
+		g.setColor(new Color(99, 29, 214));
+		g.fillRect(175, 164, (int) exp, 8);
+		g.setColor(Color.black);
+		g.drawString("" + estadisticasJugador.getExp() + " / " + estadisticasJugador.getExpMaxima(), 300, 170);
+	}
+	
+	private void dibujarInformacion(Graphics g) {
+		g.setColor(Color.black);
+		g.drawString("ATAQUE FÍSICO", 150, 200);
+		g.drawString("DEFENSA FÍSICA", 150, 220);
+		g.drawString("PODER MÁGICO", 150, 240);
+		g.drawString("DEFENSA MÁGICA", 150, 260);
+		
+		g.drawString(" > ", 275, 198);
+		g.drawString(" > ", 275, 218);
+		g.drawString(" > ", 275, 238);
+		g.drawString(" > ", 275, 258);
+		
+		g.drawString("" + estadisticasJugador.getAtaque(), 310, 200);
+		g.drawString("" + estadisticasJugador.getDefensa(), 310, 220);
+		g.drawString("" + estadisticasJugador.getPoderMagico(), 310, 240);
+		g.drawString("" + estadisticasJugador.getDefensaMagica(), 310, 260);
 	}
 
 }
