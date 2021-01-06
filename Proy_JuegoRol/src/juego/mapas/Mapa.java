@@ -258,8 +258,9 @@ public class Mapa {
 		return ruta;
 	}
 
-	public void quitarConversacion(Rectangle r) {
-		zonaConversaciones.remove(r);
+	public void quitarConversacion(int i) {
+		conversaciones.remove(i);
+		zonaConversaciones.remove(i);
 	}
 
 	public ArrayList<Rectangle> getZonaConversaciones() {

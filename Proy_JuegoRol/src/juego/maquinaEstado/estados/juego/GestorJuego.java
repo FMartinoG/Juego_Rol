@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 
 import juego.Constantes;
 import juego.HUD.Mensaje;
+import juego.control.Controles;
 import juego.entes.Jugador;
 import juego.mapas.Mapa;
 import juego.maquinaEstado.EstadoJuego;
@@ -69,16 +70,17 @@ public class GestorJuego implements EstadoJuego {
 
 		if (mapa.tieneConversaciones()) {
 			boolean terminada = false;
-			Rectangle conversacion = null;
-			for (Rectangle r : mapa.getZonaConversaciones()) {
-				if (jugador.getLIMITE_ARRIBA().intersects(r)) {
-					conversacion = r;
+			int punteroBorrar = -1;
+			for (int i = 0; i <  mapa.getZonaConversaciones().size(); ++i) {
+				Rectangle rect = mapa.getZonaConversaciones().get(i);
+				if (jugador.getLIMITE_ARRIBA().intersects(rect)) {
 					enConversacion = true;
+					punteroBorrar = i;
 					terminada = true;
 				}
 			}
 			if (terminada) {
-				mapa.quitarConversacion(conversacion);
+				mapa.quitarConversacion(punteroBorrar);
 			}
 		}
 
@@ -98,7 +100,15 @@ public class GestorJuego implements EstadoJuego {
 	
 	private void mostarMensajes(Graphics g) {
 		Mensaje m = new Mensaje("AQUI PASA ALGO", 300, 300, true);
-		m.dibujar(g);;
+		m.dibujar(g);
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		while (!Controles.TECLADO.seleccion) {
+			System.out.println("Enter para continuar");
+		}
 	}
 
 	private String comprobarSiguienteMapa(String siguienteMapa) {
