@@ -16,10 +16,10 @@ import juego.sprites.Sprite;
  * @author Fernando Martino
  *
  */
-public class Mapa{
-	
+public class Mapa {
+
 	private String ruta;
-	
+
 	private int ancho;
 	private int alto;
 
@@ -32,6 +32,10 @@ public class Mapa{
 	private Sprite[] sprites;
 	private boolean[] mapaColisiones;
 	private int[] mapaSprites;
+
+	private ArrayList<Point> conversaciones;
+	private ArrayList<Rectangle> zonaConversaciones = new ArrayList<Rectangle>();
+	private boolean tieneConversaciones;
 
 	private Point posicionInicial;
 	private Point posicionSalida;
@@ -49,6 +53,8 @@ public class Mapa{
 	public void actualizar(final int posX, final int posY) {
 		actualizarAreasColision(posX, posY);
 		actualizarZonaSalida(posX, posY);
+		if (tieneConversaciones)
+			actualizarZonaConversacion(posX, posY);
 	}
 
 	public void dibujar(Graphics g, int posX, int posY) {
@@ -88,6 +94,15 @@ public class Mapa{
 
 		String salidaMapa = partes[7];
 		guardarSalida(salidaMapa);
+
+		if (partes.length > 8)
+			tieneConversaciones = true;
+		else
+			tieneConversaciones = false;
+		if (tieneConversaciones) {
+			String zonaConversaciones = partes[8];
+			guardarZonaConversaciones(zonaConversaciones);
+		}
 
 	}
 
@@ -151,6 +166,18 @@ public class Mapa{
 		}
 	}
 
+	private void guardarZonaConversaciones(String zona) {
+		conversaciones = new ArrayList<Point>();
+		String[] zonas = zona.split(",");
+		for (int i = 0; i < zonas.length; ++i) {
+			String[] coordenadas = zonas[i].split("-");
+			Point p = new Point();
+			p.x = Integer.parseInt(coordenadas[0]);
+			p.y = Integer.parseInt(coordenadas[1]);
+			conversaciones.add(i, p);
+		}
+	}
+
 	private void guardarPosicionInicial(String posInicial) {
 		String[] coordenadas = posInicial.split("-");
 		posicionInicial = new Point();
@@ -191,6 +218,18 @@ public class Mapa{
 		zonaSalida = new Rectangle(puntoX, puntoY, Constantes.LADO_SPRITE, Constantes.LADO_SPRITE);
 	}
 
+	private void actualizarZonaConversacion(final int posX, final int posY) {
+		for (int i = 0; i < conversaciones.size(); ++i) {
+			if (zonaConversaciones.size() > 0)
+				zonaConversaciones.remove(i);
+
+			int puntoX = conversaciones.get(i).x * Constantes.LADO_SPRITE - posX + MARGEN_X;
+			int puntoY = conversaciones.get(i).y * Constantes.LADO_SPRITE - posY + MARGEN_Y;
+
+			zonaConversaciones.add(i, new Rectangle(puntoX, puntoY, Constantes.LADO_SPRITE, Constantes.LADO_SPRITE));
+		}
+	}
+
 	public Rectangle getBordes(final int posX, final int posY, final int anchoJugador, final int altoJugador) {
 		int x = MARGEN_X - posX + anchoJugador;
 		int y = MARGEN_Y - posY + altoJugador;
@@ -214,8 +253,20 @@ public class Mapa{
 	public Rectangle getZonaSalida() {
 		return zonaSalida;
 	}
-	
+
 	public String getRuta() {
 		return ruta;
+	}
+
+	public void quitarConversacion(Rectangle r) {
+		zonaConversaciones.remove(r);
+	}
+
+	public ArrayList<Rectangle> getZonaConversaciones() {
+		return zonaConversaciones;
+	}
+
+	public boolean tieneConversaciones() {
+		return tieneConversaciones;
 	}
 }

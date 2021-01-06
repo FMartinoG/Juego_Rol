@@ -1,8 +1,10 @@
 package juego.maquinaEstado.estados.juego;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import juego.Constantes;
+import juego.HUD.Mensaje;
 import juego.entes.Jugador;
 import juego.mapas.Mapa;
 import juego.maquinaEstado.EstadoJuego;
@@ -17,12 +19,13 @@ public class GestorJuego implements EstadoJuego {
 
 	private Mapa mapa;
 	private Jugador jugador;
+	private boolean enConversacion = false;
 
 	public GestorJuego() {
 		iniciarMapa(Constantes.MAPA_1);
 		iniciarJugador();
 	}
-	
+
 	public GestorJuego(Jugador jugador) {
 		iniciarMapa(Constantes.MAPA_1);
 		this.jugador = jugador;
@@ -63,15 +66,39 @@ public class GestorJuego implements EstadoJuego {
 		if (jugador.getLIMITE_ARRIBA().intersects(mapa.getZonaSalida())) {
 			recargarJuego();
 		}
+
+		if (mapa.tieneConversaciones()) {
+			boolean terminada = false;
+			Rectangle conversacion = null;
+			for (Rectangle r : mapa.getZonaConversaciones()) {
+				if (jugador.getLIMITE_ARRIBA().intersects(r)) {
+					conversacion = r;
+					enConversacion = true;
+					terminada = true;
+				}
+			}
+			if (terminada) {
+				mapa.quitarConversacion(conversacion);
+			}
+		}
+
 		jugador.actualizar();
 		mapa.actualizar((int) jugador.getPosicionX(), (int) jugador.getPosicionY());
 	}
 
 	@Override
 	public void dibujar(Graphics g) {
-
 		mapa.dibujar(g, (int) jugador.getPosicionX(), (int) jugador.getPosicionY());
 		jugador.dibujar(g);
+		if (enConversacion) {
+			mostarMensajes(g);
+			enConversacion = false;
+		}
+	}
+	
+	private void mostarMensajes(Graphics g) {
+		Mensaje m = new Mensaje("AQUI PASA ALGO", 300, 300, true);
+		m.dibujar(g);;
 	}
 
 	private String comprobarSiguienteMapa(String siguienteMapa) {
@@ -88,7 +115,7 @@ public class GestorJuego implements EstadoJuego {
 		}
 		return nuevoMapa;
 	}
-	
+
 	public Jugador getJugador() {
 		return jugador;
 	}
