@@ -3,6 +3,7 @@ package juego.graficos;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
@@ -53,6 +54,10 @@ public class SuperficieDeDibujo extends Canvas {
 		}
 
 		Graphics2D g = (Graphics2D) buffer.getDrawGraphics();
+
+		// Cambia la fuente de las letras.
+		g.setFont(new Font("Bahnschrift", Font.PLAIN, 12));
+		
 		// Solo pintará entre actualizaciones de la pantalla
 		Toolkit.getDefaultToolkit().sync();
 
