@@ -10,6 +10,7 @@ import juego.entes.Jugador;
 import juego.guardado_cargado.CargarPartida;
 import juego.mapas.Mapa;
 import juego.maquinaEstado.estados.combate.GestorCombate;
+import juego.maquinaEstado.estados.informacion.GestorPaginaInformacion;
 import juego.maquinaEstado.estados.introduccion.Introduccion;
 import juego.maquinaEstado.estados.juego.GestorJuego;
 import juego.maquinaEstado.estados.menuJuego.GestorMenu;
@@ -44,7 +45,7 @@ public class GestorEstados {
 	 * Inicializa la lista de los estados y se le añaden los estados.
 	 */
 	private void iniciarEstados() {
-		estados = new EstadoJuego[5];
+		estados = new EstadoJuego[6];
 		estados[0] = new GestorMenuPrincipal();
 		estados[1] = new GestorJuego();
 		estados[2] = new GestorMenu(((GestorJuego) estados[1]).getJugador());
@@ -87,17 +88,31 @@ public class GestorEstados {
 			if (((Introduccion) estadoActual).isFinalizado())
 				cambiarEstado(1);
 		}
+
+		if (estadoActual == estados[5]) {
+			if (((GestorPaginaInformacion) estadoActual).isPulsadoVolver()) {
+				estados[0] = new GestorMenuPrincipal();
+				cambiarEstado(0);
+			}
+		}
 	}
-	
+
 	private void actualizarMenuPrincipal() {
 		if (((GestorMenuPrincipal) estadoActual).nuevaPartida()) {
 			cambiarEstado(4);
 			mostrarMensajeNoCarga = false;
 		} else if (((GestorMenuPrincipal) estadoActual).cargarPartida()) {
 			pulsarCargarPartida();
+		} else if (((GestorMenuPrincipal) estadoActual).seleccionarInformacion()) {
+			pulsarInformacion();
 		}
 	}
-	
+
+	private void pulsarInformacion() {
+		estados[5] = new GestorPaginaInformacion();
+		cambiarEstado(5);
+	}
+
 	private void pulsarCargarPartida() {
 		Estadisticas s = CargarPartida.cargar();
 		if (s == null)
@@ -122,11 +137,11 @@ public class GestorEstados {
 			cambiarEstado(1);
 		}
 	}
-	
+
 	private void actualizarJuego() {
 		if (Controles.TECLADO.menuAbierto)
 			estados[2] = new GestorMenu(((GestorJuego) estados[1]).getJugador());
-			cambiarEstado(2);
+		cambiarEstado(2);
 		if (Controles.TECLADO.combate) {
 			estados[3] = new GestorCombate();
 			cambiarEstado(3);

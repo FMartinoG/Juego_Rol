@@ -44,7 +44,7 @@ public class GestorMenuPrincipal implements EstadoJuego {
 	}
 	
 	public boolean seleccionarInformacion() {
-		return this.informacionSeleccionado;
+		return informacionSeleccionado;
 	}
 	
 	public void setCargarPartidaSeleccionada(boolean cargarPartidaSeleccionada) {
