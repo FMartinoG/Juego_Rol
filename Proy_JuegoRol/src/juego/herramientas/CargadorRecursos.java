@@ -17,6 +17,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
+import javax.sound.sampled.FloatControl;
 
 /**
  * Clase encargada de leer ficheros externos guardados en la carpeta de
@@ -27,6 +28,12 @@ import javax.sound.sampled.DataLine;
  */
 public class CargadorRecursos {
 
+	/**
+	 * Lee y devuele imagenes con fondo
+	 * 
+	 * @param ruta String - Ruta de la imagen
+	 * @return imagen BufferedImage
+	 */
 	public static BufferedImage cargarImagenOpaca(final String ruta) {
 		Image img = null;
 		try {
@@ -47,6 +54,12 @@ public class CargadorRecursos {
 		return imagen;
 	}
 
+	/**
+	 * Lee y devuele imagenes sin fondo
+	 * 
+	 * @param ruta String - Ruta de la imagen
+	 * @return imagen BufferedImage
+	 */
 	public static BufferedImage cargarImagenTranslucida(final String ruta) {
 		Image img = null;
 
@@ -69,6 +82,12 @@ public class CargadorRecursos {
 		return imagen;
 	}
 
+	/**
+	 * Lee ficheros de texto
+	 * 
+	 * @param ruta String - Ruta del fichero
+	 * @return texto String - Texto del fichero
+	 */
 	public static String leerFicheroTexto(final String ruta) {
 		String texto = "";
 
@@ -88,6 +107,12 @@ public class CargadorRecursos {
 		return texto;
 	}
 
+	/**
+	 * Lee y devuelve un clip de audio
+	 * 
+	 * @param ruta String - Ruta del clip
+	 * @return audio Clip - Clip de audio
+	 */
 	public static Clip cargarSonido(final String ruta) {
 		Clip clip = null;
 
@@ -97,6 +122,8 @@ public class CargadorRecursos {
 			DataLine.Info info = new DataLine.Info(Clip.class, ais.getFormat());
 			clip = (Clip) AudioSystem.getLine(info);
 			clip.open(ais);
+			FloatControl volumen = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+			volumen.setValue(-20);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

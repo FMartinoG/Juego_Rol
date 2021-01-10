@@ -48,12 +48,14 @@ public class EstructuraPaginaInformacion {
 		String texto3 = "Programado por: Fernando Martino García.";
 		String texto4 = "Historia original de: Fernando Martino García.";
 		String texto5 = "URL repositorio GIT: https://github.com/FMartinoG/Juego_Rol.git";
+		String texto6 = "Sonidos sin derechos de autor.";
 		
 		g.drawString(texto1, (Constantes.ANCHO_VENTANA / 2) - (fm.stringWidth(texto1) / 2), 70);
 		g.drawString(texto2, (Constantes.ANCHO_VENTANA / 2) - (fm.stringWidth(texto2) / 2), 110);
 		g.drawString(texto3, (Constantes.ANCHO_VENTANA / 2) - (fm.stringWidth(texto3) / 2), 150);
 		g.drawString(texto4, (Constantes.ANCHO_VENTANA / 2) - (fm.stringWidth(texto4) / 2), 190);
 		g.drawString(texto5, (Constantes.ANCHO_VENTANA / 2) - (fm.stringWidth(texto5) / 2), 230);
+		g.drawString(texto6, (Constantes.ANCHO_VENTANA / 2) - (fm.stringWidth(texto6) / 2), 270);
 		g.drawString("Esc para volver.", 25, 350);
 	}
 	

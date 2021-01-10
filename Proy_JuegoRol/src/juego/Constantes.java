@@ -36,5 +36,7 @@ public class Constantes {
 	
 	public static final String SONIDO = "/sonidos/sonido.wav";
 	public static final String MUSICA_INICIO = "/sonidos/musica.wav";
+	public static final String BEEP = "/sonidos/beep.wav";
+	public static final String MUSICA = "/sonidos/IMissYou.wav";
 
 }

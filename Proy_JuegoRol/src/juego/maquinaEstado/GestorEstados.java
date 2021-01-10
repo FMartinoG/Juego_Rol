@@ -31,7 +31,8 @@ public class GestorEstados {
 	private EstadoJuego[] estados;
 	private EstadoJuego estadoActual;
 	private int posicionActual;
-	private Clip musica = CargadorRecursos.cargarSonido(Constantes.MUSICA_INICIO);
+	private Clip musica = CargadorRecursos.cargarSonido(Constantes.MUSICA);
+	private Clip sonidoInicio = CargadorRecursos.cargarSonido(Constantes.SONIDO);
 
 	private boolean mostrarMensajeNoCarga = false;
 
@@ -44,7 +45,7 @@ public class GestorEstados {
 		iniciarEstados();
 		iniciarEstadoActual();
 		musica.start();
-		musica.loop(0);
+	//	musica.loop(0);
 	}
 
 	/**
@@ -106,10 +107,12 @@ public class GestorEstados {
 	private void actualizarMenuPrincipal() {
 		if (((GestorMenuPrincipal) estadoActual).nuevaPartida()) {
 			musica.stop();
+			sonidoInicio.start();
 			cambiarEstado(4);
 			mostrarMensajeNoCarga = false;
 		} else if (((GestorMenuPrincipal) estadoActual).cargarPartida()) {
 			musica.stop();
+			sonidoInicio.start();
 			pulsarCargarPartida();
 		} else if (((GestorMenuPrincipal) estadoActual).seleccionarInformacion()) {
 			pulsarInformacion();

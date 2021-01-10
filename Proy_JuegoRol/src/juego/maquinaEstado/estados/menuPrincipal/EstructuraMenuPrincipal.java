@@ -4,8 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import javax.sound.sampled.Clip;
+
 import juego.Constantes;
 import juego.control.Controles;
+import juego.herramientas.CargadorRecursos;
 import juego.maquinaEstado.estados.menus.Seccion;
 
 /**
@@ -25,8 +28,9 @@ public class EstructuraMenuPrincipal {
 	private Seccion[] secciones;
 	private Seccion seccionActual;
 
-	private double puntero = 0;
-	
+	private double puntero;
+	private int punteroAnterior;
+
 	private boolean nuevaPartidaSeleccionada = false;
 	private boolean cargarPartidaSeleccionada = false;
 	private boolean ventanaInformacion = false;
@@ -44,6 +48,7 @@ public class EstructuraMenuPrincipal {
 		secciones[2] = new Seccion("ACERCA DE...", new Rectangle(200, 200, 150, 20));
 		secciones[3] = new Seccion("SALIR", new Rectangle(200, 250, 150, 20));
 
+		puntero = punteroAnterior = 0;
 		seccionActual = secciones[(int) puntero];
 
 	}
@@ -58,12 +63,22 @@ public class EstructuraMenuPrincipal {
 			seccionActual = secciones[(int) puntero];
 		}
 
+		if ((int) puntero != punteroAnterior) {
+			Clip beep = CargadorRecursos.cargarSonido(Constantes.BEEP);
+			beep.start();
+			long inicio = System.currentTimeMillis();
+			while ((System.currentTimeMillis() - inicio) < 100) {
+			}
+			beep.stop();
+			punteroAnterior = (int) puntero;
+		}
+
 		if (seccionActual == secciones[0] && Controles.TECLADO.seleccion)
 			nuevaPartidaSeleccionada = true;
 
 		if (seccionActual == secciones[1] && Controles.TECLADO.seleccion)
 			cargarPartidaSeleccionada = true;
-		
+
 		if (seccionActual == secciones[2] && Controles.TECLADO.seleccion)
 			ventanaInformacion = true;
 
@@ -76,10 +91,10 @@ public class EstructuraMenuPrincipal {
 		g.fillRect(SUPERIOR.x, SUPERIOR.y, SUPERIOR.width, SUPERIOR.height);
 		g.setColor(COLOR_FONDO);
 		g.fillRect(FONDO.x, FONDO.y, FONDO.width, FONDO.height);
-		
+
 		g.setColor(Color.black);
 		g.drawRect(0, 300, Constantes.ANCHO_VENTANA, Constantes.ALTO_VENTANA - 300);
-		
+
 		g.drawString("'W A S D' Mover al personaje", 5, 320);
 		g.drawString("'Shift' Correr", 5, 350);
 		g.drawString("'I' Para abrir el menú del juego", 190, 320);
@@ -94,15 +109,15 @@ public class EstructuraMenuPrincipal {
 				s.dibujarEtiquetaInactiva(g);
 		}
 	}
-	
+
 	public boolean isNuevaPartidaSeleccionada() {
 		return nuevaPartidaSeleccionada;
 	}
-	
+
 	public boolean isCargarPartidaSeleccionada() {
 		return cargarPartidaSeleccionada;
 	}
-	
+
 	public boolean isVentanaInformacion() {
 		return ventanaInformacion;
 	}
