@@ -3,11 +3,14 @@ package juego.maquinaEstado;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javax.sound.sampled.Clip;
+
 import juego.Constantes;
 import juego.control.Controles;
 import juego.entes.Estadisticas;
 import juego.entes.Jugador;
 import juego.guardado_cargado.CargarPartida;
+import juego.herramientas.CargadorRecursos;
 import juego.mapas.Mapa;
 import juego.maquinaEstado.estados.combate.GestorCombate;
 import juego.maquinaEstado.estados.informacion.GestorPaginaInformacion;
@@ -28,6 +31,7 @@ public class GestorEstados {
 	private EstadoJuego[] estados;
 	private EstadoJuego estadoActual;
 	private int posicionActual;
+	private Clip musica = CargadorRecursos.cargarSonido(Constantes.MUSICA_INICIO);
 
 	private boolean mostrarMensajeNoCarga = false;
 
@@ -39,6 +43,8 @@ public class GestorEstados {
 		posicionActual = 0;
 		iniciarEstados();
 		iniciarEstadoActual();
+		musica.start();
+		musica.loop(0);
 	}
 
 	/**
@@ -99,9 +105,11 @@ public class GestorEstados {
 
 	private void actualizarMenuPrincipal() {
 		if (((GestorMenuPrincipal) estadoActual).nuevaPartida()) {
+			musica.stop();
 			cambiarEstado(4);
 			mostrarMensajeNoCarga = false;
 		} else if (((GestorMenuPrincipal) estadoActual).cargarPartida()) {
+			musica.stop();
 			pulsarCargarPartida();
 		} else if (((GestorMenuPrincipal) estadoActual).seleccionarInformacion()) {
 			pulsarInformacion();

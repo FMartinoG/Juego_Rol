@@ -33,5 +33,8 @@ public class Constantes {
 	public static final String ICONO = "/icon/juego.png";
 
 	public static final String CURSOR = "/cursor/cursor.png";
+	
+	public static final String SONIDO = "/sonidos/sonido.wav";
+	public static final String MUSICA_INICIO = "/sonidos/musica.wav";
 
 }

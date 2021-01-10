@@ -1,6 +1,5 @@
 package juego;
 
-import juego.control.Controles;
 import juego.graficos.*;
 import juego.maquinaEstado.GestorEstados;
 
