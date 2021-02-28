@@ -45,7 +45,7 @@ public class GestorEstados {
 		iniciarEstados();
 		iniciarEstadoActual();
 		musica.start();
-	//	musica.loop(0);
+		musica.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 
 	/**

@@ -4,11 +4,17 @@ import java.awt.Graphics;
 
 import juego.maquinaEstado.EstadoJuego;
 
+/**
+ * Clase que crea la página de información
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class GestorPaginaInformacion implements EstadoJuego {
-	
+
 	private EstructuraPaginaInformacion ep;
 	private boolean pulsadoVolver;
-	
+
 	public GestorPaginaInformacion() {
 		ep = new EstructuraPaginaInformacion();
 		pulsadoVolver = false;
@@ -24,7 +30,7 @@ public class GestorPaginaInformacion implements EstadoJuego {
 	public void dibujar(Graphics g) {
 		ep.dibujar(g);
 	}
-	
+
 	public boolean isPulsadoVolver() {
 		return pulsadoVolver;
 	}

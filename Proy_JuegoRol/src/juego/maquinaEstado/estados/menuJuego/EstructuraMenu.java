@@ -4,15 +4,18 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import javax.sound.sampled.Clip;
+
 import juego.Constantes;
 import juego.control.Controles;
 import juego.entes.Estadisticas;
 import juego.entes.Jugador;
 import juego.guardado_cargado.GuardarPartida;
+import juego.herramientas.CargadorRecursos;
 import juego.maquinaEstado.estados.menus.Seccion;
 
 /**
- * Clase encargada de dibujar el menú de juego.
+ * Clase encargada de controlar y dibujar el menú de juego.
  * 
  * @author Fernando Martino
  *
@@ -36,6 +39,7 @@ public class EstructuraMenu {
 	private Seccion[] secciones;
 	private Seccion seccionActual;
 	private double puntero;
+	private int punteroAnterior;
 
 	private int pulsacion;
 
@@ -59,7 +63,7 @@ public class EstructuraMenu {
 		FONDO = new Rectangle(LATERAL.width, SUPERIOR.height, Constantes.ANCHO_VENTANA - LATERAL.width,
 				Constantes.ALTO_VENTANA - SUPERIOR.height);
 
-		puntero = 0;
+		puntero = punteroAnterior = 0;
 		secciones = new Seccion[4];
 		secciones[0] = new Seccion("Estadísticas", new Rectangle(5, 60, 80, 20));
 		secciones[1] = new Seccion("Inventario", new Rectangle(5, 100, 80, 20));
@@ -78,6 +82,16 @@ public class EstructuraMenu {
 		if (Controles.TECLADO.abajoMenu && puntero < secciones.length - 1) {
 			puntero += 0.2;
 			seccionActual = secciones[(int) puntero];
+		}
+		
+		if ((int) puntero != punteroAnterior) {
+			Clip beep = CargadorRecursos.cargarSonido(Constantes.BEEP);
+			beep.start();
+			long inicio = System.currentTimeMillis();
+			while ((System.currentTimeMillis() - inicio) < 100) {
+			}
+			beep.stop();
+			punteroAnterior = (int) puntero;
 		}
 
 		if (seccionActual == secciones[0]) {

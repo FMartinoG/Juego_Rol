@@ -23,7 +23,7 @@ public class GestorCombate implements EstadoJuego {
 		ec = new EstructuraCombate(CargadorRecursos.cargarImagenTranslucida(Constantes.PERSONAJE), CargadorRecursos.cargarImagenTranslucida(Constantes.BOTMAN));
 	}
 
-	public GestorCombate(Jugador jugador) {
+	public GestorCombate(Jugador jugador, Jugador enemigo) {
 	}
 
 	@Override
