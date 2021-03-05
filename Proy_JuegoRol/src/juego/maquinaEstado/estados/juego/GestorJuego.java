@@ -21,6 +21,7 @@ public class GestorJuego implements EstadoJuego {
 	private Mapa mapa;
 	private Jugador jugador;
 	private boolean enConversacion = false;
+	private boolean enCombate = false;
 
 	public GestorJuego() {
 		iniciarMapa(Constantes.MAPA_1);
@@ -55,7 +56,6 @@ public class GestorJuego implements EstadoJuego {
 			break;
 		case Constantes.MAPA_2:
 			jugador.getEstadisticas().cambiarMapa(2);
-			System.out.println(jugador.getEstadisticas().getMapa());
 			break;
 		default:
 			break;
@@ -68,24 +68,46 @@ public class GestorJuego implements EstadoJuego {
 			recargarJuego();
 		}
 
-		if (mapa.tieneConversaciones()) {
-			boolean terminada = false;
-			int punteroBorrar = -1;
-			for (int i = 0; i <  mapa.getZonaConversaciones().size(); ++i) {
-				Rectangle rect = mapa.getZonaConversaciones().get(i);
-				if (jugador.getLIMITE_ARRIBA().intersects(rect)) {
-					enConversacion = true;
-					punteroBorrar = i;
-					terminada = true;
-				}
-			}
-			if (terminada) {
-				mapa.quitarConversacion(punteroBorrar);
-			}
-		}
+		if (!mapa.getZonaConversaciones().isEmpty())
+			comprobarLlegaConversacion();
+
+		if (!mapa.getZonaConversaciones().isEmpty())
+			comprobarLlegaCombate();
 
 		jugador.actualizar();
 		mapa.actualizar((int) jugador.getPosicionX(), (int) jugador.getPosicionY());
+	}
+
+	private void comprobarLlegaConversacion() {
+		boolean encontrado = false;
+		int punteroBorrar = -1;
+		for (int i = 0; i < mapa.getZonaConversaciones().size() && !encontrado; ++i) {
+			Rectangle rect = mapa.getZonaConversaciones().get(i);
+			if (jugador.getLIMITE_ARRIBA().intersects(rect)) {
+				enConversacion = true;
+				punteroBorrar = i;
+				encontrado = true;
+			}
+		}
+		if (encontrado) {
+			mapa.quitarConversacion(punteroBorrar);
+			System.out.println("Borrado");
+		}
+	}
+
+	private void comprobarLlegaCombate() {
+		boolean encontrado = false;
+		int punteroBorrar = -1;
+		for (int i = 0; i < mapa.getZonaCombates().size() && !encontrado; ++i) {
+			Rectangle rect = mapa.getZonaCombates().get(i);
+			if (jugador.getLIMITE_ARRIBA().intersects(rect)) {
+				enCombate = true;
+				punteroBorrar = i;
+				encontrado = true;
+			}
+		}
+		if (encontrado)
+			mapa.quitarCombate(punteroBorrar);
 	}
 
 	@Override
@@ -97,7 +119,7 @@ public class GestorJuego implements EstadoJuego {
 			enConversacion = false;
 		}
 	}
-	
+
 	private void mostarMensajes(Graphics g) {
 		Mensaje m = new Mensaje("AQUI PASA ALGO", 300, 300, true);
 		m.dibujar(g);
@@ -128,6 +150,14 @@ public class GestorJuego implements EstadoJuego {
 
 	public Jugador getJugador() {
 		return jugador;
+	}
+	
+	public boolean isEnCombate() {
+		return enCombate;
+	}
+	
+	public void setEnCombate(boolean enCombate) {
+		this.enCombate = enCombate;
 	}
 
 }

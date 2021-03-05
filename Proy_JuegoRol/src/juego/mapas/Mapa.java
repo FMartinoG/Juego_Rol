@@ -35,7 +35,9 @@ public class Mapa {
 
 	private ArrayList<Point> conversaciones;
 	private ArrayList<Rectangle> zonaConversaciones = new ArrayList<Rectangle>();
-	private boolean tieneConversaciones;
+
+	private ArrayList<Point> combates;
+	private ArrayList<Rectangle> zonaCombates = new ArrayList<Rectangle>();
 
 	private Point posicionInicial;
 	private Point posicionSalida;
@@ -53,8 +55,10 @@ public class Mapa {
 	public void actualizar(final int posX, final int posY) {
 		actualizarAreasColision(posX, posY);
 		actualizarZonaSalida(posX, posY);
-		if (tieneConversaciones)
+		if (conversaciones != null && !conversaciones.isEmpty())
 			actualizarZonaConversacion(posX, posY);
+		if (combates != null &&!combates.isEmpty())
+			actualizarZonaCombates(posX, posY);
 	}
 
 	public void dibujar(Graphics g, int posX, int posY) {
@@ -95,14 +99,11 @@ public class Mapa {
 		String salidaMapa = partes[7];
 		guardarSalida(salidaMapa);
 
-		if (partes.length > 8)
-			tieneConversaciones = true;
-		else
-			tieneConversaciones = false;
-		if (tieneConversaciones) {
-			String zonaConversaciones = partes[8];
-			guardarZonaConversaciones(zonaConversaciones);
-		}
+		String zonaConversaciones = partes[8];
+		guardarZonaConversaciones(zonaConversaciones);
+
+		String zonaCombates = partes[9];
+		guardarZonaCombates(zonaCombates);
 
 	}
 
@@ -167,14 +168,30 @@ public class Mapa {
 	}
 
 	private void guardarZonaConversaciones(String zona) {
-		conversaciones = new ArrayList<Point>();
-		String[] zonas = zona.split(",");
-		for (int i = 0; i < zonas.length; ++i) {
-			String[] coordenadas = zonas[i].split("-");
-			Point p = new Point();
-			p.x = Integer.parseInt(coordenadas[0]);
-			p.y = Integer.parseInt(coordenadas[1]);
-			conversaciones.add(i, p);
+		if (!zona.equals("no")) {
+			conversaciones = new ArrayList<Point>();
+			String[] zonas = zona.split(",");
+			for (int i = 0; i < zonas.length; ++i) {
+				String[] coordenadas = zonas[i].split("-");
+				Point p = new Point();
+				p.x = Integer.parseInt(coordenadas[0]);
+				p.y = Integer.parseInt(coordenadas[1]);
+				conversaciones.add(i, p);
+			}
+		}
+	}
+
+	private void guardarZonaCombates(String zona) {
+		if (!zona.equals("no")) {
+			combates = new ArrayList<Point>();
+			String[] zonas = zona.split(",");
+			for (int i = 0; i < zonas.length; ++i) {
+				String[] coordenadas = zonas[i].split("-");
+				Point p = new Point();
+				p.x = Integer.parseInt(coordenadas[0]);
+				p.y = Integer.parseInt(coordenadas[1]);
+				combates.add(i, p);
+			}
 		}
 	}
 
@@ -230,6 +247,18 @@ public class Mapa {
 		}
 	}
 
+	private void actualizarZonaCombates(final int posX, final int posY) {
+		for (int i = 0; i < combates.size(); ++i) {
+			if (zonaCombates.size() > 0)
+				zonaCombates.remove(i);
+
+			int puntoX = combates.get(i).x * Constantes.LADO_SPRITE - posX + MARGEN_X;
+			int puntoY = combates.get(i).y * Constantes.LADO_SPRITE - posY + MARGEN_Y;
+
+			zonaCombates.add(i, new Rectangle(puntoX, puntoY, Constantes.LADO_SPRITE, Constantes.LADO_SPRITE));
+		}
+	}
+
 	public Rectangle getBordes(final int posX, final int posY, final int anchoJugador, final int altoJugador) {
 		int x = MARGEN_X - posX + anchoJugador;
 		int y = MARGEN_Y - posY + altoJugador;
@@ -263,11 +292,16 @@ public class Mapa {
 		zonaConversaciones.remove(i);
 	}
 
+	public void quitarCombate(int i) {
+		combates.remove(i);
+		zonaCombates.remove(i);
+	}
+
 	public ArrayList<Rectangle> getZonaConversaciones() {
 		return zonaConversaciones;
 	}
 
-	public boolean tieneConversaciones() {
-		return tieneConversaciones;
+	public ArrayList<Rectangle> getZonaCombates() {
+		return zonaCombates;
 	}
 }

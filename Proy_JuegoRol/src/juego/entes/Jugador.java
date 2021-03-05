@@ -33,6 +33,7 @@ public class Jugador {
 	private HojaSprites hs;
 
 	private BufferedImage imagenActual;
+	private String imagenCombate;
 
 	private boolean enMovimiento;
 
@@ -58,6 +59,7 @@ public class Jugador {
 		direccion = 0;
 		hs = new HojaSprites(Constantes.HOJA_PERSONAJE_1, Constantes.LADO_SPRITE, false);
 		imagenActual = hs.getSprite(0, 0).getImagen();
+		imagenCombate = Constantes.PERSONAJE;
 		enMovimiento = false;
 		animacion = 0;
 		estado = 0;
@@ -378,6 +380,10 @@ public class Jugador {
 
 	public BufferedImage getImagenActual() {
 		return imagenActual;
+	}
+	
+	public String getImagenCombate() {
+		return imagenCombate;
 	}
 
 }

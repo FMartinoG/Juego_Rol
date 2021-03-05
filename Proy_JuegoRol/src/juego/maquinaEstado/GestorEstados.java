@@ -7,6 +7,7 @@ import javax.sound.sampled.Clip;
 
 import juego.Constantes;
 import juego.control.Controles;
+import juego.entes.Enemigo;
 import juego.entes.Estadisticas;
 import juego.entes.Jugador;
 import juego.guardado_cargado.CargarPartida;
@@ -88,6 +89,7 @@ public class GestorEstados {
 		if (estadoActual == estados[3]) {
 			if (!((GestorCombate) estadoActual).isEnCombate()) {
 				cambiarEstado(1);
+				((GestorJuego) estados[1]).setEnCombate(false);
 			}
 		}
 
@@ -153,8 +155,10 @@ public class GestorEstados {
 		if (Controles.TECLADO.menuAbierto)
 			estados[2] = new GestorMenu(((GestorJuego) estados[1]).getJugador());
 		cambiarEstado(2);
-		if (Controles.TECLADO.combate) {
-			estados[3] = new GestorCombate();
+		if (((GestorJuego) estados[1]).isEnCombate()) {
+			Jugador j = ((GestorJuego) estados[1]).getJugador();
+			Enemigo e = new Enemigo(Constantes.BOTMAN, null);
+			estados[3] = new GestorCombate(j, e);
 			cambiarEstado(3);
 		}
 	}

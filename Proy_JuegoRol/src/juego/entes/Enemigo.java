@@ -1,14 +1,21 @@
 package juego.entes;
 
-import java.awt.Image;
-
 public class Enemigo {
 	
 	private Estadisticas estadisticas;
-	private Image image;
+	private String imagen;
 	
-	public Enemigo() {
-		
+	public Enemigo(String imagen, Estadisticas estadisticas) {
+		this.imagen = imagen;
+		this.estadisticas = estadisticas;
+	}
+	
+	public String getImagen() {
+		return imagen;
+	}
+	
+	public Estadisticas getEstadisticas() {
+		return estadisticas;
 	}
 
 }

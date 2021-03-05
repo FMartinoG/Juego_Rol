@@ -7,11 +7,17 @@ import java.awt.Rectangle;
 
 import juego.Constantes;
 import juego.control.Controles;
+import juego.entes.Enemigo;
+import juego.entes.Jugador;
+import juego.herramientas.CargadorRecursos;
 
 public class EstructuraCombate {
+	
+	Jugador jugador;
+	Enemigo enemigo;
 
-	private Image personaje;
-	private Image enemigo;
+	private Image imgPersonaje;
+	private Image imgEnemigo;
 
 	private boolean enCombate;
 
@@ -34,9 +40,12 @@ public class EstructuraCombate {
 	private double punteroMagia;
 	private double punteroAccion;
 
-	public EstructuraCombate(Image personaje, Image enemigo) {
-		this.personaje = personaje;
+	public EstructuraCombate(Jugador jugador, Enemigo enemigo) {
+		this.jugador = jugador;
 		this.enemigo = enemigo;
+		
+		imgPersonaje = CargadorRecursos.cargarImagenTranslucida(jugador.getImagenCombate());
+		imgEnemigo = CargadorRecursos.cargarImagenTranslucida(enemigo.getImagen());
 
 		enCombate = true;
 		opcion = 0;
@@ -170,8 +179,8 @@ public class EstructuraCombate {
 		g.setColor(Color.white);
 		g.fillRoundRect(5, 265, Constantes.ANCHO_VENTANA - 10, Constantes.ALTO_VENTANA - 270, 40, 40);
 
-		g.drawImage(enemigo, 75, 20, null);
-		g.drawImage(personaje, 400, 40, null);
+		g.drawImage(imgEnemigo, 75, 20, null);
+		g.drawImage(imgPersonaje, 400, 40, null);
 
 		if (opcion == 0)
 			dibujarPrincipal(g);
