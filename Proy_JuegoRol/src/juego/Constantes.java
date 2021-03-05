@@ -24,7 +24,7 @@ public class Constantes {
 	public static final String HOJA_TEXTURAS_1 = "/texturas/001.png";
 
 	public static final String HOJA_PERSONAJE_1 = "/personaje/001.png";
-	public static final String PERSONAJE = "/personaje/psj.png";
+	public static final String PERSONAJE = "/personaje/psCombate.png";
 	public static final String BATMAN = "/personaje/batman.png";
 	public static final String BOTMAN = "/personaje/botman.png";
 	

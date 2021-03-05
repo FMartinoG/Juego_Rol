@@ -11,6 +11,7 @@ import juego.control.Controles;
 import juego.entes.Estadisticas;
 import juego.entes.Jugador;
 import juego.guardado_cargado.GuardarPartida;
+import juego.herramientas.Barras;
 import juego.herramientas.CargadorRecursos;
 import juego.maquinaEstado.estados.menus.Seccion;
 
@@ -83,7 +84,7 @@ public class EstructuraMenu {
 			puntero += 0.2;
 			seccionActual = secciones[(int) puntero];
 		}
-		
+
 		if ((int) puntero != punteroAnterior) {
 			Clip beep = CargadorRecursos.cargarSonido(Constantes.BEEP);
 			beep.start();
@@ -137,8 +138,8 @@ public class EstructuraMenu {
 
 		if (estadisticasSeleccionado)
 			dibujarEstadisticas(g);
-		
-		if(inventarioSeleccionado) {
+
+		if (inventarioSeleccionado) {
 			dibujarInventario(g);
 		}
 
@@ -157,7 +158,7 @@ public class EstructuraMenu {
 
 	private void dibujarInventario(Graphics g) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void dibujarEstadisticas(Graphics g) {
@@ -171,59 +172,32 @@ public class EstructuraMenu {
 	}
 
 	private void dibujarBarraVida(Graphics g) {
-		double salud = ((double) estadisticasJugador.getSalud() / (double) estadisticasJugador.getSaludMaxima()) * 100;
-
-		g.setColor(Color.black);
-		g.drawString("PS", 150, 90);
-		g.fillRect(175, 80, 100, 12);
-		g.setColor(Color.red);
-		g.fillRect(175, 80, (int) salud, 4);
-		g.setColor(new Color(150, 0, 0));
-		g.fillRect(175, 84, (int) salud, 8);
-		g.setColor(Color.black);
-		g.drawString(estadisticasJugador.getSalud() + " / " + estadisticasJugador.getSaludMaxima(), 300, 90);
+		Barras vida = new Barras(g, jugador, 150, 90);
+		vida.dibujarBarraVidaMenu();
 	}
 
 	private void dibujarBarraMana(Graphics g) {
-		double mana = ((double) estadisticasJugador.getMana() / (double) estadisticasJugador.getManaMaximo()) * 100;
-
-		g.setColor(Color.black);
-		g.drawString("PM", 150, 130);
-		g.fillRect(175, 120, 100, 12);
-		g.setColor(Color.blue);
-		g.fillRect(175, 120, (int) mana, 4);
-		g.setColor(new Color(0, 0, 150));
-		g.fillRect(175, 124, (int) mana, 8);
-		g.setColor(Color.black);
-		g.drawString(estadisticasJugador.getMana() + " / " + estadisticasJugador.getManaMaximo(), 300, 130);
+		Barras mana = new Barras(g, jugador, 150, 130);
+		mana.dibujarBarraManaMenu();
 	}
 
 	private void dibujarBarraExp(Graphics g) {
-		double exp = ((double) estadisticasJugador.getExp() / (double) estadisticasJugador.getExpMaxima()) * 100;
-
-		g.setColor(Color.black);
-		g.drawString("EXP", 150, 170);
-		g.fillRect(175, 160, 100, 12);
-		g.setColor(new Color(127, 49, 255));
-		g.fillRect(175, 160, (int) exp, 4);
-		g.setColor(new Color(99, 29, 214));
-		g.fillRect(175, 164, (int) exp, 8);
-		g.setColor(Color.black);
-		g.drawString("" + estadisticasJugador.getExp() + " / " + estadisticasJugador.getExpMaxima(), 300, 170);
+		Barras exp = new Barras(g, jugador, 150, 170);
+		exp.dibujarBarraExpMenu();
 	}
-	
+
 	private void dibujarInformacion(Graphics g) {
 		g.setColor(Color.black);
 		g.drawString("ATAQUE FÍSICO", 150, 200);
 		g.drawString("DEFENSA FÍSICA", 150, 220);
 		g.drawString("PODER MÁGICO", 150, 240);
 		g.drawString("DEFENSA MÁGICA", 150, 260);
-		
+
 		g.drawString(" > ", 275, 198);
 		g.drawString(" > ", 275, 218);
 		g.drawString(" > ", 275, 238);
 		g.drawString(" > ", 275, 258);
-		
+
 		g.drawString("" + estadisticasJugador.getAtaque(), 310, 200);
 		g.drawString("" + estadisticasJugador.getDefensa(), 310, 220);
 		g.drawString("" + estadisticasJugador.getPoderMagico(), 310, 240);

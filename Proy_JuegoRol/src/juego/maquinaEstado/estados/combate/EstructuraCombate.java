@@ -9,6 +9,7 @@ import juego.Constantes;
 import juego.control.Controles;
 import juego.entes.Enemigo;
 import juego.entes.Jugador;
+import juego.herramientas.Barras;
 import juego.herramientas.CargadorRecursos;
 
 public class EstructuraCombate {
@@ -174,13 +175,24 @@ public class EstructuraCombate {
 		g.fillRect(0, 100, Constantes.ANCHO_VENTANA, Constantes.ALTO_VENTANA);
 
 		g.setColor(Color.black);
-		g.fillRect(0, 260, Constantes.ANCHO_VENTANA, Constantes.ALTO_VENTANA - 260);
+		g.fillRect(0, 210, Constantes.ANCHO_VENTANA, Constantes.ALTO_VENTANA);
 
 		g.setColor(Color.white);
 		g.fillRoundRect(5, 265, Constantes.ANCHO_VENTANA - 10, Constantes.ALTO_VENTANA - 270, 40, 40);
 
+		
+		g.drawImage(imgPersonaje, 10, 220, null);
+		
+		Barras vida = new Barras(g, jugador, 60, 240);
+		vida.dibujarBarraVidaCombate();
+		
+		Barras mana = new Barras(g, jugador, 270, 240);
+		mana.dibujarBarraManaCombate();
+		
+		Barras exp = new Barras(g, jugador, 450, 240);
+		exp.dibujarBarraExpCombate();
+
 		g.drawImage(imgEnemigo, 75, 20, null);
-		g.drawImage(imgPersonaje, 400, 40, null);
 
 		if (opcion == 0)
 			dibujarPrincipal(g);
