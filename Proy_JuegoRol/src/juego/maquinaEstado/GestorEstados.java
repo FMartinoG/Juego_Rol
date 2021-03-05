@@ -12,6 +12,8 @@ import juego.entes.Estadisticas;
 import juego.entes.Jugador;
 import juego.guardado_cargado.CargarPartida;
 import juego.herramientas.CargadorRecursos;
+import juego.herramientas.CreadorConversaciones;
+import juego.herramientas.CreadorEnemigos;
 import juego.mapas.Mapa;
 import juego.maquinaEstado.estados.combate.GestorCombate;
 import juego.maquinaEstado.estados.informacion.GestorPaginaInformacion;
@@ -47,6 +49,8 @@ public class GestorEstados {
 		iniciarEstadoActual();
 		musica.start();
 		musica.loop(Clip.LOOP_CONTINUOUSLY);
+		CreadorConversaciones.crearConversaciones();
+		CreadorEnemigos.crearEnemigos();
 	}
 
 	/**

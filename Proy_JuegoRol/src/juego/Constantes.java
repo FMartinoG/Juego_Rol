@@ -1,5 +1,7 @@
 package juego;
 
+import juego.entes.Enemigo;
+
 /**
  * Clase que guarda datos importantes para poder reutilizarlos.
  * 
@@ -38,5 +40,9 @@ public class Constantes {
 	public static final String BEEP = "/sonidos/beep.wav";
 	public static final String TECLA = "/sonidos/tecla.wav";
 	public static final String MUSICA = "/sonidos/IMissYou.wav";
+	
+	public static String[] CONVERSACIONES;
+	
+	public static Enemigo[] ENEMIGOS;
 
 }
