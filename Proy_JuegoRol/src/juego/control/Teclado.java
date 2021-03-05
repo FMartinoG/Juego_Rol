@@ -27,7 +27,6 @@ public final class Teclado implements KeyListener {
 	public boolean corriendo = false;
 	public boolean menuAbierto = false;
 	public boolean bt_Escape = false;
-	public boolean combate = false;
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
@@ -67,9 +66,6 @@ public final class Teclado implements KeyListener {
 			break;
 		case KeyEvent.VK_ENTER:
 			seleccion = true;
-			break;
-		case KeyEvent.VK_P:
-			combate = true;
 			break;
 		case KeyEvent.VK_ESCAPE:
 			bt_Escape = true;
@@ -112,9 +108,6 @@ public final class Teclado implements KeyListener {
 		case KeyEvent.VK_ENTER:
 			seleccion = false;
 			break;
-		case KeyEvent.VK_P:
-			combate = false;
-			break;
 		case KeyEvent.VK_ESCAPE:
 			bt_Escape = false;
 			break;
@@ -124,8 +117,6 @@ public final class Teclado implements KeyListener {
 	}
 
 	@Override
-	public void keyTyped(KeyEvent arg0) {
-
-	}
+	public void keyTyped(KeyEvent arg0) {}
 
 }
