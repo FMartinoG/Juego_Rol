@@ -20,6 +20,7 @@ public class GestorJuego implements EstadoJuego {
 
 	private Mapa mapa;
 	private Jugador jugador;
+	private boolean puedeContinuar = false;
 	private boolean enConversacion = false;
 	private boolean enCombate = false;
 
@@ -64,14 +65,17 @@ public class GestorJuego implements EstadoJuego {
 
 	@Override
 	public void actualizar() {
-		if (jugador.getLIMITE_ARRIBA().intersects(mapa.getZonaSalida())) {
+		if (puedeContinuar) {
+			puedeContinuar = false;
 			recargarJuego();
 		}
+		if (jugador.getLIMITE_ARRIBA().intersects(mapa.getZonaSalida()))
+			puedeContinuar = true;
 
 		if (!mapa.getZonaConversaciones().isEmpty())
 			comprobarLlegaConversacion();
 
-		if (!mapa.getZonaConversaciones().isEmpty())
+		if (!mapa.getZonaCombates().isEmpty())
 			comprobarLlegaCombate();
 
 		jugador.actualizar();
@@ -89,10 +93,8 @@ public class GestorJuego implements EstadoJuego {
 				encontrado = true;
 			}
 		}
-		if (encontrado) {
+		if (encontrado)
 			mapa.quitarConversacion(punteroBorrar);
-			System.out.println("Borrado");
-		}
 	}
 
 	private void comprobarLlegaCombate() {
@@ -121,7 +123,7 @@ public class GestorJuego implements EstadoJuego {
 	}
 
 	private void mostarMensajes(Graphics g) {
-		Mensaje m = new Mensaje("AQUI PASA ALGO", 300, 300, true);
+		Mensaje m = new Mensaje(Constantes.CONVERSACIONES[0], 300, 300, true);
 		m.dibujar(g);
 		try {
 			Thread.sleep(500);
@@ -138,6 +140,9 @@ public class GestorJuego implements EstadoJuego {
 		switch (siguienteMapa) {
 		case "m1":
 			nuevoMapa = Constantes.MAPA_1;
+			break;
+		case "m1_1":
+			nuevoMapa = Constantes.MAPA_1_1;
 			break;
 		case "m2":
 			nuevoMapa = Constantes.MAPA_2;

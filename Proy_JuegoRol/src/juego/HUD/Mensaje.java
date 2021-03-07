@@ -38,14 +38,15 @@ public class Mensaje {
 		g.setColor(Color.white);
 		int puntero = 0;
 		int avance = 0;
-		for (int i = 0; i < mensaje.length(); ++i) {
-			g.drawString(mensaje.charAt(i) + "", posX + 10   + puntero, posY + 15);
-			avance = fm.stringWidth(mensaje.charAt(i) + "");
-			puntero += avance;
+		String[] palabras = mensaje.split(" ");
+		for (int i = 0; i < palabras.length; ++i) {
+			g.drawString(palabras[i], posX + 10   + puntero, posY + 15);
+			avance = fm.stringWidth(palabras[i]);
+			puntero += avance + 5;
 			Clip beep = CargadorRecursos.cargarSonido(Constantes.BEEP);
 			beep.start();
 			long inicio = System.currentTimeMillis();
-			while ((System.currentTimeMillis() - inicio) < 100) {
+			while ((System.currentTimeMillis() - inicio) < 250) {
 			}
 			beep.stop();
 			try {

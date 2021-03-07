@@ -22,12 +22,13 @@ public class EstructuraCombate {
 	private Image imgEnemigo;
 
 	private boolean enCombate;
-	private boolean huido;
-	private boolean apaciguado;
-	private boolean vencido;
+	private boolean huido, vencido, apaciguado;
 	private boolean botonPulsado;
-	private boolean dibujarAtaqueFisico;
+	private boolean dibujarAtaqueFisico, dibujarMagiaFuego, dibujarMagiaHielo, dibujarMagiaRayo, dibujarReaccion, dibujarHuidaFallida;
+	private int accionSeleccionada;
+
 	private int ataqueFisico;
+	private int ataqueMagico;
 
 	private int opcion;
 
@@ -55,13 +56,13 @@ public class EstructuraCombate {
 		imgPersonaje = CargadorRecursos.cargarImagenTranslucida(jugador.getImagenCombate());
 		imgEnemigo = CargadorRecursos.cargarImagenTranslucida(enemigo.getImagen());
 
-		botonPulsado = false;
-		huido = false;
-		apaciguado = false;
-		vencido = false;
+		botonPulsado = true;
+		huido = apaciguado = vencido = false;
+
 		enCombate = true;
-		dibujarAtaqueFisico = false;
-		ataqueFisico = 0;
+		dibujarAtaqueFisico = dibujarMagiaFuego = dibujarMagiaHielo = dibujarMagiaRayo = dibujarReaccion = dibujarHuidaFallida = false;
+		ataqueFisico = ataqueMagico = 0;
+		accionSeleccionada = -1;
 		opcion = 0;
 
 		inicializarPrincipal();
@@ -114,6 +115,11 @@ public class EstructuraCombate {
 	}
 
 	public void actualizar() {
+		while (botonPulsado && Controles.TECLADO.seleccion) {
+			System.out.println("Suelte el botón.");
+		}
+		botonPulsado = false;
+
 		if (opcion == 0)
 			actualizarPrincipal();
 		else if (opcion == 1)
@@ -136,8 +142,11 @@ public class EstructuraCombate {
 			botonPulsado = true;
 		}
 
-		if (opcion == 4)
-			huido = true;
+		if (opcion == 4) {
+			huido = enemigo.intentarHuir();
+			if (!huido)
+				dibujarHuidaFallida = true;
+		}
 
 		if (!enemigo.estaVivo())
 			vencido = true;
@@ -193,9 +202,27 @@ public class EstructuraCombate {
 		}
 
 		seleccionadoMagia = opcionesMagia[(int) punteroMagia];
+
+		seleccionarMagia();
+
 		if (Controles.TECLADO.bt_Escape)
 			opcion = 0;
+	}
 
+	private void seleccionarMagia() {
+		if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[0]) {
+			jugador.getEstadisticas().curar(20);
+			opcion = 0;
+		} else if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[1]) {
+			realizarAtaqueMagico(20, 0);
+			opcion = 0;
+		} else if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[2]) {
+			realizarAtaqueMagico(40, 1);
+			opcion = 0;
+		} else if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[3]) {
+			realizarAtaqueMagico(20, 2);
+			opcion = 0;
+		}
 	}
 
 	private void actualizarAccion() {
@@ -211,14 +238,59 @@ public class EstructuraCombate {
 		}
 
 		seleccionadoAccion = opcionesAccion[(int) punteroAccion];
+		
+		seleccionarAccion();
+		
 		if (Controles.TECLADO.bt_Escape)
 			opcion = 0;
-
+	}
+	
+	private void seleccionarAccion() {
+		if (Controles.TECLADO.seleccion && seleccionadoAccion == opcionesAccion[0]) {
+			realizarAccion(0);
+			opcion = 0;
+		} else if (Controles.TECLADO.seleccion && seleccionadoAccion == opcionesAccion[1]) {
+			realizarAccion(1);
+			opcion = 0;
+		} else if (Controles.TECLADO.seleccion && seleccionadoAccion == opcionesAccion[2]) {
+			realizarAccion(2);
+			opcion = 0;
+		} else if (Controles.TECLADO.seleccion && seleccionadoAccion == opcionesAccion[3]) {
+			realizarAccion(3);
+			opcion = 0;
+		}
 	}
 
 	private void realizarAtaqueFisico(int n) {
 		ataqueFisico = enemigo.recibirAtaqueFisico(n);
 		dibujarAtaqueFisico = true;
+	}
+
+	private void realizarAtaqueMagico(int n, int elemento) {
+		ataqueMagico = enemigo.recibirAtaqueMagico(n, elemento);
+		switch (elemento) {
+		case 0:
+			dibujarMagiaFuego = true;
+			break;
+		case 1:
+			dibujarMagiaHielo = true;
+			break;
+		case 2:
+			dibujarMagiaRayo = true;
+			break;
+		default:
+			break;
+		}
+	}
+	
+	private void realizarAccion(int n) {
+		accionSeleccionada = n;
+		dibujarReaccion = true;
+		
+		if (n == enemigo.getOrdenAcciones().get(0))
+			enemigo.getOrdenAcciones().remove(0);
+		if (enemigo.getOrdenAcciones().isEmpty())
+			apaciguado = true;
 	}
 
 	public void dibujar(Graphics g) {
@@ -260,6 +332,16 @@ public class EstructuraCombate {
 
 		if (dibujarAtaqueFisico)
 			dibujarAtaqueFisico(g);
+		if (dibujarMagiaFuego)
+			dibujarMagiaFuego(g);
+		if (dibujarMagiaHielo)
+			dibujarMagiaHielo(g);
+		if (dibujarMagiaRayo)
+			dibujarMagiaRayo(g);
+		if (dibujarReaccion)
+			dibujarReaccion(g);
+		if (dibujarHuidaFallida)
+			dibujarHuidaFallida(g);
 
 		if (huido || vencido || apaciguado)
 			dibujarFinDeCombate(g);
@@ -312,6 +394,62 @@ public class EstructuraCombate {
 		dibujarAtaqueFisico = false;
 	}
 
+	private void dibujarMagiaFuego(Graphics g) {
+		Image ataque = CargadorRecursos.cargarImagenTranslucida(Constantes.FUEGO);
+		long msInicio = System.currentTimeMillis();
+		while ((System.currentTimeMillis() - msInicio) < 2000) {
+			g.drawImage(ataque, 250, 100, null);
+			g.setColor(Color.BLACK);
+			g.drawString(ataqueMagico + "", 290, 140);
+		}
+		dibujarMagiaFuego = false;
+	}
+
+	private void dibujarMagiaHielo(Graphics g) {
+		Image ataque = CargadorRecursos.cargarImagenTranslucida(Constantes.HIELO);
+		long msInicio = System.currentTimeMillis();
+		while ((System.currentTimeMillis() - msInicio) < 2000) {
+			g.drawImage(ataque, 250, 100, null);
+			g.setColor(Color.BLACK);
+			g.drawString(ataqueMagico + "", 290, 140);
+		}
+		dibujarMagiaHielo = false;
+	}
+
+	private void dibujarMagiaRayo(Graphics g) {
+		Image ataque = CargadorRecursos.cargarImagenTranslucida(Constantes.RAYO);
+		long msInicio = System.currentTimeMillis();
+		while ((System.currentTimeMillis() - msInicio) < 2000) {
+			g.drawImage(ataque, 250, 100, null);
+			g.setColor(Color.BLACK);
+			g.drawString(ataqueMagico + "", 290, 140);
+		}
+		dibujarMagiaRayo = false;
+	}
+	
+	private void dibujarReaccion(Graphics g) {
+		Mensaje mensaje = new Mensaje(enemigo.getReacciones()[accionSeleccionada], 200, 100, true);
+		mensaje.dibujarMensajeCombate(g);
+		dibujarReaccion = false;
+		long msInicio = System.currentTimeMillis();
+		long msActual = System.currentTimeMillis();
+		while ((msActual - msInicio) < 2000) {
+			msActual = System.currentTimeMillis();
+		}
+	}
+
+	private void dibujarHuidaFallida(Graphics g) {
+		Mensaje mensaje = new Mensaje("NO CONSEGUISTE HUIR", 200, 100, true);
+		mensaje.dibujarMensajeCombate(g);
+		dibujarHuidaFallida = false;
+		long msInicio = System.currentTimeMillis();
+		long msActual = System.currentTimeMillis();
+		while ((msActual - msInicio) < 2000) {
+			msActual = System.currentTimeMillis();
+		}
+		opcion = 0;
+	}
+
 	private void dibujarFinDeCombate(Graphics g) {
 		Mensaje mensaje = null;
 		Mensaje mensajeExp = null;
@@ -326,9 +464,9 @@ public class EstructuraCombate {
 		}
 
 		mensaje.dibujarMensajeCombate(g);
-		if (mensajeExp != null) 
+		if (mensajeExp != null)
 			mensajeExp.dibujarMensajeCombate(g);
-		
+
 		long msInicio = System.currentTimeMillis();
 		long msActual = System.currentTimeMillis();
 		while ((msActual - msInicio) < 3000) {

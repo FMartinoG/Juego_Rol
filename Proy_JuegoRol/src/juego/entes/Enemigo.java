@@ -1,9 +1,10 @@
 package juego.entes;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Enemigo {
-	
+
 	private int experiencia;
 
 	private int vidaMaxima;
@@ -14,13 +15,18 @@ public class Enemigo {
 
 	private int resistenciaFisica;
 
+	private int probabilidadHuida;
+
 	private int[] resistenciasMagicas;
 
 	private String[] acciones;
+	private ArrayList<Integer> ordenAcciones;
+	private String[] reacciones;
 
 	private String imagen;
 
-	public Enemigo(String imagen, int[] estadisticas, int[] resistenciasMagicas, String[] acciones, int experiencia) {
+	public Enemigo(String imagen, int[] estadisticas, int[] resistenciasMagicas, String[] acciones, String[] reacciones,
+			ArrayList<Integer> ordenAcciones, int experiencia, int probHuida) {
 		this.imagen = imagen;
 		vidaMaxima = vidaActual = estadisticas[0];
 		poderFisico = estadisticas[1];
@@ -29,12 +35,15 @@ public class Enemigo {
 		this.resistenciasMagicas = resistenciasMagicas;
 		this.acciones = acciones;
 		this.experiencia = experiencia;
+		this.probabilidadHuida = probHuida;
+		this.reacciones = reacciones;
+		this.ordenAcciones = ordenAcciones;
 	}
-	
+
 	public int getVidaMaxima() {
 		return vidaMaxima;
 	}
-	
+
 	public int getVidaActual() {
 		return vidaActual;
 	}
@@ -42,13 +51,13 @@ public class Enemigo {
 	public boolean estaVivo() {
 		return vidaActual > 0;
 	}
-	
+
 	public int realizarAtaqueFisico() {
 		Random aleatorio = new Random();
 		int ataque = aleatorio.nextInt(poderFisico);
 		return ataque;
 	}
-	
+
 	public int realizarAtaqueMagico() {
 		Random aleatorio = new Random();
 		int ataque = aleatorio.nextInt(poderMagico);
@@ -70,6 +79,12 @@ public class Enemigo {
 		return ataque;
 	}
 
+	public boolean intentarHuir() {
+		Random aleatorio = new Random();
+		int numero = aleatorio.nextInt(100);
+		return numero >= (100 - probabilidadHuida);
+	}
+
 	public String[] getAcciones() {
 		return acciones;
 	}
@@ -77,8 +92,16 @@ public class Enemigo {
 	public String getImagen() {
 		return imagen;
 	}
-	
+
 	public int getExperiencia() {
 		return experiencia;
+	}
+	
+	public String[] getReacciones() {
+		return reacciones;
+	}
+	
+	public ArrayList<Integer> getOrdenAcciones() {
+		return ordenAcciones;
 	}
 }

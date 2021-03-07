@@ -45,6 +45,12 @@ public class Estadisticas implements Serializable{
 	public void setSalud(int salud) {
 		this.salud = salud;
 	}
+	
+	public void curar(int cura) {
+		salud += cura;
+		if (salud > saludMaxima)
+			salud = saludMaxima;
+	}
 
 	public int getManaMaximo() {
 		return manaMaximo;
