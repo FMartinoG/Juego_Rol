@@ -24,7 +24,8 @@ public class EstructuraCombate {
 	private boolean enCombate;
 	private boolean huido, vencido, apaciguado;
 	private boolean botonPulsado;
-	private boolean dibujarAtaqueFisico, dibujarMagiaFuego, dibujarMagiaHielo, dibujarMagiaRayo, dibujarReaccion, dibujarHuidaFallida;
+	private boolean dibujarAtaqueFisico, dibujarMagiaCura, dibujarMagiaFuego, dibujarMagiaHielo, dibujarMagiaRayo,
+			dibujarReaccion, dibujarHuidaFallida;
 	private int accionSeleccionada;
 
 	private int ataqueFisico;
@@ -60,7 +61,7 @@ public class EstructuraCombate {
 		huido = apaciguado = vencido = false;
 
 		enCombate = true;
-		dibujarAtaqueFisico = dibujarMagiaFuego = dibujarMagiaHielo = dibujarMagiaRayo = dibujarReaccion = dibujarHuidaFallida = false;
+		dibujarAtaqueFisico = dibujarMagiaCura = dibujarMagiaFuego = dibujarMagiaHielo = dibujarMagiaRayo = dibujarReaccion = dibujarHuidaFallida = false;
 		ataqueFisico = ataqueMagico = 0;
 		accionSeleccionada = -1;
 		opcion = 0;
@@ -212,6 +213,7 @@ public class EstructuraCombate {
 	private void seleccionarMagia() {
 		if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[0]) {
 			jugador.getEstadisticas().curar(20);
+			dibujarMagiaCura = true;
 			opcion = 0;
 		} else if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[1]) {
 			realizarAtaqueMagico(20, 0);
@@ -238,13 +240,13 @@ public class EstructuraCombate {
 		}
 
 		seleccionadoAccion = opcionesAccion[(int) punteroAccion];
-		
+
 		seleccionarAccion();
-		
+
 		if (Controles.TECLADO.bt_Escape)
 			opcion = 0;
 	}
-	
+
 	private void seleccionarAccion() {
 		if (Controles.TECLADO.seleccion && seleccionadoAccion == opcionesAccion[0]) {
 			realizarAccion(0);
@@ -282,11 +284,11 @@ public class EstructuraCombate {
 			break;
 		}
 	}
-	
+
 	private void realizarAccion(int n) {
 		accionSeleccionada = n;
 		dibujarReaccion = true;
-		
+
 		if (n == enemigo.getOrdenAcciones().get(0))
 			enemigo.getOrdenAcciones().remove(0);
 		if (enemigo.getOrdenAcciones().isEmpty())
@@ -332,6 +334,8 @@ public class EstructuraCombate {
 
 		if (dibujarAtaqueFisico)
 			dibujarAtaqueFisico(g);
+		if (dibujarMagiaCura)
+			dibujarMagiaCura(g);
 		if (dibujarMagiaFuego)
 			dibujarMagiaFuego(g);
 		if (dibujarMagiaHielo)
@@ -394,11 +398,21 @@ public class EstructuraCombate {
 		dibujarAtaqueFisico = false;
 	}
 
+	private void dibujarMagiaCura(Graphics g) {
+		Image cura = CargadorRecursos.cargarImagenTranslucida(Constantes.CURA);
+		g.drawImage(cura, 150, 150, null);
+		long msInicio = System.currentTimeMillis();
+		while ((System.currentTimeMillis() - msInicio) < 1000) {
+			
+		}
+		dibujarMagiaCura = false;
+	}
+
 	private void dibujarMagiaFuego(Graphics g) {
-		Image ataque = CargadorRecursos.cargarImagenTranslucida(Constantes.FUEGO);
+		Image fuego = CargadorRecursos.cargarImagenTranslucida(Constantes.FUEGO);
 		long msInicio = System.currentTimeMillis();
 		while ((System.currentTimeMillis() - msInicio) < 2000) {
-			g.drawImage(ataque, 250, 100, null);
+			g.drawImage(fuego, 250, 100, null);
 			g.setColor(Color.BLACK);
 			g.drawString(ataqueMagico + "", 290, 140);
 		}
@@ -406,10 +420,10 @@ public class EstructuraCombate {
 	}
 
 	private void dibujarMagiaHielo(Graphics g) {
-		Image ataque = CargadorRecursos.cargarImagenTranslucida(Constantes.HIELO);
+		Image hielo = CargadorRecursos.cargarImagenTranslucida(Constantes.HIELO);
 		long msInicio = System.currentTimeMillis();
 		while ((System.currentTimeMillis() - msInicio) < 2000) {
-			g.drawImage(ataque, 250, 100, null);
+			g.drawImage(hielo, 250, 100, null);
 			g.setColor(Color.BLACK);
 			g.drawString(ataqueMagico + "", 290, 140);
 		}
@@ -417,16 +431,16 @@ public class EstructuraCombate {
 	}
 
 	private void dibujarMagiaRayo(Graphics g) {
-		Image ataque = CargadorRecursos.cargarImagenTranslucida(Constantes.RAYO);
+		Image rayo = CargadorRecursos.cargarImagenTranslucida(Constantes.RAYO);
 		long msInicio = System.currentTimeMillis();
 		while ((System.currentTimeMillis() - msInicio) < 2000) {
-			g.drawImage(ataque, 250, 100, null);
+			g.drawImage(rayo, 250, 100, null);
 			g.setColor(Color.BLACK);
 			g.drawString(ataqueMagico + "", 290, 140);
 		}
 		dibujarMagiaRayo = false;
 	}
-	
+
 	private void dibujarReaccion(Graphics g) {
 		Mensaje mensaje = new Mensaje(enemigo.getReacciones()[accionSeleccionada], 200, 100, true);
 		mensaje.dibujarMensajeCombate(g);

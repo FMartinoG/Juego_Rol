@@ -28,6 +28,7 @@ public class Constantes {
 	public static final String BATMAN = "/personaje/batman.png";
 	public static final String BOTMAN = "/personaje/botman.png";
 	public static final String ATAQUE = "/imagenes/explosion.png";
+	public static final String CURA = "/imagenes/cruz.png";
 	public static final String FUEGO = "/imagenes/fuego.png";
 	public static final String HIELO = "/imagenes/Hielo.png";
 	public static final String RAYO = "/imagenes/rayo.png";
