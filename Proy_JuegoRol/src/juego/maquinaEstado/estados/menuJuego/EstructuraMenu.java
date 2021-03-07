@@ -7,11 +7,11 @@ import java.awt.Rectangle;
 import javax.sound.sampled.Clip;
 
 import juego.Constantes;
+import juego.HUD.Barras;
 import juego.control.Controles;
 import juego.entes.Estadisticas;
 import juego.entes.Jugador;
 import juego.guardado_cargado.GuardarPartida;
-import juego.herramientas.Barras;
 import juego.herramientas.CargadorRecursos;
 import juego.maquinaEstado.estados.menus.Seccion;
 

@@ -115,7 +115,7 @@ public class Estadisticas implements Serializable{
 	}
 
 	public void setExp(int exp) {
-		this.exp = exp;
+		this.exp += exp;
 	}
 	
 	public int getEstado() {

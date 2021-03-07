@@ -1,8 +1,9 @@
-package juego.herramientas;
+package juego.HUD;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
+import juego.entes.Enemigo;
 import juego.entes.Estadisticas;
 import juego.entes.Jugador;
 
@@ -10,11 +11,19 @@ public class Barras {
 	
 	private Graphics g;
 	private Estadisticas estadisticasJugador;
+	private Enemigo enemigo;
 	private int posX, posY;
 	
 	public Barras(Graphics g, Jugador j, int posX, int posY) {
 		this.g = g;
 		estadisticasJugador = j.getEstadisticas();
+		this.posX = posX;
+		this.posY = posY;
+	}
+	
+	public Barras(Graphics g, Enemigo en, int posX, int posY) {
+		this.g = g;
+		enemigo = en;
 		this.posX = posX;
 		this.posY = posY;
 	}
@@ -48,7 +57,18 @@ public class Barras {
 		g.fillRect(posX + 25, posY - 10, (int) salud, 4);
 		g.setColor(new Color(150, 0, 0));
 		g.fillRect(posX + 25, posY - 6, (int) salud, 8);
-
+	}
+	
+	public void dibujarBarraVidaEnemigo() {
+		double salud = ((double) enemigo.getVidaActual() / (double) enemigo.getVidaMaxima()) * 200;
+		
+		g.setColor(Color.black);
+		g.fillRect(posX, posY, 200, 12);
+		
+		g.setColor(Color.red);
+		g.fillRect(posX, posY, (int) salud, 4);
+		g.setColor(new Color(150, 0, 0));
+		g.fillRect(posX, posY + 4, (int) salud, 8);
 	}
 	
 	public void dibujarBarraManaMenu() {

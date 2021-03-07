@@ -34,7 +34,6 @@ public class Mensaje {
 			g.drawRect(posX, posY, longitudMarco + 50, 30);
 			g.setColor(Color.black);
 			g.fillRect(posX, posY, longitudMarco + 50, 30);
-			g.setColor(Color.white);
 		}
 		g.setColor(Color.white);
 		int puntero = 0;
@@ -59,6 +58,18 @@ public class Mensaje {
 			String texto_continuar = "'Enter' para continuar";
 			g.drawString(texto_continuar, posX, posY + 40);
 		}
+	}
+	
+	public void dibujarMensajeCombate(Graphics g) {
+		FontMetrics fm = g.getFontMetrics();
+		int longitudMarco = fm.stringWidth(mensaje);
+		g.setColor(Color.white);
+		g.drawRect(posX, posY, longitudMarco + 50, 30);
+		g.setColor(Color.black);
+		g.fillRect(posX, posY, longitudMarco + 50, 30);
+		g.setColor(Color.white);
+		g.drawString(mensaje + "", posX + 10, posY + 15);
+		
 	}
 
 }

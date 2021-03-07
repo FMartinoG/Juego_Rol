@@ -7,7 +7,6 @@ import javax.sound.sampled.Clip;
 
 import juego.Constantes;
 import juego.control.Controles;
-import juego.entes.Enemigo;
 import juego.entes.Estadisticas;
 import juego.entes.Jugador;
 import juego.guardado_cargado.CargarPartida;
@@ -161,8 +160,7 @@ public class GestorEstados {
 		cambiarEstado(2);
 		if (((GestorJuego) estados[1]).isEnCombate()) {
 			Jugador j = ((GestorJuego) estados[1]).getJugador();
-			Enemigo e = new Enemigo(Constantes.BOTMAN, null);
-			estados[3] = new GestorCombate(j, e);
+			estados[3] = new GestorCombate(j, Constantes.ENEMIGOS[0]);
 			cambiarEstado(3);
 		}
 	}
