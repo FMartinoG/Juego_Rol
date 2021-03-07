@@ -1,22 +1,24 @@
 package juego.entes;
 
 import java.io.Serializable;
+import java.util.Random;
 
-public class Estadisticas implements Serializable{
+public class Estadisticas implements Serializable {
 	private static final long serialVersionUID = 230022786243647812L;
-	
+
 	private int nivel;
 	private int expMaxima, exp;
 	private int saludMaxima, salud;
 	private int manaMaximo, mana;
 	private int ataque, defensa;
 	private int poderMagico, defensaMagica;
-	
+
 	private int mapa;
 	private int estado;
-	
-	public Estadisticas(int saludMaxima, int manaMaximo, int ataque, int defensa, int poderMagico, int defensaMagica, boolean jugador) {
-		if(jugador) {
+
+	public Estadisticas(int saludMaxima, int manaMaximo, int ataque, int defensa, int poderMagico, int defensaMagica,
+			boolean jugador) {
+		if (jugador) {
 			nivel = 1;
 			expMaxima = 100;
 			estado = 0;
@@ -45,11 +47,41 @@ public class Estadisticas implements Serializable{
 	public void setSalud(int salud) {
 		this.salud = salud;
 	}
-	
+
 	public void curar(int cura) {
 		salud += cura;
 		if (salud > saludMaxima)
 			salud = saludMaxima;
+	}
+
+	public int recibirAtaqueFisico(int n) {
+		int ataque = 0;
+		if (n > defensa) {
+			ataque = n - defensa;
+			salud -= ataque;
+		}
+		return ataque;
+	}
+
+	public int recibirAtaqueMagico(int n) {
+		int ataque = 0;
+		if (n > defensa) {
+			ataque = n - defensaMagica;
+			salud -= ataque;
+		}
+		return ataque;
+	}
+	
+	public int realizarAtaqueFisico() {
+		Random aleatorio = new Random();
+		int ataqueRealizado = aleatorio.nextInt(ataque);
+		return ataqueRealizado;
+	}
+	
+	public int realizarAtaqueMagico() {
+		Random aleatorio = new Random();
+		int ataqueRealizado = aleatorio.nextInt(poderMagico);
+		return ataqueRealizado;
 	}
 
 	public int getManaMaximo() {
@@ -123,19 +155,19 @@ public class Estadisticas implements Serializable{
 	public void setExp(int exp) {
 		this.exp += exp;
 	}
-	
+
 	public int getEstado() {
 		return estado;
 	}
-	
+
 	public int getMapa() {
 		return mapa;
 	}
-	
+
 	public void cambiarMapa(int n) {
 		this.mapa = n;
 	}
-	
+
 	public void cambiarEstado(int n) {
 		this.estado = n;
 	}

@@ -36,9 +36,6 @@ public class EstructuraCombate {
 	private OpcionCombate[] opciones;
 	private OpcionCombate seleccionado;
 
-	private OpcionCombate[] opcionesAtaque;
-	private OpcionCombate seleccionadoAtaque;
-
 	private OpcionCombate[] opcionesMagia;
 	private OpcionCombate seleccionadoMagia;
 
@@ -46,7 +43,6 @@ public class EstructuraCombate {
 	private OpcionCombate seleccionadoAccion;
 
 	private double punteroPrincipal;
-	private double punteroAtaque;
 	private double punteroMagia;
 	private double punteroAccion;
 
@@ -67,7 +63,6 @@ public class EstructuraCombate {
 		opcion = 0;
 
 		inicializarPrincipal();
-		inicializarAtaque();
 		inicializarMagia();
 		inicializarAccion();
 	}
@@ -81,17 +76,6 @@ public class EstructuraCombate {
 		opciones[3] = new OpcionCombate("Huir", new Rectangle(490, 290, 100, 40));
 
 		seleccionado = opciones[(int) punteroPrincipal];
-	}
-
-	private void inicializarAtaque() {
-		punteroAtaque = 0;
-		opcionesAtaque = new OpcionCombate[4];
-		opcionesAtaque[0] = new OpcionCombate("Ataque Rápido", new Rectangle(40, 290, 100, 40));
-		opcionesAtaque[1] = new OpcionCombate("Ataque Normal", new Rectangle(190, 290, 100, 40));
-		opcionesAtaque[2] = new OpcionCombate("Ataque Fuerte", new Rectangle(340, 290, 100, 40));
-		opcionesAtaque[3] = new OpcionCombate("Ataque Cargado", new Rectangle(490, 290, 100, 40));
-
-		seleccionadoAtaque = opcionesAtaque[0];
 	}
 
 	private void inicializarMagia() {
@@ -123,8 +107,10 @@ public class EstructuraCombate {
 
 		if (opcion == 0)
 			actualizarPrincipal();
-		else if (opcion == 1)
-			actualizarAtaque();
+		else if (opcion == 1) {
+			realizarAtaqueFisico(jugador.getEstadisticas().realizarAtaqueFisico());
+			opcion = 0;
+		}
 		else if (opcion == 2)
 			actualizarMagia();
 		else if (opcion == 3)
@@ -151,43 +137,6 @@ public class EstructuraCombate {
 
 		if (!enemigo.estaVivo())
 			vencido = true;
-
-	}
-
-	private void actualizarAtaque() {
-		while (botonPulsado && Controles.TECLADO.seleccion) {
-			System.out.println("Suelte el botón.");
-		}
-		botonPulsado = false;
-
-		if (Controles.TECLADO.izdaMenu && punteroAtaque > 0) {
-			punteroAtaque -= 0.2;
-		} else if (Controles.TECLADO.drchaMenu && punteroAtaque < 3) {
-			punteroAtaque += 0.2;
-		}
-
-		seleccionadoAtaque = opcionesAtaque[(int) punteroAtaque];
-
-		seleccionarAtaque();
-
-		if (Controles.TECLADO.bt_Escape)
-			opcion = 0;
-	}
-
-	private void seleccionarAtaque() {
-		if (Controles.TECLADO.seleccion && seleccionadoAtaque == opcionesAtaque[0]) {
-			realizarAtaqueFisico(50);
-			opcion = 0;
-		} else if (Controles.TECLADO.seleccion && seleccionadoAtaque == opcionesAtaque[1]) {
-			realizarAtaqueFisico(20);
-			opcion = 0;
-		} else if (Controles.TECLADO.seleccion && seleccionadoAtaque == opcionesAtaque[2]) {
-			realizarAtaqueFisico(150);
-			opcion = 0;
-		} else if (Controles.TECLADO.seleccion && seleccionadoAtaque == opcionesAtaque[3]) {
-			realizarAtaqueFisico(500);
-			opcion = 0;
-		}
 	}
 
 	private void actualizarMagia() {
@@ -325,8 +274,6 @@ public class EstructuraCombate {
 
 		if (opcion == 0)
 			dibujarPrincipal(g);
-		else if (opcion == 1)
-			dibujarAtaque(g);
 		else if (opcion == 2)
 			dibujarMagia(g);
 		else if (opcion == 3)
@@ -354,15 +301,6 @@ public class EstructuraCombate {
 	private void dibujarPrincipal(Graphics g) {
 		for (OpcionCombate o : opciones) {
 			if (o == seleccionado)
-				o.dibujarEtiquetaActiva(g);
-			else
-				o.dibujarEtiquetaInactiva(g);
-		}
-	}
-
-	private void dibujarAtaque(Graphics g) {
-		for (OpcionCombate o : opcionesAtaque) {
-			if (o == seleccionadoAtaque)
 				o.dibujarEtiquetaActiva(g);
 			else
 				o.dibujarEtiquetaInactiva(g);
