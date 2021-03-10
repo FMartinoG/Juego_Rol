@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Enemigo {
+	
+	private String nombre;
 
 	private int experiencia;
 
@@ -25,8 +27,9 @@ public class Enemigo {
 
 	private String imagen;
 
-	public Enemigo(String imagen, int[] estadisticas, int[] resistenciasMagicas, String[] acciones, String[] reacciones,
+	public Enemigo(String nombre, String imagen, int[] estadisticas, int[] resistenciasMagicas, String[] acciones, String[] reacciones,
 			ArrayList<Integer> ordenAcciones, int experiencia, int probHuida) {
+		this.nombre = nombre;
 		this.imagen = imagen;
 		vidaMaxima = vidaActual = estadisticas[0];
 		poderFisico = estadisticas[1];
@@ -38,6 +41,10 @@ public class Enemigo {
 		this.probabilidadHuida = probHuida;
 		this.reacciones = reacciones;
 		this.ordenAcciones = ordenAcciones;
+	}
+	
+	public String getNombre() {
+		return nombre;
 	}
 
 	public int getVidaMaxima() {

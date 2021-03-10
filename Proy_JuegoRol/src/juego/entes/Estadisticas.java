@@ -59,6 +59,8 @@ public class Estadisticas implements Serializable {
 		if (n > defensa) {
 			ataque = n - defensa;
 			salud -= ataque;
+			if (salud < 0)
+				salud = 0;
 		}
 		return ataque;
 	}
@@ -68,6 +70,8 @@ public class Estadisticas implements Serializable {
 		if (n > defensa) {
 			ataque = n - defensaMagica;
 			salud -= ataque;
+			if (salud < 0)
+				salud = 0;
 		}
 		return ataque;
 	}

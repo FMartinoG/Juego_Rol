@@ -22,14 +22,17 @@ public class EstructuraCombate {
 	private Image imgEnemigo;
 
 	private boolean enCombate;
-	private boolean huido, vencido, apaciguado;
+	private boolean huido, vencido, apaciguado, derrota;
 	private boolean botonPulsado;
 	private boolean dibujarAtaqueFisico, dibujarMagiaCura, dibujarMagiaFuego, dibujarMagiaHielo, dibujarMagiaRayo,
-			dibujarReaccion, dibujarHuidaFallida;
+			dibujarReaccion, dibujarHuidaFallida, dibujarAtaqueEnemigo;
 	private int accionSeleccionada;
 
 	private int ataqueFisico;
 	private int ataqueMagico;
+
+	private boolean ataqueEnemigoEsFisico;
+	private int ataqueEnemigo;
 
 	private int opcion;
 
@@ -54,11 +57,12 @@ public class EstructuraCombate {
 		imgEnemigo = CargadorRecursos.cargarImagenTranslucida(enemigo.getImagen());
 
 		botonPulsado = true;
-		huido = apaciguado = vencido = false;
+		huido = apaciguado = vencido = derrota = false;
 
 		enCombate = true;
-		dibujarAtaqueFisico = dibujarMagiaCura = dibujarMagiaFuego = dibujarMagiaHielo = dibujarMagiaRayo = dibujarReaccion = dibujarHuidaFallida = false;
-		ataqueFisico = ataqueMagico = 0;
+		dibujarAtaqueFisico = dibujarMagiaCura = dibujarMagiaFuego = dibujarMagiaHielo = dibujarMagiaRayo = dibujarReaccion = dibujarHuidaFallida = dibujarAtaqueEnemigo = false;
+		ataqueFisico = ataqueMagico = ataqueEnemigo = 0;
+		ataqueEnemigoEsFisico = false;
 		accionSeleccionada = -1;
 		opcion = 0;
 
@@ -110,8 +114,7 @@ public class EstructuraCombate {
 		else if (opcion == 1) {
 			realizarAtaqueFisico(jugador.getEstadisticas().realizarAtaqueFisico());
 			opcion = 0;
-		}
-		else if (opcion == 2)
+		} else if (opcion == 2)
 			actualizarMagia();
 		else if (opcion == 3)
 			actualizarAccion();
@@ -215,6 +218,7 @@ public class EstructuraCombate {
 	private void realizarAtaqueFisico(int n) {
 		ataqueFisico = enemigo.recibirAtaqueFisico(n);
 		dibujarAtaqueFisico = true;
+		turnoDeEnemigo(true);
 	}
 
 	private void realizarAtaqueMagico(int n, int elemento) {
@@ -232,6 +236,7 @@ public class EstructuraCombate {
 		default:
 			break;
 		}
+		turnoDeEnemigo(false);
 	}
 
 	private void realizarAccion(int n) {
@@ -242,6 +247,19 @@ public class EstructuraCombate {
 			enemigo.getOrdenAcciones().remove(0);
 		if (enemigo.getOrdenAcciones().isEmpty())
 			apaciguado = true;
+	}
+
+	private void turnoDeEnemigo(boolean fisico) {
+		if (fisico) {
+			ataqueEnemigo = enemigo.realizarAtaqueFisico();
+			ataqueEnemigoEsFisico = true;
+		}
+		else {
+			ataqueEnemigo = enemigo.realizarAtaqueMagico();
+			ataqueEnemigoEsFisico = false;
+		}
+		dibujarAtaqueEnemigo = true;
+		
 	}
 
 	public void dibujar(Graphics g) {
@@ -293,8 +311,10 @@ public class EstructuraCombate {
 			dibujarReaccion(g);
 		if (dibujarHuidaFallida)
 			dibujarHuidaFallida(g);
+		if (dibujarAtaqueEnemigo)
+			dibujarAtaqueEnemigo(g);
 
-		if (huido || vencido || apaciguado)
+		if (huido || vencido || apaciguado || derrota)
 			dibujarFinDeCombate(g);
 	}
 
@@ -341,7 +361,7 @@ public class EstructuraCombate {
 		g.drawImage(cura, 150, 150, null);
 		long msInicio = System.currentTimeMillis();
 		while ((System.currentTimeMillis() - msInicio) < 1000) {
-			
+
 		}
 		dibujarMagiaCura = false;
 	}
@@ -411,9 +431,10 @@ public class EstructuraCombate {
 			mensaje = new Mensaje("ENEMIGO DERROTADO", 200, 100, true);
 			mensajeExp = new Mensaje("GANADOS " + enemigo.getExperiencia() + " PUNTOS DE EXP", 180, 130, true);
 			jugador.getEstadisticas().setExp(enemigo.getExperiencia());
-		} else {
+		} else if (apaciguado)
 			mensaje = new Mensaje("EL ENEMIGO SE HA IDO", 200, 100, true);
-		}
+		else
+			mensaje = new Mensaje("HAS SIDO DERROTADO", 200, 100, true);
 
 		mensaje.dibujarMensajeCombate(g);
 		if (mensajeExp != null)
@@ -425,6 +446,46 @@ public class EstructuraCombate {
 			msActual = System.currentTimeMillis();
 		}
 		enCombate = false;
+	}
+
+	private void dibujarAtaqueEnemigo(Graphics g) {
+		long msInicio = System.currentTimeMillis();
+		long msActual = System.currentTimeMillis();
+		while ((msActual - msInicio) < 2000) {
+			msActual = System.currentTimeMillis();
+		}
+		String textoMensaje = "";
+		int ataqueRecibido = 0;
+		if (ataqueEnemigoEsFisico) {
+			textoMensaje = enemigo.getNombre() + " REALIZA UN ATAQUE FÍSICO";
+			ataqueRecibido = jugador.getEstadisticas().recibirAtaqueFisico(ataqueEnemigo);
+		}
+		else {
+			textoMensaje = enemigo.getNombre() + " REALIZA UN ATAQUE MÁGICO";
+			ataqueRecibido = jugador.getEstadisticas().recibirAtaqueMagico(ataqueEnemigo);
+		}
+		Mensaje mensaje = new Mensaje(textoMensaje, 200, 100, true);
+		mensaje.dibujarMensajeCombate(g);
+		
+		String textoMensaje2 = "";
+		if (ataqueRecibido == 0)
+			textoMensaje2 = "FALLÓ EL ATAQUE";
+		else
+			textoMensaje2 = "DAÑO RECIBIDO: " + ataqueRecibido;
+		Mensaje mensaje2 = new Mensaje(textoMensaje2, 200, 130, true);
+		mensaje2.dibujarMensajeCombate(g);
+		dibujarAtaqueEnemigo = false;
+		msInicio = System.currentTimeMillis();
+		msActual = System.currentTimeMillis();
+		while ((msActual - msInicio) < 2000) {
+			msActual = System.currentTimeMillis();
+		}
+		comprobarJugadorVivo();
+	}
+	
+	private void comprobarJugadorVivo() {
+		if (jugador.getEstadisticas().getSalud() <= 0)
+			derrota = true;
 	}
 
 	public boolean isEnCombate() {
