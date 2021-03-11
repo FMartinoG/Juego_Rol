@@ -24,7 +24,7 @@ import juego.maquinaEstado.estados.menus.Seccion;
 public class EstructuraMenu {
 
 	private boolean estadisticasSeleccionado;
-	private boolean inventarioSeleccionado;
+	private boolean informacionSeleccionado;
 
 	private Estadisticas estadisticasJugador;
 
@@ -51,7 +51,7 @@ public class EstructuraMenu {
 		estadisticasJugador = jugador.getEstadisticas();
 
 		estadisticasSeleccionado = false;
-		inventarioSeleccionado = false;
+		informacionSeleccionado = false;
 		pulsacion = 0;
 		guardado = false;
 
@@ -67,7 +67,7 @@ public class EstructuraMenu {
 		puntero = punteroAnterior = 0;
 		secciones = new Seccion[4];
 		secciones[0] = new Seccion("Estadísticas", new Rectangle(5, 60, 80, 20));
-		secciones[1] = new Seccion("Inventario", new Rectangle(5, 100, 80, 20));
+		secciones[1] = new Seccion("Información", new Rectangle(5, 100, 80, 20));
 		secciones[2] = new Seccion("Guardar", new Rectangle(5, 140, 80, 20));
 		secciones[3] = new Seccion("Salir", new Rectangle(5, 180, 80, 20));
 
@@ -101,9 +101,9 @@ public class EstructuraMenu {
 			estadisticasSeleccionado = false;
 
 		if (seccionActual == secciones[1]) {
-			inventarioSeleccionado = true;
+			informacionSeleccionado = true;
 		} else
-			inventarioSeleccionado = false;
+			informacionSeleccionado = false;
 
 		if (seccionActual == secciones[2] && Controles.TECLADO.seleccion && pulsacion == 0) {
 			++pulsacion;
@@ -139,8 +139,8 @@ public class EstructuraMenu {
 		if (estadisticasSeleccionado)
 			dibujarEstadisticas(g);
 
-		if (inventarioSeleccionado) {
-			dibujarInventario(g);
+		if (informacionSeleccionado) {
+			dibujarInformacion(g);
 		}
 
 		if (guardado) {
@@ -156,9 +156,16 @@ public class EstructuraMenu {
 
 	}
 
-	private void dibujarInventario(Graphics g) {
-		// TODO Auto-generated method stub
-
+	private void dibujarInformacion(Graphics g) {
+		g.setColor(Color.black);
+		g.drawString("INFORMACIÓN DEL JUEGO:", 150, 60);
+		g.drawString("Durante los combates, el enemigo solo atacará cuando tú le ataques.", 150, 80);
+		g.drawString("Todos los enemigos del juego pueden ser superados sin pelear, usando las acciones.", 150, 100);
+		g.drawString("Todas las magias te costarán 20 puntos de mana.", 150, 120);
+		g.drawString("Todo tipo de ataque tendrá un valor aleatorio entre 0 y el nivel de ataque o el poder mágico.", 150, 140);
+		
+		g.drawString("Este juego no guarda automáticamente.", 150, 180);
+		g.drawString("Cada vez que se guarda la partida se sobreescribe el guardado anterior.", 150, 200);
 	}
 
 	private void dibujarEstadisticas(Graphics g) {
@@ -168,7 +175,7 @@ public class EstructuraMenu {
 		dibujarBarraVida(g);
 		dibujarBarraMana(g);
 		dibujarBarraExp(g);
-		dibujarInformacion(g);
+		dibujarInformacionEstadisticas(g);
 	}
 
 	private void dibujarBarraVida(Graphics g) {
@@ -186,7 +193,7 @@ public class EstructuraMenu {
 		exp.dibujarBarraExpMenu();
 	}
 
-	private void dibujarInformacion(Graphics g) {
+	private void dibujarInformacionEstadisticas(Graphics g) {
 		g.setColor(Color.black);
 		g.drawString("ATAQUE FÍSICO", 150, 200);
 		g.drawString("DEFENSA FÍSICA", 150, 220);

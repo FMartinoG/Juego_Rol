@@ -137,13 +137,13 @@ public class GestorEstados {
 			String textoMapa = "";
 			switch (s.getMapa()) {
 			case 1:
-				textoMapa = Constantes.MAPA_1;
+				textoMapa = Constantes.MAPA_CARGA_1;
 				break;
 			case 2:
-				textoMapa = Constantes.MAPA_1_1;
+				textoMapa = Constantes.MAPA_CARGA_2;
 				break;
 			case 3:
-				textoMapa = Constantes.MAPA_2;
+				textoMapa = Constantes.MAPA_CARGA_3;
 				break;
 			default:
 				break;

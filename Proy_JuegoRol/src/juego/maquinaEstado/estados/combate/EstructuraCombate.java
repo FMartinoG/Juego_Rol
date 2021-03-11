@@ -442,7 +442,7 @@ public class EstructuraCombate {
 		else if (vencido) {
 			mensaje = new Mensaje("ENEMIGO DERROTADO", 200, 100, true);
 			mensajeExp = new Mensaje("GANADOS " + enemigo.getExperiencia() + " PUNTOS DE EXP", 180, 130, true);
-			jugador.getEstadisticas().setExp(enemigo.getExperiencia());
+			jugador.getEstadisticas().aumentarExp(enemigo.getExperiencia());
 		} else if (apaciguado)
 			mensaje = new Mensaje("EL ENEMIGO SE HA IDO", 200, 100, true);
 		else

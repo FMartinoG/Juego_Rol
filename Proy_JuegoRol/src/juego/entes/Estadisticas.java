@@ -31,22 +31,18 @@ public class Estadisticas implements Serializable {
 		return saludMaxima;
 	}
 
-	public void setSaludMaxima(int saludMaxima) {
-		this.saludMaxima = saludMaxima;
-	}
-
 	public int getSalud() {
 		return salud;
-	}
-
-	public void setSalud(int salud) {
-		this.salud = salud;
 	}
 
 	public void curar(int cura) {
 		salud += cura;
 		if (salud > saludMaxima)
 			salud = saludMaxima;
+	}
+
+	public void curaTotal() {
+		salud = saludMaxima;
 	}
 
 	public int recibirAtaqueFisico(int n) {
@@ -87,16 +83,8 @@ public class Estadisticas implements Serializable {
 		return manaMaximo;
 	}
 
-	public void setManaMaximo(int manaMaximo) {
-		this.manaMaximo = manaMaximo;
-	}
-
 	public int getMana() {
 		return mana;
-	}
-
-	public void setMana(int mana) {
-		this.mana = mana;
 	}
 
 	public void gastarMana(int gasto) {
@@ -107,56 +95,44 @@ public class Estadisticas implements Serializable {
 		return ataque;
 	}
 
-	public void setAtaque(int ataque) {
-		this.ataque = ataque;
-	}
-
 	public int getDefensa() {
 		return defensa;
-	}
-
-	public void setDefensa(int defensa) {
-		this.defensa = defensa;
 	}
 
 	public int getPoderMagico() {
 		return poderMagico;
 	}
 
-	public void setPoderMagico(int poderMagico) {
-		this.poderMagico = poderMagico;
-	}
-
 	public int getDefensaMagica() {
 		return defensaMagica;
-	}
-
-	public void setDefensaMagica(int defensaMagica) {
-		this.defensaMagica = defensaMagica;
 	}
 
 	public int getNivel() {
 		return nivel;
 	}
 
-	public void setNivel(int nivel) {
-		this.nivel = nivel;
-	}
-
 	public int getExpMaxima() {
 		return expMaxima;
-	}
-
-	public void setExpMaxima(int expMaxima) {
-		this.expMaxima = expMaxima;
 	}
 
 	public int getExp() {
 		return exp;
 	}
 
-	public void setExp(int exp) {
+	public void aumentarExp(int exp) {
 		this.exp += exp;
+		if (this.exp > expMaxima) {
+			subirNivel();
+		}
+	}
+	
+	private void subirNivel() {
+		++nivel;
+		exp -= expMaxima;
+		ataque += 5;
+		defensa += 5;
+		poderMagico += 5;
+		defensaMagica += 5;
 	}
 
 	public int getMapa() {

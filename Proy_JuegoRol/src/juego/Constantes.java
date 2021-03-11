@@ -35,8 +35,13 @@ public class Constantes {
 	
 
 	public static final String MAPA_1 = "/mapas/mapa001.txt";
-	public static final String MAPA_1_1 = "/mapas/mapa001_1.txt";
 	public static final String MAPA_2 = "/mapas/mapa002.txt";
+	public static final String MAPA_3 = "/mapas/mapa003.txt";
+	
+	public static final String MAPA_CARGA_1 = "/mapas/carga/carga1.txt";
+	public static final String MAPA_CARGA_2 = "/mapas/carga/carga2.txt";
+	public static final String MAPA_CARGA_3 = "/mapas/carga/carga3.txt";
+	
 
 	public static final String ICONO = "/icon/juego.png";
 
