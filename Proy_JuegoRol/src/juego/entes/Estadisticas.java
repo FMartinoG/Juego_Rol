@@ -14,16 +14,11 @@ public class Estadisticas implements Serializable {
 	private int poderMagico, defensaMagica;
 
 	private int mapa;
-	private int estado;
 
-	public Estadisticas(int saludMaxima, int manaMaximo, int ataque, int defensa, int poderMagico, int defensaMagica,
-			boolean jugador) {
-		if (jugador) {
-			nivel = 1;
-			expMaxima = 100;
-			estado = 0;
-			mapa = 1;
-		}
+	public Estadisticas(int saludMaxima, int manaMaximo, int ataque, int defensa, int poderMagico, int defensaMagica) {
+		nivel = 1;
+		expMaxima = 100;
+		mapa = 1;
 		this.saludMaxima = this.salud = saludMaxima;
 		this.manaMaximo = this.mana = manaMaximo;
 		this.ataque = ataque;
@@ -75,13 +70,13 @@ public class Estadisticas implements Serializable {
 		}
 		return ataque;
 	}
-	
+
 	public int realizarAtaqueFisico() {
 		Random aleatorio = new Random();
 		int ataqueRealizado = aleatorio.nextInt(ataque);
 		return ataqueRealizado;
 	}
-	
+
 	public int realizarAtaqueMagico() {
 		Random aleatorio = new Random();
 		int ataqueRealizado = aleatorio.nextInt(poderMagico);
@@ -102,6 +97,10 @@ public class Estadisticas implements Serializable {
 
 	public void setMana(int mana) {
 		this.mana = mana;
+	}
+
+	public void gastarMana(int gasto) {
+		this.mana -= gasto;
 	}
 
 	public int getAtaque() {
@@ -160,20 +159,12 @@ public class Estadisticas implements Serializable {
 		this.exp += exp;
 	}
 
-	public int getEstado() {
-		return estado;
-	}
-
 	public int getMapa() {
 		return mapa;
 	}
 
 	public void cambiarMapa(int n) {
 		this.mapa = n;
-	}
-
-	public void cambiarEstado(int n) {
-		this.estado = n;
 	}
 
 }

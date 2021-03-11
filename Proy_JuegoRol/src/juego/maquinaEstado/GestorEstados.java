@@ -140,6 +140,9 @@ public class GestorEstados {
 				textoMapa = Constantes.MAPA_1;
 				break;
 			case 2:
+				textoMapa = Constantes.MAPA_1_1;
+				break;
+			case 3:
 				textoMapa = Constantes.MAPA_2;
 				break;
 			default:

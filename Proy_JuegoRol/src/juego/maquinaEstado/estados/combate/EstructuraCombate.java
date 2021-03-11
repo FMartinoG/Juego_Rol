@@ -73,11 +73,20 @@ public class EstructuraCombate {
 
 	private void inicializarPrincipal() {
 		punteroPrincipal = 0;
-		opciones = new OpcionCombate[4];
-		opciones[0] = new OpcionCombate("Ataque Físico", new Rectangle(40, 290, 100, 40));
-		opciones[1] = new OpcionCombate("Magia", new Rectangle(190, 290, 100, 40));
-		opciones[2] = new OpcionCombate("Acción", new Rectangle(340, 290, 100, 40));
-		opciones[3] = new OpcionCombate("Huir", new Rectangle(490, 290, 100, 40));
+		if (jugador.getEstadisticas().getMana() > 20) {
+			opciones = new OpcionCombate[4];
+			opciones[0] = new OpcionCombate("Ataque Físico", new Rectangle(40, 290, 100, 40));
+			opciones[1] = new OpcionCombate("Magia", new Rectangle(190, 290, 100, 40));
+			opciones[2] = new OpcionCombate("Acción", new Rectangle(340, 290, 100, 40));
+			opciones[3] = new OpcionCombate("Huir", new Rectangle(490, 290, 100, 40));
+		}
+		else
+		{
+			opciones = new OpcionCombate[3];
+			opciones[0] = new OpcionCombate("Ataque Físico", new Rectangle(40, 290, 100, 40));
+			opciones[1] = new OpcionCombate("Acción", new Rectangle(340, 290, 100, 40));
+			opciones[2] = new OpcionCombate("Huir", new Rectangle(490, 290, 100, 40));
+		}
 
 		seleccionado = opciones[(int) punteroPrincipal];
 	}
@@ -164,17 +173,21 @@ public class EstructuraCombate {
 
 	private void seleccionarMagia() {
 		if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[0]) {
-			jugador.getEstadisticas().curar(20);
+			jugador.getEstadisticas().curar(200);
+			jugador.getEstadisticas().gastarMana(20);
 			dibujarMagiaCura = true;
 			opcion = 0;
 		} else if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[1]) {
 			realizarAtaqueMagico(20, 0);
+			jugador.getEstadisticas().gastarMana(20);
 			opcion = 0;
 		} else if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[2]) {
 			realizarAtaqueMagico(40, 1);
+			jugador.getEstadisticas().gastarMana(20);
 			opcion = 0;
 		} else if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[3]) {
 			realizarAtaqueMagico(20, 2);
+			jugador.getEstadisticas().gastarMana(20);
 			opcion = 0;
 		}
 	}
@@ -253,13 +266,12 @@ public class EstructuraCombate {
 		if (fisico) {
 			ataqueEnemigo = enemigo.realizarAtaqueFisico();
 			ataqueEnemigoEsFisico = true;
-		}
-		else {
+		} else {
 			ataqueEnemigo = enemigo.realizarAtaqueMagico();
 			ataqueEnemigoEsFisico = false;
 		}
 		dibujarAtaqueEnemigo = true;
-		
+
 	}
 
 	public void dibujar(Graphics g) {
@@ -459,14 +471,13 @@ public class EstructuraCombate {
 		if (ataqueEnemigoEsFisico) {
 			textoMensaje = enemigo.getNombre() + " REALIZA UN ATAQUE FÍSICO";
 			ataqueRecibido = jugador.getEstadisticas().recibirAtaqueFisico(ataqueEnemigo);
-		}
-		else {
+		} else {
 			textoMensaje = enemigo.getNombre() + " REALIZA UN ATAQUE MÁGICO";
 			ataqueRecibido = jugador.getEstadisticas().recibirAtaqueMagico(ataqueEnemigo);
 		}
 		Mensaje mensaje = new Mensaje(textoMensaje, 200, 100, true);
 		mensaje.dibujarMensajeCombate(g);
-		
+
 		String textoMensaje2 = "";
 		if (ataqueRecibido == 0)
 			textoMensaje2 = "FALLÓ EL ATAQUE";
@@ -482,7 +493,7 @@ public class EstructuraCombate {
 		}
 		comprobarJugadorVivo();
 	}
-	
+
 	private void comprobarJugadorVivo() {
 		if (jugador.getEstadisticas().getSalud() <= 0)
 			derrota = true;

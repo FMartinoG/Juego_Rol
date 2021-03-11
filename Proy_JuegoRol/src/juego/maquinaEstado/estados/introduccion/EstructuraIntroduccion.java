@@ -6,6 +6,7 @@ import java.awt.Graphics;
 
 import juego.Constantes;
 import juego.HUD.Mensaje;
+import juego.control.Controles;
 
 public class EstructuraIntroduccion {
 
@@ -32,6 +33,8 @@ public class EstructuraIntroduccion {
 	}
 
 	public void actualizar() {
+		if (Controles.TECLADO.seleccion)
+			finalizado = true;
 	}
 
 	public void dibujar(Graphics g) {

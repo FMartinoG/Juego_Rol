@@ -30,9 +30,8 @@ public class GestorJuego implements EstadoJuego {
 	}
 
 	public GestorJuego(Jugador jugador) {
-		iniciarMapa(Constantes.MAPA_1);
 		this.jugador = jugador;
-		jugador.getEstadisticas().cambiarMapa(1);
+		iniciarMapa(jugador.getMapa().getRuta());
 	}
 
 	private void iniciarMapa(String ruta) {
@@ -55,8 +54,11 @@ public class GestorJuego implements EstadoJuego {
 		case Constantes.MAPA_1:
 			jugador.getEstadisticas().cambiarMapa(1);
 			break;
-		case Constantes.MAPA_2:
+		case Constantes.MAPA_1_1:
 			jugador.getEstadisticas().cambiarMapa(2);
+			break;
+		case Constantes.MAPA_2:
+			jugador.getEstadisticas().cambiarMapa(3);
 			break;
 		default:
 			break;
