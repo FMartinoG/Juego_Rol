@@ -2,10 +2,8 @@ package juego.maquinaEstado.estados.combate;
 
 import java.awt.Graphics;
 
-import juego.Constantes;
 import juego.entes.Enemigo;
 import juego.entes.Jugador;
-import juego.herramientas.CargadorRecursos;
 import juego.maquinaEstado.EstadoJuego;
 
 /**
@@ -18,7 +16,7 @@ public class GestorCombate implements EstadoJuego {
 
 	private Jugador jugador;
 	private Enemigo enemigo;
-	
+
 	private boolean enCombate;
 	private EstructuraCombate ec;
 
@@ -42,7 +40,7 @@ public class GestorCombate implements EstadoJuego {
 	public void dibujar(Graphics g) {
 		ec.dibujar(g);
 	}
-	
+
 	public boolean isEnCombate() {
 		return enCombate;
 	}
