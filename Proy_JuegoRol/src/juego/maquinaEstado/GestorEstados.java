@@ -203,6 +203,9 @@ public class GestorEstados {
 	 * @param nuevoEstado int - Posicion en la lista de estados.
 	 */
 	public void cambiarEstado(final int nuevoEstado) {
+		if (nuevoEstado == 0 && !musica.isActive()) {
+			musica.start();
+		}
 		estadoActual = estados[nuevoEstado];
 		posicionActual = nuevoEstado;
 	}
