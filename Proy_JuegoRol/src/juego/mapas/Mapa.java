@@ -35,9 +35,11 @@ public class Mapa {
 
 	private ArrayList<Point> conversaciones;
 	private ArrayList<Rectangle> zonaConversaciones = new ArrayList<Rectangle>();
+	private ArrayList<Integer> punteroConversacion;
 
 	private ArrayList<Point> combates;
 	private ArrayList<Rectangle> zonaCombates = new ArrayList<Rectangle>();
+	private ArrayList<Integer> punteroCombates;
 
 	private Point posicionInicial;
 	private Point posicionSalida;
@@ -170,9 +172,12 @@ public class Mapa {
 	private void guardarZonaConversaciones(String zona) {
 		if (!zona.equals("no")) {
 			conversaciones = new ArrayList<Point>();
+			punteroConversacion = new ArrayList<>();
 			String[] zonas = zona.split(",");
 			for (int i = 0; i < zonas.length; ++i) {
-				String[] coordenadas = zonas[i].split("-");
+				String[] partesMensaje = zonas[i].split("#");
+				punteroConversacion.add(Integer.parseInt(partesMensaje[1]));
+				String[] coordenadas = partesMensaje[0].split("-");
 				Point p = new Point();
 				p.x = Integer.parseInt(coordenadas[0]);
 				p.y = Integer.parseInt(coordenadas[1]);
@@ -183,10 +188,13 @@ public class Mapa {
 
 	private void guardarZonaCombates(String zona) {
 		if (!zona.equals("no")) {
-			combates = new ArrayList<Point>();
+			combates = new ArrayList<>();
+			punteroCombates = new ArrayList<>();
 			String[] zonas = zona.split(",");
 			for (int i = 0; i < zonas.length; ++i) {
-				String[] coordenadas = zonas[i].split("-");
+				String[] partesMensaje = zonas[i].split("#");
+				punteroCombates.add(Integer.parseInt(partesMensaje[1]));
+				String[] coordenadas = partesMensaje[0].split("-");
 				Point p = new Point();
 				p.x = Integer.parseInt(coordenadas[0]);
 				p.y = Integer.parseInt(coordenadas[1]);
@@ -290,11 +298,13 @@ public class Mapa {
 	public void quitarConversacion(int i) {
 		conversaciones.remove(i);
 		zonaConversaciones.remove(i);
+		punteroConversacion.remove(i);
 	}
 
 	public void quitarCombate(int i) {
 		combates.remove(i);
 		zonaCombates.remove(i);
+		punteroCombates.remove(i);
 	}
 
 	public ArrayList<Rectangle> getZonaConversaciones() {
@@ -303,5 +313,13 @@ public class Mapa {
 
 	public ArrayList<Rectangle> getZonaCombates() {
 		return zonaCombates;
+	}
+	
+	public ArrayList<Integer> getPunteroCombates() {
+		return punteroCombates;
+	}
+	
+	public ArrayList<Integer> getPunteroConversacion() {
+		return punteroConversacion;
 	}
 }

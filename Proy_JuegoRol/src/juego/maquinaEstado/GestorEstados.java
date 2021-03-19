@@ -176,7 +176,8 @@ public class GestorEstados {
 		cambiarEstado(2);
 		if (((GestorJuego) estados[1]).isEnCombate()) {
 			Jugador j = ((GestorJuego) estados[1]).getJugador();
-			estados[3] = new GestorCombate(j, Constantes.ENEMIGOS[0]);
+			int enemigo = ((GestorJuego) estados[1]).getCombate();
+			estados[3] = new GestorCombate(j, Constantes.ENEMIGOS[enemigo]);
 			cambiarEstado(3);
 		}
 	}

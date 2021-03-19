@@ -22,7 +22,9 @@ public class GestorJuego implements EstadoJuego {
 	private Jugador jugador;
 	private boolean puedeContinuar = false;
 	private boolean enConversacion = false;
+	private int conversacion = 0;
 	private boolean enCombate = false;
+	private int combate = 0;
 
 	public GestorJuego() {
 		iniciarMapa(Constantes.MAPA_1);
@@ -89,6 +91,7 @@ public class GestorJuego implements EstadoJuego {
 		for (int i = 0; i < mapa.getZonaConversaciones().size() && !encontrado; ++i) {
 			Rectangle rect = mapa.getZonaConversaciones().get(i);
 			if (jugador.getLIMITE_ARRIBA().intersects(rect)) {
+				conversacion = mapa.getPunteroConversacion().get(i);
 				enConversacion = true;
 				punteroBorrar = i;
 				encontrado = true;
@@ -104,6 +107,7 @@ public class GestorJuego implements EstadoJuego {
 		for (int i = 0; i < mapa.getZonaCombates().size() && !encontrado; ++i) {
 			Rectangle rect = mapa.getZonaCombates().get(i);
 			if (jugador.getLIMITE_ARRIBA().intersects(rect)) {
+				combate = mapa.getPunteroCombates().get(i);
 				enCombate = true;
 				punteroBorrar = i;
 				encontrado = true;
@@ -111,6 +115,10 @@ public class GestorJuego implements EstadoJuego {
 		}
 		if (encontrado)
 			mapa.quitarCombate(punteroBorrar);
+	}
+	
+	public int getCombate() {
+		return combate;
 	}
 
 	@Override
@@ -124,7 +132,7 @@ public class GestorJuego implements EstadoJuego {
 	}
 
 	private void mostarMensajes(Graphics g) {
-		Mensaje m = new Mensaje(Constantes.CONVERSACIONES[0], 300, 300, true);
+		Mensaje m = new Mensaje(Constantes.CONVERSACIONES[conversacion], 300, 300, true);
 		m.dibujar(g);
 		try {
 			Thread.sleep(500);
