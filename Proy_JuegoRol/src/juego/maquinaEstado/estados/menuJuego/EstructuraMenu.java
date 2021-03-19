@@ -128,6 +128,7 @@ public class EstructuraMenu {
 		g.fillRect(LATERAL.x, LATERAL.y, LATERAL.width, LATERAL.height);
 		g.setColor(COLOR_FONDO);
 		g.fillRect(FONDO.x, FONDO.y, FONDO.width, FONDO.height);
+		g.drawString("Pulsa I para volver", 500, 20);
 
 		for (Seccion s : secciones) {
 			if (seccionActual == s)
