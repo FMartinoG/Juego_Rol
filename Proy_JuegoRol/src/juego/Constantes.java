@@ -1,5 +1,7 @@
 package juego;
 
+import java.util.ArrayList;
+
 import juego.entes.Enemigo;
 
 /**
@@ -52,7 +54,7 @@ public class Constantes {
 	public static final String TECLA = "/sonidos/tecla.wav";
 	public static final String MUSICA = "/sonidos/IMissYou.wav";
 	
-	public static String[] CONVERSACIONES;
+	public static ArrayList<String[]> CONVERSACIONES;
 	
 	public static Enemigo[] ENEMIGOS;
 

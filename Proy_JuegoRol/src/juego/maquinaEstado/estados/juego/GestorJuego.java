@@ -116,7 +116,7 @@ public class GestorJuego implements EstadoJuego {
 		if (encontrado)
 			mapa.quitarCombate(punteroBorrar);
 	}
-	
+
 	public int getCombate() {
 		return combate;
 	}
@@ -132,15 +132,20 @@ public class GestorJuego implements EstadoJuego {
 	}
 
 	private void mostarMensajes(Graphics g) {
-		Mensaje m = new Mensaje(Constantes.CONVERSACIONES[conversacion], 300, 300, true);
-		m.dibujar(g);
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		while (!Controles.TECLADO.seleccion) {
-			System.out.println("Enter para continuar");
+		// Mensaje m = new Mensaje(Constantes.CONVERSACIONES[conversacion], 300, 300,
+		// true);
+		Mensaje m = null;
+		for (String s : Constantes.CONVERSACIONES.get(conversacion)) {
+			m = new Mensaje(s, 300, 300, true);
+			m.dibujar(g);
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			while (!Controles.TECLADO.seleccion) {
+				System.out.println("Enter para continuar");
+			}
 		}
 	}
 
@@ -165,11 +170,11 @@ public class GestorJuego implements EstadoJuego {
 	public Jugador getJugador() {
 		return jugador;
 	}
-	
+
 	public boolean isEnCombate() {
 		return enCombate;
 	}
-	
+
 	public void setEnCombate(boolean enCombate) {
 		this.enCombate = enCombate;
 	}
