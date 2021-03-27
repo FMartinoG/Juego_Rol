@@ -24,7 +24,6 @@ import juego.maquinaEstado.estados.menuPrincipal.GestorMenuPrincipal;
 
 /**
  * Clase encargada de guardar los diferentes estados del juego y de cambiarlos
- * Los estados son los menús y el juego.
  * 
  * @author Fernando Martino
  *
@@ -76,24 +75,31 @@ public class GestorEstados {
 	 */
 	public void actualizar() {
 		estadoActual.actualizar();
+
+		// Menú principal.
 		if (estadoActual == estados[0]) {
 			actualizarMenuPrincipal();
 		}
 
+		// Juego.
 		if (estadoActual == estados[1]) {
 			actualizarJuego();
 		}
 
+		// Menú del juego.
 		if (estadoActual == estados[2]) {
 			if (!Controles.TECLADO.menuAbierto)
 				cambiarEstado(1);
 		}
 
+		// Combate.
 		if (estadoActual == estados[3]) {
 			if (!((GestorCombate) estadoActual).isEnCombate()) {
+				// Si gana el combate
 				if (((GestorJuego) estados[1]).getJugador().getEstadisticas().getSalud() > 0)
 					cambiarEstado(1);
 				else {
+					// Si pierde el combate.
 					estados[6] = new Derrota();
 					cambiarEstado(6);
 				}
@@ -101,27 +107,33 @@ public class GestorEstados {
 			}
 		}
 
+		// Introducción.
 		if (estadoActual == estados[4]) {
 			if (((Introduccion) estadoActual).isFinalizado())
 				cambiarEstado(1);
 		}
 
+		// Pantalla de información.
 		if (estadoActual == estados[5]) {
 			if (((GestorPaginaInformacion) estadoActual).isPulsadoVolver()) {
 				estados[0] = new GestorMenuPrincipal();
 				cambiarEstado(0);
 			}
 		}
-		
+
+		// Derrota.
 		if (estadoActual == estados[6]) {
 			if (((Derrota) estadoActual).isFinalizado()) {
 				estados[0] = new GestorMenuPrincipal();
 				cambiarEstado(0);
 			}
 		}
-			
+
 	}
 
+	/**
+	 * Método encargado de controlar las acciones en el menú principal
+	 */
 	private void actualizarMenuPrincipal() {
 		if (((GestorMenuPrincipal) estadoActual).nuevaPartida()) {
 			musica.stop();
@@ -137,11 +149,17 @@ public class GestorEstados {
 		}
 	}
 
+	/**
+	 * Método encargado de abrir la página de información.
+	 */
 	private void pulsarInformacion() {
 		estados[5] = new GestorPaginaInformacion();
 		cambiarEstado(5);
 	}
 
+	/**
+	 * Método que manda cargar la partida y cambia el estado al juego.
+	 */
 	private void pulsarCargarPartida() {
 		Estadisticas s = CargarPartida.cargar();
 		if (s == null)
@@ -170,6 +188,9 @@ public class GestorEstados {
 		}
 	}
 
+	/**
+	 * Método encargado de cambiar los estados cuando está en el juego.
+	 */
 	private void actualizarJuego() {
 		if (Controles.TECLADO.menuAbierto)
 			estados[2] = new GestorMenu(((GestorJuego) estados[1]).getJugador());
