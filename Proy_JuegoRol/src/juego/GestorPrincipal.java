@@ -22,17 +22,32 @@ public class GestorPrincipal {
 	private Ventana ventana;
 	private GestorEstados ge;
 
+	/**
+	 * Contructor del gestor principal, recibe el ancho, alto y nombre de la
+	 * ventana.
+	 * 
+	 * @param titulo String - Título de la ventana
+	 * @param ancho  int - Ancho de la ventana.
+	 * @param alto   int -Alto de la ventana
+	 */
 	public GestorPrincipal(String titulo, int ancho, int alto) {
 		this.titulo = titulo;
 		this.ancho = ancho;
 		this.alto = alto;
 	}
 
+	/**
+	 * Método que indica al programa que está en funcionamiento y manda inicilizar.
+	 */
 	public void iniciarJuego() {
 		enFuncionamiento = true;
 		inicializar();
 	}
 
+	/**
+	 * Método encargado de inicializar la superficie de dibujo, la ventana y el
+	 * gestor de estados.
+	 */
 	private void inicializar() {
 		sd = new SuperficieDeDibujo(ancho, alto);
 		ventana = new Ventana(titulo, sd);
@@ -83,19 +98,34 @@ public class GestorPrincipal {
 		}
 	}
 
+	/**
+	 * Método que manda dibujar a la superficie de dibujo.
+	 */
 	private void dibujar() {
 		sd.dibujar(ge);
 	}
 
+	/**
+	 * Método que manda actualizarse al gestor de estados.
+	 */
 	private void actualizar() {
 		ge.actualizar();
-
 	}
 
+	/**
+	 * Método que devuelve los FPS (Frames Por Segundo).
+	 * 
+	 * @return fps int - FPS del juego.
+	 */
 	public static int getFps() {
 		return fps;
 	}
 
+	/**
+	 * Método que devuelve los APS (Actualizacione Por Segundo).
+	 * 
+	 * @return aps int - APS del juego.
+	 */
 	public static int getAps() {
 		return aps;
 	}
