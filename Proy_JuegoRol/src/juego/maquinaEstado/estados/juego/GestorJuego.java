@@ -7,6 +7,7 @@ import juego.Constantes;
 import juego.HUD.Mensaje;
 import juego.control.Controles;
 import juego.entes.Jugador;
+import juego.herramientas.ComprobadorDeMapa;
 import juego.mapas.Mapa;
 import juego.maquinaEstado.EstadoJuego;
 
@@ -45,25 +46,14 @@ public class GestorJuego implements EstadoJuego {
 	}
 
 	private void recargarJuego() {
-		final String siguienteMapa = comprobarSiguienteMapa(mapa.getSiguienteMapa());
+		final String siguienteMapa = ComprobadorDeMapa.comprobarSiguienteMapa(mapa.getSiguienteMapa());
 		iniciarMapa(siguienteMapa);
 
 		jugador.setMapa(mapa);
 		jugador.setPosicionX(mapa.getPosicionInicial().x);
 		jugador.setPosicionY(mapa.getPosicionInicial().y);
-		switch (mapa.getRuta()) {
-		case Constantes.MAPA_1:
-			jugador.getEstadisticas().cambiarMapa(1);
-			break;
-		case Constantes.MAPA_2:
-			jugador.getEstadisticas().cambiarMapa(2);
-			break;
-		case Constantes.MAPA_3:
-			jugador.getEstadisticas().cambiarMapa(3);
-			break;
-		default:
-			break;
-		}
+		ComprobadorDeMapa.guardarMapa(jugador, mapa.getRuta());
+		
 	}
 
 	@Override
@@ -147,24 +137,6 @@ public class GestorJuego implements EstadoJuego {
 				System.out.println("Enter para continuar");
 			}
 		}
-	}
-
-	private String comprobarSiguienteMapa(String siguienteMapa) {
-		String nuevoMapa = "";
-		switch (siguienteMapa) {
-		case "m1":
-			nuevoMapa = Constantes.MAPA_1;
-			break;
-		case "m2":
-			nuevoMapa = Constantes.MAPA_2;
-			break;
-		case "m3":
-			nuevoMapa = Constantes.MAPA_3;
-			break;
-		default:
-			break;
-		}
-		return nuevoMapa;
 	}
 
 	public Jugador getJugador() {

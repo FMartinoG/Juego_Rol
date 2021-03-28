@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
+import juego.Constantes;
 import juego.entes.Estadisticas;
 
 public class CargarPartida {
@@ -23,5 +24,26 @@ public class CargarPartida {
 			e.printStackTrace();
 		}
 		return s;
+	}
+	
+	public static String mapaACargar(int mapa) {
+		String textoMapa = "";
+		switch (mapa) {
+		case 1:
+			textoMapa = Constantes.MAPA_CARGA_1;
+			break;
+		case 2:
+			textoMapa = Constantes.MAPA_CARGA_2;
+			break;
+		case 3:
+			textoMapa = Constantes.MAPA_CARGA_3;
+			break;
+		case 4:
+			textoMapa = Constantes.MAPA_CARGA_4;
+			break;
+		default:
+			break;
+		}
+		return textoMapa;
 	}
 }

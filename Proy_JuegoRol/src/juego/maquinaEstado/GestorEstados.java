@@ -165,20 +165,7 @@ public class GestorEstados {
 		if (s == null)
 			mostrarMensajeNoCarga = true;
 		else {
-			String textoMapa = "";
-			switch (s.getMapa()) {
-			case 1:
-				textoMapa = Constantes.MAPA_CARGA_1;
-				break;
-			case 2:
-				textoMapa = Constantes.MAPA_CARGA_2;
-				break;
-			case 3:
-				textoMapa = Constantes.MAPA_CARGA_3;
-				break;
-			default:
-				break;
-			}
+			String textoMapa = CargarPartida.mapaACargar(s.getMapa());
 			Mapa mapa = new Mapa(textoMapa);
 			Jugador j = new Jugador(mapa);
 			j.setEstadisticas(s);
