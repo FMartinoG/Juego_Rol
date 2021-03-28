@@ -14,6 +14,12 @@ public class SeleccionadorHojaSprite {
 		case "1":
 			hs = new HojaSprites(Constantes.TEXTURAS_BOSQUE_1, 32, true);
 			break;
+		case "2":
+			hs = new HojaSprites(Constantes.TEXTURAS_ENTRADA_CUEVA, 32, true);
+			break;
+		case "3":
+			hs = new HojaSprites(Constantes.TEXTURAS_ENTRADA_CUEVA_2, 32, true);
+			break;
 		default:
 			break;
 		}

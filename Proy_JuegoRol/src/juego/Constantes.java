@@ -25,7 +25,9 @@ public class Constantes {
 
 	public static final String HOJA_TEXTURAS_1 = "/texturas/001.png";
 	public static final String TEXTURAS_BOSQUE_1 = "/texturas/bosque01.png";
-
+	public static final String TEXTURAS_ENTRADA_CUEVA = "/texturas/entrada_cueva.png";
+	public static final String TEXTURAS_ENTRADA_CUEVA_2 = "/texturas/entrada_cueva_02.png";
+	
 	public static final String HOJA_PERSONAJE_1 = "/personaje/001.png";
 	public static final String PERSONAJE = "/personaje/psCombate.png";
 	public static final String BATMAN = "/personaje/batman.png";
@@ -41,11 +43,15 @@ public class Constantes {
 	public static final String MAPA_2 = "/mapas/mapa002.txt";
 	public static final String MAPA_3 = "/mapas/mapa003.txt";
 	public static final String MAPA_4 = "/mapas/mapa004.txt";
+	public static final String MAPA_5 = "/mapas/mapa005.txt";
+	public static final String MAPA_6 = "/mapas/mapa006.txt";
 	
 	public static final String MAPA_CARGA_1 = "/mapas/carga/carga1.txt";
 	public static final String MAPA_CARGA_2 = "/mapas/carga/carga2.txt";
 	public static final String MAPA_CARGA_3 = "/mapas/carga/carga3.txt";
 	public static final String MAPA_CARGA_4 = "/mapas/carga/carga4.txt";
+	public static final String MAPA_CARGA_5 = "/mapas/carga/carga5.txt";
+	public static final String MAPA_CARGA_6 = "/mapas/carga/carga6.txt";
 
 	public static final String ICONO = "/icon/juego.png";
 
