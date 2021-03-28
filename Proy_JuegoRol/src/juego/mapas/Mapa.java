@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import juego.Constantes;
 import juego.herramientas.CargadorRecursos;
+import juego.herramientas.SeleccionadorHojaSprite;
 import juego.sprites.HojaSprites;
 import juego.sprites.Sprite;
 
@@ -114,14 +115,7 @@ public class Mapa {
 		numeroHojasSprites = new int[textoHojas.length];
 		for (int i = 0; i < textoHojas.length; ++i) {
 			numeroHojasSprites[i] = Integer.parseInt(textoHojas[i]);
-			switch (textoHojas[i]) {
-			case "0":
-				hojas[i] = new HojaSprites(Constantes.HOJA_TEXTURAS_1, 32, true);
-				break;
-
-			default:
-				break;
-			}
+			hojas[i] = SeleccionadorHojaSprite.seleccionarHojaSprite(textoHojas[i]);
 		}
 	}
 
@@ -244,9 +238,9 @@ public class Mapa {
 	}
 
 	private void actualizarZonaConversacion(final int posX, final int posY) {
+		if (zonaConversaciones.size() > 0)
+			zonaConversaciones.removeAll(zonaConversaciones);
 		for (int i = 0; i < conversaciones.size(); ++i) {
-			if (zonaConversaciones.size() > 0)
-				zonaConversaciones.remove(i);
 
 			int puntoX = conversaciones.get(i).x * Constantes.LADO_SPRITE - posX + MARGEN_X;
 			int puntoY = conversaciones.get(i).y * Constantes.LADO_SPRITE - posY + MARGEN_Y;
@@ -256,9 +250,10 @@ public class Mapa {
 	}
 
 	private void actualizarZonaCombates(final int posX, final int posY) {
+		if (zonaCombates.size() > 0)
+			zonaCombates.removeAll(zonaCombates);
 		for (int i = 0; i < combates.size(); ++i) {
-			if (zonaCombates.size() > 0)
-				zonaCombates.remove(i);
+			
 
 			int puntoX = combates.get(i).x * Constantes.LADO_SPRITE - posX + MARGEN_X;
 			int puntoY = combates.get(i).y * Constantes.LADO_SPRITE - posY + MARGEN_Y;

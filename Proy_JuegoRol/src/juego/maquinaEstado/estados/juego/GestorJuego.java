@@ -53,7 +53,6 @@ public class GestorJuego implements EstadoJuego {
 		jugador.setPosicionX(mapa.getPosicionInicial().x);
 		jugador.setPosicionY(mapa.getPosicionInicial().y);
 		ComprobadorDeMapa.guardarMapa(jugador, mapa.getRuta());
-		
 	}
 
 	@Override
