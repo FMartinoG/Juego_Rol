@@ -31,8 +31,7 @@ public class Constantes {
 	
 	public static final String HOJA_PERSONAJE_1 = "/personaje/001.png";
 	public static final String PERSONAJE = "/personaje/psCombate.png";
-	public static final String BATMAN = "/personaje/batman.png";
-	public static final String BOTMAN = "/personaje/botman.png";
+	public static final String BOTMAN = "/enemigos/botman.png";
 	public static final String ATAQUE = "/imagenes/explosion.png";
 	public static final String CURA = "/imagenes/cruz.png";
 	public static final String FUEGO = "/imagenes/fuego.png";
