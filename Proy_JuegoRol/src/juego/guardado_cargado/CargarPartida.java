@@ -50,6 +50,9 @@ public class CargarPartida {
 		case 7:
 			textoMapa = Constantes.MAPA_CARGA_7;
 			break;
+		case 8:
+			textoMapa = Constantes.MAPA_CARGA_8;
+			break;
 		default:
 			break;
 		}

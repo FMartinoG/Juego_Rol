@@ -29,6 +29,9 @@ public class ComprobadorDeMapa {
 		case "m7":
 			nuevoMapa = Constantes.MAPA_7;
 			break;
+		case "m8":
+			nuevoMapa = Constantes.MAPA_8;
+			break;
 		default:
 			break;
 		}
@@ -57,6 +60,9 @@ public class ComprobadorDeMapa {
 			break;
 		case Constantes.MAPA_7:
 			jugador.getEstadisticas().cambiarMapa(7);
+			break;
+		case Constantes.MAPA_8:
+			jugador.getEstadisticas().cambiarMapa(8);
 			break;
 		default:
 			break;
