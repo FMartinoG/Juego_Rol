@@ -24,7 +24,10 @@ public class SeleccionadorHojaSprite {
 			hs = new HojaSprites(Constantes.TEXTURAS_ENTRADA_CASTILLO, 32, true);
 			break;
 		case "5":
-			hs = new HojaSprites(Constantes.MAPA_MUNDO, 32, true);
+			hs = new HojaSprites(Constantes.TEXTURAS_MUNDO, 32, true);
+			break;
+		case "6":
+			hs = new HojaSprites(Constantes.TEXTURAS_PUEBLO, 32, true);
 			break;
 		default:
 			break;
