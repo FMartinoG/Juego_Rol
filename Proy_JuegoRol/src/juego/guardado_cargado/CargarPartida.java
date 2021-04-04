@@ -28,6 +28,7 @@ public class CargarPartida {
 	
 	public static String mapaACargar(int mapa) {
 		String textoMapa = "";
+		System.out.println(mapa);
 		switch (mapa) {
 		case 1:
 			textoMapa = Constantes.MAPA_CARGA_1;
@@ -51,14 +52,29 @@ public class CargarPartida {
 			textoMapa = Constantes.MAPA_CARGA_7;
 			break;
 		case 8:
-			textoMapa = Constantes.MAPA_CARGA_MUNDO;
+			textoMapa = Constantes.MAPA_CARGA_8;
 			break;
 		case 9:
-			textoMapa = Constantes.MAPA_CARGA_PUEBLO;
+			textoMapa = Constantes.MAPA_CARGA_9;
+			break;
+		case 10:
+			textoMapa = Constantes.MAPA_CARGA_10;
+			break;
+			
+		// LOS DE PRUEBA	
+		case 1002:
+			textoMapa = Constantes.MAPA_PRUEBA_1;
+			break;
+		case 1000:
+			textoMapa = Constantes.MAPA_PRUEBA_2;
+			break;
+		case 1001:
+			textoMapa = Constantes.MAPA_PRUEBA_3;
 			break;
 		default:
 			break;
 		}
+		System.out.println(textoMapa);
 		return textoMapa;
 	}
 }

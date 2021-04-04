@@ -28,7 +28,7 @@ public class GestorJuego implements EstadoJuego {
 	private int combate = 0;
 
 	public GestorJuego() {
-		iniciarMapa(Constantes.MAPA_PUEBLO);
+		iniciarMapa(Constantes.MAPA_PUEBLO_1);
 		iniciarJugador();
 	}
 
@@ -121,8 +121,6 @@ public class GestorJuego implements EstadoJuego {
 	}
 
 	private void mostarMensajes(Graphics g) {
-		// Mensaje m = new Mensaje(Constantes.CONVERSACIONES[conversacion], 300, 300,
-		// true);
 		Mensaje m = null;
 		for (String s : Constantes.CONVERSACIONES.get(conversacion)) {
 			m = new Mensaje(s, 300, 300, true);

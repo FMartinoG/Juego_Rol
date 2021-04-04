@@ -9,13 +9,13 @@ public class ComprobadorDeMapa {
 		String nuevoMapa = "";
 		switch (siguienteMapa) {
 		case "m1":
-			nuevoMapa = Constantes.MAPA_1;
+			nuevoMapa = Constantes.MAPA_PUEBLO_1;
 			break;
 		case "m2":
-			nuevoMapa = Constantes.MAPA_2;
+			nuevoMapa = Constantes.MAPA_PUEBLO_2;
 			break;
 		case "m3":
-			nuevoMapa = Constantes.MAPA_3;
+			nuevoMapa = Constantes.MAPA_PUEBLO_3;
 			break;
 		case "m4":
 			nuevoMapa = Constantes.MAPA_4;
@@ -32,8 +32,21 @@ public class ComprobadorDeMapa {
 		case "m8":
 			nuevoMapa = Constantes.MAPA_MUNDO;
 			break;
-		case "m9":
-			nuevoMapa = Constantes.MAPA_PUEBLO;
+/*		case "m9":
+			nuevoMapa = Constantes.MAPA_PUEBLO_2;
+			break;
+		case "m10":
+			nuevoMapa = Constantes.MAPA_PUEBLO_1;
+			break;
+*/
+		case "m1002":
+			nuevoMapa = Constantes.MAPA_PRUEBA_1;
+			break;
+		case "m1000":
+			nuevoMapa = Constantes.MAPA_PRUEBA_2;
+			break;
+		case "m1001":
+			nuevoMapa = Constantes.MAPA_PRUEBA_3;
 			break;
 		default:
 			break;
@@ -43,15 +56,16 @@ public class ComprobadorDeMapa {
 	
 	public static void guardarMapa(Jugador jugador, String mapa) {
 		switch (mapa) {
-		case Constantes.MAPA_1:
+		case Constantes.MAPA_PUEBLO_1:
 			jugador.getEstadisticas().cambiarMapa(1);
 			break;
-		case Constantes.MAPA_2:
+		case Constantes.MAPA_PUEBLO_2:
 			jugador.getEstadisticas().cambiarMapa(2);
 			break;
-		case Constantes.MAPA_3:
+		case Constantes.MAPA_PUEBLO_3:
 			jugador.getEstadisticas().cambiarMapa(3);
 			break;
+
 		case Constantes.MAPA_4:
 			jugador.getEstadisticas().cambiarMapa(4);
 			break;
@@ -67,8 +81,15 @@ public class ComprobadorDeMapa {
 		case Constantes.MAPA_MUNDO:
 			jugador.getEstadisticas().cambiarMapa(8);
 			break;
-		case Constantes.MAPA_PUEBLO:
-			jugador.getEstadisticas().cambiarMapa(9);
+		
+		case Constantes.MAPA_PRUEBA_1:
+			jugador.getEstadisticas().cambiarMapa(1002);
+			break;
+		case Constantes.MAPA_PRUEBA_2:
+			jugador.getEstadisticas().cambiarMapa(1000);
+			break;
+		case Constantes.MAPA_PRUEBA_3:
+			jugador.getEstadisticas().cambiarMapa(1001);
 			break;
 		default:
 			break;

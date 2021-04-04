@@ -29,6 +29,9 @@ public class SeleccionadorHojaSprite {
 		case "6":
 			hs = new HojaSprites(Constantes.TEXTURAS_PUEBLO, 32, true);
 			break;
+		case "7":
+			hs = new HojaSprites(Constantes.TEXTURAS_PUEBLO_2, 32, true);
+			break;
 		default:
 			break;
 		}
