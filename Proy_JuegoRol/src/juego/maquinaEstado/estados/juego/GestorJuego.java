@@ -28,7 +28,7 @@ public class GestorJuego implements EstadoJuego {
 	private int combate = 0;
 
 	public GestorJuego() {
-		iniciarMapa(Constantes.MAPA_1);
+		iniciarMapa(Constantes.MAPA_PUEBLO);
 		iniciarJugador();
 	}
 

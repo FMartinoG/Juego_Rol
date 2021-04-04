@@ -19,17 +19,19 @@ public class EstructuraIntroduccion {
 	}
 	
 	private void inicializarTextos() {
-		textos = new String[10];
+		textos = new String[9];
 		textos[0] = "HACE MUCHO TIEMPO, EN UNA TIERRA AHORA DESCONOCIDA,";
 		textos[1] = "EN LA QUE REINABA LA PAZ Y LA TRANQUILIDAD,";
-		textos[2] = "EXISTÍAN 5 FAMOSOS GUERREROS QUE VELABAN POR LA SEGURIDAD DEL REINO.";
-		textos[3] = "HASTA QUE UN DÍA, UNO DE ELLOS TRAICIONÓ A LOS DEMÁS.";
-		textos[4] = "A DOS DE ELLOS LOS MATÓ MIENTRAS DORMÍAN.";
-		textos[5] = "CONTRATÓ A UN ASESINO PARA QUE MATARA A OTRO.";
-		textos[6] = "Y CONSPIRÓ PARA QUE EL OTRO FUERA EXILIADO.";
-		textos[7] = "QUEDANDO ÉL SOLO EN EL REINO, FUE CAPAZ DE HACERSE CON TODO EL PODER.";
-		textos[8] = "NADIE FUE CAPAZ DE HACERLE FRENTE.";
-		textos[9] = "Y EL ANTERIORMENTE PACÍFICO REINO, AHORA SE CONVIRTIÓ EN UNA TERRIBLE DICTADURA.";
+		textos[2] = "EXISTÍAN 5 HÉROES QUE VELABAN POR LA SEGURIDAD DEL REINO.";
+		
+		textos[3] = "HASTA QUE UN DÍA, 4 DE ELLOS DESAPARECIERON.";
+		textos[4] = "EL HÉROE QUE QUEDABA APROVECHÓ LA DEBILIDAD DEL REY PARA GANAR PODER.";
+		textos[5] = "TODO ESTO PROVOCÓ UNA GRAN INESTABILIDAD EN TODO EL REINO.";
+		
+		textos[6] = "5 AÑOS DESPUÉS...";
+		
+		textos[7] = "NOS ENCONTRAMOS EN UN PEQUEÑO PUEBLO";
+		textos[8] = "DONDE VIVE UN JOVEN CON SU ABUELO.";
 	}
 
 	public void actualizar() {
@@ -53,12 +55,17 @@ public class EstructuraIntroduccion {
 		esperar(2000);
 		ponerPantallaNegro(g);
 		
-		mostrarMensajes(g, 3, 4);
+		mostrarMensajes(g, 3, 3);
 		
 		esperar(2000);
 		ponerPantallaNegro(g);
 		
-		mostrarMensajes(g, 7, 3);
+		mostrarMensajes(g, 6, 1);
+		
+		esperar(2000);
+		ponerPantallaNegro(g);
+		
+		mostrarMensajes(g, 7, 2);
 		esperar(2000);
 		ponerPantallaNegro(g);
 		
