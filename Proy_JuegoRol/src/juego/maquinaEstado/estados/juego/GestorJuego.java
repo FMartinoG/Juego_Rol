@@ -27,24 +27,42 @@ public class GestorJuego implements EstadoJuego {
 	private boolean enCombate = false;
 	private int combate = 0;
 
+	/**
+	 * Constructor de la clase gestor de juego cuando es una nueva partida.
+	 */
 	public GestorJuego() {
 		iniciarMapa(Constantes.MAPA_PUEBLO_1);
 		iniciarJugador();
 	}
 
+	/**
+	 * Constructor de la clase gestor de juego cuando es una partida cargada.
+	 */
 	public GestorJuego(Jugador jugador) {
 		this.jugador = jugador;
 		iniciarMapa(jugador.getMapa().getRuta());
 	}
 
+	/**
+	 * Método que guarda un objeto mapa a partir de la ruta del mapa.
+	 * 
+	 * @param ruta
+	 */
 	private void iniciarMapa(String ruta) {
 		mapa = new Mapa(ruta);
 	}
 
+	/**
+	 * Método que crea un nuevo jugador.
+	 */
 	private void iniciarJugador() {
 		jugador = new Jugador(mapa);
 	}
 
+	/**
+	 * Método que cambia el mapa actual por el mapa siguiente y actualiza la
+	 * información.
+	 */
 	private void recargarJuego() {
 		final String siguienteMapa = ComprobadorDeMapa.comprobarSiguienteMapa(mapa.getSiguienteMapa());
 		iniciarMapa(siguienteMapa);
@@ -55,6 +73,9 @@ public class GestorJuego implements EstadoJuego {
 		ComprobadorDeMapa.guardarMapa(jugador, mapa.getRuta());
 	}
 
+	/**
+	 * Método que actualiza los diferentes elementos del estado.
+	 */
 	@Override
 	public void actualizar() {
 		if (puedeContinuar) {
@@ -74,6 +95,10 @@ public class GestorJuego implements EstadoJuego {
 		mapa.actualizar((int) jugador.getPosicionX(), (int) jugador.getPosicionY());
 	}
 
+	/**
+	 * Método que comprueba si ha llegado a una zona de conversación, y si es
+	 * así manda mostrar la conversación y la borra.
+	 */
 	private void comprobarLlegaConversacion() {
 		boolean encontrado = false;
 		int punteroBorrar = -1;
@@ -90,6 +115,10 @@ public class GestorJuego implements EstadoJuego {
 			mapa.quitarConversacion(punteroBorrar);
 	}
 
+	/**
+	 * Método que comprueba si ha llegado a una zona de combate, y si es así
+	 * manda cambiar al estado de combate y la borra.
+	 */
 	private void comprobarLlegaCombate() {
 		boolean encontrado = false;
 		int punteroBorrar = -1;
@@ -106,10 +135,18 @@ public class GestorJuego implements EstadoJuego {
 			mapa.quitarCombate(punteroBorrar);
 	}
 
+	/**
+	 * Devuelve el puntero que hace referencia al combate.
+	 * 
+	 * @return combate int
+	 */
 	public int getCombate() {
 		return combate;
 	}
 
+	/**
+	 * Método que dibuja los elementos del estado.
+	 */
 	@Override
 	public void dibujar(Graphics g) {
 		mapa.dibujar(g, (int) jugador.getPosicionX(), (int) jugador.getPosicionY());
@@ -120,6 +157,11 @@ public class GestorJuego implements EstadoJuego {
 		}
 	}
 
+	/**
+	 * Método que muestra los mensajes de la conversación.s
+	 * 
+	 * @param g
+	 */
 	private void mostarMensajes(Graphics g) {
 		Mensaje m = null;
 		for (String s : Constantes.CONVERSACIONES.get(conversacion)) {
@@ -136,14 +178,29 @@ public class GestorJuego implements EstadoJuego {
 		}
 	}
 
+	/**
+	 * Método que devuelve el objeto del jugador.
+	 * 
+	 * @return
+	 */
 	public Jugador getJugador() {
 		return jugador;
 	}
 
+	/**
+	 * Método que indica si ha entrado en combate para que cambie de estado.
+	 * 
+	 * @return enCombate boolean
+	 */
 	public boolean isEnCombate() {
 		return enCombate;
 	}
 
+	/**
+	 * Método que modifica la variable que indica si está en combate.
+	 * 
+	 * @param enCombate
+	 */
 	public void setEnCombate(boolean enCombate) {
 		this.enCombate = enCombate;
 	}
