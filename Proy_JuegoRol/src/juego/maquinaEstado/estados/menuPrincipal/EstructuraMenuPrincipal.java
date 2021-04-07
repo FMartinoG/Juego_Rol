@@ -35,6 +35,9 @@ public class EstructuraMenuPrincipal {
 	private boolean cargarPartidaSeleccionada = false;
 	private boolean ventanaInformacion = false;
 
+	/**
+	 * Constructor de la clase de Estructar del menú principal.
+	 */
 	public EstructuraMenuPrincipal() {
 		COLOR_SUPERIOR = new Color(124, 3, 3);
 		COLOR_FONDO = Color.white;
@@ -53,7 +56,11 @@ public class EstructuraMenuPrincipal {
 
 	}
 
+	/**
+	 * Método encargado de actualizar los componentes del menú principal.
+	 */
 	public void actualizar() {
+		// Cuando utiliza las flechas se modifica la sección seleccionada.
 		if (Controles.TECLADO.arribaMenu && puntero > 0) {
 			puntero -= 0.3;
 			seccionActual = secciones[(int) puntero];
@@ -63,6 +70,7 @@ public class EstructuraMenuPrincipal {
 			seccionActual = secciones[(int) puntero];
 		}
 
+		// Cuando se cambia de sección seleccionada suena un sonido.
 		if ((int) puntero != punteroAnterior) {
 			Clip beep = CargadorRecursos.cargarSonido(Constantes.BEEP);
 			beep.start();
@@ -73,6 +81,8 @@ public class EstructuraMenuPrincipal {
 			punteroAnterior = (int) puntero;
 		}
 
+		// Comprueba si se pulsa el botón de selección en alguna de las
+		// secciones.
 		if (seccionActual == secciones[0] && Controles.TECLADO.seleccion)
 			nuevaPartidaSeleccionada = true;
 
@@ -86,6 +96,11 @@ public class EstructuraMenuPrincipal {
 			System.exit(0);
 	}
 
+	/**
+	 * Método encargado de dibujar los componentes del menú principal.
+	 * 
+	 * @param g
+	 */
 	public void dibujar(Graphics g) {
 		g.setColor(COLOR_SUPERIOR);
 		g.fillRect(SUPERIOR.x, SUPERIOR.y, SUPERIOR.width, SUPERIOR.height);
@@ -110,14 +125,30 @@ public class EstructuraMenuPrincipal {
 		}
 	}
 
+	/**
+	 * Devuelve si se ha seleccionado la opción de nueva partida.
+	 * 
+	 * @return nuevaPartidaSeleccionada boolean
+	 */
 	public boolean isNuevaPartidaSeleccionada() {
 		return nuevaPartidaSeleccionada;
 	}
 
+	/**
+	 * Devuelve si se ha seleccionado la opción de cargar partida.
+	 * 
+	 * @return cargarPartidaSeleccionada boolean
+	 */
 	public boolean isCargarPartidaSeleccionada() {
 		return cargarPartidaSeleccionada;
 	}
 
+	/**
+	 * Devuelve si se ha seleccionado la opción de entrar a la pantalla de
+	 * información.
+	 * 
+	 * @return ventanaInformacion boolean
+	 */
 	public boolean isVentanaInformacion() {
 		return ventanaInformacion;
 	}
