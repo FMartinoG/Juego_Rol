@@ -141,7 +141,7 @@ public class EstructuraIntroduccion {
 	/**
 	 * Método que indica si ha terminado de mostrar la introducción.
 	 * 
-	 * @return
+	 * @return finalizado boolean
 	 */
 	public boolean isFinalizado() {
 		return finalizado;

@@ -23,6 +23,9 @@ public class EstructuraPaginaInformacion {
 
 	private boolean pulsadoVolver;
 
+	/**
+	 * Constructor de la clase de estructura del estado de información.
+	 */
 	public EstructuraPaginaInformacion() {
 		COLOR_SUPERIOR = new Color(124, 3, 3);
 		COLOR_FONDO = Color.white;
@@ -33,6 +36,9 @@ public class EstructuraPaginaInformacion {
 		pulsadoVolver = false;
 	}
 
+	/**
+	 * Método que actualiza el estado.
+	 */
 	public void actualizar() {
 		if (Controles.TECLADO.bt_Escape) {
 			pulsadoVolver = true;
@@ -40,6 +46,11 @@ public class EstructuraPaginaInformacion {
 
 	}
 
+	/**
+	 * Método que dibuja los elementos del estado.
+	 * 
+	 * @param g
+	 */
 	public void dibujar(Graphics g) {
 		FontMetrics fm = g.getFontMetrics();
 
@@ -54,7 +65,7 @@ public class EstructuraPaginaInformacion {
 		String texto3 = "Programado por: Fernando Martino García.";
 		String texto4 = "Historia original de: Fernando Martino García.";
 		String texto5 = "URL repositorio GIT: https://github.com/FMartinoG/Juego_Rol.git";
-		String texto6 = "Sonidos sin derechos de autor.";
+		String texto6 = "Sonidos e imágenes con licencia Creative Commons.";
 
 		g.drawString(texto1, (Constantes.ANCHO_VENTANA / 2) - (fm.stringWidth(texto1) / 2), 70);
 		g.drawString(texto2, (Constantes.ANCHO_VENTANA / 2) - (fm.stringWidth(texto2) / 2), 110);
@@ -65,6 +76,11 @@ public class EstructuraPaginaInformacion {
 		g.drawString("Esc para volver.", 25, 350);
 	}
 
+	/**
+	 * Indica si se ha pulsao el botón de volver.
+	 * 
+	 * @return pulsadoVolver boolean
+	 */
 	public boolean isPulsadoVolver() {
 		return pulsadoVolver;
 	}
