@@ -23,6 +23,9 @@ public class Estadisticas implements Serializable {
 	// Código numérico que identifica al mapa para cargar la partida.
 	private int mapa;
 
+	/**
+	 * Constructor de la clase estadísticas.
+	 */
 	public Estadisticas() {
 		nivel = 1;
 		expMaxima = 100;
