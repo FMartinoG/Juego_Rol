@@ -7,32 +7,43 @@ import java.awt.Graphics;
 import juego.Constantes;
 import juego.HUD.Mensaje;
 
+/**
+ * Clase encargada de crear y controlar los elementos del estado de derrota.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class EstructuraDerrota {
 
 	private boolean finalizado;
 
+	/**
+	 * Contructor de la clase estructura de derrota.
+	 */
 	public EstructuraDerrota() {
 		finalizado = false;
 	}
 
-	public void actualizar() {
-	}
-
+	/**
+	 * Método encargado de dibujar los elementos del estado.
+	 * 
+	 * @param g
+	 */
 	public void dibujar(Graphics g) {
 		ponerPantallaNegro(g);
 
-		mostrarMensajeDerrota(g);
+		mostrarMensaje(g);
 
 		esperar(5000);
 
 		finalizado = true;
 	}
 
-	private void mostrarMensajeDerrota(Graphics g) {
-		ponerPantallaNegro(g);
-		mostrarMensaje(g);
-	}
-
+	/**
+	 * Método encargado de mostrar el mensaje de derrota.
+	 * 
+	 * @param g
+	 */
 	private void mostrarMensaje(Graphics g) {
 		String texto = "HAS MUERTO";
 		FontMetrics fm = g.getFontMetrics();
@@ -44,11 +55,21 @@ public class EstructuraDerrota {
 
 	}
 
+	/**
+	 * Método que dibuja toda la ventana de negro.
+	 * 
+	 * @param g
+	 */
 	private void ponerPantallaNegro(Graphics g) {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, Constantes.ANCHO_VENTANA, Constantes.ALTO_VENTANA);
 	}
 
+	/**
+	 * Método que detiene la ejecución durante el tiempo determinado.
+	 * 
+	 * @param time
+	 */
 	private void esperar(long time) {
 		try {
 			Thread.sleep(time);
@@ -57,6 +78,11 @@ public class EstructuraDerrota {
 		}
 	}
 
+	/**
+	 * Indica si el estado ha terminado.
+	 * 
+	 * @return
+	 */
 	public boolean isFinalizado() {
 		return finalizado;
 	}
