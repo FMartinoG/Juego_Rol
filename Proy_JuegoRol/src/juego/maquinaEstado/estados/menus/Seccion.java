@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 /**
- * Clase abstracta de la que se crean las diferentes secciones de los menús.
+ * Clase de la que se crean las diferentes secciones de los menús.
  * 
  * @author Fernando Martino
  *
@@ -15,19 +15,22 @@ public class Seccion {
 	final String nombre;
 	final Rectangle etiqueta;
 
+	/**
+	 * Constructor de la clase Seccion.
+	 * 
+	 * @param nombre
+	 * @param etiqueta
+	 */
 	public Seccion(String nombre, Rectangle etiqueta) {
 		this.nombre = nombre;
 		this.etiqueta = etiqueta;
 	}
 
-	public void actualizar() {
-		
-	}
-
-	public void dibujar(Graphics g) {
-		
-	}
-
+	/**
+	 * Método que dibuja una etiqueta que no está seleccionada.
+	 * 
+	 * @param g
+	 */
 	public void dibujarEtiquetaInactiva(Graphics g) {
 		g.setColor(Color.black);
 		g.fillRect(etiqueta.x - 1, etiqueta.y - 1, etiqueta.width + 2, etiqueta.height + 2);
@@ -39,6 +42,11 @@ public class Seccion {
 		g.drawString(nombre, etiqueta.x + 8, etiqueta.y + 15);
 	}
 
+	/**
+	 * Método que dibuja una etiqueta que está seleccionada.
+	 * 
+	 * @param g
+	 */
 	public void dibujarEtiquetaActiva(Graphics g) {
 		g.setColor(Color.black);
 		g.fillRect(etiqueta.x - 1, etiqueta.y - 1, etiqueta.width + 2, etiqueta.height + 2);
@@ -51,10 +59,6 @@ public class Seccion {
 
 		g.setColor(Color.red);
 		g.fillRect(etiqueta.x, etiqueta.y, 3, etiqueta.height);
-	}
-
-	public String getNombre() {
-		return nombre;
 	}
 
 }
