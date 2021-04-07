@@ -125,11 +125,11 @@ public class GestorJuego implements EstadoJuego {
 		for (String s : Constantes.CONVERSACIONES.get(conversacion)) {
 			m = new Mensaje(s, 200, 300, true);
 			m.dibujar(g);
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			long msInicio = System.currentTimeMillis();
+			long msActual = System.currentTimeMillis();
+			while ((msActual - msInicio) < 500)
+				msActual = System.currentTimeMillis();
+
 			while (!Controles.TECLADO.seleccion) {
 				System.out.println("Enter para continuar");
 			}
