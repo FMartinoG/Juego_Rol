@@ -5,6 +5,7 @@ import java.util.Random;
 
 /**
  * Clase encargada de almacenar y cambiar las estadísticas del jugador.
+ * Es la clase que se guardará en el fichero serializable.
  * 
  * @author Fernando Martino
  *
