@@ -96,8 +96,10 @@ public class GestorEstados {
 		if (estadoActual == estados[3]) {
 			if (!((GestorCombate) estadoActual).isEnCombate()) {
 				// Si gana el combate
-				if (((GestorJuego) estados[1]).getJugador().getEstadisticas().getSalud() > 0)
+				if (((GestorJuego) estados[1]).getJugador().getEstadisticas().getSalud() > 0) {
+					((GestorJuego) estados[1]).getJugador().getEstadisticas().recuperarTodoMana();
 					cambiarEstado(1);
+				}
 				else {
 					// Si pierde el combate.
 					estados[6] = new Derrota();
