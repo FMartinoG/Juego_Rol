@@ -52,7 +52,7 @@ public class Jugador {
 			(Constantes.ALTO_VENTANA / 2) - (ALTO_JUGADOR / 4), 1, (ALTO_JUGADOR / 4) + (ALTO_JUGADOR / 2));
 
 	public Jugador(Mapa mapa) {
-		estadisticas = new Estadisticas(1000, 400, 50, 40, 30, 30);
+		estadisticas = new Estadisticas();
 
 		posicionX = mapa.getPosicionInicial().x;
 		posicionY = mapa.getPosicionInicial().y;

@@ -3,6 +3,12 @@ package juego.entes;
 import java.io.Serializable;
 import java.util.Random;
 
+/**
+ * Clase encargada de almacenar y cambiar las estadísticas del jugador.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class Estadisticas implements Serializable {
 	private static final long serialVersionUID = 230022786243647812L;
 
@@ -13,34 +19,53 @@ public class Estadisticas implements Serializable {
 	private int ataque, defensa;
 	private int poderMagico, defensaMagica;
 
+	// Código numérico que identifica al mapa para cargar la partida.
 	private int mapa;
 
-	public Estadisticas(int saludMaxima, int manaMaximo, int ataque, int defensa, int poderMagico, int defensaMagica) {
+	public Estadisticas() {
 		nivel = 1;
 		expMaxima = 100;
 		mapa = 1;
-		this.saludMaxima = this.salud = saludMaxima;
-		this.manaMaximo = this.mana = manaMaximo;
-		this.ataque = ataque;
-		this.defensa = defensa;
-		this.poderMagico = poderMagico;
-		this.defensaMagica = defensaMagica;
+		this.saludMaxima = this.salud = 50;
+		this.manaMaximo = this.mana = 50;
+		this.ataque = 50;
+		this.defensa = 50;
+		this.poderMagico = 50;
+		this.defensaMagica = 50;
 	}
 
+	/**
+	 * Método que devuelve la salud máxima.
+	 * 
+	 * @return saludMaxima int - La salud máxima del personaje.
+	 */
 	public int getSaludMaxima() {
 		return saludMaxima;
 	}
 
+	/**
+	 * Método que devuelve la salud actual.
+	 * 
+	 * @return salud int - La salud actual del personaje.
+	 */
 	public int getSalud() {
 		return salud;
 	}
 
+	/**
+	 * Método que aumenta la salud del personaje con la cantidad indicada.
+	 * 
+	 * @param cura int - Salud a curar.
+	 */
 	public void curar(int cura) {
 		salud += cura;
 		if (salud > saludMaxima)
 			salud = saludMaxima;
 	}
 
+	/**
+	 * Método que cura completamente al personaje.
+	 */
 	public void curaTotal() {
 		salud = saludMaxima;
 	}
@@ -91,6 +116,10 @@ public class Estadisticas implements Serializable {
 		this.mana -= gasto;
 	}
 
+	public void recuperarTodoMana() {
+		this.mana = this.manaMaximo;
+	}
+
 	public int getAtaque() {
 		return ataque;
 	}
@@ -125,7 +154,7 @@ public class Estadisticas implements Serializable {
 			subirNivel();
 		}
 	}
-	
+
 	private void subirNivel() {
 		++nivel;
 		exp -= expMaxima;
