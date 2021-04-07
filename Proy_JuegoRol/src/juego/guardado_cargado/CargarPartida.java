@@ -8,8 +8,21 @@ import java.io.ObjectInputStream;
 import juego.Constantes;
 import juego.entes.Estadisticas;
 
+/**
+ * Clase encargada de controlar la lectura del fichero serializable para cargar
+ * la partida.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class CargarPartida {
 
+	/**
+	 * Método que lee el fichero serializable y devuelve el objeto estadísticas
+	 * que saca.
+	 * 
+	 * @return estadisticasGuardadas Estadisticas.
+	 */
 	public static Estadisticas cargar() {
 		Estadisticas s = null;
 		File f = new File("recursos/guardados/save.s");
@@ -25,7 +38,14 @@ public class CargarPartida {
 		}
 		return s;
 	}
-	
+
+	/**
+	 * Método encargado de seleccionar y devolver el mapa que se mostrará al
+	 * cargar la partida.
+	 * 
+	 * @param mapa
+	 * @return mapaCarga String.
+	 */
 	public static String mapaACargar(int mapa) {
 		String textoMapa = "";
 		System.out.println(mapa);
@@ -60,8 +80,8 @@ public class CargarPartida {
 		case 10:
 			textoMapa = Constantes.MAPA_CARGA_10;
 			break;
-			
-		// LOS DE PRUEBA	
+
+		// LOS DE PRUEBA
 		case 1002:
 			textoMapa = Constantes.MAPA_PRUEBA_1;
 			break;
@@ -74,7 +94,6 @@ public class CargarPartida {
 		default:
 			break;
 		}
-		System.out.println(textoMapa);
 		return textoMapa;
 	}
 }
