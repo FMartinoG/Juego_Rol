@@ -23,28 +23,59 @@ public class Constantes {
 	public static double factorEscaladoX = ANCHO_PANTALLA_AMPLIADA / ANCHO_VENTANA;
 	public static double factorEscaladoY = ALTO_PANTALLA_AMPLIADA / ALTO_VENTANA;
 
+	// TEXTURAS
 	public static final String HOJA_TEXTURAS_1 = "/texturas/001.png";
-
+	public static final String TEXTURAS_BOSQUE_1 = "/texturas/bosque01.png";
+	public static final String TEXTURAS_ENTRADA_CUEVA = "/texturas/entrada_cueva.png";
+	public static final String TEXTURAS_ENTRADA_CUEVA_2 = "/texturas/entrada_cueva_02.png";
+	public static final String TEXTURAS_ENTRADA_CASTILLO = "/texturas/entrada_castillo.png";
+	public static final String TEXTURAS_MUNDO = "/texturas/reveland.png";
+	public static final String TEXTURAS_PUEBLO = "/texturas/Villa.png";
+	public static final String TEXTURAS_PUEBLO_2 = "/texturas/Villa01.png";
+	
+	// IMAGENES
 	public static final String HOJA_PERSONAJE_1 = "/personaje/001.png";
 	public static final String PERSONAJE = "/personaje/psCombate.png";
-	public static final String BATMAN = "/personaje/batman.png";
-	public static final String BOTMAN = "/personaje/botman.png";
+	public static final String BOTMAN = "/enemigos/botman.png";
+	public static final String RECAUDADOR = "/enemigos/recaudador.png";
 	public static final String ATAQUE = "/imagenes/explosion.png";
 	public static final String CURA = "/imagenes/cruz.png";
 	public static final String FUEGO = "/imagenes/fuego.png";
 	public static final String HIELO = "/imagenes/Hielo.png";
 	public static final String RAYO = "/imagenes/rayo.png";
 	
-
-	public static final String MAPA_1 = "/mapas/mapa001.txt";
-	public static final String MAPA_2 = "/mapas/mapa002.txt";
-	public static final String MAPA_3 = "/mapas/mapa003.txt";
+	// MAPAS
+	public static final String MAPA_PRUEBA_1 = "/mapas/mapa001.txt";
+	public static final String MAPA_PRUEBA_2 = "/mapas/mapa002.txt";
+	public static final String MAPA_PRUEBA_3 = "/mapas/mapa003.txt";
 	
+	public static final String MAPA_4 = "/mapas/mapa004.txt";
+	public static final String MAPA_5 = "/mapas/mapa005.txt";
+	public static final String MAPA_6 = "/mapas/mapa006.txt";
+	public static final String MAPA_7 = "/mapas/mapa007.txt";
+	public static final String MAPA_MUNDO = "/mapas/mapa008.txt";
+	
+	public static final String MAPA_PUEBLO_1 = "/mapas/mapa_pueblo_01.txt";
+	public static final String MAPA_PUEBLO_2 = "/mapas/mapa_pueblo_02.txt";
+	public static final String MAPA_PUEBLO_3 = "/mapas/mapa_pueblo_03.txt";
+	
+	// MAPAS DE CARGA
 	public static final String MAPA_CARGA_1 = "/mapas/carga/carga1.txt";
 	public static final String MAPA_CARGA_2 = "/mapas/carga/carga2.txt";
 	public static final String MAPA_CARGA_3 = "/mapas/carga/carga3.txt";
+	public static final String MAPA_CARGA_4 = "/mapas/carga/carga4.txt";
+	public static final String MAPA_CARGA_5 = "/mapas/carga/carga5.txt";
+	public static final String MAPA_CARGA_6 = "/mapas/carga/carga6.txt";
+	public static final String MAPA_CARGA_7 = "/mapas/carga/carga7.txt";
+	public static final String MAPA_CARGA_8 = "/mapas/carga/carga8.txt";
+	public static final String MAPA_CARGA_9 = "/mapas/carga/carga9.txt";
+	public static final String MAPA_CARGA_10 = "/mapas/carga/carga10.txt";
 	
+	public static final String MAPA_CARGA_PRUEBA_1 = "/mapas/carga/carga_prueba_1.txt";
+	public static final String MAPA_CARGA_PRUEBA_2 = "/mapas/carga/carga_prueba_2.txt";
+	public static final String MAPA_CARGA_PRUEBA_3 = "/mapas/carga/carga_prueba_3.txt";
 
+	
 	public static final String ICONO = "/icon/juego.png";
 
 	public static final String CURSOR = "/cursor/cursor.png";

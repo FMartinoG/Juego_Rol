@@ -1,7 +1,6 @@
 package juego.sprites;
 
 import java.awt.image.BufferedImage;
-import java.io.Serializable;
 
 import juego.herramientas.CargadorRecursos;
 
@@ -11,8 +10,7 @@ import juego.herramientas.CargadorRecursos;
  * @author Fernando Martino
  *
  */
-public class HojaSprites implements Serializable{
-	private static final long serialVersionUID = -5633427649812497276L;
+public class HojaSprites {
 	
 	final private int ANCHO_HOJA_PX;
 	final private int ALTO_HOJA_PX;

@@ -16,7 +16,7 @@ import juego.herramientas.CargadorRecursos;
 import juego.maquinaEstado.estados.menus.Seccion;
 
 /**
- * Clase encargada de controlar y dibujar el menú de juego.
+ * Clase encargada de controlar y dibujar los componentes del menú de juego.
  * 
  * @author Fernando Martino
  *
@@ -46,6 +46,11 @@ public class EstructuraMenu {
 
 	private boolean guardado;
 
+	/**
+	 * Contructor de la estructura del menú del juego.
+	 * 
+	 * @param jugador
+	 */
 	public EstructuraMenu(Jugador jugador) {
 		this.jugador = jugador;
 		estadisticasJugador = jugador.getEstadisticas();
@@ -61,8 +66,7 @@ public class EstructuraMenu {
 
 		SUPERIOR = new Rectangle(0, 0, Constantes.ANCHO_VENTANA, 30);
 		LATERAL = new Rectangle(0, SUPERIOR.height, 100, Constantes.ALTO_VENTANA - SUPERIOR.height);
-		FONDO = new Rectangle(LATERAL.width, SUPERIOR.height, Constantes.ANCHO_VENTANA - LATERAL.width,
-				Constantes.ALTO_VENTANA - SUPERIOR.height);
+		FONDO = new Rectangle(LATERAL.width, SUPERIOR.height, Constantes.ANCHO_VENTANA - LATERAL.width, Constantes.ALTO_VENTANA - SUPERIOR.height);
 
 		puntero = punteroAnterior = 0;
 		secciones = new Seccion[4];
@@ -75,7 +79,11 @@ public class EstructuraMenu {
 
 	}
 
+	/**
+	 * Método encargado de actualizar los componentes del menú.
+	 */
 	public void actualizar() {
+		// Cuando utiliza las flechas se modifica la sección seleccionada.
 		if (Controles.TECLADO.arribaMenu && puntero > 0) {
 			puntero -= 0.2;
 			seccionActual = secciones[(int) puntero];
@@ -85,6 +93,7 @@ public class EstructuraMenu {
 			seccionActual = secciones[(int) puntero];
 		}
 
+		// Cuando se cambia de sección seleccionada suena un sonido.
 		if ((int) puntero != punteroAnterior) {
 			Clip beep = CargadorRecursos.cargarSonido(Constantes.BEEP);
 			beep.start();
@@ -95,6 +104,8 @@ public class EstructuraMenu {
 			punteroAnterior = (int) puntero;
 		}
 
+		// Según la sección seleccionada muestra lo que debe en pantalla y
+		// comprueba si pulsa "Enter" en las secciones que lo permiten.
 		if (seccionActual == secciones[0]) {
 			estadisticasSeleccionado = true;
 		} else
@@ -121,6 +132,11 @@ public class EstructuraMenu {
 		}
 	}
 
+	/**
+	 * Método que dibuja los elementos del menú.
+	 * 
+	 * @param g
+	 */
 	public void dibujar(Graphics g) {
 		g.setColor(COLOR_SUPERIOR);
 		g.fillRect(SUPERIOR.x, SUPERIOR.y, SUPERIOR.width, SUPERIOR.height);
@@ -157,6 +173,11 @@ public class EstructuraMenu {
 
 	}
 
+	/**
+	 * Método encargado de dibujar la información.
+	 * 
+	 * @param g
+	 */
 	private void dibujarInformacion(Graphics g) {
 		g.setColor(Color.black);
 		g.drawString("INFORMACIÓN DEL JUEGO:", 150, 60);
@@ -164,11 +185,16 @@ public class EstructuraMenu {
 		g.drawString("Todos los enemigos del juego pueden ser superados sin pelear, usando las acciones.", 150, 100);
 		g.drawString("Todas las magias te costarán 20 puntos de mana.", 150, 120);
 		g.drawString("Todo tipo de ataque tendrá un valor aleatorio entre 0 y el nivel de ataque o el poder mágico.", 150, 140);
-		
+
 		g.drawString("Este juego no guarda automáticamente.", 150, 180);
 		g.drawString("Cada vez que se guarda la partida se sobreescribe el guardado anterior.", 150, 200);
 	}
 
+	/**
+	 * Método encargado de dibujar las estadísticas.
+	 * 
+	 * @param g
+	 */
 	private void dibujarEstadisticas(Graphics g) {
 		g.setColor(Color.black);
 		g.drawString("Nivel: " + jugador.getEstadisticas().getNivel(), 150, 60);
@@ -179,21 +205,41 @@ public class EstructuraMenu {
 		dibujarInformacionEstadisticas(g);
 	}
 
+	/**
+	 * Método que crea y dibuja la barra de vida.
+	 * 
+	 * @param g
+	 */
 	private void dibujarBarraVida(Graphics g) {
 		Barras vida = new Barras(g, jugador, 150, 90);
 		vida.dibujarBarraVidaMenu();
 	}
 
+	/**
+	 * Método que crea y dibuja la barra de maná.
+	 * 
+	 * @param g
+	 */
 	private void dibujarBarraMana(Graphics g) {
 		Barras mana = new Barras(g, jugador, 150, 130);
 		mana.dibujarBarraManaMenu();
 	}
 
+	/**
+	 * Método que crea y dibuja la barra de experiencia.
+	 * 
+	 * @param g
+	 */
 	private void dibujarBarraExp(Graphics g) {
 		Barras exp = new Barras(g, jugador, 150, 170);
 		exp.dibujarBarraExpMenu();
 	}
 
+	/**
+	 * Método que dibuja los textos de las estadísticas.
+	 * 
+	 * @param g
+	 */
 	private void dibujarInformacionEstadisticas(Graphics g) {
 		g.setColor(Color.black);
 		g.drawString("ATAQUE FÍSICO", 150, 200);
