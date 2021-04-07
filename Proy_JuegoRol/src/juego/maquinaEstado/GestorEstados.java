@@ -39,8 +39,8 @@ public class GestorEstados {
 	private boolean mostrarMensajeNoCarga = false;
 
 	/**
-	 * Constructor de la clase GestoEstados. Llama al método para crear la lista de
-	 * estados y al método para inicializar el primer estado.
+	 * Constructor de la clase GestoEstados. Llama al método para crear la lista
+	 * de estados y al método para inicializar el primer estado.
 	 */
 	public GestorEstados() {
 		posicionActual = 0;
@@ -99,8 +99,7 @@ public class GestorEstados {
 				if (((GestorJuego) estados[1]).getJugador().getEstadisticas().getSalud() > 0) {
 					((GestorJuego) estados[1]).getJugador().getEstadisticas().recuperarTodoMana();
 					cambiarEstado(1);
-				}
-				else {
+				} else {
 					// Si pierde el combate.
 					estados[6] = new Derrota();
 					cambiarEstado(6);
@@ -195,7 +194,8 @@ public class GestorEstados {
 	/**
 	 * Llama al método dibujar del estado actual.
 	 * 
-	 * @param g Graphics - Objeto encargado de dibujar en la ventana.
+	 * @param g
+	 *            Graphics - Objeto encargado de dibujar en la ventana.
 	 */
 	public void dibujar(final Graphics g) {
 		estadoActual.dibujar(g);
@@ -211,7 +211,8 @@ public class GestorEstados {
 	/**
 	 * Cambia el estado actual por el estado pedido como parámetro.
 	 * 
-	 * @param nuevoEstado int - Posicion en la lista de estados.
+	 * @param nuevoEstado
+	 *            int - Posicion en la lista de estados.
 	 */
 	public void cambiarEstado(final int nuevoEstado) {
 		if (nuevoEstado == 0 && !musica.isActive()) {
@@ -230,6 +231,11 @@ public class GestorEstados {
 		return estadoActual;
 	}
 
+	/**
+	 * Devuelve la posición actual.
+	 * 
+	 * @return posicionActual int - Posición actual en el array de estados.
+	 */
 	public int getPosicionActual() {
 		return posicionActual;
 	}

@@ -3,7 +3,7 @@ package juego.maquinaEstado;
 import java.awt.Graphics;
 
 /**
- * Interfaz de los diferentes estados de juego.
+ * Interfaz de estados de juego.
  * 
  * @author Fernando Martino
  *
