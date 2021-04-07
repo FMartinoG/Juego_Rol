@@ -3,8 +3,22 @@ package juego.herramientas;
 import juego.Constantes;
 import juego.entes.Jugador;
 
+/**
+ * Clase encargada de seleccionar la ruta del mapa a partir de una referencia y
+ * de actualizar las referencia al mapa.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class ComprobadorDeMapa {
-	
+
+	/**
+	 * Método que devuelve la ruta al mapa que se debe leer recibiendo su
+	 * referencia.
+	 * 
+	 * @param siguienteMapa
+	 * @return rutaMapa String
+	 */
 	public static String comprobarSiguienteMapa(String siguienteMapa) {
 		String nuevoMapa = "";
 		switch (siguienteMapa) {
@@ -32,13 +46,10 @@ public class ComprobadorDeMapa {
 		case "m8":
 			nuevoMapa = Constantes.MAPA_MUNDO;
 			break;
-/*		case "m9":
-			nuevoMapa = Constantes.MAPA_PUEBLO_2;
-			break;
-		case "m10":
-			nuevoMapa = Constantes.MAPA_PUEBLO_1;
-			break;
-*/
+		/*
+		 * case "m9": nuevoMapa = Constantes.MAPA_PUEBLO_2; break; case "m10":
+		 * nuevoMapa = Constantes.MAPA_PUEBLO_1; break;
+		 */
 		case "m1002":
 			nuevoMapa = Constantes.MAPA_PRUEBA_1;
 			break;
@@ -53,7 +64,14 @@ public class ComprobadorDeMapa {
 		}
 		return nuevoMapa;
 	}
-	
+
+	/**
+	 * Método que actualiza la referencia, que tiene el objeto estadisticas del
+	 * jugador, hacia el mapa.
+	 * 
+	 * @param jugador
+	 * @param mapa
+	 */
 	public static void guardarMapa(Jugador jugador, String mapa) {
 		switch (mapa) {
 		case Constantes.MAPA_PUEBLO_1:
@@ -81,7 +99,7 @@ public class ComprobadorDeMapa {
 		case Constantes.MAPA_MUNDO:
 			jugador.getEstadisticas().cambiarMapa(8);
 			break;
-		
+
 		case Constantes.MAPA_PRUEBA_1:
 			jugador.getEstadisticas().cambiarMapa(1002);
 			break;

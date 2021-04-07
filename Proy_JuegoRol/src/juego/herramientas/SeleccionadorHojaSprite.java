@@ -3,8 +3,21 @@ package juego.herramientas;
 import juego.Constantes;
 import juego.sprites.HojaSprites;
 
+/**
+ * clase encargada de seleccionar la hoja de sprites que debe mostrar el mapa.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class SeleccionadorHojaSprite {
 
+	/**
+	 * Método que recibe la referencia que hace el mapa a la hoja de sprites y
+	 * devuelve la hoja adecuada.
+	 * 
+	 * @param textoHojas
+	 * @return hoja HojaSprites
+	 */
 	public static HojaSprites seleccionarHojaSprite(String textoHojas) {
 		HojaSprites hs = null;
 		switch (textoHojas) {

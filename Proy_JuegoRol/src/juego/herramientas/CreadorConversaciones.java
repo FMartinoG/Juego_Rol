@@ -4,8 +4,17 @@ import java.util.ArrayList;
 
 import juego.Constantes;
 
+/**
+ * Clase encargada de crear y almacenar las conversaciones del juego.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class CreadorConversaciones {
 
+	/**
+	 * Método encargado de crear y guardar las conversaciones.
+	 */
 	public static void crearConversaciones() {
 		Constantes.CONVERSACIONES = new ArrayList<>();
 		String[] conversacion0 = { "MENSAJE 1", "MENSAJE 2" };
