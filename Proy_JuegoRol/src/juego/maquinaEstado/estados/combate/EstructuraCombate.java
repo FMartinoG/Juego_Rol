@@ -13,6 +13,12 @@ import juego.entes.Enemigo;
 import juego.entes.Jugador;
 import juego.herramientas.CargadorRecursos;
 
+/**
+ * Clase que crea y controla los elementos dentro del estado de combate.
+ * 
+ * @author Fernando Martino
+ *
+ */
 public class EstructuraCombate {
 
 	Jugador jugador;
@@ -24,8 +30,8 @@ public class EstructuraCombate {
 	private boolean enCombate;
 	private boolean huido, vencido, apaciguado, derrota;
 	private boolean botonPulsado;
-	private boolean dibujarAtaqueFisico, dibujarMagiaCura, dibujarMagiaFuego, dibujarMagiaHielo, dibujarMagiaRayo,
-			dibujarReaccion, dibujarHuidaFallida, dibujarAtaqueEnemigo;
+	private boolean dibujarAtaqueFisico, dibujarMagiaCura, dibujarMagiaFuego, dibujarMagiaHielo, dibujarMagiaRayo, dibujarReaccion, dibujarHuidaFallida,
+			dibujarAtaqueEnemigo;
 	private int accionSeleccionada;
 
 	private int ataqueFisico;
@@ -49,6 +55,12 @@ public class EstructuraCombate {
 	private double punteroMagia;
 	private double punteroAccion;
 
+	/**
+	 * Constructor de la clase de estructura de combate.
+	 * 
+	 * @param jugador
+	 * @param enemigo
+	 */
 	public EstructuraCombate(Jugador jugador, Enemigo enemigo) {
 		this.jugador = jugador;
 		this.enemigo = enemigo;
@@ -67,51 +79,54 @@ public class EstructuraCombate {
 		opcion = 0;
 
 		inicializarPrincipal();
-		inicializarMagia();
 		inicializarAccion();
 	}
 
+	/**
+	 * Crea las etiquetas principales para seleccionar en el combate.
+	 */
 	private void inicializarPrincipal() {
 		punteroPrincipal = 0;
-		if (jugador.getEstadisticas().getMana() > 20) {
-			opciones = new OpcionCombate[4];
-			opciones[0] = new OpcionCombate("Ataque Físico", new Rectangle(40, 290, 100, 40));
-			opciones[1] = new OpcionCombate("Magia", new Rectangle(190, 290, 100, 40));
-			opciones[2] = new OpcionCombate("Acción", new Rectangle(340, 290, 100, 40));
-			opciones[3] = new OpcionCombate("Huir", new Rectangle(490, 290, 100, 40));
-		}
-		else
-		{
-			opciones = new OpcionCombate[3];
-			opciones[0] = new OpcionCombate("Ataque Físico", new Rectangle(40, 290, 100, 40));
-			opciones[1] = new OpcionCombate("Acción", new Rectangle(340, 290, 100, 40));
-			opciones[2] = new OpcionCombate("Huir", new Rectangle(490, 290, 100, 40));
-		}
+		opciones = new OpcionCombate[4];
+		opciones[0] = new OpcionCombate("Ataque Físico", new Rectangle(40, 290, 100, 40));
+		opciones[1] = new OpcionCombate("Magia", new Rectangle(190, 290, 100, 40));
+		opciones[2] = new OpcionCombate("Acción", new Rectangle(340, 290, 100, 40));
+		opciones[3] = new OpcionCombate("Huir", new Rectangle(490, 290, 100, 40));
 
 		seleccionado = opciones[(int) punteroPrincipal];
 	}
 
+	/**
+	 * Crea las etiquetas de mágia para seleccionar en el combate.
+	 */
 	private void inicializarMagia() {
-		punteroMagia = 0;
-		opcionesMagia = new OpcionCombate[4];
-		opcionesMagia[0] = new OpcionCombate("Cura", new Rectangle(40, 290, 100, 40));
-		opcionesMagia[1] = new OpcionCombate("Fuego", new Rectangle(190, 290, 100, 40));
-		opcionesMagia[2] = new OpcionCombate("Hielo", new Rectangle(340, 290, 100, 40));
-		opcionesMagia[3] = new OpcionCombate("Rayo", new Rectangle(490, 290, 100, 40));
+		if (jugador.getEstadisticas().getMana() > 20) {
+			punteroMagia = 0;
+			opcionesMagia = new OpcionCombate[4];
+			opcionesMagia[0] = new OpcionCombate("Cura", new Rectangle(40, 290, 100, 40));
+			opcionesMagia[1] = new OpcionCombate("Fuego", new Rectangle(190, 290, 100, 40));
+			opcionesMagia[2] = new OpcionCombate("Hielo", new Rectangle(340, 290, 100, 40));
+			opcionesMagia[3] = new OpcionCombate("Rayo", new Rectangle(490, 290, 100, 40));
 
-		seleccionadoMagia = opcionesMagia[0];
+			seleccionadoMagia = opcionesMagia[0];
+		}
 	}
 
+	/**
+	 * Crea las etiquetas de acciones para seleccionar en el combate.
+	 */
 	private void inicializarAccion() {
 		punteroAccion = 0;
 		opcionesAccion = new OpcionCombate[enemigo.getAcciones().length];
 		for (int i = 0; i < opcionesAccion.length; ++i)
-			opcionesAccion[i] = new OpcionCombate(enemigo.getAcciones()[i],
-					new Rectangle(40 + (i * 150), 290, 100, 40));
+			opcionesAccion[i] = new OpcionCombate(enemigo.getAcciones()[i], new Rectangle(40 + (i * 150), 290, 100, 40));
 
 		seleccionadoAccion = opcionesAccion[0];
 	}
 
+	/**
+	 * Actualiza los elementos del estado.
+	 */
 	public void actualizar() {
 		while (botonPulsado && Controles.TECLADO.seleccion) {
 			System.out.println("Suelte el botón.");
@@ -123,12 +138,16 @@ public class EstructuraCombate {
 		else if (opcion == 1) {
 			realizarAtaqueFisico(jugador.getEstadisticas().realizarAtaqueFisico());
 			opcion = 0;
-		} else if (opcion == 2)
+		} else if (opcion == 2) {
+			inicializarMagia();
 			actualizarMagia();
-		else if (opcion == 3)
+		} else if (opcion == 3)
 			actualizarAccion();
 	}
 
+	/**
+	 * Actualiza la vista principal de etiquetas del combate.
+	 */
 	private void actualizarPrincipal() {
 		if (Controles.TECLADO.izdaMenu && punteroPrincipal > 0)
 			punteroPrincipal -= 0.2;
@@ -151,26 +170,35 @@ public class EstructuraCombate {
 			vencido = true;
 	}
 
+	/**
+	 * Actualiza la vista de las etiquetas de mágia.
+	 */
 	private void actualizarMagia() {
 		while (botonPulsado && Controles.TECLADO.seleccion) {
 			System.out.println("Suelte el botón.");
 		}
 		botonPulsado = false;
 
-		if (Controles.TECLADO.izdaMenu && punteroMagia > 0) {
-			punteroMagia -= 0.2;
-		} else if (Controles.TECLADO.drchaMenu && punteroMagia < 3) {
-			punteroMagia += 0.2;
+		if (jugador.getEstadisticas().getMana() > 20) {
+			if (Controles.TECLADO.izdaMenu && punteroMagia > 0) {
+				punteroMagia -= 0.2;
+			} else if (Controles.TECLADO.drchaMenu && punteroMagia < 3) {
+				punteroMagia += 0.2;
+			}
+
+			seleccionadoMagia = opcionesMagia[(int) punteroMagia];
+
+			seleccionarMagia();
 		}
-
-		seleccionadoMagia = opcionesMagia[(int) punteroMagia];
-
-		seleccionarMagia();
-
 		if (Controles.TECLADO.bt_Escape)
 			opcion = 0;
 	}
 
+	/**
+	 * Método encargado de controlar si se selecciona y lo que pasa al
+	 * seleccionar una mágia. Si se pulsa "Enter" sobre una mágia, realiza la
+	 * acción de esa mágia y gasta maná
+	 */
 	private void seleccionarMagia() {
 		if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[0]) {
 			jugador.getEstadisticas().curar(200);
@@ -192,6 +220,9 @@ public class EstructuraCombate {
 		}
 	}
 
+	/**
+	 * Actualiza la sección de las acciones.
+	 */
 	private void actualizarAccion() {
 		while (botonPulsado && Controles.TECLADO.seleccion) {
 			System.out.println("Suelte el botón.");
@@ -212,6 +243,10 @@ public class EstructuraCombate {
 			opcion = 0;
 	}
 
+	/**
+	 * Método encargado de comprobar si se selecciona una acción y de controlar
+	 * lo que pasa al seleccionar una acción.
+	 */
 	private void seleccionarAccion() {
 		if (Controles.TECLADO.seleccion && seleccionadoAccion == opcionesAccion[0]) {
 			realizarAccion(0);
@@ -228,12 +263,23 @@ public class EstructuraCombate {
 		}
 	}
 
+	/**
+	 * Método que controla cuando el jugador hace un ataque físico.
+	 * 
+	 * @param n
+	 */
 	private void realizarAtaqueFisico(int n) {
 		ataqueFisico = enemigo.recibirAtaqueFisico(n);
 		dibujarAtaqueFisico = true;
 		turnoDeEnemigo(true);
 	}
 
+	/**
+	 * Método que controla cuando el jugador hace un ataque mágico.
+	 * 
+	 * @param n
+	 * @param elemento
+	 */
 	private void realizarAtaqueMagico(int n, int elemento) {
 		ataqueMagico = enemigo.recibirAtaqueMagico(n, elemento);
 		switch (elemento) {
@@ -252,6 +298,12 @@ public class EstructuraCombate {
 		turnoDeEnemigo(false);
 	}
 
+	/**
+	 * Método que controla las acciones del jugador y las reacciones del
+	 * enemigo.
+	 * 
+	 * @param n
+	 */
 	private void realizarAccion(int n) {
 		accionSeleccionada = n;
 		dibujarReaccion = true;
@@ -262,6 +314,11 @@ public class EstructuraCombate {
 			apaciguado = true;
 	}
 
+	/**
+	 * Método que controla el turno del enemigo.
+	 * 
+	 * @param fisico
+	 */
 	private void turnoDeEnemigo(boolean fisico) {
 		if (fisico) {
 			ataqueEnemigo = enemigo.realizarAtaqueFisico();
@@ -274,6 +331,11 @@ public class EstructuraCombate {
 
 	}
 
+	/**
+	 * Método que dibuja los elementos del estado.
+	 * 
+	 * @param g
+	 */
 	public void dibujar(Graphics g) {
 		g.setColor(Color.white);
 		g.fillRect(0, 0, Constantes.ANCHO_VENTANA, Constantes.ALTO_VENTANA);
@@ -330,6 +392,11 @@ public class EstructuraCombate {
 			dibujarFinDeCombate(g);
 	}
 
+	/**
+	 * Método que dibuja la sección de etiquetas principales.
+	 * 
+	 * @param g
+	 */
 	private void dibujarPrincipal(Graphics g) {
 		for (OpcionCombate o : opciones) {
 			if (o == seleccionado)
@@ -339,6 +406,11 @@ public class EstructuraCombate {
 		}
 	}
 
+	/**
+	 * Método que dibuja la sección de etiquetas de mágia.
+	 * 
+	 * @param g
+	 */
 	private void dibujarMagia(Graphics g) {
 		for (OpcionCombate o : opcionesMagia) {
 			if (o == seleccionadoMagia)
@@ -348,6 +420,11 @@ public class EstructuraCombate {
 		}
 	}
 
+	/**
+	 * Método que dibuja la sección de etiquetas de acciones.
+	 * 
+	 * @param g
+	 */
 	private void dibujarAccion(Graphics g) {
 		for (OpcionCombate o : opcionesAccion) {
 			if (o == seleccionadoAccion)
@@ -357,6 +434,11 @@ public class EstructuraCombate {
 		}
 	}
 
+	/**
+	 * Método que dibuja el ataque físico del jugador.
+	 * 
+	 * @param g
+	 */
 	private void dibujarAtaqueFisico(Graphics g) {
 		Image ataque = CargadorRecursos.cargarImagenTranslucida(Constantes.ATAQUE);
 		long msInicio = System.currentTimeMillis();
@@ -368,6 +450,11 @@ public class EstructuraCombate {
 		dibujarAtaqueFisico = false;
 	}
 
+	/**
+	 * Método que dibuja la curación.
+	 * 
+	 * @param g
+	 */
 	private void dibujarMagiaCura(Graphics g) {
 		Image cura = CargadorRecursos.cargarImagenTranslucida(Constantes.CURA);
 		g.drawImage(cura, 150, 150, null);
@@ -378,6 +465,11 @@ public class EstructuraCombate {
 		dibujarMagiaCura = false;
 	}
 
+	/**
+	 * Método que dibuja la magia de fuego.
+	 * 
+	 * @param g
+	 */
 	private void dibujarMagiaFuego(Graphics g) {
 		Image fuego = CargadorRecursos.cargarImagenTranslucida(Constantes.FUEGO);
 		long msInicio = System.currentTimeMillis();
@@ -389,6 +481,11 @@ public class EstructuraCombate {
 		dibujarMagiaFuego = false;
 	}
 
+	/**
+	 * Método que dibuja la magia de hielo.
+	 * 
+	 * @param g
+	 */
 	private void dibujarMagiaHielo(Graphics g) {
 		Image hielo = CargadorRecursos.cargarImagenTranslucida(Constantes.HIELO);
 		long msInicio = System.currentTimeMillis();
@@ -400,6 +497,11 @@ public class EstructuraCombate {
 		dibujarMagiaHielo = false;
 	}
 
+	/**
+	 * Método que dibuja la magia de rayo.
+	 * 
+	 * @param g
+	 */
 	private void dibujarMagiaRayo(Graphics g) {
 		Image rayo = CargadorRecursos.cargarImagenTranslucida(Constantes.RAYO);
 		long msInicio = System.currentTimeMillis();
@@ -411,6 +513,11 @@ public class EstructuraCombate {
 		dibujarMagiaRayo = false;
 	}
 
+	/**
+	 * Método que dibuja las reacciones del enemigo.
+	 * 
+	 * @param g
+	 */
 	private void dibujarReaccion(Graphics g) {
 		Mensaje mensaje = new Mensaje(enemigo.getReacciones()[accionSeleccionada], 200, 100, true);
 		mensaje.dibujarMensajeCombate(g);
@@ -422,6 +529,11 @@ public class EstructuraCombate {
 		}
 	}
 
+	/**
+	 * Método que dibuja el mensaje cuando no se consigue huir.
+	 * 
+	 * @param g
+	 */
 	private void dibujarHuidaFallida(Graphics g) {
 		Mensaje mensaje = new Mensaje("NO CONSEGUISTE HUIR", 200, 100, true);
 		mensaje.dibujarMensajeCombate(g);
@@ -434,6 +546,12 @@ public class EstructuraCombate {
 		opcion = 0;
 	}
 
+	/**
+	 * Método que dibuja el o los mensajes que indican que el combate ha
+	 * terminado e indica que el combate ha terminado.
+	 * 
+	 * @param g
+	 */
 	private void dibujarFinDeCombate(Graphics g) {
 		Mensaje mensaje = null;
 		Mensaje mensajeExp = null;
@@ -460,6 +578,11 @@ public class EstructuraCombate {
 		enCombate = false;
 	}
 
+	/**
+	 * Método que dibuja el mensaje indicando el ataque del enemigo.
+	 * 
+	 * @param g
+	 */
 	private void dibujarAtaqueEnemigo(Graphics g) {
 		long msInicio = System.currentTimeMillis();
 		long msActual = System.currentTimeMillis();
@@ -494,11 +617,19 @@ public class EstructuraCombate {
 		comprobarJugadorVivo();
 	}
 
+	/**
+	 * Método que comprueba que el jugador siga vivo, es decir, que su salud sea
+	 * mayor de 0. y cambia la variable de derrota si no está vivo.
+	 */
 	private void comprobarJugadorVivo() {
-		if (jugador.getEstadisticas().getSalud() <= 0)
-			derrota = true;
+		derrota = jugador.getEstadisticas().getSalud() <= 0;
 	}
 
+	/**
+	 * Indica si continúa el combate.
+	 * 
+	 * @return enCombate boolean
+	 */
 	public boolean isEnCombate() {
 		return enCombate;
 	}
