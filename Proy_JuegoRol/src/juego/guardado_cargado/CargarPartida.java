@@ -43,8 +43,8 @@ public class CargarPartida {
 	 * Método encargado de seleccionar y devolver el mapa que se mostrará al
 	 * cargar la partida.
 	 * 
-	 * @param mapa
-	 * @return mapaCarga String.
+	 * @param mapa int - Numero de referencia al mapa
+	 * @return mapaCarga String - Ruta al mapa.
 	 */
 	public static String mapaACargar(int mapa) {
 		String textoMapa = "";

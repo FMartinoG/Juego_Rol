@@ -21,8 +21,8 @@ public class GuardarPartida {
 	 * fichero serializable y devuelve un entero indicando si se ha realizado
 	 * correctamente.
 	 * 
-	 * @param jugador
-	 * @return
+	 * @param jugador Jugador - Objeto de jugador.
+	 * @return resultado int - Entero indicando si se ha guardado correctamente, 1 significa correcto y 0 es error.
 	 */
 	public static int guardar(Jugador jugador) {
 		File f = new File("recursos/guardados/save.s");

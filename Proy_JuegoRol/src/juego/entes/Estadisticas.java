@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Random;
 
 /**
- * Clase encargada de almacenar y cambiar las estadísticas del jugador.
- * Es la clase que se guardará en el fichero serializable.
+ * Clase encargada de almacenar y cambiar las estadísticas del jugador. Es la
+ * clase que se guardará en el fichero serializable.
  * 
  * @author Fernando Martino
  *
@@ -59,8 +59,7 @@ public class Estadisticas implements Serializable {
 	/**
 	 * Método que aumenta la salud del personaje con la cantidad indicada.
 	 * 
-	 * @param cura
-	 *            int - Salud a curar.
+	 * @param cura int - Salud a curar.
 	 */
 	public void curar(int cura) {
 		salud += cura;
@@ -79,8 +78,7 @@ public class Estadisticas implements Serializable {
 	 * Método encargado de recibir el ataque físico realizado por el enemigo,
 	 * cambiar la salud y devolver el daño que recibe el personaje.
 	 * 
-	 * @param n
-	 *            int - Ataque físico del enemigo.
+	 * @param n int - Ataque físico del enemigo.
 	 * @return ataque int - Daño recibido por el personaje.
 	 */
 	public int recibirAtaqueFisico(int n) {
@@ -98,8 +96,7 @@ public class Estadisticas implements Serializable {
 	 * Método encargado de recibir el ataque mágico realizado por el enemigo,
 	 * cambiar la salud y devolver el daño que recibe el personaje.
 	 * 
-	 * @param n
-	 *            int - Ataque mágico del enemigo.
+	 * @param n int - Ataque mágico del enemigo.
 	 * @return ataque int - Daño recibido por el personaje.
 	 */
 	public int recibirAtaqueMagico(int n) {
@@ -156,8 +153,7 @@ public class Estadisticas implements Serializable {
 	/**
 	 * Método que disminuye la cantidad de maná actual.
 	 * 
-	 * @param gasto
-	 *            int - Maná que se gasta.
+	 * @param gasto int - Maná que se gasta.
 	 */
 	public void gastarMana(int gasto) {
 		this.mana -= gasto;
@@ -207,9 +203,9 @@ public class Estadisticas implements Serializable {
 	}
 
 	/**
-	 * Métod que devuelve el nivel del personaje;
+	 * Método que devuelve el nivel del personaje;
 	 * 
-	 * @return
+	 * @return nivel int - Nivel Actual del personaje.
 	 */
 	public int getNivel() {
 		return nivel;
@@ -237,8 +233,7 @@ public class Estadisticas implements Serializable {
 	 * Método enacargado de aumentar la experiencia y si alcanza la experiencia
 	 * máxima, manda subir de nivel.
 	 * 
-	 * @param exp
-	 *            int - Cantidad de experiencia que aumenta.
+	 * @param exp int - Cantidad de experiencia que aumenta.
 	 */
 	public void aumentarExp(int exp) {
 		this.exp += exp;
@@ -273,8 +268,7 @@ public class Estadisticas implements Serializable {
 	/**
 	 * Método que cambia la referencia al mapa actual.
 	 * 
-	 * @param n
-	 *            int - Referencia del nuevo mapa.
+	 * @param n int - Referencia del nuevo mapa.
 	 */
 	public void cambiarMapa(int n) {
 		this.mapa = n;

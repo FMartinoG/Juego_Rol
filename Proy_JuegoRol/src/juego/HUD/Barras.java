@@ -24,10 +24,10 @@ public class Barras {
 	/**
 	 * Constructor de la clase Barras para el jugador.
 	 * 
-	 * @param g
-	 * @param jugador
-	 * @param posX
-	 * @param posY
+	 * @param g Graphics
+	 * @param j Jugador
+	 * @param posX int
+	 * @param posY int
 	 */
 	public Barras(Graphics g, Jugador j, int posX, int posY) {
 		this.g = g;
@@ -38,10 +38,10 @@ public class Barras {
 
 	/**
 	 * Constructor de la clase Barras para el enemigo.
-	 * @param g
-	 * @param enemigo
-	 * @param posX
-	 * @param posY
+	 * @param g Graphics
+	 * @param en Enemigo
+	 * @param posX int
+	 * @param posY int
 	 */
 	public Barras(Graphics g, Enemigo en, int posX, int posY) {
 		this.g = g;

@@ -37,6 +37,8 @@ public class GestorJuego implements EstadoJuego {
 
 	/**
 	 * Constructor de la clase gestor de juego cuando es una partida cargada.
+	 * 
+	 * @param jugador Jugador - Objeto jugador.
 	 */
 	public GestorJuego(Jugador jugador) {
 		this.jugador = jugador;
@@ -181,7 +183,7 @@ public class GestorJuego implements EstadoJuego {
 	/**
 	 * Método que devuelve el objeto del jugador.
 	 * 
-	 * @return
+	 * @return jugador Jugador - Objeto jugador.
 	 */
 	public Jugador getJugador() {
 		return jugador;
@@ -199,7 +201,7 @@ public class GestorJuego implements EstadoJuego {
 	/**
 	 * Método que modifica la variable que indica si está en combate.
 	 * 
-	 * @param enCombate
+	 * @param enCombate boolean - Indica si está en combate.
 	 */
 	public void setEnCombate(boolean enCombate) {
 		this.enCombate = enCombate;

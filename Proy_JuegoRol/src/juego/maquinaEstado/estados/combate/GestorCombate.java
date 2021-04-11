@@ -23,8 +23,8 @@ public class GestorCombate implements EstadoJuego {
 	/**
 	 * Constructor de la clase gestor de combate.
 	 * 
-	 * @param jugador
-	 * @param enemigo
+	 * @param jugador Jugador - Objeto jugador.
+	 * @param enemigo Enemigo - Objeto enemigo.
 	 */
 	public GestorCombate(Jugador jugador, Enemigo enemigo) {
 		enCombate = true;

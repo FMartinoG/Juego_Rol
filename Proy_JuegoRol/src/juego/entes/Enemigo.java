@@ -92,7 +92,7 @@ public class Enemigo {
 	 * Método que indica si la salud del enemigo es mayor que 0, lo que
 	 * significa que sigue vivo.
 	 * 
-	 * @return vivo boolean - Salud > 0.
+	 * @return vivo boolean - Salud mayor que 0.
 	 */
 	public boolean estaVivo() {
 		return vidaActual > 0;
@@ -141,8 +141,8 @@ public class Enemigo {
 	 * Método que se encarga de recibir el ataque mágico, cambiar la vida y
 	 * devuelve el daño recibido.
 	 * 
-	 * @param n
-	 *            int - Poder del ataque.
+	 * @param n int - Poder del ataque.
+	 * @param elemento int - Referencia al tipo de magia.
 	 * @return ataque int - Daño recibido.
 	 */
 	public int recibirAtaqueMagico(int n, int elemento) {

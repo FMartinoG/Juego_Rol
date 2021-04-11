@@ -27,7 +27,7 @@ public class EstructuraDerrota {
 	/**
 	 * Método encargado de dibujar los elementos del estado.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	public void dibujar(Graphics g) {
 		ponerPantallaNegro(g);
@@ -81,7 +81,7 @@ public class EstructuraDerrota {
 	/**
 	 * Indica si el estado ha terminado.
 	 * 
-	 * @return
+	 * @return finalizado boolean - Indica si ha terminado el estado.
 	 */
 	public boolean isFinalizado() {
 		return finalizado;

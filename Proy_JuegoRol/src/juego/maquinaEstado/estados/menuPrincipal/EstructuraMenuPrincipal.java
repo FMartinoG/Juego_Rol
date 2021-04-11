@@ -99,7 +99,7 @@ public class EstructuraMenuPrincipal {
 	/**
 	 * Método encargado de dibujar los componentes del menú principal.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	public void dibujar(Graphics g) {
 		g.setColor(COLOR_SUPERIOR);

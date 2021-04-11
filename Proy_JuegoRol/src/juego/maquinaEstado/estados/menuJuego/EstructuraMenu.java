@@ -49,7 +49,7 @@ public class EstructuraMenu {
 	/**
 	 * Contructor de la estructura del menú del juego.
 	 * 
-	 * @param jugador
+	 * @param jugador Jugador - Objeto jugador.
 	 */
 	public EstructuraMenu(Jugador jugador) {
 		this.jugador = jugador;
@@ -135,7 +135,7 @@ public class EstructuraMenu {
 	/**
 	 * Método que dibuja los elementos del menú.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	public void dibujar(Graphics g) {
 		g.setColor(COLOR_SUPERIOR);

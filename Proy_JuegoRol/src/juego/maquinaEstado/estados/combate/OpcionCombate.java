@@ -18,8 +18,8 @@ public class OpcionCombate {
 	/**
 	 * Constructor de la clase opcion de combate.
 	 * 
-	 * @param nombre
-	 * @param etiqueta
+	 * @param nombre String - Texto de la etiqueta.
+	 * @param etiqueta Rectangle
 	 */
 	public OpcionCombate(String nombre, Rectangle etiqueta) {
 		this.nombre = nombre;
@@ -29,7 +29,7 @@ public class OpcionCombate {
 	/**
 	 * Método que dibuja las etiquetas que no están seleccionadas.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	public void dibujarEtiquetaInactiva(Graphics g) {
 		g.setColor(Color.black);
@@ -45,7 +45,7 @@ public class OpcionCombate {
 	/**
 	 * Método que dibuja las etiquetas que están seleccionadas.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	public void dibujarEtiquetaActiva(Graphics g) {
 		g.setColor(Color.white);

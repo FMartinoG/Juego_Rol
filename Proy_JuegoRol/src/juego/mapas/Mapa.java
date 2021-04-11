@@ -52,7 +52,7 @@ public class Mapa {
 	/**
 	 * Contructor de la clase Mapa.
 	 * 
-	 * @param ruta
+	 * @param ruta String - Ruta del mapa.
 	 */
 	public Mapa(final String ruta) {
 		this.ruta = ruta;
@@ -63,8 +63,8 @@ public class Mapa {
 	/**
 	 * Método encargado de actualizar el estado del mapa en cada actualización.
 	 * 
-	 * @param posX
-	 * @param posY
+	 * @param posX int - Posición en el eje X.
+	 * @param posY int - Posición en el eje Y.
 	 */
 	public void actualizar(final int posX, final int posY) {
 		actualizarAreasColision(posX, posY);
@@ -78,9 +78,9 @@ public class Mapa {
 	/**
 	 * Método encargado de dibujar el mapa en pantalla.
 	 * 
-	 * @param g
-	 * @param posX
-	 * @param posY
+	 * @param g    Graphics
+	 * @param posX int - Posición en el eje X.
+	 * @param posY int - Posición en el eje Y.
 	 */
 	public void dibujar(Graphics g, int posX, int posY) {
 		int ladoSprite = Constantes.LADO_SPRITE;
@@ -149,8 +149,8 @@ public class Mapa {
 	}
 
 	/**
-	 * Método encargado de seleccionar y guardar los sprites que se van a
-	 * utilizar en el mapa.
+	 * Método encargado de seleccionar y guardar los sprites que se van a utilizar
+	 * en el mapa.
 	 * 
 	 * @param textoSprites
 	 */
@@ -167,13 +167,13 @@ public class Mapa {
 				if (hojaSprite == numeroHojasSprites[j])
 					puntero = j;
 			}
-			sprites[i] = hojas[puntero].getSprite(Integer.parseInt(separacionTextoSprite[3]), Integer.parseInt(separacionTextoSprite[2]));
+			sprites[i] = hojas[puntero].getSprite(Integer.parseInt(separacionTextoSprite[3]),
+					Integer.parseInt(separacionTextoSprite[2]));
 		}
 	}
 
 	/**
-	 * Método encargado de guardar las zonas a las que hay colisiones en el
-	 * mapa.
+	 * Método encargado de guardar las zonas a las que hay colisiones en el mapa.
 	 * 
 	 * @param textoColisiones
 	 */
@@ -319,8 +319,8 @@ public class Mapa {
 	}
 
 	/**
-	 * Método encargado de actualizar las zonas de conversación del mapa, en
-	 * cada actualización, según la posición del jugador.
+	 * Método encargado de actualizar las zonas de conversación del mapa, en cada
+	 * actualización, según la posición del jugador.
 	 * 
 	 * @param posX
 	 * @param posY
@@ -360,11 +360,11 @@ public class Mapa {
 	 * Método que devuelve los bordes de las zonas del mapa para comprobar
 	 * colisiones.
 	 * 
-	 * @param posX
-	 * @param posY
-	 * @param anchoJugador
-	 * @param altoJugador
-	 * @return
+	 * @param posX         int - Posición en el eje X.
+	 * @param posY         int - Posición en el eje Y.
+	 * @param anchoJugador int - Ancho del rectangulo del jugador.
+	 * @param altoJugador  int - Alto del rectangulo del jugador.
+	 * @return bordes Rectangle
 	 */
 	public Rectangle getBordes(final int posX, final int posY, final int anchoJugador, final int altoJugador) {
 		int x = MARGEN_X - posX + anchoJugador;
@@ -414,7 +414,7 @@ public class Mapa {
 	 * Método que quita la conversación y la zona de conversación de la lista de
 	 * conversacaciones.
 	 * 
-	 * @param i
+	 * @param i int - Puntero de la conversación en la lista de conversaciones.
 	 */
 	public void quitarConversacion(int i) {
 		conversaciones.remove(i);
@@ -425,7 +425,7 @@ public class Mapa {
 	/**
 	 * Método que quita el combate y la zona de combate de la lista de combates.
 	 * 
-	 * @param i
+	 * @param i int - Puntero del combate en la lista de combates.
 	 */
 	public void quitarCombate(int i) {
 		combates.remove(i);
@@ -452,8 +452,8 @@ public class Mapa {
 	}
 
 	/**
-	 * Método que devuelve la lista con los punteros de referencias para seleccionar el
-	 * combate.
+	 * Método que devuelve la lista con los punteros de referencias para seleccionar
+	 * el combate.
 	 * 
 	 * @return punteroCombates ArrayList{Integer}
 	 */
@@ -462,8 +462,8 @@ public class Mapa {
 	}
 
 	/**
-	 * Método que devuelve la lista con los punteros de referencias para seleccionar la
-	 * cpnversación.
+	 * Método que devuelve la lista con los punteros de referencias para seleccionar
+	 * la cpnversación.
 	 * 
 	 * @return punteroConversaciones ArrayList{Integer}
 	 */

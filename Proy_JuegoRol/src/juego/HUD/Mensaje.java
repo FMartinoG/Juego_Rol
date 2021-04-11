@@ -24,10 +24,10 @@ public class Mensaje {
 	/**
 	 * Contructor de la clase Mensaje.
 	 * 
-	 * @param mensaje
-	 * @param posX
-	 * @param posY
-	 * @param marco
+	 * @param mensaje String - Texto del mensaje.
+	 * @param posX int - Posición en el eje X.
+	 * @param posY int - Posición en el eje Y.
+	 * @param marco boolean - Indica si quiere que el mensaje tenga marco.
 	 */
 	public Mensaje(String mensaje, int posX, int posY, boolean marco) {
 		this.mensaje = mensaje;
@@ -39,7 +39,7 @@ public class Mensaje {
 	/**
 	 * Método encargado de dibujar el mensaje en la ventana.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	public void dibujar(Graphics g) {
 		// Guarda las métricas de la fuente actual.
@@ -80,7 +80,7 @@ public class Mensaje {
 	/**
 	 * Método encargado de dibujar el mensaje en medio del combate.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	public void dibujarMensajeCombate(Graphics g) {
 		FontMetrics fm = g.getFontMetrics();

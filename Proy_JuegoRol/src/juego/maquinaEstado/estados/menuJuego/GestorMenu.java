@@ -18,7 +18,7 @@ public class GestorMenu implements EstadoJuego {
 	/**
 	 * Contructor del menú del juego.
 	 * 
-	 * @param jugador
+	 * @param jugador Jugador - Objeto jugador.
 	 */
 	public GestorMenu(Jugador jugador) {
 		em = new EstructuraMenu(jugador);

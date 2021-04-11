@@ -49,7 +49,7 @@ public class EstructuraPaginaInformacion {
 	/**
 	 * Método que dibuja los elementos del estado.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	public void dibujar(Graphics g) {
 		FontMetrics fm = g.getFontMetrics();

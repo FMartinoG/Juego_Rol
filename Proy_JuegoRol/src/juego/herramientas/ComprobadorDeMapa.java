@@ -16,8 +16,8 @@ public class ComprobadorDeMapa {
 	 * Método que devuelve la ruta al mapa que se debe leer recibiendo su
 	 * referencia.
 	 * 
-	 * @param siguienteMapa
-	 * @return rutaMapa String
+	 * @param siguienteMapa String - Referencia al mapa.
+	 * @return rutaMapa String - Ruta al mapa referenciado.
 	 */
 	public static String comprobarSiguienteMapa(String siguienteMapa) {
 		String nuevoMapa = "";
@@ -69,8 +69,8 @@ public class ComprobadorDeMapa {
 	 * Método que actualiza la referencia, que tiene el objeto estadisticas del
 	 * jugador, hacia el mapa.
 	 * 
-	 * @param jugador
-	 * @param mapa
+	 * @param jugador Jugador - Objeto jugador.
+	 * @param mapa String - Ruta del mapa. 
 	 */
 	public static void guardarMapa(Jugador jugador, String mapa) {
 		switch (mapa) {

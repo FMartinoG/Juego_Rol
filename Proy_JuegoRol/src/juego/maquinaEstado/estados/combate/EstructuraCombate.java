@@ -30,8 +30,8 @@ public class EstructuraCombate {
 	private boolean enCombate;
 	private boolean huido, vencido, apaciguado, derrota;
 	private boolean botonPulsado;
-	private boolean dibujarAtaqueFisico, dibujarMagiaCura, dibujarMagiaFuego, dibujarMagiaHielo, dibujarMagiaRayo, dibujarReaccion, dibujarHuidaFallida,
-			dibujarAtaqueEnemigo;
+	private boolean dibujarAtaqueFisico, dibujarMagiaCura, dibujarMagiaFuego, dibujarMagiaHielo, dibujarMagiaRayo,
+			dibujarReaccion, dibujarHuidaFallida, dibujarAtaqueEnemigo;
 	private int accionSeleccionada;
 
 	private int ataqueFisico;
@@ -58,8 +58,8 @@ public class EstructuraCombate {
 	/**
 	 * Constructor de la clase de estructura de combate.
 	 * 
-	 * @param jugador
-	 * @param enemigo
+	 * @param jugador Jugador - Objeto jugador.
+	 * @param enemigo Enemigo - Objeto enemigo.
 	 */
 	public EstructuraCombate(Jugador jugador, Enemigo enemigo) {
 		this.jugador = jugador;
@@ -119,7 +119,8 @@ public class EstructuraCombate {
 		punteroAccion = 0;
 		opcionesAccion = new OpcionCombate[enemigo.getAcciones().length];
 		for (int i = 0; i < opcionesAccion.length; ++i)
-			opcionesAccion[i] = new OpcionCombate(enemigo.getAcciones()[i], new Rectangle(40 + (i * 150), 290, 100, 40));
+			opcionesAccion[i] = new OpcionCombate(enemigo.getAcciones()[i],
+					new Rectangle(40 + (i * 150), 290, 100, 40));
 
 		seleccionadoAccion = opcionesAccion[0];
 	}
@@ -195,9 +196,9 @@ public class EstructuraCombate {
 	}
 
 	/**
-	 * Método encargado de controlar si se selecciona y lo que pasa al
-	 * seleccionar una mágia. Si se pulsa "Enter" sobre una mágia, realiza la
-	 * acción de esa mágia y gasta maná
+	 * Método encargado de controlar si se selecciona y lo que pasa al seleccionar
+	 * una mágia. Si se pulsa "Enter" sobre una mágia, realiza la acción de esa
+	 * mágia y gasta maná
 	 */
 	private void seleccionarMagia() {
 		if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[0]) {
@@ -244,8 +245,8 @@ public class EstructuraCombate {
 	}
 
 	/**
-	 * Método encargado de comprobar si se selecciona una acción y de controlar
-	 * lo que pasa al seleccionar una acción.
+	 * Método encargado de comprobar si se selecciona una acción y de controlar lo
+	 * que pasa al seleccionar una acción.
 	 */
 	private void seleccionarAccion() {
 		if (Controles.TECLADO.seleccion && seleccionadoAccion == opcionesAccion[0]) {
@@ -299,8 +300,7 @@ public class EstructuraCombate {
 	}
 
 	/**
-	 * Método que controla las acciones del jugador y las reacciones del
-	 * enemigo.
+	 * Método que controla las acciones del jugador y las reacciones del enemigo.
 	 * 
 	 * @param n
 	 */
@@ -334,7 +334,7 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja los elementos del estado.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	public void dibujar(Graphics g) {
 		g.setColor(Color.white);
@@ -547,8 +547,8 @@ public class EstructuraCombate {
 	}
 
 	/**
-	 * Método que dibuja el o los mensajes que indican que el combate ha
-	 * terminado e indica que el combate ha terminado.
+	 * Método que dibuja el o los mensajes que indican que el combate ha terminado e
+	 * indica que el combate ha terminado.
 	 * 
 	 * @param g
 	 */

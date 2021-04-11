@@ -57,7 +57,7 @@ public class EstructuraIntroduccion {
 	/**
 	 * Método encargado de dibujar los elementos del estado.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	public void dibujar(Graphics g) {
 		ponerPantallaNegro(g);

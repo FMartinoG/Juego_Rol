@@ -18,8 +18,8 @@ public class Seccion {
 	/**
 	 * Constructor de la clase Seccion.
 	 * 
-	 * @param nombre
-	 * @param etiqueta
+	 * @param nombre String - Texto de la etiqueta
+	 * @param etiqueta Rectangle
 	 */
 	public Seccion(String nombre, Rectangle etiqueta) {
 		this.nombre = nombre;
@@ -29,7 +29,7 @@ public class Seccion {
 	/**
 	 * Método que dibuja una etiqueta que no está seleccionada.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	public void dibujarEtiquetaInactiva(Graphics g) {
 		g.setColor(Color.black);
@@ -45,7 +45,7 @@ public class Seccion {
 	/**
 	 * Método que dibuja una etiqueta que está seleccionada.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	public void dibujarEtiquetaActiva(Graphics g) {
 		g.setColor(Color.black);

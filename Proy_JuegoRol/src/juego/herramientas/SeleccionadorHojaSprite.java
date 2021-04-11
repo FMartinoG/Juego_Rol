@@ -15,8 +15,8 @@ public class SeleccionadorHojaSprite {
 	 * Método que recibe la referencia que hace el mapa a la hoja de sprites y
 	 * devuelve la hoja adecuada.
 	 * 
-	 * @param textoHojas
-	 * @return hoja HojaSprites
+	 * @param textoHojas String - Referencia a la hoja de sprites.
+	 * @return hoja HojaSprites - Hoja de sprites seleccionada.
 	 */
 	public static HojaSprites seleccionarHojaSprite(String textoHojas) {
 		HojaSprites hs = null;

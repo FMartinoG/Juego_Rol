@@ -42,20 +42,19 @@ public class Jugador {
 
 	private Mapa mapa;
 
-	private final Rectangle LIMITE_ARRIBA = new Rectangle((Constantes.ANCHO_VENTANA / 2) - (ANCHO_JUGADOR / 2), (Constantes.ALTO_VENTANA / 2) - (ALTO_JUGADOR / 4),
-			ANCHO_JUGADOR, 1);
-	private final Rectangle LIMITE_ABAJO = new Rectangle((Constantes.ANCHO_VENTANA / 2) - (ANCHO_JUGADOR / 2), (Constantes.ALTO_VENTANA / 2) + (ALTO_JUGADOR / 2),
-			ANCHO_JUGADOR, 1);
-	private final Rectangle LIMITE_IZ = new Rectangle((Constantes.ANCHO_VENTANA / 2) - (ANCHO_JUGADOR / 2), (Constantes.ALTO_VENTANA / 2) - (ALTO_JUGADOR / 4), 1,
-			(ALTO_JUGADOR / 4) + (ALTO_JUGADOR / 2));
-	private final Rectangle LIMITE_DER = new Rectangle((Constantes.ANCHO_VENTANA / 2) + (ANCHO_JUGADOR / 2), (Constantes.ALTO_VENTANA / 2) - (ALTO_JUGADOR / 4), 1,
-			(ALTO_JUGADOR / 4) + (ALTO_JUGADOR / 2));
+	private final Rectangle LIMITE_ARRIBA = new Rectangle((Constantes.ANCHO_VENTANA / 2) - (ANCHO_JUGADOR / 2),
+			(Constantes.ALTO_VENTANA / 2) - (ALTO_JUGADOR / 4), ANCHO_JUGADOR, 1);
+	private final Rectangle LIMITE_ABAJO = new Rectangle((Constantes.ANCHO_VENTANA / 2) - (ANCHO_JUGADOR / 2),
+			(Constantes.ALTO_VENTANA / 2) + (ALTO_JUGADOR / 2), ANCHO_JUGADOR, 1);
+	private final Rectangle LIMITE_IZ = new Rectangle((Constantes.ANCHO_VENTANA / 2) - (ANCHO_JUGADOR / 2),
+			(Constantes.ALTO_VENTANA / 2) - (ALTO_JUGADOR / 4), 1, (ALTO_JUGADOR / 4) + (ALTO_JUGADOR / 2));
+	private final Rectangle LIMITE_DER = new Rectangle((Constantes.ANCHO_VENTANA / 2) + (ANCHO_JUGADOR / 2),
+			(Constantes.ALTO_VENTANA / 2) - (ALTO_JUGADOR / 4), 1, (ALTO_JUGADOR / 4) + (ALTO_JUGADOR / 2));
 
 	/**
 	 * Contructor de la clase jugador
 	 * 
-	 * @param mapa
-	 *            Mapa
+	 * @param mapa Mapa
 	 */
 	public Jugador(Mapa mapa) {
 		estadisticas = new Estadisticas();
@@ -84,8 +83,8 @@ public class Jugador {
 	}
 
 	/**
-	 * Método encargado de cambiar el sprite del personaje según su dirección o
-	 * si está en movimiento.
+	 * Método encargado de cambiar el sprite del personaje según su dirección o si
+	 * está en movimiento.
 	 */
 	private void animar() {
 		if (!enMovimiento) {
@@ -129,17 +128,16 @@ public class Jugador {
 	}
 
 	/**
-	 * Método encargado de seleccionar la dirección en la que se mueve el
-	 * personaje,
+	 * Método encargado de seleccionar la dirección en la que se mueve el personaje,
 	 */
 	private void determinarDireccion() {
 		final int velocidadX = evaluarVelocidadX();
 		final int velocidadY = evaluarVelocidadY();
 		/*
-		 * Si el personaje no se mueve no cambia nada. Si el jugador solo ha
-		 * pulsado una tecla de movimiento, el personaje se mueve en esa
-		 * dirección. Si el jugador ha pulsado más de una tecla de movimiento,
-		 * el personaje se mueve en la última que haya pulsado.
+		 * Si el personaje no se mueve no cambia nada. Si el jugador solo ha pulsado una
+		 * tecla de movimiento, el personaje se mueve en esa dirección. Si el jugador ha
+		 * pulsado más de una tecla de movimiento, el personaje se mueve en la última
+		 * que haya pulsado.
 		 * 
 		 */
 		if (velocidadX == 0 && velocidadY == 0) {
@@ -214,8 +212,8 @@ public class Jugador {
 	}
 
 	/**
-	 * Método encargado de cambiar la dirección en la que mira el personaje
-	 * según su movimiento.
+	 * Método encargado de cambiar la dirección en la que mira el personaje según su
+	 * movimiento.
 	 * 
 	 * @param velocidadX
 	 * @param velocidadY
@@ -235,8 +233,8 @@ public class Jugador {
 	}
 
 	/**
-	 * Método que comprueba si se pulsa el botón de correr y devuelve la
-	 * velocidad a la que se mueve el personaje en el eje X.
+	 * Método que comprueba si se pulsa el botón de correr y devuelve la velocidad a
+	 * la que se mueve el personaje en el eje X.
 	 * 
 	 * @return velocidad
 	 */
@@ -251,8 +249,8 @@ public class Jugador {
 	}
 
 	/**
-	 * Método que comprueba si se pulsa el botón de correr y devuelve la
-	 * velocidad a la que se mueve el personaje en el eje Y.
+	 * Método que comprueba si se pulsa el botón de correr y devuelve la velocidad a
+	 * la que se mueve el personaje en el eje Y.
 	 * 
 	 * @return velocidad
 	 */
@@ -267,8 +265,8 @@ public class Jugador {
 	}
 
 	/**
-	 * Método encargado de hacer los cálculos para cambiar la imagen del
-	 * personaje cuando se mueve.
+	 * Método encargado de hacer los cálculos para cambiar la imagen del personaje
+	 * cuando se mueve.
 	 */
 	private void cambiarAnimacionEstado() {
 		if (Controles.TECLADO.corriendo) {
@@ -299,8 +297,7 @@ public class Jugador {
 	/**
 	 * Método encargado de dibujar al personaje en la pantalla.
 	 * 
-	 * @param g
-	 *            Graphics
+	 * @param g Graphics
 	 */
 	public void dibujar(Graphics g) {
 		final int CENTRO_X = (Constantes.ANCHO_VENTANA / 2) - (Constantes.LADO_SPRITE / 2);
@@ -309,8 +306,8 @@ public class Jugador {
 	}
 
 	/**
-	 * Método que comprueba si el personaje está fuera del mapa o choca con el
-	 * borde del mapa, para que no siga moviendose.
+	 * Método que comprueba si el personaje está fuera del mapa o choca con el borde
+	 * del mapa, para que no siga moviendose.
 	 * 
 	 * @param velocidadX
 	 * @param velocidadY
@@ -323,7 +320,8 @@ public class Jugador {
 
 		final boolean fuera;
 
-		if (LIMITE_ARRIBA.intersects(bordesMapa) || LIMITE_ABAJO.intersects(bordesMapa) || LIMITE_IZ.intersects(bordesMapa) || LIMITE_DER.intersects(bordesMapa))
+		if (LIMITE_ARRIBA.intersects(bordesMapa) || LIMITE_ABAJO.intersects(bordesMapa)
+				|| LIMITE_IZ.intersects(bordesMapa) || LIMITE_DER.intersects(bordesMapa))
 			fuera = false;
 		else
 			fuera = true;
@@ -332,8 +330,8 @@ public class Jugador {
 	}
 
 	/**
-	 * Método que comprueba si el borde superior del personaje choca con alguna
-	 * zona del mapa por la que no puede ir
+	 * Método que comprueba si el borde superior del personaje choca con alguna zona
+	 * del mapa por la que no puede ir
 	 * 
 	 * @param velocidadY
 	 * @return colision boolean
@@ -346,7 +344,8 @@ public class Jugador {
 			int origenX = area.x;
 			int origenY = area.y + velocidadY * (int) velocidadActual + 3 * (int) velocidadActual;
 
-			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE, Constantes.LADO_SPRITE);
+			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE,
+					Constantes.LADO_SPRITE);
 			if (LIMITE_ARRIBA.intersects(posicionFutura))
 				colision = true;
 		}
@@ -354,8 +353,8 @@ public class Jugador {
 	}
 
 	/**
-	 * Método que comprueba si el borde inferior del personaje choca con alguna
-	 * zona del mapa por la que no puede ir
+	 * Método que comprueba si el borde inferior del personaje choca con alguna zona
+	 * del mapa por la que no puede ir
 	 * 
 	 * @param velocidadY
 	 * @return colision boolean
@@ -368,7 +367,8 @@ public class Jugador {
 			int origenX = area.x;
 			int origenY = area.y + velocidadY * (int) velocidadActual - 3 * (int) velocidadActual;
 
-			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE, Constantes.LADO_SPRITE);
+			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE,
+					Constantes.LADO_SPRITE);
 			if (LIMITE_ABAJO.intersects(posicionFutura))
 				colision = true;
 		}
@@ -390,7 +390,8 @@ public class Jugador {
 			int origenX = area.x + velocidadX * (int) velocidadActual + 3 * (int) velocidadActual;
 			int origenY = area.y;
 
-			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE, Constantes.LADO_SPRITE);
+			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE,
+					Constantes.LADO_SPRITE);
 			if (LIMITE_IZ.intersects(posicionFutura))
 				colision = true;
 		}
@@ -398,8 +399,8 @@ public class Jugador {
 	}
 
 	/**
-	 * Método que comprueba si el borde derecho del personaje choca con alguna
-	 * zona del mapa por la que no puede ir
+	 * Método que comprueba si el borde derecho del personaje choca con alguna zona
+	 * del mapa por la que no puede ir
 	 * 
 	 * @param velocidadX
 	 * @return colision boolean
@@ -412,7 +413,8 @@ public class Jugador {
 			int origenX = area.x + velocidadX * (int) velocidadActual - 3 * (int) velocidadActual;
 			int origenY = area.y;
 
-			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE, Constantes.LADO_SPRITE);
+			final Rectangle posicionFutura = new Rectangle(origenX, origenY, Constantes.LADO_SPRITE,
+					Constantes.LADO_SPRITE);
 			if (LIMITE_DER.intersects(posicionFutura))
 				colision = true;
 		}
@@ -443,7 +445,7 @@ public class Jugador {
 	/**
 	 * Método que modifica la posición del personaje en el eje X de la ventana.
 	 * 
-	 * @param posicionX
+	 * @param posicionX double - Posición en el eje X de la ventana.
 	 */
 	public void setPosicionX(double posicionX) {
 		this.posicionX = posicionX;
@@ -461,7 +463,7 @@ public class Jugador {
 	/**
 	 * Método que modifica la posición del personaje en el eje Y de la ventana.
 	 * 
-	 * @param posicionY
+	 * @param posicionY double - Posición en el eje Y de la ventana.
 	 */
 	public void setPosicionY(double posicionY) {
 		this.posicionY = posicionY;
@@ -515,7 +517,7 @@ public class Jugador {
 	/**
 	 * Método que modifica el mapa en el que está el personaje.
 	 * 
-	 * @param mapa
+	 * @param mapa Mapa - Objeto mapa
 	 */
 	public void setMapa(Mapa mapa) {
 		this.mapa = mapa;
@@ -533,7 +535,7 @@ public class Jugador {
 	/**
 	 * Método que modifica el objeto de estadisticas del personaje.
 	 * 
-	 * @param estadisticas
+	 * @param estadisticas Estadisticas - Objeto estadisticas
 	 */
 	public void setEstadisticas(Estadisticas estadisticas) {
 		this.estadisticas = estadisticas;
@@ -541,6 +543,7 @@ public class Jugador {
 
 	/**
 	 * Método que devuelve la imagen actual del personaje.
+	 * 
 	 * @return imagenActual BufferedImage
 	 */
 	public BufferedImage getImagenActual() {
@@ -549,6 +552,7 @@ public class Jugador {
 
 	/**
 	 * Método que devuelve la ruta de la imagen del personaje para los combates
+	 * 
 	 * @return imagenCombate String
 	 */
 	public String getImagenCombate() {
