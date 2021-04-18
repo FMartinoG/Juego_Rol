@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.yattasolutions.uml.diagrams.classifier:ClassDiagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.yattasolutions.diagrams="http://ns.yatta-solutions.com/umllab/diagrams/1.1.0" xmlns:com.yattasolutions.uml.diagrams.classifier="http://ns.yatta-solutions.com/umllab/diagrams/classifier/1.1.0" xmi:id="_jGFOoKBPEeuyPo-ueXMKsA">
+  <modelElement href="Proy_JuegoRol.uml#_MDEtYKBMEeuyPo-ueXMKsA"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ContainmentVisual" xmi:id="_kLHkEKBPEeuyPo-ueXMKsA" enclosingItem="_jT4aEKBPEeuyPo-ueXMKsA" containedItem="_kLJZQKBPEeuyPo-ueXMKsA"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_lpAeYKBPEeuyPo-ueXMKsA" targetItem="_lpBFcKBPEeuyPo-ueXMKsA" sourceItem="_lo_3UKBPEeuyPo-ueXMKsA"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ContainmentVisual" xmi:id="_lpAeYaBPEeuyPo-ueXMKsA" sourceAnchor="191.0,0.0" targetAnchor="54.0,58.0" enclosingItem="_kLJZQKBPEeuyPo-ueXMKsA" containedItem="_lpBFcKBPEeuyPo-ueXMKsA">
+    <bendpoints xmi:id="_sOrx4KBPEeuyPo-ueXMKsA" sourceY="-30" targetX="251" targetY="48"/>
+    <bendpoints xmi:id="_sOrx4aBPEeuyPo-ueXMKsA" sourceX="-251" sourceY="-30" targetY="48"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_lpBFmKBPEeuyPo-ueXMKsA" targetItem="_lpBsgaBPEeuyPo-ueXMKsA" sourceItem="_lpBFl6BPEeuyPo-ueXMKsA"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ContainmentVisual" xmi:id="_lpBsgKBPEeuyPo-ueXMKsA" sourceAnchor="186.0,0.0" targetAnchor="54.0,58.0" enclosingItem="_kLJZQKBPEeuyPo-ueXMKsA" containedItem="_lpBsgaBPEeuyPo-ueXMKsA">
+    <bendpoints xmi:id="_sOrK0KBPEeuyPo-ueXMKsA" sourceY="-45" targetX="-209" targetY="48"/>
+    <bendpoints xmi:id="_sOrK0aBPEeuyPo-ueXMKsA" sourceX="209" sourceY="-45" targetY="48"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_lpCTkaBPEeuyPo-ueXMKsA" targetItem="_lpCTk6BPEeuyPo-ueXMKsA" sourceItem="_lpCTkKBPEeuyPo-ueXMKsA"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ContainmentVisual" xmi:id="_lpCTkqBPEeuyPo-ueXMKsA" sourceAnchor="12.0,0.0" targetAnchor="54.0,58.0" enclosingItem="_kLJZQKBPEeuyPo-ueXMKsA" containedItem="_lpCTk6BPEeuyPo-ueXMKsA">
+    <bendpoints xmi:id="_sOrK0qBPEeuyPo-ueXMKsA" sourceY="-186" targetX="-410" targetY="48"/>
+    <bendpoints xmi:id="_sOrK06BPEeuyPo-ueXMKsA" sourceX="410" sourceY="-186" targetY="48"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_lpCTmqBPEeuyPo-ueXMKsA" targetItem="_lpC6oaBPEeuyPo-ueXMKsA" sourceItem="_lpCTmaBPEeuyPo-ueXMKsA"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ContainmentVisual" xmi:id="_lpC6oKBPEeuyPo-ueXMKsA" sourceAnchor="218.0,46.0" targetAnchor="54.0,58.0" enclosingItem="_kLJZQKBPEeuyPo-ueXMKsA" containedItem="_lpC6oaBPEeuyPo-ueXMKsA">
+    <bendpoints xmi:id="_sOrK1KBPEeuyPo-ueXMKsA" sourceX="42" targetX="457" targetY="268"/>
+    <bendpoints xmi:id="_sOrK1aBPEeuyPo-ueXMKsA" sourceX="42" sourceY="-220" targetX="457" targetY="48"/>
+    <bendpoints xmi:id="_sOrK1qBPEeuyPo-ueXMKsA" sourceX="-415" sourceY="-220" targetY="48"/>
+  </edges>
+  <edges xsi:type="com.yattasolutions.diagrams:ConnectionVisual" xmi:id="_lpDhsaBPEeuyPo-ueXMKsA" targetItem="_lpDhs6BPEeuyPo-ueXMKsA" sourceItem="_lpDhsKBPEeuyPo-ueXMKsA"/>
+  <edges xsi:type="com.yattasolutions.diagrams:ContainmentVisual" xmi:id="_lpDhsqBPEeuyPo-ueXMKsA" sourceAnchor="209.0,0.0" targetAnchor="54.0,58.0" enclosingItem="_kLJZQKBPEeuyPo-ueXMKsA" containedItem="_lpDhs6BPEeuyPo-ueXMKsA"/>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_jT4aEKBPEeuyPo-ueXMKsA" containments="_kLHkEKBPEeuyPo-ueXMKsA" name="juego">
+    <modelElement href="Proy_JuegoRol.uml#_OYXw0KBMEeuyPo-ueXMKsA"/>
+    <visualProperties xmi:id="_jT4aEaBPEeuyPo-ueXMKsA" position="50.0,50.0" size="-1.0,-1.0" visible="false"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_jT5BIKBPEeuyPo-ueXMKsA" name="ejecutable">
+    <modelElement href="Proy_JuegoRol.uml#_OYbbMKBMEeuyPo-ueXMKsA"/>
+    <visualProperties xmi:id="_jT5BIaBPEeuyPo-ueXMKsA" position="-115.0,50.0" size="-1.0,-1.0" visible="false"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_jT5oMKBPEeuyPo-ueXMKsA" name="java">
+    <modelElement href="Proy_JuegoRol.uml#_OYdQYKBMEeuyPo-ueXMKsA"/>
+    <visualProperties xmi:id="_jT5oMaBPEeuyPo-ueXMKsA" position="200.0,50.0" size="-1.0,-1.0" visible="false"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_jT5oMqBPEeuyPo-ueXMKsA" name="javax">
+    <modelElement href="Proy_JuegoRol.uml#_OY9msKBMEeuyPo-ueXMKsA"/>
+    <visualProperties xmi:id="_jT5oM6BPEeuyPo-ueXMKsA" position="350.0,50.0" size="-1.0,-1.0" visible="false"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_lo_3UKBPEeuyPo-ueXMKsA" sourceConnectionVisual="_lpAeYKBPEeuyPo-ueXMKsA" text="Clase encargada de leer ficheros externos guardados en la carpeta de&#xD;&#xA;recursos.&#xD;&#xA;&#xD;&#xA;@author Fernando Martino&#xD;&#xA; *" item="_lpBFcKBPEeuyPo-ueXMKsA">
+    <modelElement href="Proy_JuegoRol.uml#_OsF-FKBMEeuyPo-ueXMKsA"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_lpBFl6BPEeuyPo-ueXMKsA" sourceConnectionVisual="_lpBFmKBPEeuyPo-ueXMKsA" text="Clase encargada de seleccionar la ruta del mapa a partir de una referencia y&#xD;&#xA;de actualizar las referencia al mapa.&#xD;&#xA;&#xD;&#xA;@author Fernando Martino&#xD;&#xA; *" item="_lpBsgaBPEeuyPo-ueXMKsA">
+    <modelElement href="Proy_JuegoRol.uml#_OsF-FaBMEeuyPo-ueXMKsA"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_lpCTkKBPEeuyPo-ueXMKsA" sourceConnectionVisual="_lpCTkaBPEeuyPo-ueXMKsA" text="Clase encargada de crear y almacenar las conversaciones del juego.&#xD;&#xA;&#xD;&#xA;@author Fernando Martino&#xD;&#xA; *" item="_lpCTk6BPEeuyPo-ueXMKsA">
+    <modelElement href="Proy_JuegoRol.uml#_OsF-FqBMEeuyPo-ueXMKsA"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_lpCTmaBPEeuyPo-ueXMKsA" sourceConnectionVisual="_lpCTmqBPEeuyPo-ueXMKsA" text="Clase encargada de crear y guardar los enemigos del juego.&#xD;&#xA;&#xD;&#xA;@author Fernando Martino&#xD;&#xA; *" item="_lpC6oaBPEeuyPo-ueXMKsA">
+    <modelElement href="Proy_JuegoRol.uml#_OsF-F6BMEeuyPo-ueXMKsA"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.diagrams:CommentVisual" xmi:id="_lpDhsKBPEeuyPo-ueXMKsA" sourceConnectionVisual="_lpDhsaBPEeuyPo-ueXMKsA" text="clase encargada de seleccionar la hoja de sprites que debe mostrar el mapa.&#xD;&#xA;&#xD;&#xA;@author Fernando Martino&#xD;&#xA; *" item="_lpDhs6BPEeuyPo-ueXMKsA">
+    <modelElement href="Proy_JuegoRol.uml#_OsF-GKBMEeuyPo-ueXMKsA"/>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_lpBsgaBPEeuyPo-ueXMKsA" comments="_lpBFl6BPEeuyPo-ueXMKsA" targetConnectionVisual="_lpBFmKBPEeuyPo-ueXMKsA" containment="_lpBsgKBPEeuyPo-ueXMKsA" name="ComprobadorDeMapa" package="_kLJZQKBPEeuyPo-ueXMKsA">
+    <modelElement href="Proy_JuegoRol.uml#_OfFc0KBMEeuyPo-ueXMKsA"/>
+    <visualProperties xmi:id="_lpBsgqBPEeuyPo-ueXMKsA" position="253.0,279.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_lpBsg6BPEeuyPo-ueXMKsA" label="+"/>
+    <operations xmi:id="_lpBshKBPEeuyPo-ueXMKsA" name="comprobarSiguienteMapa" staticOperation="true">
+      <modelElement href="Proy_JuegoRol.uml#_OfGq8KBMEeuyPo-ueXMKsA"/>
+      <visibility xmi:id="_lpBshaBPEeuyPo-ueXMKsA" label="+"/>
+      <cardinality xmi:id="_lpBshqBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_lpBsh6BPEeuyPo-ueXMKsA">
+        <modelElement href="Proy_JuegoRol.uml#_OfGq8qBMEeuyPo-ueXMKsA"/>
+        <type xmi:id="_lpBsiKBPEeuyPo-ueXMKsA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_lpBsiaBPEeuyPo-ueXMKsA" name="siguienteMapa">
+        <modelElement href="Proy_JuegoRol.uml#_OfGq8aBMEeuyPo-ueXMKsA"/>
+        <cardinality xmi:id="_lpBsiqBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+        <type xmi:id="_lpBsi6BPEeuyPo-ueXMKsA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_lpBsjKBPEeuyPo-ueXMKsA" name="guardarMapa" staticOperation="true">
+      <modelElement href="Proy_JuegoRol.uml#_OmwLEKBMEeuyPo-ueXMKsA"/>
+      <visibility xmi:id="_lpBsjaBPEeuyPo-ueXMKsA" label="+"/>
+      <cardinality xmi:id="_lpBsjqBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+      <parameters xmi:id="_lpBsj6BPEeuyPo-ueXMKsA" name="jugador">
+        <modelElement href="Proy_JuegoRol.uml#_OmwLEaBMEeuyPo-ueXMKsA"/>
+        <cardinality xmi:id="_lpBskKBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+        <type xmi:id="_lpBskaBPEeuyPo-ueXMKsA" name="Jugador">
+          <modelElement href="Proy_JuegoRol.uml#_Ogo8AKBMEeuyPo-ueXMKsA"/>
+        </type>
+      </parameters>
+      <parameters xmi:id="_lpBskqBPEeuyPo-ueXMKsA" name="mapa">
+        <modelElement href="Proy_JuegoRol.uml#_OmwLEqBMEeuyPo-ueXMKsA"/>
+        <cardinality xmi:id="_lpBsk6BPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+        <type xmi:id="_lpBslKBPEeuyPo-ueXMKsA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_lpDhs6BPEeuyPo-ueXMKsA" comments="_lpDhsKBPEeuyPo-ueXMKsA" targetConnectionVisual="_lpDhsaBPEeuyPo-ueXMKsA" containment="_lpDhsqBPEeuyPo-ueXMKsA" name="SeleccionadorHojaSprite" package="_kLJZQKBPEeuyPo-ueXMKsA">
+    <modelElement href="Proy_JuegoRol.uml#_OfKVUKBMEeuyPo-ueXMKsA"/>
+    <visualProperties xmi:id="_lpDhtKBPEeuyPo-ueXMKsA" position="439.0,417.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_lpDhtaBPEeuyPo-ueXMKsA" label="+"/>
+    <operations xmi:id="_lpDhtqBPEeuyPo-ueXMKsA" name="seleccionarHojaSprite" staticOperation="true">
+      <modelElement href="Proy_JuegoRol.uml#_OfLjcKBMEeuyPo-ueXMKsA"/>
+      <visibility xmi:id="_lpDht6BPEeuyPo-ueXMKsA" label="+"/>
+      <cardinality xmi:id="_lpDhuKBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_lpDhuaBPEeuyPo-ueXMKsA">
+        <modelElement href="Proy_JuegoRol.uml#_OmwyIqBMEeuyPo-ueXMKsA"/>
+        <type xmi:id="_lpDhuqBPEeuyPo-ueXMKsA" name="HojaSprites">
+          <modelElement href="Proy_JuegoRol.uml#_OhOx4KBMEeuyPo-ueXMKsA"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_lpDhu6BPEeuyPo-ueXMKsA" name="textoHojas">
+        <modelElement href="Proy_JuegoRol.uml#_OfLjcaBMEeuyPo-ueXMKsA"/>
+        <cardinality xmi:id="_lpDhvKBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+        <type xmi:id="_lpDhvaBPEeuyPo-ueXMKsA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_lpCTk6BPEeuyPo-ueXMKsA" comments="_lpCTkKBPEeuyPo-ueXMKsA" targetConnectionVisual="_lpCTkaBPEeuyPo-ueXMKsA" containment="_lpCTkqBPEeuyPo-ueXMKsA" name="CreadorConversaciones" package="_kLJZQKBPEeuyPo-ueXMKsA">
+    <modelElement href="Proy_JuegoRol.uml#_OfHSAKBMEeuyPo-ueXMKsA"/>
+    <visualProperties xmi:id="_lpCTlKBPEeuyPo-ueXMKsA" position="226.0,420.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_lpCTlaBPEeuyPo-ueXMKsA" label="+"/>
+    <operations xmi:id="_lpCTlqBPEeuyPo-ueXMKsA" name="crearConversaciones" staticOperation="true">
+      <modelElement href="Proy_JuegoRol.uml#_OfH5EKBMEeuyPo-ueXMKsA"/>
+      <visibility xmi:id="_lpCTl6BPEeuyPo-ueXMKsA" label="+"/>
+      <cardinality xmi:id="_lpCTmKBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_lpC6oaBPEeuyPo-ueXMKsA" comments="_lpCTmaBPEeuyPo-ueXMKsA" targetConnectionVisual="_lpCTmqBPEeuyPo-ueXMKsA" containment="_lpC6oKBPEeuyPo-ueXMKsA" name="CreadorEnemigos" package="_kLJZQKBPEeuyPo-ueXMKsA">
+    <modelElement href="Proy_JuegoRol.uml#_OfH5EaBMEeuyPo-ueXMKsA"/>
+    <visualProperties xmi:id="_lpC6oqBPEeuyPo-ueXMKsA" position="845.0,408.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_lpC6o6BPEeuyPo-ueXMKsA" label="+"/>
+    <operations xmi:id="_lpC6pKBPEeuyPo-ueXMKsA" name="crearEnemigos" staticOperation="true">
+      <modelElement href="Proy_JuegoRol.uml#_OfIgIKBMEeuyPo-ueXMKsA"/>
+      <visibility xmi:id="_lpC6paBPEeuyPo-ueXMKsA" label="+"/>
+      <cardinality xmi:id="_lpC6pqBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+    </operations>
+    <operations xmi:id="_lpC6p6BPEeuyPo-ueXMKsA" name="crearRecaudador" staticOperation="true">
+      <modelElement href="Proy_JuegoRol.uml#_OfJHMKBMEeuyPo-ueXMKsA"/>
+      <visibility xmi:id="_lpC6qKBPEeuyPo-ueXMKsA" label="-"/>
+      <cardinality xmi:id="_lpC6qaBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_lpC6qqBPEeuyPo-ueXMKsA">
+        <modelElement href="Proy_JuegoRol.uml#_OmwyIKBMEeuyPo-ueXMKsA"/>
+        <type xmi:id="_lpC6q6BPEeuyPo-ueXMKsA" name="Enemigo">
+          <modelElement href="Proy_JuegoRol.uml#_OhDywKBMEeuyPo-ueXMKsA"/>
+        </type>
+      </outParameters>
+    </operations>
+    <operations xmi:id="_lpC6rKBPEeuyPo-ueXMKsA" name="crearBotman" staticOperation="true">
+      <modelElement href="Proy_JuegoRol.uml#_OfJHMaBMEeuyPo-ueXMKsA"/>
+      <visibility xmi:id="_lpC6raBPEeuyPo-ueXMKsA" label="-"/>
+      <cardinality xmi:id="_lpC6rqBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_lpC6r6BPEeuyPo-ueXMKsA">
+        <modelElement href="Proy_JuegoRol.uml#_OmwyIaBMEeuyPo-ueXMKsA"/>
+        <type xmi:id="_lpC6sKBPEeuyPo-ueXMKsA" name="Enemigo">
+          <modelElement href="Proy_JuegoRol.uml#_OhDywKBMEeuyPo-ueXMKsA"/>
+        </type>
+      </outParameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:ClassifierVisual" xmi:id="_lpBFcKBPEeuyPo-ueXMKsA" comments="_lo_3UKBPEeuyPo-ueXMKsA" targetConnectionVisual="_lpAeYKBPEeuyPo-ueXMKsA" containment="_lpAeYaBPEeuyPo-ueXMKsA" name="CargadorRecursos" package="_kLJZQKBPEeuyPo-ueXMKsA">
+    <modelElement href="Proy_JuegoRol.uml#_OfBycKBMEeuyPo-ueXMKsA"/>
+    <visualProperties xmi:id="_lpBFcaBPEeuyPo-ueXMKsA" position="708.0,264.0" size="-1.0,-1.0"/>
+    <visibility xmi:id="_lpBFcqBPEeuyPo-ueXMKsA" label="+"/>
+    <operations xmi:id="_lpBFc6BPEeuyPo-ueXMKsA" name="cargarImagenOpaca" staticOperation="true">
+      <modelElement href="Proy_JuegoRol.uml#_OfCZgKBMEeuyPo-ueXMKsA"/>
+      <visibility xmi:id="_lpBFdKBPEeuyPo-ueXMKsA" label="+"/>
+      <cardinality xmi:id="_lpBFdaBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_lpBFdqBPEeuyPo-ueXMKsA">
+        <modelElement href="Proy_JuegoRol.uml#_OocNIaBMEeuyPo-ueXMKsA"/>
+        <type xmi:id="_lpBFd6BPEeuyPo-ueXMKsA" name="BufferedImage">
+          <modelElement href="Proy_JuegoRol.uml#_OmK8QaBMEeuyPo-ueXMKsA"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_lpBFeKBPEeuyPo-ueXMKsA" name="ruta">
+        <modelElement href="Proy_JuegoRol.uml#_OfCZgaBMEeuyPo-ueXMKsA"/>
+        <keywords xmi:id="_lpBFeaBPEeuyPo-ueXMKsA" keyword="final"/>
+        <cardinality xmi:id="_lpBFeqBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+        <type xmi:id="_lpBFe6BPEeuyPo-ueXMKsA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_lpBFfKBPEeuyPo-ueXMKsA" name="cargarImagenTranslucida" staticOperation="true">
+      <modelElement href="Proy_JuegoRol.uml#_OfDAkqBMEeuyPo-ueXMKsA"/>
+      <visibility xmi:id="_lpBFfaBPEeuyPo-ueXMKsA" label="+"/>
+      <cardinality xmi:id="_lpBFfqBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_lpBFf6BPEeuyPo-ueXMKsA">
+        <modelElement href="Proy_JuegoRol.uml#_OocNIqBMEeuyPo-ueXMKsA"/>
+        <type xmi:id="_lpBFgKBPEeuyPo-ueXMKsA" name="BufferedImage">
+          <modelElement href="Proy_JuegoRol.uml#_OmK8QaBMEeuyPo-ueXMKsA"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_lpBFgaBPEeuyPo-ueXMKsA" name="ruta">
+        <modelElement href="Proy_JuegoRol.uml#_OfDAk6BMEeuyPo-ueXMKsA"/>
+        <keywords xmi:id="_lpBFgqBPEeuyPo-ueXMKsA" keyword="final"/>
+        <cardinality xmi:id="_lpBFg6BPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+        <type xmi:id="_lpBFhKBPEeuyPo-ueXMKsA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_lpBFhaBPEeuyPo-ueXMKsA" name="leerFicheroTexto" staticOperation="true">
+      <modelElement href="Proy_JuegoRol.uml#_OfDnoqBMEeuyPo-ueXMKsA"/>
+      <visibility xmi:id="_lpBFhqBPEeuyPo-ueXMKsA" label="+"/>
+      <cardinality xmi:id="_lpBFh6BPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_lpBFiKBPEeuyPo-ueXMKsA">
+        <modelElement href="Proy_JuegoRol.uml#_OfEOsKBMEeuyPo-ueXMKsA"/>
+        <type xmi:id="_lpBFiaBPEeuyPo-ueXMKsA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_lpBFiqBPEeuyPo-ueXMKsA" name="ruta">
+        <modelElement href="Proy_JuegoRol.uml#_OfDno6BMEeuyPo-ueXMKsA"/>
+        <keywords xmi:id="_lpBFi6BPEeuyPo-ueXMKsA" keyword="final"/>
+        <cardinality xmi:id="_lpBFjKBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+        <type xmi:id="_lpBFjaBPEeuyPo-ueXMKsA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+    <operations xmi:id="_lpBFjqBPEeuyPo-ueXMKsA" name="cargarSonido" staticOperation="true">
+      <modelElement href="Proy_JuegoRol.uml#_OfEOs6BMEeuyPo-ueXMKsA"/>
+      <visibility xmi:id="_lpBFj6BPEeuyPo-ueXMKsA" label="+"/>
+      <cardinality xmi:id="_lpBFkKBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+      <outParameters xmi:id="_lpBFkaBPEeuyPo-ueXMKsA">
+        <modelElement href="Proy_JuegoRol.uml#_Ooc0MKBMEeuyPo-ueXMKsA"/>
+        <type xmi:id="_lpBFkqBPEeuyPo-ueXMKsA" name="Clip">
+          <modelElement href="Proy_JuegoRol.uml#_OmGDwaBMEeuyPo-ueXMKsA"/>
+        </type>
+      </outParameters>
+      <parameters xmi:id="_lpBFk6BPEeuyPo-ueXMKsA" name="ruta">
+        <modelElement href="Proy_JuegoRol.uml#_OfEOtKBMEeuyPo-ueXMKsA"/>
+        <keywords xmi:id="_lpBFlKBPEeuyPo-ueXMKsA" keyword="final"/>
+        <cardinality xmi:id="_lpBFlaBPEeuyPo-ueXMKsA" label="1" max="1" min="1"/>
+        <type xmi:id="_lpBFlqBPEeuyPo-ueXMKsA" name="String">
+          <modelElement href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        </type>
+      </parameters>
+    </operations>
+  </nodes>
+  <nodes xsi:type="com.yattasolutions.uml.diagrams.classifier:PackageVisual" xmi:id="_kLJZQKBPEeuyPo-ueXMKsA" containment="_kLHkEKBPEeuyPo-ueXMKsA" containments="_lpAeYaBPEeuyPo-ueXMKsA _lpBsgKBPEeuyPo-ueXMKsA _lpCTkqBPEeuyPo-ueXMKsA _lpC6oKBPEeuyPo-ueXMKsA _lpDhsqBPEeuyPo-ueXMKsA" classes="_lpBFcKBPEeuyPo-ueXMKsA _lpBsgaBPEeuyPo-ueXMKsA _lpCTk6BPEeuyPo-ueXMKsA _lpC6oaBPEeuyPo-ueXMKsA _lpDhs6BPEeuyPo-ueXMKsA" name="herramientas">
+    <modelElement href="Proy_JuegoRol.uml#_OY-NwKBMEeuyPo-ueXMKsA"/>
+    <visualProperties xmi:id="_kLJZQaBPEeuyPo-ueXMKsA" position="594.0,128.0" size="-1.0,-1.0"/>
+  </nodes>
+</com.yattasolutions.uml.diagrams.classifier:ClassDiagram>
