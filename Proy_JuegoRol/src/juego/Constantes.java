@@ -32,6 +32,9 @@ public class Constantes {
 	public static final String TEXTURAS_MUNDO = "/texturas/reveland.png";
 	public static final String TEXTURAS_PUEBLO = "/texturas/Villa.png";
 	public static final String TEXTURAS_PUEBLO_2 = "/texturas/Villa01.png";
+	public static final String TEXTURAS_CASA_GOBERNADOR_PLANTA_BAJA = "/texturas/mansion_p_01.png";
+	public static final String TEXTURAS_CASA_GOBERNADOR_HABITACION = "/texturas/mansion_h_01.png";
+	
 	
 	// IMAGENES
 	public static final String HOJA_PERSONAJE_1 = "/personaje/001.png";
@@ -45,9 +48,9 @@ public class Constantes {
 	public static final String RAYO = "/imagenes/rayo.png";
 	
 	// MAPAS
-	public static final String MAPA_PRUEBA_1 = "/mapas/mapa001.txt";
-	public static final String MAPA_PRUEBA_2 = "/mapas/mapa002.txt";
-	public static final String MAPA_PRUEBA_3 = "/mapas/mapa003.txt";
+	public static final String MAPA_PRUEBA_1 = "/mapas/prueba/mapa001.txt";
+	public static final String MAPA_PRUEBA_2 = "/mapas/prueba/mapa002.txt";
+	public static final String MAPA_PRUEBA_3 = "/mapas/prueba/mapa003.txt";
 	
 	public static final String MAPA_4 = "/mapas/mapa004.txt";
 	public static final String MAPA_5 = "/mapas/mapa005.txt";
@@ -55,9 +58,14 @@ public class Constantes {
 	public static final String MAPA_7 = "/mapas/mapa007.txt";
 	public static final String MAPA_MUNDO = "/mapas/mapa008.txt";
 	
-	public static final String MAPA_PUEBLO_1 = "/mapas/mapa_pueblo_01.txt";
-	public static final String MAPA_PUEBLO_2 = "/mapas/mapa_pueblo_02.txt";
-	public static final String MAPA_PUEBLO_3 = "/mapas/mapa_pueblo_03.txt";
+	public static final String MAPA_PUEBLO_1 = "/mapas/pueblo/mapa_pueblo_01.txt";
+	public static final String MAPA_PUEBLO_2 = "/mapas/pueblo/mapa_pueblo_02.txt";
+	public static final String MAPA_PUEBLO_3 = "/mapas/pueblo/mapa_pueblo_03.txt";
+	
+	public static final String CASA_GOBERNADOR_1 = "/mapas/casa_gobernador/mapa_casa_gob_baja_01.txt";
+	public static final String CASA_GOBERNADOR_2 = "/mapas/casa_gobernador/mapa_casa_gob_hab_01.txt";
+	public static final String CASA_GOBERNADOR_3 = "/mapas/casa_gobernador/mapa_casa_gob_hab_02.txt";
+	public static final String CASA_GOBERNADOR_4 = "/mapas/casa_gobernador/mapa_casa_gob_baja_02.txt";
 	
 	// MAPAS DE CARGA
 	public static final String MAPA_CARGA_1 = "/mapas/carga/carga1.txt";
@@ -75,7 +83,7 @@ public class Constantes {
 	public static final String MAPA_CARGA_PRUEBA_2 = "/mapas/carga/carga_prueba_2.txt";
 	public static final String MAPA_CARGA_PRUEBA_3 = "/mapas/carga/carga_prueba_3.txt";
 
-	
+	// OTROS
 	public static final String ICONO = "/icon/juego.png";
 
 	public static final String CURSOR = "/cursor/cursor.png";
