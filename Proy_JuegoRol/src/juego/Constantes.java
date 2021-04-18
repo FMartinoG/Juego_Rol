@@ -34,18 +34,24 @@ public class Constantes {
 	public static final String TEXTURAS_PUEBLO_2 = "/texturas/Villa01.png";
 	public static final String TEXTURAS_CASA_GOBERNADOR_PLANTA_BAJA = "/texturas/mansion_p_01.png";
 	public static final String TEXTURAS_CASA_GOBERNADOR_HABITACION = "/texturas/mansion_h_01.png";
+	public static final String TEXTURAS_CASA_GOBERNADOR_HABITACION_2 = "/texturas/mansion_h_02.png";
 	
 	
 	// IMAGENES
 	public static final String HOJA_PERSONAJE_1 = "/personaje/001.png";
 	public static final String PERSONAJE = "/personaje/psCombate.png";
-	public static final String BOTMAN = "/enemigos/botman.png";
-	public static final String RECAUDADOR = "/enemigos/recaudador.png";
+	
 	public static final String ATAQUE = "/imagenes/explosion.png";
 	public static final String CURA = "/imagenes/cruz.png";
 	public static final String FUEGO = "/imagenes/fuego.png";
 	public static final String HIELO = "/imagenes/Hielo.png";
 	public static final String RAYO = "/imagenes/rayo.png";
+	
+	// IMAGENES ENEMIGOS
+	public static final String BOTMAN = "/enemigos/botman.png";
+	public static final String RECAUDADOR = "/enemigos/recaudador.png";
+	public static final String MISTERIOSO = "/enemigos/misterioso.png";
+
 	
 	// MAPAS
 	public static final String MAPA_PRUEBA_1 = "/mapas/prueba/mapa001.txt";

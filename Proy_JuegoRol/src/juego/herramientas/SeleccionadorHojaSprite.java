@@ -51,6 +51,9 @@ public class SeleccionadorHojaSprite {
 		case "9":
 			hs = new HojaSprites(Constantes.TEXTURAS_CASA_GOBERNADOR_HABITACION, 32, true);
 			break;
+		case "10":
+			hs = new HojaSprites(Constantes.TEXTURAS_CASA_GOBERNADOR_HABITACION_2, 32, true);
+			break;
 		default:
 			break;
 		}

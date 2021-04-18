@@ -20,9 +20,11 @@ public class CreadorConversaciones {
 		String[] conversacion0 = { "MENSAJE 1", "MENSAJE 2" };
 		String[] conversacion1 = { "BUENOS DÍAS JOVEN", "HE VENIDO A POR LOS IMPUESTOS" };
 		String[] conversacion2 = { "LA CASA DEL GOBERNADOR ES LA DEL SUR" };
-		String[] conversacion3 = { "MENSAJE 1", "MENSAJE 2", "MENSAJE 3", "MENSAJE 4" };
+		String[] conversacion3 = { "UNO MENOS EN LA LISTA" , "EL SIGUIENTE ES EL REY", "...", "...", "OH VAYA", "CHICO, SERÁ MEJOR QUE TE VAYAS Y NO DIGAS NADA" };
+
 		Constantes.CONVERSACIONES.add(conversacion0);
 		Constantes.CONVERSACIONES.add(conversacion1);
+		Constantes.CONVERSACIONES.add(conversacion2);
 		Constantes.CONVERSACIONES.add(conversacion2);
 		Constantes.CONVERSACIONES.add(conversacion3);
 	}

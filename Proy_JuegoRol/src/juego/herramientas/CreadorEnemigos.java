@@ -17,10 +17,10 @@ public class CreadorEnemigos {
 	 * Método que manda crear los enemigos y los guarda.
 	 */
 	public static void crearEnemigos() {
-		Constantes.ENEMIGOS = new Enemigo[2];
+		Constantes.ENEMIGOS = new Enemigo[3];
 		Constantes.ENEMIGOS[0] = crearBotman();
 		Constantes.ENEMIGOS[1] = crearRecaudador();
-
+		Constantes.ENEMIGOS[2] = crearMisterioso();
 	}
 
 	/**
@@ -40,8 +40,27 @@ public class CreadorEnemigos {
 
 		Enemigo recaudador = new Enemigo("RECAUDADOR DE IMPUESTOS", Constantes.RECAUDADOR, estadisticas, resistenciasMagicas, acciones, reacciones, ordenAcciones,
 				0, 0);
-
 		return recaudador;
+	}
+	
+	/**
+	 * Método que crea y devuelve al enemigo "Hombre misterioso".
+	 * @return misterioso Enemigo
+	 */
+	private static Enemigo crearMisterioso() {
+		int[] estadisticas = { 10000, 10000, 10000, 10000 };
+		int[] resistenciasMagicas = { 0, 0, 0 };
+		String[] acciones = { "Obversar", "Amenazar", "Contar Chiste", "Gritar por ayuda" };
+		String[] reacciones = { "Está todo manchado de sangre, pero no tiene armas", "Te ignora", "Parece que se ha reido, pero finge que no",
+				"Te observa fijamente" };
+		ArrayList<Integer> ordenAcciones = new ArrayList<>();
+		ordenAcciones.add(0);
+		ordenAcciones.add(2);
+		ordenAcciones.add(3);
+
+		Enemigo misterioso = new Enemigo("HOMBRE MISTERIOSO", Constantes.MISTERIOSO, estadisticas, resistenciasMagicas, acciones, reacciones, ordenAcciones,
+				0, 0);
+		return misterioso;
 	}
 
 	/**
@@ -60,6 +79,7 @@ public class CreadorEnemigos {
 
 		return botman;
 	}
+	
 
 	/*
 	 * PLANTILLA DE ENEMIGO
