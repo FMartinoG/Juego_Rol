@@ -155,8 +155,13 @@ public class Estadisticas implements Serializable {
 	 * 
 	 * @param gasto int - Maná que se gasta.
 	 */
-	public void gastarMana(int gasto) {
-		this.mana -= gasto;
+	public boolean gastarMana(int gasto) {
+		boolean tieneMana = true;
+		if (mana >= 20)
+			this.mana -= gasto;
+		else
+			tieneMana = false;
+		return tieneMana;
 	}
 
 	/**
