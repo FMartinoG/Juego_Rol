@@ -79,6 +79,7 @@ public class EstructuraCombate {
 		opcion = 0;
 
 		inicializarPrincipal();
+		inicializarMagia();
 		inicializarAccion();
 	}
 
@@ -100,16 +101,15 @@ public class EstructuraCombate {
 	 * Crea las etiquetas de mágia para seleccionar en el combate.
 	 */
 	private void inicializarMagia() {
-		if (jugador.getEstadisticas().getMana() > 20) {
-			punteroMagia = 0;
-			opcionesMagia = new OpcionCombate[4];
-			opcionesMagia[0] = new OpcionCombate("Cura", new Rectangle(40, 290, 100, 40));
-			opcionesMagia[1] = new OpcionCombate("Fuego", new Rectangle(190, 290, 100, 40));
-			opcionesMagia[2] = new OpcionCombate("Hielo", new Rectangle(340, 290, 100, 40));
-			opcionesMagia[3] = new OpcionCombate("Rayo", new Rectangle(490, 290, 100, 40));
+		punteroMagia = 0;
+		opcionesMagia = new OpcionCombate[4];
+		opcionesMagia[0] = new OpcionCombate("Cura", new Rectangle(40, 290, 100, 40));
+		opcionesMagia[1] = new OpcionCombate("Fuego", new Rectangle(190, 290, 100, 40));
+		opcionesMagia[2] = new OpcionCombate("Hielo", new Rectangle(340, 290, 100, 40));
+		opcionesMagia[3] = new OpcionCombate("Rayo", new Rectangle(490, 290, 100, 40));
 
-			seleccionadoMagia = opcionesMagia[0];
-		}
+		seleccionadoMagia = opcionesMagia[0];
+
 	}
 
 	/**
@@ -140,7 +140,6 @@ public class EstructuraCombate {
 			realizarAtaqueFisico(jugador.getEstadisticas().realizarAtaqueFisico());
 			opcion = 0;
 		} else if (opcion == 2) {
-			inicializarMagia();
 			actualizarMagia();
 		} else if (opcion == 3)
 			actualizarAccion();
@@ -180,17 +179,16 @@ public class EstructuraCombate {
 		}
 		botonPulsado = false;
 
-		if (jugador.getEstadisticas().getMana() > 20) {
-			if (Controles.TECLADO.izdaMenu && punteroMagia > 0) {
-				punteroMagia -= 0.2;
-			} else if (Controles.TECLADO.drchaMenu && punteroMagia < 3) {
-				punteroMagia += 0.2;
-			}
-
-			seleccionadoMagia = opcionesMagia[(int) punteroMagia];
-
-			seleccionarMagia();
+		if (Controles.TECLADO.izdaMenu && punteroMagia > 0) {
+			punteroMagia -= 0.2;
+		} else if (Controles.TECLADO.drchaMenu && punteroMagia < 3) {
+			punteroMagia += 0.2;
 		}
+
+		seleccionadoMagia = opcionesMagia[(int) punteroMagia];
+
+		seleccionarMagia();
+
 		if (Controles.TECLADO.bt_Escape)
 			opcion = 0;
 	}

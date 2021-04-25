@@ -17,15 +17,18 @@ public class CreadorConversaciones {
 	 */
 	public static void crearConversaciones() {
 		Constantes.CONVERSACIONES = new ArrayList<>();
-		String[] conversacion0 = { "MENSAJE 1", "MENSAJE 2" };
-		String[] conversacion1 = { "BUENOS DÍAS JOVEN", "HE VENIDO A POR LOS IMPUESTOS" };
-		String[] conversacion2 = { "LA CASA DEL GOBERNADOR ES LA DEL SUR" };
-		String[] conversacion3 = { "UNO MENOS EN LA LISTA" , "EL SIGUIENTE ES EL REY", "...", "...", "OH VAYA", "CHICO, SERÁ MEJOR QUE TE VAYAS Y NO DIGAS NADA" };
-
-		Constantes.CONVERSACIONES.add(conversacion0);
+		String[] conversacion1 = { "MENSAJE 1", "MENSAJE 2" };
+		String[] conversacion2 = { "BUENOS DÍAS JOVEN", "HE VENIDO A POR LOS IMPUESTOS" };
+		String[] conversacion3 = { "LA CASA DEL GOBERNADOR ES LA DEL SUR" };
+		String[] conversacion4 = { "UNO MENOS EN LA LISTA" , "EL SIGUIENTE ES EL REY", "...", "...", "OH VAYA", "CHICO, SERÁ MEJOR QUE TE VAYAS Y NO DIGAS NADA" };
+		String[] conversacion5 = { "¿TODAVÍA ME SIGUES?", "BUENO, SUPONGO QUE ERA INEVITABLE", "PERO PARECE QUE NI SIQUERA SABES PELEAR", "YA QUE HAS VENIDO TE ENSEÑARÉ A LUCHAR" };
+		String[] conversacion6 = { "BUENO CHAVAL, YO ME VOY A LA CAPITAL, NOS VEMOS" };
+		
 		Constantes.CONVERSACIONES.add(conversacion1);
 		Constantes.CONVERSACIONES.add(conversacion2);
-		Constantes.CONVERSACIONES.add(conversacion2);
 		Constantes.CONVERSACIONES.add(conversacion3);
+		Constantes.CONVERSACIONES.add(conversacion4);
+		Constantes.CONVERSACIONES.add(conversacion5);
+		Constantes.CONVERSACIONES.add(conversacion6);
 	}
 }

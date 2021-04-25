@@ -51,6 +51,7 @@ public class Constantes {
 	public static final String BOTMAN = "/enemigos/botman.png";
 	public static final String RECAUDADOR = "/enemigos/recaudador.png";
 	public static final String MISTERIOSO = "/enemigos/misterioso.png";
+	public static final String MANIQUI = "/enemigos/maniqui.png";
 
 	
 	// MAPAS
@@ -58,7 +59,7 @@ public class Constantes {
 	public static final String MAPA_PRUEBA_2 = "/mapas/prueba/mapa002.txt";
 	public static final String MAPA_PRUEBA_3 = "/mapas/prueba/mapa003.txt";
 	
-	public static final String MAPA_4 = "/mapas/mapa004.txt";
+	
 	public static final String MAPA_5 = "/mapas/mapa005.txt";
 	public static final String MAPA_6 = "/mapas/mapa006.txt";
 	public static final String MAPA_7 = "/mapas/mapa007.txt";
@@ -67,6 +68,8 @@ public class Constantes {
 	public static final String MAPA_PUEBLO_1 = "/mapas/pueblo/mapa_pueblo_01.txt";
 	public static final String MAPA_PUEBLO_2 = "/mapas/pueblo/mapa_pueblo_02.txt";
 	public static final String MAPA_PUEBLO_3 = "/mapas/pueblo/mapa_pueblo_03.txt";
+	public static final String MAPA_SALIDA_PUEBLO = "/mapas/pueblo/mapa_salida_pueblo.txt";
+	public static final String MAPA_SALIDA_PUEBLO_2 = "/mapas/pueblo/mapa_salida_pueblo_02.txt";
 	
 	public static final String CASA_GOBERNADOR_1 = "/mapas/casa_gobernador/mapa_casa_gob_baja_01.txt";
 	public static final String CASA_GOBERNADOR_2 = "/mapas/casa_gobernador/mapa_casa_gob_hab_01.txt";
