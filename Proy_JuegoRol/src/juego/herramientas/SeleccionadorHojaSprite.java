@@ -31,7 +31,7 @@ public class SeleccionadorHojaSprite {
 			hs = new HojaSprites(Constantes.TEXTURAS_ENTRADA_CUEVA, 32, true);
 			break;
 		case "3":
-			hs = new HojaSprites(Constantes.TEXTURAS_ENTRADA_CUEVA_2, 32, true);
+			hs = new HojaSprites(Constantes.TEXTURAS_ENTRADA_CAPITAL, 32, true);
 			break;
 		case "4":
 			hs = new HojaSprites(Constantes.TEXTURAS_ENTRADA_CASTILLO, 32, true);
@@ -53,6 +53,9 @@ public class SeleccionadorHojaSprite {
 			break;
 		case "10":
 			hs = new HojaSprites(Constantes.TEXTURAS_CASA_GOBERNADOR_HABITACION_2, 32, true);
+			break;
+		case "11":
+			hs = new HojaSprites(Constantes.TEXTURAS_ENTRADA_CAPITAL_2, 32, true);
 			break;
 		default:
 			break;

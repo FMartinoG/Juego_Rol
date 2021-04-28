@@ -49,21 +49,16 @@ public class ComprobadorDeMapa {
 		case "m9":
 			nuevoMapa = Constantes.MAPA_SALIDA_PUEBLO_2;
 			break;
-//		case "m4":
-//			nuevoMapa = Constantes.MAPA_4;
-//			break;
-//		case "m5":
-//			nuevoMapa = Constantes.MAPA_5;
-//			break;
-//		case "m6":
-//			nuevoMapa = Constantes.MAPA_6;
-//			break;
-//		case "m7":
-//			nuevoMapa = Constantes.MAPA_7;
-//			break;
 		case "m10":
 			nuevoMapa = Constantes.MAPA_MUNDO;
 			break;
+		case "m11":
+			nuevoMapa = Constantes.MAPA_ENTRADA_CAPITAL;
+			break;
+		case "m12":
+			nuevoMapa = Constantes.MAPA_ENTRADA_CAPITAL_2;
+			break;
+
 
 		case "m1002":
 			nuevoMapa = Constantes.MAPA_PRUEBA_1;
@@ -117,18 +112,21 @@ public class ComprobadorDeMapa {
 		case Constantes.MAPA_SALIDA_PUEBLO:
 			jugador.getEstadisticas().cambiarMapa(8);
 			break;
-		case Constantes.MAPA_MUNDO:
+		case Constantes.MAPA_SALIDA_PUEBLO_2:
 			jugador.getEstadisticas().cambiarMapa(9);
 			break;
-//		case Constantes.MAPA_5:
-//			jugador.getEstadisticas().cambiarMapa(5);
-//			break;
-//		case Constantes.MAPA_6:
-//			jugador.getEstadisticas().cambiarMapa(6);
-//			break;
-//		case Constantes.MAPA_7:
-//			jugador.getEstadisticas().cambiarMapa(7);
-//			break;
+		case Constantes.MAPA_MUNDO:
+			jugador.getEstadisticas().cambiarMapa(10);
+			break;
+			
+		// CAPITAL
+		case Constantes.MAPA_ENTRADA_CAPITAL:
+			jugador.getEstadisticas().cambiarMapa(11);
+			break;
+		case Constantes.MAPA_ENTRADA_CAPITAL_2:
+			jugador.getEstadisticas().cambiarMapa(12);
+			break;	
+
 
 		// MAPAS DE PRUEBA
 		case Constantes.MAPA_PRUEBA_1:

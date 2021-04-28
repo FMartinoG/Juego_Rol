@@ -27,7 +27,8 @@ public class Constantes {
 	public static final String HOJA_TEXTURAS_1 = "/texturas/001.png";
 	public static final String TEXTURAS_BOSQUE_1 = "/texturas/bosque01.png";
 	public static final String TEXTURAS_ENTRADA_CUEVA = "/texturas/entrada_cueva.png";
-	public static final String TEXTURAS_ENTRADA_CUEVA_2 = "/texturas/entrada_cueva_02.png";
+	public static final String TEXTURAS_ENTRADA_CAPITAL = "/texturas/entrada_cueva_02.png";
+	public static final String TEXTURAS_ENTRADA_CAPITAL_2 = "/texturas/entrada_cueva_02_1.png";
 	public static final String TEXTURAS_ENTRADA_CASTILLO = "/texturas/entrada_castillo.png";
 	public static final String TEXTURAS_MUNDO = "/texturas/reveland.png";
 	public static final String TEXTURAS_PUEBLO = "/texturas/Villa.png";
@@ -52,7 +53,7 @@ public class Constantes {
 	public static final String RECAUDADOR = "/enemigos/recaudador.png";
 	public static final String MISTERIOSO = "/enemigos/misterioso.png";
 	public static final String MANIQUI = "/enemigos/maniqui.png";
-
+	public static final String GUARDIA_ENTRADA_CIUDAD = "/enemigos/guardiaPuerta.png";
 	
 	// MAPAS
 	public static final String MAPA_PRUEBA_1 = "/mapas/prueba/mapa001.txt";
@@ -60,10 +61,9 @@ public class Constantes {
 	public static final String MAPA_PRUEBA_3 = "/mapas/prueba/mapa003.txt";
 	
 	
-	public static final String MAPA_5 = "/mapas/mapa005.txt";
-	public static final String MAPA_6 = "/mapas/mapa006.txt";
+	public static final String MAPA_5 = "/mapas/mapa005.txt";	
 	public static final String MAPA_7 = "/mapas/mapa007.txt";
-	public static final String MAPA_MUNDO = "/mapas/mapa008.txt";
+	public static final String MAPA_MUNDO = "/mapas/mapa_mundo_01.txt";
 	
 	public static final String MAPA_PUEBLO_1 = "/mapas/pueblo/mapa_pueblo_01.txt";
 	public static final String MAPA_PUEBLO_2 = "/mapas/pueblo/mapa_pueblo_02.txt";
@@ -76,6 +76,9 @@ public class Constantes {
 	public static final String CASA_GOBERNADOR_3 = "/mapas/casa_gobernador/mapa_casa_gob_hab_02.txt";
 	public static final String CASA_GOBERNADOR_4 = "/mapas/casa_gobernador/mapa_casa_gob_baja_02.txt";
 	
+	public static final String MAPA_ENTRADA_CAPITAL = "/mapas/capital/mapa_entrada_capital.txt";
+	public static final String MAPA_ENTRADA_CAPITAL_2 = "/mapas/capital/mapa_entrada_capital_2.txt";
+	
 	// MAPAS DE CARGA
 	public static final String MAPA_CARGA_1 = "/mapas/carga/carga1.txt";
 	public static final String MAPA_CARGA_2 = "/mapas/carga/carga2.txt";
@@ -87,6 +90,8 @@ public class Constantes {
 	public static final String MAPA_CARGA_8 = "/mapas/carga/carga8.txt";
 	public static final String MAPA_CARGA_9 = "/mapas/carga/carga9.txt";
 	public static final String MAPA_CARGA_10 = "/mapas/carga/carga10.txt";
+	public static final String MAPA_CARGA_11 = "/mapas/carga/carga11.txt";
+	public static final String MAPA_CARGA_12 = "/mapas/carga/carga12.txt";
 	
 	public static final String MAPA_CARGA_PRUEBA_1 = "/mapas/carga/carga_prueba_1.txt";
 	public static final String MAPA_CARGA_PRUEBA_2 = "/mapas/carga/carga_prueba_2.txt";

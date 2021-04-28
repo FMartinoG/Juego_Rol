@@ -23,6 +23,8 @@ public class CreadorConversaciones {
 		String[] conversacion4 = { "UNO MENOS EN LA LISTA" , "EL SIGUIENTE ES EL REY", "...", "...", "OH VAYA", "CHICO, SERÁ MEJOR QUE TE VAYAS Y NO DIGAS NADA" };
 		String[] conversacion5 = { "¿TODAVÍA ME SIGUES?", "BUENO, SUPONGO QUE ERA INEVITABLE", "PERO PARECE QUE NI SIQUERA SABES PELEAR", "YA QUE HAS VENIDO TE ENSEÑARÉ A LUCHAR" };
 		String[] conversacion6 = { "BUENO CHAVAL, YO ME VOY A LA CAPITAL, NOS VEMOS" };
+		String[] conversacion7 = { "ERES UN POCO PESADO, DEJA DE SEGURIME", "BUENO, YO A LO MIO, VOY A MATAR AL REY Y ESAS COSAS..." };
+		String[] conversacion8 = { "AHORA MISMO NO SE PUEDE ENTRAR, TENGA UN BUEN DÍA" };
 		
 		Constantes.CONVERSACIONES.add(conversacion1);
 		Constantes.CONVERSACIONES.add(conversacion2);
@@ -30,5 +32,7 @@ public class CreadorConversaciones {
 		Constantes.CONVERSACIONES.add(conversacion4);
 		Constantes.CONVERSACIONES.add(conversacion5);
 		Constantes.CONVERSACIONES.add(conversacion6);
+		Constantes.CONVERSACIONES.add(conversacion7);
+		Constantes.CONVERSACIONES.add(conversacion8);
 	}
 }

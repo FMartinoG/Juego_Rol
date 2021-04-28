@@ -17,11 +17,12 @@ public class CreadorEnemigos {
 	 * Método que manda crear los enemigos y los guarda.
 	 */
 	public static void crearEnemigos() {
-		Constantes.ENEMIGOS = new Enemigo[4];
+		Constantes.ENEMIGOS = new Enemigo[5];
 		Constantes.ENEMIGOS[0] = crearBotman();
 		Constantes.ENEMIGOS[1] = crearRecaudador();
 		Constantes.ENEMIGOS[2] = crearMisterioso();
 		Constantes.ENEMIGOS[3] = crearEnemigoDePractica();
+		Constantes.ENEMIGOS[4] = crearGuardiaEntradaCapital();
 	}
 
 	/**
@@ -82,6 +83,26 @@ public class CreadorEnemigos {
 		Enemigo practica = new Enemigo("MANIQUÍ DE PRACTICAS", Constantes.MANIQUI, estadisticas, resistenciasMagicas,
 				acciones, reacciones, ordenAcciones, 20, 100);
 		return practica;
+	}
+	
+	/**
+	 * Método que crea y devuelve al enemigo "Guardia entrada ciudad".
+	 * 
+	 * @return guardia Enemigo
+	 */
+	private static Enemigo crearGuardiaEntradaCapital() {
+		int[] estadisticas = { 100, 100, 0, 10 };
+		int[] resistenciasMagicas = { 1, 1, 2 };
+		String[] acciones = { "Obversar", "Amenazar", "Contar Chiste", "Suplicar" };
+		String[] reacciones = { "Se siente incómodo si lo miras fijamente", "Parece un poco asustado",
+				"No le ha hecho ninguna gracia y siente pena por ti", "Se siente muy incómodo" };
+		ArrayList<Integer> ordenAcciones = new ArrayList<>();
+		ordenAcciones.add(2);
+		ordenAcciones.add(3);
+
+		Enemigo guardia = new Enemigo("GUARDIA ENTRADA CIUDAD", Constantes.GUARDIA_ENTRADA_CIUDAD, estadisticas, resistenciasMagicas,
+				acciones, reacciones, ordenAcciones, 50, 50);
+		return guardia;
 	}
 
 	/**
