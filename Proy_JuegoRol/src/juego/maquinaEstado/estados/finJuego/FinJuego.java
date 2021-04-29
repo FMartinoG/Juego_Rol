@@ -1,25 +1,26 @@
-package juego.maquinaEstado.estados.introduccion;
+package juego.maquinaEstado.estados.finJuego;
 
 import java.awt.Graphics;
 
+import juego.entes.Estadisticas;
 import juego.maquinaEstado.EstadoJuego;
 
 /**
- * Clase que se encarga del estado de la introducción del juego
+ * Clase que se encarga del estado delfin del juego
  * 
  * @author Fernando Martino
  *
  */
-public class Introduccion implements EstadoJuego {
+public class FinJuego implements EstadoJuego {
 
-	private EstructuraIntroduccion ei;
+	private EstructuraFin ei;
 	private boolean finalizado;
 
 	/**
-	 * Contructor de la clase Introducción.
+	 * Contructor de la clase Fin de Juego.
 	 */
-	public Introduccion() {
-		ei = new EstructuraIntroduccion();
+	public FinJuego(Estadisticas estadisticas) {
+		ei = new EstructuraFin(estadisticas);
 		finalizado = false;
 	}
 

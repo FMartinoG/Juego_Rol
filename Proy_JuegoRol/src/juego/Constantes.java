@@ -79,6 +79,9 @@ public class Constantes {
 	public static final String MAPA_ENTRADA_CAPITAL = "/mapas/capital/mapa_entrada_capital.txt";
 	public static final String MAPA_ENTRADA_CAPITAL_2 = "/mapas/capital/mapa_entrada_capital_2.txt";
 	
+	public static final String MAPA_FIN_JUEGO = "/mapas/fin_juego.txt";
+	
+	
 	// MAPAS DE CARGA
 	public static final String MAPA_CARGA_1 = "/mapas/carga/carga1.txt";
 	public static final String MAPA_CARGA_2 = "/mapas/carga/carga2.txt";
@@ -111,4 +114,5 @@ public class Constantes {
 	
 	public static Enemigo[] ENEMIGOS;
 
+	public static boolean isFinJuego = false;
 }

@@ -1,4 +1,4 @@
-package juego.maquinaEstado.estados.introduccion;
+package juego.maquinaEstado.estados.finJuego;
 
 import java.awt.Color;
 import java.awt.FontMetrics;
@@ -7,24 +7,27 @@ import java.awt.Graphics;
 import juego.Constantes;
 import juego.HUD.Mensaje;
 import juego.control.Controles;
+import juego.entes.Estadisticas;
 
 /**
- * Clase encargada de crear y controlar los elementos del estado Introducción.
+ * Clase encargada de crear y controlar los elementos del estado Fin de Juego.
  * 
  * @author Fernando Martino
  *
  */
-public class EstructuraIntroduccion {
+public class EstructuraFin {
 
 	private boolean finalizado;
 	private String[] textos;
+	private Estadisticas estadisticas;
 
 	/**
 	 * Contructor de la estructura.
 	 */
-	public EstructuraIntroduccion() {
+	public EstructuraFin(Estadisticas estadisticas) {
 		finalizado = false;
 		inicializarTextos();
+		this.estadisticas = estadisticas;
 	}
 
 	/**
