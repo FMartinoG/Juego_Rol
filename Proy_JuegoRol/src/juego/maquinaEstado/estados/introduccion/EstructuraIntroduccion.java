@@ -131,11 +131,10 @@ public class EstructuraIntroduccion {
 	 * @param time
 	 */
 	private void esperar(long time) {
-		try {
-			Thread.sleep(time);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		long tiempoInicial = System.currentTimeMillis();
+		long tiempoActual = tiempoInicial;
+		while ((tiempoActual - tiempoInicial) < time)
+			tiempoActual = System.currentTimeMillis();
 	}
 
 	/**

@@ -59,6 +59,10 @@ public class ComprobadorDeMapa {
 			nuevoMapa = Constantes.MAPA_ENTRADA_CAPITAL_2;
 			break;
 
+		case "fin":
+			nuevoMapa = Constantes.MAPA_FIN_JUEGO;
+			Constantes.isFinJuego = true;
+			break;	
 
 		case "m1002":
 			nuevoMapa = Constantes.MAPA_PRUEBA_1;
