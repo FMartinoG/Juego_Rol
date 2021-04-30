@@ -256,9 +256,8 @@ public class Estadisticas implements Serializable {
 	 * Método encargado de aumentar el nivel y las estadísticas.
 	 */
 	private void subirNivel() {
-		while (exp > expMaxima) {
+		while (exp >= expMaxima) {
 			++nivel;
-			System.out.println(nivel);
 			exp -= expMaxima;
 			saludMaxima += 10;
 			manaMaximo += 10;
