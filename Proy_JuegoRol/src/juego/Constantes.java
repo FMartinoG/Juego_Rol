@@ -54,6 +54,10 @@ public class Constantes {
 	public static final String MISTERIOSO = "/enemigos/misterioso.png";
 	public static final String MANIQUI = "/enemigos/maniqui.png";
 	public static final String GUARDIA_ENTRADA_CIUDAD = "/enemigos/guardiaPuerta.png";
+	public static final String GUARDIA_CASTILLO = "/enemigos/guardiaPuerta.png";
+	public static final String GUARDIA_MANSION = "/enemigos/guardiaPuerta.png";
+	public static final String REY = "/enemigos/guardiaPuerta.png";
+	public static final String CONDE = "/enemigos/guardiaPuerta.png";
 	
 	// MAPAS
 	public static final String MAPA_PRUEBA_1 = "/mapas/prueba/mapa001.txt";
