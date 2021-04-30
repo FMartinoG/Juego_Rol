@@ -544,7 +544,7 @@ public class EstructuraCombate {
 	 * @param g Graphics
 	 */
 	private void dibujarReaccion(Graphics g) {
-		Mensaje mensaje = new Mensaje(enemigo.getReacciones()[accionSeleccionada], 200, 100, true);
+		Mensaje mensaje = new Mensaje(enemigo.getReacciones()[accionSeleccionada], 100, 100, true);
 		mensaje.dibujarMensajeCombate(g);
 		dibujarReaccion = false;
 		long msInicio = System.currentTimeMillis();
