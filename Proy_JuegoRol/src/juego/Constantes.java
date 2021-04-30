@@ -56,7 +56,7 @@ public class Constantes {
 	public static final String GUARDIA_ENTRADA_CIUDAD = "/enemigos/guardiaPuerta.png";
 	public static final String GUARDIA_CASTILLO = "/enemigos/guardiaPuerta.png";
 	public static final String GUARDIA_MANSION = "/enemigos/guardiaPuerta.png";
-	public static final String REY = "/enemigos/guardiaPuerta.png";
+	public static final String REY = "/enemigos/rey.png";
 	public static final String CONDE = "/enemigos/guardiaPuerta.png";
 	
 	// MAPAS
