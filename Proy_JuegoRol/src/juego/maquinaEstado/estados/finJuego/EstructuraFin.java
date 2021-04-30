@@ -27,7 +27,6 @@ public class EstructuraFin {
 	 */
 	public EstructuraFin(Estadisticas estadisticas) {
 		finalizado = false;
-		inicializarTextos();
 		if (estadisticas.getNivel() > 30) {
 			resultadoDelJuego = 3;
 		} else if (estadisticas.getNivel() > 20) {
@@ -37,6 +36,7 @@ public class EstructuraFin {
 		} else {
 			resultadoDelJuego = 0;
 		}
+		inicializarTextos();
 	}
 
 	/**
