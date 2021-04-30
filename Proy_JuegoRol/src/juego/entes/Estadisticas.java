@@ -59,7 +59,8 @@ public class Estadisticas implements Serializable {
 	/**
 	 * Método que aumenta la salud del personaje con la cantidad indicada.
 	 * 
-	 * @param cura int - Salud a curar.
+	 * @param cura
+	 *            int - Salud a curar.
 	 */
 	public void curar(int cura) {
 		salud += cura;
@@ -78,7 +79,8 @@ public class Estadisticas implements Serializable {
 	 * Método encargado de recibir el ataque físico realizado por el enemigo,
 	 * cambiar la salud y devolver el daño que recibe el personaje.
 	 * 
-	 * @param n int - Ataque físico del enemigo.
+	 * @param n
+	 *            int - Ataque físico del enemigo.
 	 * @return ataque int - Daño recibido por el personaje.
 	 */
 	public int recibirAtaqueFisico(int n) {
@@ -96,7 +98,8 @@ public class Estadisticas implements Serializable {
 	 * Método encargado de recibir el ataque mágico realizado por el enemigo,
 	 * cambiar la salud y devolver el daño que recibe el personaje.
 	 * 
-	 * @param n int - Ataque mágico del enemigo.
+	 * @param n
+	 *            int - Ataque mágico del enemigo.
 	 * @return ataque int - Daño recibido por el personaje.
 	 */
 	public int recibirAtaqueMagico(int n) {
@@ -153,7 +156,8 @@ public class Estadisticas implements Serializable {
 	/**
 	 * Método que disminuye la cantidad de maná actual.
 	 * 
-	 * @param gasto int - Maná que se gasta.
+	 * @param gasto
+	 *            int - Maná que se gasta.
 	 */
 	public boolean gastarMana(int gasto) {
 		boolean tieneMana = true;
@@ -238,7 +242,8 @@ public class Estadisticas implements Serializable {
 	 * Método enacargado de aumentar la experiencia y si alcanza la experiencia
 	 * máxima, manda subir de nivel.
 	 * 
-	 * @param exp int - Cantidad de experiencia que aumenta.
+	 * @param exp
+	 *            int - Cantidad de experiencia que aumenta.
 	 */
 	public void aumentarExp(int exp) {
 		this.exp += exp;
@@ -251,14 +256,17 @@ public class Estadisticas implements Serializable {
 	 * Método encargado de aumentar el nivel y las estadísticas.
 	 */
 	private void subirNivel() {
-		++nivel;
-		exp -= expMaxima;
-		saludMaxima += 10;
-		manaMaximo += 10;
-		ataque += 5;
-		defensa += 5;
-		poderMagico += 5;
-		defensaMagica += 5;
+		while (exp > expMaxima) {
+			++nivel;
+			System.out.println(nivel);
+			exp -= expMaxima;
+			saludMaxima += 10;
+			manaMaximo += 10;
+			ataque += 5;
+			defensa += 5;
+			poderMagico += 5;
+			defensaMagica += 5;
+		}
 	}
 
 	/**
@@ -273,7 +281,8 @@ public class Estadisticas implements Serializable {
 	/**
 	 * Método que cambia la referencia al mapa actual.
 	 * 
-	 * @param n int - Referencia del nuevo mapa.
+	 * @param n
+	 *            int - Referencia del nuevo mapa.
 	 */
 	public void cambiarMapa(int n) {
 		this.mapa = n;
