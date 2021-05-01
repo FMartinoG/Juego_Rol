@@ -171,7 +171,7 @@ public class GestorJuego implements EstadoJuego {
 	private void mostarMensajes(Graphics g) {
 		Mensaje m = null;
 		for (String s : Constantes.CONVERSACIONES.get(conversacion)) {
-			m = new Mensaje(s, 200, 300, true);
+			m = new Mensaje(s, 130, 300, true);
 			m.dibujar(g);
 			long msInicio = System.currentTimeMillis();
 			long msActual = System.currentTimeMillis();

@@ -86,6 +86,12 @@ public class CargarPartida {
 		case 12:
 			textoMapa = Constantes.MAPA_CARGA_12;
 			break;
+		case 13:
+			textoMapa = Constantes.MAPA_CARGA_13;
+			break;
+		case 14:
+			textoMapa = Constantes.MAPA_CARGA_14;
+			break;
 
 		// LOS DE PRUEBA
 		case 1002:

@@ -36,7 +36,8 @@ public class Constantes {
 	public static final String TEXTURAS_CASA_GOBERNADOR_PLANTA_BAJA = "/texturas/mansion_p_01.png";
 	public static final String TEXTURAS_CASA_GOBERNADOR_HABITACION = "/texturas/mansion_h_01.png";
 	public static final String TEXTURAS_CASA_GOBERNADOR_HABITACION_2 = "/texturas/mansion_h_02.png";
-	
+	public static final String TEXTURAS_CIUDAD_1 = "/texturas/ciudad1.png";
+	public static final String TEXTURAS_CIUDAD_2 = "/texturas/ciudad2.png";
 	
 	// IMAGENES
 	public static final String HOJA_PERSONAJE_1 = "/personaje/001.png";
@@ -54,7 +55,7 @@ public class Constantes {
 	public static final String MISTERIOSO = "/enemigos/misterioso.png";
 	public static final String MANIQUI = "/enemigos/maniqui.png";
 	public static final String GUARDIA_ENTRADA_CIUDAD = "/enemigos/guardiaPuerta.png";
-	public static final String GUARDIA_CASTILLO = "/enemigos/guardiaPuerta.png";
+	public static final String GUARDIA_CASTILLO = "/enemigos/guardia_real.png";
 	public static final String GUARDIA_MANSION = "/enemigos/guardiaPuerta.png";
 	public static final String REY = "/enemigos/rey.png";
 	public static final String CONDE = "/enemigos/guardiaPuerta.png";
@@ -82,6 +83,8 @@ public class Constantes {
 	
 	public static final String MAPA_ENTRADA_CAPITAL = "/mapas/capital/mapa_entrada_capital.txt";
 	public static final String MAPA_ENTRADA_CAPITAL_2 = "/mapas/capital/mapa_entrada_capital_2.txt";
+	public static final String MAPA_CAPITAL = "/mapas/capital/mapa_ciudad_1.txt";
+	public static final String MAPA_CAPITAL_2 = "/mapas/capital/mapa_ciudad_2.txt";
 	
 	public static final String MAPA_FIN_JUEGO = "/mapas/fin_juego.txt";
 	
@@ -99,6 +102,8 @@ public class Constantes {
 	public static final String MAPA_CARGA_10 = "/mapas/carga/carga10.txt";
 	public static final String MAPA_CARGA_11 = "/mapas/carga/carga11.txt";
 	public static final String MAPA_CARGA_12 = "/mapas/carga/carga12.txt";
+	public static final String MAPA_CARGA_13 = "/mapas/carga/carga13.txt";
+	public static final String MAPA_CARGA_14 = "/mapas/carga/carga14.txt";
 	
 	public static final String MAPA_CARGA_PRUEBA_1 = "/mapas/carga/carga_prueba_1.txt";
 	public static final String MAPA_CARGA_PRUEBA_2 = "/mapas/carga/carga_prueba_2.txt";

@@ -58,6 +58,12 @@ public class ComprobadorDeMapa {
 		case "m12":
 			nuevoMapa = Constantes.MAPA_ENTRADA_CAPITAL_2;
 			break;
+		case "m13":
+			nuevoMapa = Constantes.MAPA_CAPITAL;
+			break;
+		case "m14":
+			nuevoMapa = Constantes.MAPA_CAPITAL_2;
+			break;
 
 		case "fin":
 			nuevoMapa = Constantes.MAPA_FIN_JUEGO;
@@ -130,6 +136,12 @@ public class ComprobadorDeMapa {
 		case Constantes.MAPA_ENTRADA_CAPITAL_2:
 			jugador.getEstadisticas().cambiarMapa(12);
 			break;	
+		case Constantes.MAPA_CAPITAL:
+			jugador.getEstadisticas().cambiarMapa(13);
+			break;
+		case Constantes.MAPA_CAPITAL_2:
+			jugador.getEstadisticas().cambiarMapa(14);
+			break;
 
 
 		// MAPAS DE PRUEBA
