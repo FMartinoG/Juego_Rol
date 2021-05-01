@@ -156,8 +156,8 @@ public class Estadisticas implements Serializable {
 	/**
 	 * Método que disminuye la cantidad de maná actual.
 	 * 
-	 * @param gasto
-	 *            int - Maná que se gasta.
+	 * @param gasto int - Maná que se gasta.
+	 * @return tieneMana boolean
 	 */
 	public boolean gastarMana(int gasto) {
 		boolean tieneMana = true;

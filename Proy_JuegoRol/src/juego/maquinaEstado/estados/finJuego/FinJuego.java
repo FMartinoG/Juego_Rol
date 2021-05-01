@@ -6,7 +6,7 @@ import juego.entes.Estadisticas;
 import juego.maquinaEstado.EstadoJuego;
 
 /**
- * Clase que se encarga del estado delfin del juego
+ * Clase que se encarga del estado del fin del juego
  * 
  * @author Fernando Martino
  *
@@ -18,6 +18,8 @@ public class FinJuego implements EstadoJuego {
 
 	/**
 	 * Contructor de la clase Fin de Juego.
+	 * 
+	 * @param estadisticas Estadisticas
 	 */
 	public FinJuego(Estadisticas estadisticas) {
 		ei = new EstructuraFin(estadisticas);

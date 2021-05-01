@@ -24,6 +24,8 @@ public class EstructuraFin {
 
 	/**
 	 * Contructor de la estructura.
+	 * 
+	 * @param estadisticas Estadisticas
 	 */
 	public EstructuraFin(Estadisticas estadisticas) {
 		finalizado = false;
