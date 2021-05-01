@@ -17,12 +17,16 @@ public class CreadorEnemigos {
 	 * Método que manda crear los enemigos y los guarda.
 	 */
 	public static void crearEnemigos() {
-		Constantes.ENEMIGOS = new Enemigo[5];
+		Constantes.ENEMIGOS = new Enemigo[9];
 		Constantes.ENEMIGOS[0] = crearBotman();
 		Constantes.ENEMIGOS[1] = crearRecaudador();
 		Constantes.ENEMIGOS[2] = crearMisterioso();
 		Constantes.ENEMIGOS[3] = crearEnemigoDePractica();
 		Constantes.ENEMIGOS[4] = crearGuardiaEntradaCapital();
+		Constantes.ENEMIGOS[5] = crearGuardiaCastillo();
+		Constantes.ENEMIGOS[6] = crearGuardiaMansion();
+		Constantes.ENEMIGOS[7] = crearRey();
+		Constantes.ENEMIGOS[8] = crearBotman();
 	}
 
 	/**
