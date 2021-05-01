@@ -26,7 +26,7 @@ public class CreadorEnemigos {
 		Constantes.ENEMIGOS[5] = crearGuardiaCastillo();
 		Constantes.ENEMIGOS[6] = crearGuardiaMansion();
 		Constantes.ENEMIGOS[7] = crearRey();
-		Constantes.ENEMIGOS[8] = crearBotman();
+		Constantes.ENEMIGOS[8] = crearConde();
 	}
 
 	/**
