@@ -133,6 +133,14 @@ public class Constantes {
 	public static final String MAPA_CARGA_17 = "/mapas/carga/carga17.txt";
 	public static final String MAPA_CARGA_18 = "/mapas/carga/carga18.txt";
 	public static final String MAPA_CARGA_19 = "/mapas/carga/carga19.txt";
+	public static final String MAPA_CARGA_20 = "/mapas/carga/carga20.txt";
+	public static final String MAPA_CARGA_21 = "/mapas/carga/carga21.txt";
+	public static final String MAPA_CARGA_22 = "/mapas/carga/carga22.txt";
+	public static final String MAPA_CARGA_23 = "/mapas/carga/carga23.txt";
+	public static final String MAPA_CARGA_24 = "/mapas/carga/carga24.txt";
+	public static final String MAPA_CARGA_25 = "/mapas/carga/carga25.txt";
+	public static final String MAPA_CARGA_26 = "/mapas/carga/carga26.txt";
+	public static final String MAPA_CARGA_27 = "/mapas/carga/carga27.txt";
 	
 	public static final String MAPA_CARGA_PRUEBA_1 = "/mapas/carga/carga_prueba_1.txt";
 	public static final String MAPA_CARGA_PRUEBA_2 = "/mapas/carga/carga_prueba_2.txt";

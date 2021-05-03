@@ -79,6 +79,30 @@ public class ComprobadorDeMapa {
 		case "m19":
 			nuevoMapa = Constantes.MAPA_SALA_TRONO_2;
 			break;
+		case "m20":
+			nuevoMapa = Constantes.MAPA_MUNDO_2;
+			break;
+		case "m21":
+			nuevoMapa = Constantes.MAPA_CAMINO_MANSION;
+			break;
+		case "m22":
+			nuevoMapa = Constantes.MAPA_ENTRADA_MANSION;
+			break;
+		case "m23":
+			nuevoMapa = Constantes.MAPA_MANSION_1;
+			break;
+		case "m24":
+			nuevoMapa = Constantes.MAPA_MANSION_2;
+			break;
+		case "m25":
+			nuevoMapa = Constantes.MAPA_MANSION_3;
+			break;
+		case "m26":
+			nuevoMapa = Constantes.MAPA_MANSION_4;
+			break;
+		case "m27":
+			nuevoMapa = Constantes.MAPA_MANSION_5;
+			break;
 
 		case "fin":
 			nuevoMapa = Constantes.MAPA_FIN_JUEGO;
@@ -175,6 +199,31 @@ public class ComprobadorDeMapa {
 			jugador.getEstadisticas().cambiarMapa(19);
 			break;	
 
+		// MUNDO Y MANSION
+		case Constantes.MAPA_MUNDO_2:
+			jugador.getEstadisticas().cambiarMapa(20);
+			break;
+		case Constantes.MAPA_CAMINO_MANSION:
+			jugador.getEstadisticas().cambiarMapa(21);
+			break;
+		case Constantes.MAPA_ENTRADA_MANSION:
+			jugador.getEstadisticas().cambiarMapa(22);
+			break;
+		case Constantes.MAPA_MANSION_1:
+			jugador.getEstadisticas().cambiarMapa(23);
+			break;
+		case Constantes.MAPA_MANSION_2:
+			jugador.getEstadisticas().cambiarMapa(24);
+			break;
+		case Constantes.MAPA_MANSION_3:
+			jugador.getEstadisticas().cambiarMapa(25);
+			break;
+		case Constantes.MAPA_MANSION_4:
+			jugador.getEstadisticas().cambiarMapa(26);
+			break;
+		case Constantes.MAPA_MANSION_5:
+			jugador.getEstadisticas().cambiarMapa(27);
+			break;
 
 		// MAPAS DE PRUEBA
 		case Constantes.MAPA_PRUEBA_1:
