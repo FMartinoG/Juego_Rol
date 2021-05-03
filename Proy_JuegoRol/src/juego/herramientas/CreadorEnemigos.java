@@ -26,7 +26,7 @@ public class CreadorEnemigos {
 		Constantes.ENEMIGOS[5] = crearGuardiaCastillo();
 		Constantes.ENEMIGOS[6] = crearGuardiaCastillo();
 		Constantes.ENEMIGOS[7] = crearGuardiaCastillo();
-		Constantes.ENEMIGOS[8] = crearRey();
+		Constantes.ENEMIGOS[8] = crearGuardiaCastillo();
 	}
 
 	/**
@@ -76,8 +76,8 @@ public class CreadorEnemigos {
 		int[] estadisticas = { 100, 0, 0, 10 };
 		int[] resistenciasMagicas = { 1, 1, 1 };
 		String[] acciones = { "Obversar", "Amenazar", "Contar Chiste", "Espantar" };
-		String[] reacciones = { "Es un maniquí", "Es un maniquí, no te entiende",
-				"Es un maniquí, no te entiende", "Bueno, venga..... Lo has espantado (pero sigue siendo un maniqui)" };
+		String[] reacciones = { "Es un maniquí", "Es un maniquí, no te entiende", "Es un maniquí, no te entiende",
+				"Bueno, venga..... Lo has espantado (pero sigue siendo un maniqui)" };
 		ArrayList<Integer> ordenAcciones = new ArrayList<>();
 		ordenAcciones.add(0);
 		ordenAcciones.add(1);
@@ -88,7 +88,7 @@ public class CreadorEnemigos {
 				acciones, reacciones, ordenAcciones, 20, 100);
 		return practica;
 	}
-	
+
 	/**
 	 * Método que crea y devuelve al enemigo "Guardia entrada ciudad".
 	 * 
@@ -104,11 +104,11 @@ public class CreadorEnemigos {
 		ordenAcciones.add(2);
 		ordenAcciones.add(3);
 
-		Enemigo guardia = new Enemigo("GUARDIA ENTRADA CIUDAD", Constantes.GUARDIA_ENTRADA_CIUDAD, estadisticas, resistenciasMagicas,
-				acciones, reacciones, ordenAcciones, 50, 50);
+		Enemigo guardia = new Enemigo("GUARDIA ENTRADA CIUDAD", Constantes.GUARDIA_ENTRADA_CIUDAD, estadisticas,
+				resistenciasMagicas, acciones, reacciones, ordenAcciones, 50, 50);
 		return guardia;
 	}
-	
+
 	/**
 	 * Método que crea y devuelve al enemigo "Guardia Castillo".
 	 * 
@@ -125,11 +125,11 @@ public class CreadorEnemigos {
 		ordenAcciones.add(3);
 		ordenAcciones.add(2);
 
-		Enemigo guardia = new Enemigo("GUARDIA CASTILLO", Constantes.GUARDIA_CASTILLO, estadisticas, resistenciasMagicas,
-				acciones, reacciones, ordenAcciones, 50, 50);
+		Enemigo guardia = new Enemigo("GUARDIA CASTILLO", Constantes.GUARDIA_CASTILLO, estadisticas,
+				resistenciasMagicas, acciones, reacciones, ordenAcciones, 50, 50);
 		return guardia;
 	}
-	
+
 	/**
 	 * Método que crea y devuelve al enemigo "Guardia Mansion".
 	 * 
@@ -139,8 +139,8 @@ public class CreadorEnemigos {
 		int[] estadisticas = { 150, 150, 100, 40 };
 		int[] resistenciasMagicas = { 1, 2, 0 };
 		String[] acciones = { "Obversar", "Amenazar", "Contar Chiste", "Bostezar" };
-		String[] reacciones = { "Su armadura parece que no es muy abrigada, pero por lo menos no es metálica", "Le ha hecho gracia",
-				"El chiste le ha ofendido (y con razón)", "Le provocas un bostezo" };
+		String[] reacciones = { "Su armadura parece que no es muy abrigada, pero por lo menos no es metálica",
+				"Le ha hecho gracia", "El chiste le ha ofendido (y con razón)", "Le provocas un bostezo" };
 		ArrayList<Integer> ordenAcciones = new ArrayList<>();
 		ordenAcciones.add(1);
 		ordenAcciones.add(3);
@@ -151,7 +151,7 @@ public class CreadorEnemigos {
 				acciones, reacciones, ordenAcciones, 75, 25);
 		return guardia;
 	}
-	
+
 	/**
 	 * Método que crea y devuelve al enemigo "EL REY".
 	 * 
@@ -161,8 +161,8 @@ public class CreadorEnemigos {
 		int[] estadisticas = { 300, 200, 100, 40 };
 		int[] resistenciasMagicas = { 2, 1, 0 };
 		String[] acciones = { "Obversar", "Amenazar", "Contar Chiste", "Disculparse" };
-		String[] reacciones = { "Su armadura brilla de forma extraña y por algún motivo parece que él también brilla", "Se lleva su mano al costado",
-				"Parece que se ha relajado un poco", "No sabe si confiar en ti" };
+		String[] reacciones = { "Su armadura brilla de forma extraña y por algún motivo parece que él también brilla",
+				"Se lleva su mano al costado", "Parece que se ha relajado un poco", "No sabe si confiar en ti" };
 		ArrayList<Integer> ordenAcciones = new ArrayList<>();
 		ordenAcciones.add(1);
 		ordenAcciones.add(2);
@@ -170,11 +170,11 @@ public class CreadorEnemigos {
 		ordenAcciones.add(2);
 		ordenAcciones.add(3);
 
-		Enemigo rey = new Enemigo("EL REY", Constantes.REY, estadisticas, resistenciasMagicas,
-				acciones, reacciones, ordenAcciones, 2200, 0);
+		Enemigo rey = new Enemigo("EL REY", Constantes.REY, estadisticas, resistenciasMagicas, acciones, reacciones,
+				ordenAcciones, 2200, 0);
 		return rey;
 	}
-	
+
 	/**
 	 * Método que crea y devuelve al enemigo "EL CONDE".
 	 * 
@@ -184,8 +184,9 @@ public class CreadorEnemigos {
 		int[] estadisticas = { 500, 200, 200, 40 };
 		int[] resistenciasMagicas = { 2, 1, 0 };
 		String[] acciones = { "Obversar", "Amenazar", "Contar Chiste", "Dialogar" };
-		String[] reacciones = { "Se ha bebido un frasco de algo y parece que las cosas metálicas se mueven", "Parece que sus músculos han crecido",
-				"Parece demasiado enfadado para reirse", "No le caes bien, pero parece que te escucha" };
+		String[] reacciones = { "Se ha bebido un frasco de algo y parece que las cosas metálicas se mueven",
+				"Parece que sus músculos han crecido", "Parece demasiado enfadado para reirse",
+				"No le caes bien, pero parece que te escucha" };
 		ArrayList<Integer> ordenAcciones = new ArrayList<>();
 		ordenAcciones.add(0);
 		ordenAcciones.add(1);
@@ -197,8 +198,8 @@ public class CreadorEnemigos {
 		ordenAcciones.add(2);
 		ordenAcciones.add(3);
 
-		Enemigo conde = new Enemigo("EL CONDE", Constantes.CONDE, estadisticas, resistenciasMagicas,
-				acciones, reacciones, ordenAcciones, 1100, 0);
+		Enemigo conde = new Enemigo("EL CONDE", Constantes.CONDE, estadisticas, resistenciasMagicas, acciones,
+				reacciones, ordenAcciones, 1100, 0);
 		return conde;
 	}
 
