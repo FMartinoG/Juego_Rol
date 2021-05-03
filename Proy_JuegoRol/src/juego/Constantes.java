@@ -29,7 +29,7 @@ public class Constantes {
 	public static final String TEXTURAS_ENTRADA_CUEVA = "/texturas/entrada_cueva.png";
 	public static final String TEXTURAS_ENTRADA_CAPITAL = "/texturas/entrada_cueva_02.png";
 	public static final String TEXTURAS_ENTRADA_CAPITAL_2 = "/texturas/entrada_cueva_02_1.png";
-	public static final String TEXTURAS_ENTRADA_CASTILLO = "/texturas/entrada_castillo.png";
+	public static final String TEXTURAS_ENTRADA_MANSION = "/texturas/entrada_mansion.png";
 	public static final String TEXTURAS_MUNDO = "/texturas/reveland.png";
 	public static final String TEXTURAS_PUEBLO = "/texturas/Villa.png";
 	public static final String TEXTURAS_PUEBLO_2 = "/texturas/Villa01.png";
@@ -41,6 +41,8 @@ public class Constantes {
 	public static final String TEXTURAS_CASTILLO_1_1 = "/texturas/castillo1_1.png";
 	public static final String TEXTURAS_CASTILLO_1_2 = "/texturas/castillo1_2.png";
 	public static final String TEXTURAS_CASTILLO_1_3 = "/texturas/castillo1_3.png";
+	public static final String TEXTURAS_SALA_TRONO_1 = "/texturas/sala_trono_1.png";
+	public static final String TEXTURAS_SALA_TRONO_2 = "/texturas/sala_trono_2.png";
 	public static final String TEXTURAS_MANSION_1 = "/texturas/mansion_1.png";
 	public static final String TEXTURAS_MANSION_2 = "/texturas/mansion_2.png";
 	public static final String TEXTURAS_MANSION_3 = "/texturas/mansion_3.png";
@@ -77,6 +79,7 @@ public class Constantes {
 	public static final String MAPA_5 = "/mapas/mapa005.txt";	
 	public static final String MAPA_7 = "/mapas/mapa007.txt";
 	public static final String MAPA_MUNDO = "/mapas/mapa_mundo_01.txt";
+	public static final String MAPA_MUNDO_2 = "/mapas/mapa_mundo_2.txt";
 	
 	public static final String MAPA_PUEBLO_1 = "/mapas/pueblo/mapa_pueblo_01.txt";
 	public static final String MAPA_PUEBLO_2 = "/mapas/pueblo/mapa_pueblo_02.txt";
@@ -96,7 +99,11 @@ public class Constantes {
 	public static final String MAPA_CASTILLO_1_1 = "/mapas/capital/mapa_castillo_1_1.txt";
 	public static final String MAPA_CASTILLO_1_2 = "/mapas/capital/mapa_castillo_1_2.txt";
 	public static final String MAPA_CASTILLO_1_3 = "/mapas/capital/mapa_castillo_1_3.txt";
+	public static final String MAPA_SALA_TRONO_1 = "/mapas/capital/sala_trono_1.txt";
+	public static final String MAPA_SALA_TRONO_2 = "/mapas/capital/sala_trono_2.txt";
 	
+	public static final String MAPA_CAMINO_MANSION = "/mapas/mansion/camino_mansion.txt";
+	public static final String MAPA_ENTRADA_MANSION = "/mapas/mansion/mansion_entrada.txt";
 	public static final String MAPA_MANSION_1 = "/mapas/mansion/mansion_1.txt";
 	public static final String MAPA_MANSION_2 = "/mapas/mansion/mansion_2.txt";
 	public static final String MAPA_MANSION_3 = "/mapas/mansion/mansion_3.txt";
@@ -124,6 +131,8 @@ public class Constantes {
 	public static final String MAPA_CARGA_15 = "/mapas/carga/carga15.txt";
 	public static final String MAPA_CARGA_16 = "/mapas/carga/carga16.txt";
 	public static final String MAPA_CARGA_17 = "/mapas/carga/carga17.txt";
+	public static final String MAPA_CARGA_18 = "/mapas/carga/carga18.txt";
+	public static final String MAPA_CARGA_19 = "/mapas/carga/carga19.txt";
 	
 	public static final String MAPA_CARGA_PRUEBA_1 = "/mapas/carga/carga_prueba_1.txt";
 	public static final String MAPA_CARGA_PRUEBA_2 = "/mapas/carga/carga_prueba_2.txt";
@@ -131,8 +140,6 @@ public class Constantes {
 
 	// OTROS
 	public static final String ICONO = "/icon/juego.png";
-
-	public static final String CURSOR = "/cursor/cursor.png";
 	
 	public static final String SONIDO = "/sonidos/sonido.wav";
 	public static final String BEEP = "/sonidos/beep.wav";

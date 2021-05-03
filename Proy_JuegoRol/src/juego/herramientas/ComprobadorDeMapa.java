@@ -73,6 +73,12 @@ public class ComprobadorDeMapa {
 		case "m17":
 			nuevoMapa = Constantes.MAPA_CASTILLO_1_3;
 			break;
+		case "m18":
+			nuevoMapa = Constantes.MAPA_SALA_TRONO_1;
+			break;
+		case "m19":
+			nuevoMapa = Constantes.MAPA_SALA_TRONO_2;
+			break;
 
 		case "fin":
 			nuevoMapa = Constantes.MAPA_FIN_JUEGO;
@@ -162,6 +168,12 @@ public class ComprobadorDeMapa {
 		case Constantes.MAPA_CASTILLO_1_3:
 			jugador.getEstadisticas().cambiarMapa(17);
 			break;
+		case Constantes.MAPA_SALA_TRONO_1:
+			jugador.getEstadisticas().cambiarMapa(18);
+			break;
+		case Constantes.MAPA_SALA_TRONO_2:
+			jugador.getEstadisticas().cambiarMapa(19);
+			break;	
 
 
 		// MAPAS DE PRUEBA

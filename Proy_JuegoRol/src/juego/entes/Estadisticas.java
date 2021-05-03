@@ -247,7 +247,7 @@ public class Estadisticas implements Serializable {
 	 */
 	public void aumentarExp(int exp) {
 		this.exp += exp;
-		if (this.exp > expMaxima) {
+		if (this.exp >= expMaxima) {
 			subirNivel();
 		}
 	}
@@ -260,6 +260,7 @@ public class Estadisticas implements Serializable {
 			++nivel;
 			exp -= expMaxima;
 			saludMaxima += 10;
+			salud = saludMaxima;
 			manaMaximo += 10;
 			ataque += 5;
 			defensa += 5;

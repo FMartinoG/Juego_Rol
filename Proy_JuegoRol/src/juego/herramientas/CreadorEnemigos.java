@@ -24,9 +24,9 @@ public class CreadorEnemigos {
 		Constantes.ENEMIGOS[3] = crearEnemigoDePractica();
 		Constantes.ENEMIGOS[4] = crearGuardiaEntradaCapital();
 		Constantes.ENEMIGOS[5] = crearGuardiaCastillo();
-		Constantes.ENEMIGOS[6] = crearGuardiaCastillo();
-		Constantes.ENEMIGOS[7] = crearGuardiaCastillo();
-		Constantes.ENEMIGOS[8] = crearGuardiaCastillo();
+		Constantes.ENEMIGOS[6] = crearRey();
+		Constantes.ENEMIGOS[7] = crearGuardiaMansion();
+		Constantes.ENEMIGOS[8] = crearConde();
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class CreadorEnemigos {
 	 * @return rey Enemigo
 	 */
 	private static Enemigo crearRey() {
-		int[] estadisticas = { 300, 200, 100, 40 };
+		int[] estadisticas = { 150, 100, 100, 20 };
 		int[] resistenciasMagicas = { 2, 1, 0 };
 		String[] acciones = { "Obversar", "Amenazar", "Contar Chiste", "Disculparse" };
 		String[] reacciones = { "Su armadura brilla de forma extraña y por algún motivo parece que él también brilla",

@@ -38,6 +38,10 @@ public class CreadorConversaciones {
 		String[] conversacion10 = { "POR AQUÍ NO SE PUEDE PASAR, TENGA UN BUEN DÍA" };
 		String[] conversacion11 = { "ALTO AHÍ" };
 		String[] conversacion12 = { "ALGO RARO ESTÁ PASANDO DENTRO", "NO VOY A DEJARTE ENTRAR" };
+		String[] conversacion13 = { "¿TÚ VIENES CON ÉL?", "ENTONCES TENDRÉ QUE MATARTE" };
+		String[] conversacion14 = { "GRACIAS POR TU AYUDA", "ESTO HA SALIDO UN POCO MAL, PERO HE DESCUBIERTO ALGO",
+				"EL HOMBRE AL QUE BUSCO AHORA ES UN CONDE", "Y VIVE EN UNA MANSIÓN AL SUR DEL CONTINENTE",
+				"SUPONGO QUE TAMBIÉN VENDRÁS", "NOS VEMOS ALLÍ" };
 
 		Constantes.CONVERSACIONES.add(conversacion0);
 		Constantes.CONVERSACIONES.add(conversacion1);
@@ -52,5 +56,7 @@ public class CreadorConversaciones {
 		Constantes.CONVERSACIONES.add(conversacion10);
 		Constantes.CONVERSACIONES.add(conversacion11);
 		Constantes.CONVERSACIONES.add(conversacion12);
+		Constantes.CONVERSACIONES.add(conversacion13);
+		Constantes.CONVERSACIONES.add(conversacion14);
 	}
 }

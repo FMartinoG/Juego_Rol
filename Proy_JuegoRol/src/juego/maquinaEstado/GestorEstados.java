@@ -195,6 +195,7 @@ public class GestorEstados {
 		if (((GestorJuego) estados[1]).isEnCombate()) {
 			Jugador j = ((GestorJuego) estados[1]).getJugador();
 			int enemigo = ((GestorJuego) estados[1]).getCombate();
+			CreadorEnemigos.crearEnemigos();
 			estados[3] = new GestorCombate(j, Constantes.ENEMIGOS[enemigo]);
 			cambiarEstado(3);
 		}
