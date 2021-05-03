@@ -26,6 +26,7 @@ public class GestorJuego implements EstadoJuego {
 	private int conversacion = 0;
 	private boolean enCombate = false;
 	private int combate = 0;
+	private boolean isFinJuego = false;
 
 	/**
 	 * Constructor de la clase gestor de juego cuando es una nueva partida.
@@ -92,6 +93,9 @@ public class GestorJuego implements EstadoJuego {
 
 		if (!mapa.getZonaCombates().isEmpty())
 			comprobarLlegaCombate();
+		
+		if (Constantes.isFinJuego)
+			isFinJuego = true;
 
 		jugador.actualizar();
 		mapa.actualizar((int) jugador.getPosicionX(), (int) jugador.getPosicionY());
@@ -167,7 +171,7 @@ public class GestorJuego implements EstadoJuego {
 	private void mostarMensajes(Graphics g) {
 		Mensaje m = null;
 		for (String s : Constantes.CONVERSACIONES.get(conversacion)) {
-			m = new Mensaje(s, 200, 300, true);
+			m = new Mensaje(s, 130, 300, true);
 			m.dibujar(g);
 			long msInicio = System.currentTimeMillis();
 			long msActual = System.currentTimeMillis();
@@ -205,6 +209,15 @@ public class GestorJuego implements EstadoJuego {
 	 */
 	public void setEnCombate(boolean enCombate) {
 		this.enCombate = enCombate;
+	}
+	
+	/**
+	 * Método que indica si se ha llegado al final del juego.
+	 * 
+	 * @return isFinJuego boolean
+	 */
+	public boolean isFinJuego() {
+		return isFinJuego;
 	}
 
 }

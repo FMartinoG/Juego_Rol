@@ -35,18 +35,19 @@ public class Enemigo {
 
 	/**
 	 * Constructor de la clase enemigo.
-	 * @param nombre String
-	 * @param imagen String
-	 * @param estadisticas int[]
+	 * 
+	 * @param nombre              String
+	 * @param imagen              String
+	 * @param estadisticas        int[]
 	 * @param resistenciasMagicas int[]
-	 * @param acciones String[]
-	 * @param reacciones String[]
-	 * @param ordenAcciones ArrayList{Integer}
-	 * @param experiencia int
-	 * @param probHuida int
+	 * @param acciones            String[]
+	 * @param reacciones          String[]
+	 * @param ordenAcciones       ArrayList{Integer}
+	 * @param experiencia         int
+	 * @param probHuida           int
 	 */
-	public Enemigo(String nombre, String imagen, int[] estadisticas, int[] resistenciasMagicas, String[] acciones, String[] reacciones,
-			ArrayList<Integer> ordenAcciones, int experiencia, int probHuida) {
+	public Enemigo(String nombre, String imagen, int[] estadisticas, int[] resistenciasMagicas, String[] acciones,
+			String[] reacciones, ArrayList<Integer> ordenAcciones, int experiencia, int probHuida) {
 		this.nombre = nombre;
 		this.imagen = imagen;
 		vidaMaxima = vidaActual = estadisticas[0];
@@ -89,8 +90,8 @@ public class Enemigo {
 	}
 
 	/**
-	 * Método que indica si la salud del enemigo es mayor que 0, lo que
-	 * significa que sigue vivo.
+	 * Método que indica si la salud del enemigo es mayor que 0, lo que significa
+	 * que sigue vivo.
 	 * 
 	 * @return vivo boolean - Salud mayor que 0.
 	 */
@@ -104,8 +105,11 @@ public class Enemigo {
 	 * @return ataque int - Daño del ataque.
 	 */
 	public int realizarAtaqueFisico() {
-		Random aleatorio = new Random();
-		int ataque = aleatorio.nextInt(poderFisico);
+		int ataque = 0;
+		if (poderFisico > 0) {
+			Random aleatorio = new Random();
+			ataque = aleatorio.nextInt(poderFisico);
+		}
 		return ataque;
 	}
 
@@ -115,17 +119,19 @@ public class Enemigo {
 	 * @return ataque int - Daño del ataque.
 	 */
 	public int realizarAtaqueMagico() {
-		Random aleatorio = new Random();
-		int ataque = aleatorio.nextInt(poderMagico);
+		int ataque = 0;
+		if (poderMagico > 0) {
+			Random aleatorio = new Random();
+			ataque = aleatorio.nextInt(poderMagico);
+		}
 		return ataque;
 	}
 
 	/**
-	 * Método que se encarga de recibir el ataque físico, cambiar la vida y
-	 * devuelve el daño recibido.
+	 * Método que se encarga de recibir el ataque físico, cambiar la vida y devuelve
+	 * el daño recibido.
 	 * 
-	 * @param n
-	 *            int - Poder del ataque.
+	 * @param n int - Poder del ataque.
 	 * @return ataque int - Daño recibido.
 	 */
 	public int recibirAtaqueFisico(int n) {
@@ -138,10 +144,10 @@ public class Enemigo {
 	}
 
 	/**
-	 * Método que se encarga de recibir el ataque mágico, cambiar la vida y
-	 * devuelve el daño recibido.
+	 * Método que se encarga de recibir el ataque mágico, cambiar la vida y devuelve
+	 * el daño recibido.
 	 * 
-	 * @param n int - Poder del ataque.
+	 * @param n        int - Poder del ataque.
 	 * @param elemento int - Referencia al tipo de magia.
 	 * @return ataque int - Daño recibido.
 	 */
@@ -199,8 +205,11 @@ public class Enemigo {
 	}
 
 	/**
-	 * Método que devuelve la lista con el orden en que se debe realizar las acciones.
-	 * @return ordenAcciones ArrayList{Integer} - Lista con el orden de las acciones.
+	 * Método que devuelve la lista con el orden en que se debe realizar las
+	 * acciones.
+	 * 
+	 * @return ordenAcciones ArrayList{Integer} - Lista con el orden de las
+	 *         acciones.
 	 */
 	public ArrayList<Integer> getOrdenAcciones() {
 		return ordenAcciones;

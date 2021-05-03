@@ -16,6 +16,7 @@ import juego.herramientas.CreadorEnemigos;
 import juego.mapas.Mapa;
 import juego.maquinaEstado.estados.combate.GestorCombate;
 import juego.maquinaEstado.estados.derrota.Derrota;
+import juego.maquinaEstado.estados.finJuego.FinJuego;
 import juego.maquinaEstado.estados.informacion.GestorPaginaInformacion;
 import juego.maquinaEstado.estados.introduccion.Introduccion;
 import juego.maquinaEstado.estados.juego.GestorJuego;
@@ -56,7 +57,7 @@ public class GestorEstados {
 	 * Inicializa la lista de los estados y se le añaden los estados.
 	 */
 	private void iniciarEstados() {
-		estados = new EstadoJuego[7];
+		estados = new EstadoJuego[8];
 		estados[0] = new GestorMenuPrincipal();
 		estados[1] = new GestorJuego();
 		estados[2] = new GestorMenu(((GestorJuego) estados[1]).getJugador());
@@ -129,6 +130,14 @@ public class GestorEstados {
 				cambiarEstado(0);
 			}
 		}
+		
+		// Fin del juego
+		if (estadoActual == estados[7]) {
+			if (((FinJuego) estadoActual).isFinalizado()) {
+				estados[0] = new GestorMenuPrincipal();
+				cambiarEstado(0);
+			}
+		}
 
 	}
 
@@ -186,8 +195,14 @@ public class GestorEstados {
 		if (((GestorJuego) estados[1]).isEnCombate()) {
 			Jugador j = ((GestorJuego) estados[1]).getJugador();
 			int enemigo = ((GestorJuego) estados[1]).getCombate();
+			CreadorEnemigos.crearEnemigos();
 			estados[3] = new GestorCombate(j, Constantes.ENEMIGOS[enemigo]);
 			cambiarEstado(3);
+		}
+		if (((GestorJuego) estados[1]).isFinJuego()) {
+			Jugador j = ((GestorJuego) estados[1]).getJugador();
+			estados[7] = new FinJuego(j.getEstadisticas());
+			cambiarEstado(7);
 		}
 	}
 

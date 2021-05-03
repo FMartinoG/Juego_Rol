@@ -31,7 +31,7 @@ public class EstructuraCombate {
 	private boolean huido, vencido, apaciguado, derrota;
 	private boolean botonPulsado;
 	private boolean dibujarAtaqueFisico, dibujarMagiaCura, dibujarMagiaFuego, dibujarMagiaHielo, dibujarMagiaRayo,
-			dibujarReaccion, dibujarHuidaFallida, dibujarAtaqueEnemigo;
+			dibujarReaccion, dibujarHuidaFallida, dibujarAtaqueEnemigo, dibujarFaltaMana;
 	private int accionSeleccionada;
 
 	private int ataqueFisico;
@@ -72,13 +72,14 @@ public class EstructuraCombate {
 		huido = apaciguado = vencido = derrota = false;
 
 		enCombate = true;
-		dibujarAtaqueFisico = dibujarMagiaCura = dibujarMagiaFuego = dibujarMagiaHielo = dibujarMagiaRayo = dibujarReaccion = dibujarHuidaFallida = dibujarAtaqueEnemigo = false;
+		dibujarAtaqueFisico = dibujarMagiaCura = dibujarMagiaFuego = dibujarMagiaHielo = dibujarMagiaRayo = dibujarReaccion = dibujarHuidaFallida = dibujarAtaqueEnemigo = dibujarFaltaMana = false;
 		ataqueFisico = ataqueMagico = ataqueEnemigo = 0;
 		ataqueEnemigoEsFisico = false;
 		accionSeleccionada = -1;
 		opcion = 0;
 
 		inicializarPrincipal();
+		inicializarMagia();
 		inicializarAccion();
 	}
 
@@ -100,16 +101,15 @@ public class EstructuraCombate {
 	 * Crea las etiquetas de mágia para seleccionar en el combate.
 	 */
 	private void inicializarMagia() {
-		if (jugador.getEstadisticas().getMana() > 20) {
-			punteroMagia = 0;
-			opcionesMagia = new OpcionCombate[4];
-			opcionesMagia[0] = new OpcionCombate("Cura", new Rectangle(40, 290, 100, 40));
-			opcionesMagia[1] = new OpcionCombate("Fuego", new Rectangle(190, 290, 100, 40));
-			opcionesMagia[2] = new OpcionCombate("Hielo", new Rectangle(340, 290, 100, 40));
-			opcionesMagia[3] = new OpcionCombate("Rayo", new Rectangle(490, 290, 100, 40));
+		punteroMagia = 0;
+		opcionesMagia = new OpcionCombate[4];
+		opcionesMagia[0] = new OpcionCombate("Cura", new Rectangle(40, 290, 100, 40));
+		opcionesMagia[1] = new OpcionCombate("Fuego", new Rectangle(190, 290, 100, 40));
+		opcionesMagia[2] = new OpcionCombate("Hielo", new Rectangle(340, 290, 100, 40));
+		opcionesMagia[3] = new OpcionCombate("Rayo", new Rectangle(490, 290, 100, 40));
 
-			seleccionadoMagia = opcionesMagia[0];
-		}
+		seleccionadoMagia = opcionesMagia[0];
+
 	}
 
 	/**
@@ -140,7 +140,6 @@ public class EstructuraCombate {
 			realizarAtaqueFisico(jugador.getEstadisticas().realizarAtaqueFisico());
 			opcion = 0;
 		} else if (opcion == 2) {
-			inicializarMagia();
 			actualizarMagia();
 		} else if (opcion == 3)
 			actualizarAccion();
@@ -180,17 +179,16 @@ public class EstructuraCombate {
 		}
 		botonPulsado = false;
 
-		if (jugador.getEstadisticas().getMana() > 20) {
-			if (Controles.TECLADO.izdaMenu && punteroMagia > 0) {
-				punteroMagia -= 0.2;
-			} else if (Controles.TECLADO.drchaMenu && punteroMagia < 3) {
-				punteroMagia += 0.2;
-			}
-
-			seleccionadoMagia = opcionesMagia[(int) punteroMagia];
-
-			seleccionarMagia();
+		if (Controles.TECLADO.izdaMenu && punteroMagia > 0) {
+			punteroMagia -= 0.2;
+		} else if (Controles.TECLADO.drchaMenu && punteroMagia < 3) {
+			punteroMagia += 0.2;
 		}
+
+		seleccionadoMagia = opcionesMagia[(int) punteroMagia];
+
+		seleccionarMagia();
+
 		if (Controles.TECLADO.bt_Escape)
 			opcion = 0;
 	}
@@ -202,21 +200,29 @@ public class EstructuraCombate {
 	 */
 	private void seleccionarMagia() {
 		if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[0]) {
-			jugador.getEstadisticas().curar(200);
-			jugador.getEstadisticas().gastarMana(20);
-			dibujarMagiaCura = true;
+			if (jugador.getEstadisticas().gastarMana(20)) {
+				jugador.getEstadisticas().curar(20);
+				dibujarMagiaCura = true;
+			} else
+				dibujarFaltaMana = true;
 			opcion = 0;
 		} else if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[1]) {
-			realizarAtaqueMagico(20, 0);
-			jugador.getEstadisticas().gastarMana(20);
+			if (jugador.getEstadisticas().gastarMana(20))
+				realizarAtaqueMagico(jugador.getEstadisticas().realizarAtaqueMagico(), 0);
+			else
+				dibujarFaltaMana = true;
 			opcion = 0;
 		} else if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[2]) {
-			realizarAtaqueMagico(40, 1);
-			jugador.getEstadisticas().gastarMana(20);
+			if (jugador.getEstadisticas().gastarMana(20))
+				realizarAtaqueMagico(jugador.getEstadisticas().realizarAtaqueMagico(), 1);
+			else
+				dibujarFaltaMana = true;
 			opcion = 0;
 		} else if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[3]) {
-			realizarAtaqueMagico(20, 2);
-			jugador.getEstadisticas().gastarMana(20);
+			if (jugador.getEstadisticas().gastarMana(20))
+				realizarAtaqueMagico(jugador.getEstadisticas().realizarAtaqueMagico(), 2);
+			else
+				dibujarFaltaMana = true;
 			opcion = 0;
 		}
 	}
@@ -381,6 +387,8 @@ public class EstructuraCombate {
 			dibujarMagiaHielo(g);
 		if (dibujarMagiaRayo)
 			dibujarMagiaRayo(g);
+		if (dibujarFaltaMana)
+			dibujarFaltaMana(g);
 		if (dibujarReaccion)
 			dibujarReaccion(g);
 		if (dibujarHuidaFallida)
@@ -395,7 +403,7 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la sección de etiquetas principales.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	private void dibujarPrincipal(Graphics g) {
 		for (OpcionCombate o : opciones) {
@@ -409,7 +417,7 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la sección de etiquetas de mágia.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	private void dibujarMagia(Graphics g) {
 		for (OpcionCombate o : opcionesMagia) {
@@ -423,7 +431,7 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la sección de etiquetas de acciones.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	private void dibujarAccion(Graphics g) {
 		for (OpcionCombate o : opcionesAccion) {
@@ -437,7 +445,7 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja el ataque físico del jugador.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	private void dibujarAtaqueFisico(Graphics g) {
 		Image ataque = CargadorRecursos.cargarImagenTranslucida(Constantes.ATAQUE);
@@ -453,7 +461,7 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la curación.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	private void dibujarMagiaCura(Graphics g) {
 		Image cura = CargadorRecursos.cargarImagenTranslucida(Constantes.CURA);
@@ -468,7 +476,7 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la magia de fuego.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	private void dibujarMagiaFuego(Graphics g) {
 		Image fuego = CargadorRecursos.cargarImagenTranslucida(Constantes.FUEGO);
@@ -484,7 +492,7 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la magia de hielo.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	private void dibujarMagiaHielo(Graphics g) {
 		Image hielo = CargadorRecursos.cargarImagenTranslucida(Constantes.HIELO);
@@ -500,7 +508,7 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la magia de rayo.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	private void dibujarMagiaRayo(Graphics g) {
 		Image rayo = CargadorRecursos.cargarImagenTranslucida(Constantes.RAYO);
@@ -514,12 +522,29 @@ public class EstructuraCombate {
 	}
 
 	/**
+	 * Método que dibuja el mensaje cuando no tiene suficiente maná.
+	 * 
+	 * @param g Graphics
+	 */
+	private void dibujarFaltaMana(Graphics g) {
+		Mensaje mensaje = new Mensaje("NO TIENES SUFIECIENTE MANA", 200, 100, true);
+		mensaje.dibujarMensajeCombate(g);
+		dibujarFaltaMana = false;
+		long msInicio = System.currentTimeMillis();
+		long msActual = System.currentTimeMillis();
+		while ((msActual - msInicio) < 2000) {
+			msActual = System.currentTimeMillis();
+		}
+		opcion = 0;
+	}
+
+	/**
 	 * Método que dibuja las reacciones del enemigo.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	private void dibujarReaccion(Graphics g) {
-		Mensaje mensaje = new Mensaje(enemigo.getReacciones()[accionSeleccionada], 200, 100, true);
+		Mensaje mensaje = new Mensaje(enemigo.getReacciones()[accionSeleccionada], 100, 100, true);
 		mensaje.dibujarMensajeCombate(g);
 		dibujarReaccion = false;
 		long msInicio = System.currentTimeMillis();
@@ -532,7 +557,7 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja el mensaje cuando no se consigue huir.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	private void dibujarHuidaFallida(Graphics g) {
 		Mensaje mensaje = new Mensaje("NO CONSEGUISTE HUIR", 200, 100, true);
@@ -550,7 +575,7 @@ public class EstructuraCombate {
 	 * Método que dibuja el o los mensajes que indican que el combate ha terminado e
 	 * indica que el combate ha terminado.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	private void dibujarFinDeCombate(Graphics g) {
 		Mensaje mensaje = null;
@@ -581,7 +606,7 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja el mensaje indicando el ataque del enemigo.
 	 * 
-	 * @param g
+	 * @param g Graphics
 	 */
 	private void dibujarAtaqueEnemigo(Graphics g) {
 		long msInicio = System.currentTimeMillis();

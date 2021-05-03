@@ -48,7 +48,6 @@ public class CargarPartida {
 	 */
 	public static String mapaACargar(int mapa) {
 		String textoMapa = "";
-		System.out.println(mapa);
 		switch (mapa) {
 		case 1:
 			textoMapa = Constantes.MAPA_CARGA_1;
@@ -80,6 +79,58 @@ public class CargarPartida {
 		case 10:
 			textoMapa = Constantes.MAPA_CARGA_10;
 			break;
+		case 11:
+			textoMapa = Constantes.MAPA_CARGA_11;
+			break;
+		case 12:
+			textoMapa = Constantes.MAPA_CARGA_12;
+			break;
+		case 13:
+			textoMapa = Constantes.MAPA_CARGA_13;
+			break;
+		case 14:
+			textoMapa = Constantes.MAPA_CARGA_14;
+			break;
+		case 15:
+			textoMapa = Constantes.MAPA_CARGA_15;
+			break;
+		case 16:
+			textoMapa = Constantes.MAPA_CARGA_16;
+			break;
+		case 17:
+			textoMapa = Constantes.MAPA_CARGA_17;
+			break;
+		case 18:
+			textoMapa = Constantes.MAPA_CARGA_18;
+			break;
+		case 19:
+			textoMapa = Constantes.MAPA_CARGA_19;
+			break;
+		case 20:
+			textoMapa = Constantes.MAPA_CARGA_20;
+			break;
+		case 21:
+			textoMapa = Constantes.MAPA_CARGA_21;
+			break;
+		case 22:
+			textoMapa = Constantes.MAPA_CARGA_22;
+			break;
+		case 23:
+			textoMapa = Constantes.MAPA_CARGA_23;
+			break;
+		case 24:
+			textoMapa = Constantes.MAPA_CARGA_24;
+			break;
+		case 25:
+			textoMapa = Constantes.MAPA_CARGA_25;
+			break;
+		case 26:
+			textoMapa = Constantes.MAPA_CARGA_26;
+			break;
+		case 27:
+			textoMapa = Constantes.MAPA_CARGA_27;
+			break;
+			
 
 		// LOS DE PRUEBA
 		case 1002:

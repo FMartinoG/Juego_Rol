@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import juego.maquinaEstado.EstadoJuego;
 
 /**
- * Clase que se encarga del estado de la introduccioón del juego
+ * Clase que se encarga del estado de la introducción del juego
  * 
  * @author Fernando Martino
  *
