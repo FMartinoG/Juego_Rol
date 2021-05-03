@@ -42,6 +42,15 @@ public class CreadorConversaciones {
 		String[] conversacion14 = { "GRACIAS POR TU AYUDA", "ESTO HA SALIDO UN POCO MAL, PERO HE DESCUBIERTO ALGO",
 				"EL HOMBRE AL QUE BUSCO, AHORA ES UN CONDE", "Y VIVE EN UNA MANSIÓN AL SUR DEL CONTINENTE",
 				"SUPONGO QUE TAMBIÉN VENDRÁS", "NOS VEMOS ALLÍ" };
+		String[] conversacion15 = { "NO ME ESPERABA QUE ESTE TIPO VINIERA AQUÍ",
+				"Y MUCHO MENOS ESPERABA QUE ALGUIEN LO SIGUIERA", "PERO AL FINAL TODO ESO DA IGUAL",
+				"NO SALDREIS VIVOS DE AQUÍ" };
+		String[] conversacion16 = { "GRACIAS POR TODO", "AL FINAL NO HE ESTADO A LA ALTURA",
+				"PERO NO VOLVERÁ A PASAR ...", "ME GUSTARÍA SABER POR QUÉ ME HAS SEGUIDO",
+				"PERO TE DIRÉ COMO ACABA LA HISTORIA DE ANTES", "MI PADRE ERA UNO DE ESOS 5 HÉROES",
+				"TRAS SU MUERTE TUVE QUE HUIR DEL REINO", "UN DÍA CONSEGUÍ UN ARMA MUY EXTRAÑA Y PODEROSA",
+				"ENTONCES DECIDÍ INICIAR MI VENGANZA", "... ... ... ... ... ...",
+				"AHORA QUE HA TERMINADO TODO DEBERÍAS VOLVER A CASA", "O POR LO MENOS INTENTARLO" };
 
 		Constantes.CONVERSACIONES.add(conversacion0);
 		Constantes.CONVERSACIONES.add(conversacion1);
@@ -58,5 +67,7 @@ public class CreadorConversaciones {
 		Constantes.CONVERSACIONES.add(conversacion12);
 		Constantes.CONVERSACIONES.add(conversacion13);
 		Constantes.CONVERSACIONES.add(conversacion14);
+		Constantes.CONVERSACIONES.add(conversacion15);
+		Constantes.CONVERSACIONES.add(conversacion16);
 	}
 }
