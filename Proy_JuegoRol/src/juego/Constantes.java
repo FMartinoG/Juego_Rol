@@ -38,6 +38,9 @@ public class Constantes {
 	public static final String TEXTURAS_CASA_GOBERNADOR_HABITACION_2 = "/texturas/mansion_h_02.png";
 	public static final String TEXTURAS_CIUDAD_1 = "/texturas/ciudad1.png";
 	public static final String TEXTURAS_CIUDAD_2 = "/texturas/ciudad2.png";
+	public static final String TEXTURAS_CASTILLO_1_1 = "/texturas/castillo1_1.png";
+	public static final String TEXTURAS_CASTILLO_1_2 = "/texturas/castillo1_2.png";
+	public static final String TEXTURAS_CASTILLO_1_3 = "/texturas/castillo1_3.png";
 	public static final String TEXTURAS_MANSION_1 = "/texturas/mansion_1.png";
 	public static final String TEXTURAS_MANSION_2 = "/texturas/mansion_2.png";
 	public static final String TEXTURAS_MANSION_3 = "/texturas/mansion_3.png";
@@ -90,6 +93,15 @@ public class Constantes {
 	public static final String MAPA_ENTRADA_CAPITAL_2 = "/mapas/capital/mapa_entrada_capital_2.txt";
 	public static final String MAPA_CAPITAL = "/mapas/capital/mapa_ciudad_1.txt";
 	public static final String MAPA_CAPITAL_2 = "/mapas/capital/mapa_ciudad_2.txt";
+	public static final String MAPA_CASTILLO_1_1 = "/mapas/capital/mapa_castillo_1_1.txt";
+	public static final String MAPA_CASTILLO_1_2 = "/mapas/capital/mapa_castillo_1_2.txt";
+	public static final String MAPA_CASTILLO_1_3 = "/mapas/capital/mapa_castillo_1_3.txt";
+	
+	public static final String MAPA_MANSION_1 = "/mapas/mansion/mansion_1.txt";
+	public static final String MAPA_MANSION_2 = "/mapas/mansion/mansion_2.txt";
+	public static final String MAPA_MANSION_3 = "/mapas/mansion/mansion_3.txt";
+	public static final String MAPA_MANSION_4 = "/mapas/mansion/mansion_4.txt";
+	public static final String MAPA_MANSION_5 = "/mapas/mansion/mansion_5.txt";
 	
 	public static final String MAPA_FIN_JUEGO = "/mapas/fin_juego.txt";
 	
@@ -109,6 +121,9 @@ public class Constantes {
 	public static final String MAPA_CARGA_12 = "/mapas/carga/carga12.txt";
 	public static final String MAPA_CARGA_13 = "/mapas/carga/carga13.txt";
 	public static final String MAPA_CARGA_14 = "/mapas/carga/carga14.txt";
+	public static final String MAPA_CARGA_15 = "/mapas/carga/carga15.txt";
+	public static final String MAPA_CARGA_16 = "/mapas/carga/carga16.txt";
+	public static final String MAPA_CARGA_17 = "/mapas/carga/carga17.txt";
 	
 	public static final String MAPA_CARGA_PRUEBA_1 = "/mapas/carga/carga_prueba_1.txt";
 	public static final String MAPA_CARGA_PRUEBA_2 = "/mapas/carga/carga_prueba_2.txt";
