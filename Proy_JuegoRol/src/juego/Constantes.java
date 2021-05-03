@@ -38,6 +38,11 @@ public class Constantes {
 	public static final String TEXTURAS_CASA_GOBERNADOR_HABITACION_2 = "/texturas/mansion_h_02.png";
 	public static final String TEXTURAS_CIUDAD_1 = "/texturas/ciudad1.png";
 	public static final String TEXTURAS_CIUDAD_2 = "/texturas/ciudad2.png";
+	public static final String TEXTURAS_MANSION_1 = "/texturas/mansion_1.png";
+	public static final String TEXTURAS_MANSION_2 = "/texturas/mansion_2.png";
+	public static final String TEXTURAS_MANSION_3 = "/texturas/mansion_3.png";
+	public static final String TEXTURAS_MANSION_4 = "/texturas/mansion_4.png";
+	public static final String TEXTURAS_MANSION_5 = "/texturas/mansion_5.png";
 	
 	// IMAGENES
 	public static final String HOJA_PERSONAJE_1 = "/personaje/001.png";

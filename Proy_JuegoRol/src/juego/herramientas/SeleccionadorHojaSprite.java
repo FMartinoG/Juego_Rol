@@ -63,6 +63,22 @@ public class SeleccionadorHojaSprite {
 		case "13":
 			hs = new HojaSprites(Constantes.TEXTURAS_CIUDAD_2, 32, true);
 			break;
+
+		case "14":
+			hs = new HojaSprites(Constantes.TEXTURAS_MANSION_1, 32, true);
+			break;
+		case "15":
+			hs = new HojaSprites(Constantes.TEXTURAS_MANSION_2, 32, true);
+			break;
+		case "16":
+			hs = new HojaSprites(Constantes.TEXTURAS_MANSION_3, 32, true);
+			break;
+		case "17":
+			hs = new HojaSprites(Constantes.TEXTURAS_MANSION_4, 32, true);
+			break;
+		case "18":
+			hs = new HojaSprites(Constantes.TEXTURAS_MANSION_5, 32, true);
+			break;
 		default:
 			break;
 		}
