@@ -36,6 +36,9 @@ public class GestorEstados {
 	private int posicionActual;
 	private Clip musica = CargadorRecursos.cargarSonido(Constantes.MUSICA);
 	private Clip sonidoInicio = CargadorRecursos.cargarSonido(Constantes.SONIDO);
+	private Clip musicaJuego = CargadorRecursos.cargarSonido(Constantes.MUSICA_JUEGO);
+	private Clip musicaCombate = CargadorRecursos.cargarSonido(Constantes.MUSICA_COMBATE);
+	private Clip musicaFinJuego = CargadorRecursos.cargarSonido(Constantes.MUSICA_FIN_JUEGO);
 
 	private boolean mostrarMensajeNoCarga = false;
 
@@ -96,10 +99,13 @@ public class GestorEstados {
 		// Combate.
 		if (estadoActual == estados[3]) {
 			if (!((GestorCombate) estadoActual).isEnCombate()) {
+				musicaCombate.stop();
 				// Si gana el combate
 				if (((GestorJuego) estados[1]).getJugador().getEstadisticas().getSalud() > 0) {
 					((GestorJuego) estados[1]).getJugador().getEstadisticas().recuperarTodoMana();
 					cambiarEstado(1);
+					musicaJuego.start();
+					musicaJuego.loop(Clip.LOOP_CONTINUOUSLY);
 				} else {
 					// Si pierde el combate.
 					estados[6] = new Derrota();
@@ -111,8 +117,11 @@ public class GestorEstados {
 
 		// Introducción.
 		if (estadoActual == estados[4]) {
-			if (((Introduccion) estadoActual).isFinalizado())
+			if (((Introduccion) estadoActual).isFinalizado()) {
 				cambiarEstado(1);
+				musicaJuego.start();
+				musicaJuego.loop(Clip.LOOP_CONTINUOUSLY);
+			}
 		}
 
 		// Pantalla de información.
@@ -135,6 +144,7 @@ public class GestorEstados {
 		if (estadoActual == estados[7]) {
 			if (((FinJuego) estadoActual).isFinalizado()) {
 				estados[0] = new GestorMenuPrincipal();
+				musicaFinJuego.stop();
 				cambiarEstado(0);
 			}
 		}
@@ -182,6 +192,8 @@ public class GestorEstados {
 			estados[1] = new GestorJuego(j);
 			estados[2] = new GestorMenu(j);
 			cambiarEstado(1);
+			musicaJuego.start();
+			musicaJuego.loop(Clip.LOOP_CONTINUOUSLY);
 		}
 	}
 
@@ -198,8 +210,13 @@ public class GestorEstados {
 			CreadorEnemigos.crearEnemigos();
 			estados[3] = new GestorCombate(j, Constantes.ENEMIGOS[enemigo]);
 			cambiarEstado(3);
+			musicaJuego.stop();
+			musicaCombate.start();
+			musicaCombate.loop(Clip.LOOP_CONTINUOUSLY);
 		}
 		if (((GestorJuego) estados[1]).isFinJuego()) {
+			musicaJuego.stop();
+			musicaFinJuego.start();
 			Jugador j = ((GestorJuego) estados[1]).getJugador();
 			estados[7] = new FinJuego(j.getEstadisticas());
 			cambiarEstado(7);
@@ -209,8 +226,7 @@ public class GestorEstados {
 	/**
 	 * Llama al método dibujar del estado actual.
 	 * 
-	 * @param g
-	 *            Graphics - Objeto encargado de dibujar en la ventana.
+	 * @param g Graphics - Objeto encargado de dibujar en la ventana.
 	 */
 	public void dibujar(final Graphics g) {
 		estadoActual.dibujar(g);
@@ -226,8 +242,7 @@ public class GestorEstados {
 	/**
 	 * Cambia el estado actual por el estado pedido como parámetro.
 	 * 
-	 * @param nuevoEstado
-	 *            int - Posicion en la lista de estados.
+	 * @param nuevoEstado int - Posicion en la lista de estados.
 	 */
 	public void cambiarEstado(final int nuevoEstado) {
 		if (nuevoEstado == 0 && !musica.isActive()) {

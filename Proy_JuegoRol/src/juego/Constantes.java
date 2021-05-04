@@ -153,6 +153,9 @@ public class Constantes {
 	public static final String BEEP = "/sonidos/beep.wav";
 	public static final String TECLA = "/sonidos/tecla.wav";
 	public static final String MUSICA = "/sonidos/IMissYou.wav";
+	public static final String MUSICA_COMBATE = "/sonidos/HighStorm.wav";
+	public static final String MUSICA_JUEGO = "/sonidos/Honor_is_dead.wav";
+	public static final String MUSICA_FIN_JUEGO = "/sonidos/Tarah.wav";
 	
 	public static ArrayList<String[]> CONVERSACIONES;
 	
