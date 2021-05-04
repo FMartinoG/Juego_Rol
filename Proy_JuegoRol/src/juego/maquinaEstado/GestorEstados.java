@@ -38,6 +38,7 @@ public class GestorEstados {
 	private Clip sonidoInicio = CargadorRecursos.cargarSonido(Constantes.SONIDO);
 	private Clip musicaJuego = CargadorRecursos.cargarSonido(Constantes.MUSICA_JUEGO);
 	private Clip musicaCombate = CargadorRecursos.cargarSonido(Constantes.MUSICA_COMBATE);
+	private Clip musicaFinJuego = CargadorRecursos.cargarSonido(Constantes.MUSICA_FIN_JUEGO);
 
 	private boolean mostrarMensajeNoCarga = false;
 
@@ -143,6 +144,7 @@ public class GestorEstados {
 		if (estadoActual == estados[7]) {
 			if (((FinJuego) estadoActual).isFinalizado()) {
 				estados[0] = new GestorMenuPrincipal();
+				musicaFinJuego.stop();
 				cambiarEstado(0);
 			}
 		}
@@ -214,6 +216,7 @@ public class GestorEstados {
 		}
 		if (((GestorJuego) estados[1]).isFinJuego()) {
 			musicaJuego.stop();
+			musicaFinJuego.start();
 			Jugador j = ((GestorJuego) estados[1]).getJugador();
 			estados[7] = new FinJuego(j.getEstadisticas());
 			cambiarEstado(7);

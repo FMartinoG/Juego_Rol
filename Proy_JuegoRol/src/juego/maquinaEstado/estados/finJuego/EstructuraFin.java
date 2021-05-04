@@ -108,6 +108,8 @@ public class EstructuraFin {
 	public void dibujar(Graphics g) {
 		ponerPantallaNegro(g);
 
+		esperar(5000);
+		
 		mostrarHistoria(g);
 
 		esperar(3000);
