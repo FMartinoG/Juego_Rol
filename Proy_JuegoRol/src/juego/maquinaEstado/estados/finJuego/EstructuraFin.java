@@ -113,7 +113,14 @@ public class EstructuraFin {
 		mostrarHistoria(g);
 
 		esperar(3000);
+		ponerPantallaNegro(g);
+		
+		mostrarMensajes(g, "GRACIAS POR JUGAR");
 
+		esperar(5000);
+		ponerPantallaNegro(g);
+		esperar(2000);
+		
 		finalizado = true;
 	}
 
@@ -225,6 +232,20 @@ public class EstructuraFin {
 			ms.dibujar(g);
 			altura += 40;
 		}
+	}
+	
+	/**
+	 * Método encargado de dibujar los mensajes en pantalla,
+	 * 
+	 * @param g
+	 * @param mensaje String - Mensaje
+	 */
+	private void mostrarMensajes(Graphics g, String mensaje) {
+		FontMetrics fm = g.getFontMetrics();
+		int posicionX = (Constantes.ANCHO_VENTANA / 2) - ((fm.stringWidth(mensaje) / 2) - 30);
+		int altura = (Constantes.ALTO_VENTANA / 2);
+		Mensaje ms = new Mensaje(mensaje, posicionX, altura, false);
+		ms.dibujar(g);
 	}
 
 	/**
