@@ -161,8 +161,6 @@ public class GestorEstados {
 			cambiarEstado(4);
 			mostrarMensajeNoCarga = false;
 		} else if (((GestorMenuPrincipal) estadoActual).cargarPartida()) {
-			musica.stop();
-			sonidoInicio.start();
 			pulsarCargarPartida();
 		} else if (((GestorMenuPrincipal) estadoActual).seleccionarInformacion()) {
 			pulsarInformacion();
@@ -185,6 +183,8 @@ public class GestorEstados {
 		if (s == null)
 			mostrarMensajeNoCarga = true;
 		else {
+			musica.stop();
+			sonidoInicio.start();
 			String textoMapa = CargarPartida.mapaACargar(s.getMapa());
 			Mapa mapa = new Mapa(textoMapa);
 			Jugador j = new Jugador(mapa);
