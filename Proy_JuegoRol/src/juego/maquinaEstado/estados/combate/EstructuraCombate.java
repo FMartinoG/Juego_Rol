@@ -30,8 +30,8 @@ public class EstructuraCombate {
 	private boolean enCombate;
 	private boolean huido, vencido, apaciguado, derrota;
 	private boolean botonPulsado;
-	private boolean dibujarAtaqueFisico, dibujarMagiaCura, dibujarMagiaFuego, dibujarMagiaHielo, dibujarMagiaRayo,
-			dibujarReaccion, dibujarHuidaFallida, dibujarAtaqueEnemigo, dibujarFaltaMana;
+	private boolean dibujarAtaqueFisico, dibujarMagiaCura, dibujarMagiaFuego, dibujarMagiaHielo, dibujarMagiaRayo, dibujarReaccion, dibujarHuidaFallida,
+			dibujarAtaqueEnemigo, dibujarFaltaMana;
 	private int accionSeleccionada;
 
 	private int ataqueFisico;
@@ -58,8 +58,10 @@ public class EstructuraCombate {
 	/**
 	 * Constructor de la clase de estructura de combate.
 	 * 
-	 * @param jugador Jugador - Objeto jugador.
-	 * @param enemigo Enemigo - Objeto enemigo.
+	 * @param jugador
+	 *            Jugador - Objeto jugador.
+	 * @param enemigo
+	 *            Enemigo - Objeto enemigo.
 	 */
 	public EstructuraCombate(Jugador jugador, Enemigo enemigo) {
 		this.jugador = jugador;
@@ -119,8 +121,7 @@ public class EstructuraCombate {
 		punteroAccion = 0;
 		opcionesAccion = new OpcionCombate[enemigo.getAcciones().length];
 		for (int i = 0; i < opcionesAccion.length; ++i)
-			opcionesAccion[i] = new OpcionCombate(enemigo.getAcciones()[i],
-					new Rectangle(40 + (i * 150), 290, 100, 40));
+			opcionesAccion[i] = new OpcionCombate(enemigo.getAcciones()[i], new Rectangle(40 + (i * 150), 290, 100, 40));
 
 		seleccionadoAccion = opcionesAccion[0];
 	}
@@ -194,9 +195,9 @@ public class EstructuraCombate {
 	}
 
 	/**
-	 * Método encargado de controlar si se selecciona y lo que pasa al seleccionar
-	 * una mágia. Si se pulsa "Enter" sobre una mágia, realiza la acción de esa
-	 * mágia y gasta maná
+	 * Método encargado de controlar si se selecciona y lo que pasa al
+	 * seleccionar una mágia. Si se pulsa "Enter" sobre una mágia, realiza la
+	 * acción de esa mágia y gasta maná
 	 */
 	private void seleccionarMagia() {
 		if (Controles.TECLADO.seleccion && seleccionadoMagia == opcionesMagia[0]) {
@@ -251,8 +252,8 @@ public class EstructuraCombate {
 	}
 
 	/**
-	 * Método encargado de comprobar si se selecciona una acción y de controlar lo
-	 * que pasa al seleccionar una acción.
+	 * Método encargado de comprobar si se selecciona una acción y de controlar
+	 * lo que pasa al seleccionar una acción.
 	 */
 	private void seleccionarAccion() {
 		if (Controles.TECLADO.seleccion && seleccionadoAccion == opcionesAccion[0]) {
@@ -306,7 +307,8 @@ public class EstructuraCombate {
 	}
 
 	/**
-	 * Método que controla las acciones del jugador y las reacciones del enemigo.
+	 * Método que controla las acciones del jugador y las reacciones del
+	 * enemigo.
 	 * 
 	 * @param n
 	 */
@@ -326,21 +328,23 @@ public class EstructuraCombate {
 	 * @param fisico
 	 */
 	private void turnoDeEnemigo(boolean fisico) {
-		if (fisico) {
-			ataqueEnemigo = enemigo.realizarAtaqueFisico();
-			ataqueEnemigoEsFisico = true;
-		} else {
-			ataqueEnemigo = enemigo.realizarAtaqueMagico();
-			ataqueEnemigoEsFisico = false;
+		if (enemigo.estaVivo()) {
+			if (fisico) {
+				ataqueEnemigo = enemigo.realizarAtaqueFisico();
+				ataqueEnemigoEsFisico = true;
+			} else {
+				ataqueEnemigo = enemigo.realizarAtaqueMagico();
+				ataqueEnemigoEsFisico = false;
+			}
+			dibujarAtaqueEnemigo = true;
 		}
-		dibujarAtaqueEnemigo = true;
-
 	}
 
 	/**
 	 * Método que dibuja los elementos del estado.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	public void dibujar(Graphics g) {
 		g.setColor(Color.white);
@@ -403,7 +407,8 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la sección de etiquetas principales.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	private void dibujarPrincipal(Graphics g) {
 		for (OpcionCombate o : opciones) {
@@ -417,7 +422,8 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la sección de etiquetas de mágia.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	private void dibujarMagia(Graphics g) {
 		for (OpcionCombate o : opcionesMagia) {
@@ -431,7 +437,8 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la sección de etiquetas de acciones.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	private void dibujarAccion(Graphics g) {
 		for (OpcionCombate o : opcionesAccion) {
@@ -445,7 +452,8 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja el ataque físico del jugador.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	private void dibujarAtaqueFisico(Graphics g) {
 		Image ataque = CargadorRecursos.cargarImagenTranslucida(Constantes.ATAQUE);
@@ -461,7 +469,8 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la curación.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	private void dibujarMagiaCura(Graphics g) {
 		Image cura = CargadorRecursos.cargarImagenTranslucida(Constantes.CURA);
@@ -476,7 +485,8 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la magia de fuego.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	private void dibujarMagiaFuego(Graphics g) {
 		Image fuego = CargadorRecursos.cargarImagenTranslucida(Constantes.FUEGO);
@@ -492,7 +502,8 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la magia de hielo.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	private void dibujarMagiaHielo(Graphics g) {
 		Image hielo = CargadorRecursos.cargarImagenTranslucida(Constantes.HIELO);
@@ -508,7 +519,8 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja la magia de rayo.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	private void dibujarMagiaRayo(Graphics g) {
 		Image rayo = CargadorRecursos.cargarImagenTranslucida(Constantes.RAYO);
@@ -524,7 +536,8 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja el mensaje cuando no tiene suficiente maná.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	private void dibujarFaltaMana(Graphics g) {
 		Mensaje mensaje = new Mensaje("NO TIENES SUFIECIENTE MANA", 200, 100, true);
@@ -541,7 +554,8 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja las reacciones del enemigo.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	private void dibujarReaccion(Graphics g) {
 		Mensaje mensaje = new Mensaje(enemigo.getReacciones()[accionSeleccionada], 100, 100, true);
@@ -557,7 +571,8 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja el mensaje cuando no se consigue huir.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	private void dibujarHuidaFallida(Graphics g) {
 		Mensaje mensaje = new Mensaje("NO CONSEGUISTE HUIR", 200, 100, true);
@@ -572,10 +587,11 @@ public class EstructuraCombate {
 	}
 
 	/**
-	 * Método que dibuja el o los mensajes que indican que el combate ha terminado e
-	 * indica que el combate ha terminado.
+	 * Método que dibuja el o los mensajes que indican que el combate ha
+	 * terminado e indica que el combate ha terminado.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	private void dibujarFinDeCombate(Graphics g) {
 		Mensaje mensaje = null;
@@ -606,7 +622,8 @@ public class EstructuraCombate {
 	/**
 	 * Método que dibuja el mensaje indicando el ataque del enemigo.
 	 * 
-	 * @param g Graphics
+	 * @param g
+	 *            Graphics
 	 */
 	private void dibujarAtaqueEnemigo(Graphics g) {
 		long msInicio = System.currentTimeMillis();
